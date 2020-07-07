@@ -1,0 +1,27 @@
+span.campoConError {
+	color: red;
+}
+
+body {
+	background-color: rgb(255, 247, 255);
+}
+
+.container {
+	color: black;
+}
+
+.message {
+	color: black;
+}
+
+h1 {
+	color: black;
+}
+
+label {
+	color: black;
+}
+
+p {
+	color: black;
+}

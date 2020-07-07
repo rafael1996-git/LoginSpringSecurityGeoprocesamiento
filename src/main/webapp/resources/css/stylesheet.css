@@ -1,0 +1,42 @@
+
+
+.errors-container
+		{
+			padding: 15px;
+			margin-top: 10px;
+			border: 1px solid transparent;
+			border-radius: 4px;
+			color: #a94442;
+			background-color: #f2dede;
+			border-color: #ebccd1;
+			color: Red;
+		}
+.message-container
+		{
+			padding: 15px;
+			margin-top: 10px;
+			border: 1px solid transparent;
+			border-radius: 4px;
+			color: #31708f;
+			background-color: #d9edf7;
+			border-color: #bce8f1;
+			color: Red;
+		}
+fieldset {
+    padding: 3px 10px 10px 10px;
+    margin: 11px;
+    width: 410px;
+    display: block;
+}
+
+
+
+.validationDiv {
+    padding: 0px 0px 5px 0px;
+    margin: 8px 0px 0px 0px;
+
+}
+
+.warning {
+    color: Red;
+}
