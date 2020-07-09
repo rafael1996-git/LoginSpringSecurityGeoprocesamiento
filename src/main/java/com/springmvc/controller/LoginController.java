@@ -1,10 +1,14 @@
 package com.springmvc.controller;
 
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,8 +30,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.uuid.Generators;
 import com.springmvc.model.Login;
 import com.springmvc.model.LoginControl;
+import com.springmvc.model.Remesa;
 import com.springmvc.model.User;
 import com.springmvc.model.UserControl;
 import com.springmvc.service.UserService;
@@ -160,15 +166,35 @@ public class LoginController {
 
 	@RequestMapping(value = "/estatus", method = { RequestMethod.POST })
 	@ResponseBody
-	public String ejecutaEstatus(@RequestParam("entidad") String entidad, @RequestParam("remesa") String remesa,
-			Model model) throws NumberFormatException, ParseException {
-		String listaEstatus = getEstatusRemesa(Integer.parseInt(entidad), Integer.parseInt(remesa));
+	public String ejecutaEstatus(Model model,HttpServletRequest reques) throws NumberFormatException, ParseException {
+		UUID token = Generators.randomBasedGenerator().generate();
+		Date objDate = new Date();
+		// Mostrar la fecha y la hora usando toString ()
+		System.out.println(objDate.toString());
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		objDate.equals(dateFormat.format(objDate));
+		HttpSession session = reques.getSession();
+		int id = (int) session.getAttribute("id");
+		int entidadUsuario = (int) session.getAttribute("entidad");
+		String opj;
+		opj = userService.buscarRemesa();
+		
+
+			Remesa opjRemesa = new Remesa();
+			opjRemesa.setId_status(1);
+			opjRemesa.setFecha_hora(objDate);
+			opjRemesa.setToken(token.toString());
+			opjRemesa.setId_usuario(id);
+			opjRemesa.setEntidad_remesa(opj.toString());
+			userService.regisRemesa(opjRemesa);
+			
+		String listaEstatus = getEstatusRemesa(entidadUsuario, Integer.parseInt(opj));
 		return listaEstatus;
 	}
 
 	public String getEstatusRemesa(int entidad, int remesa) throws ParseException {
 
-		String requestUri = "http://172.19.71.55:8080/GenerarRemesa/dce/GenerarEntidad/status?entidad={entidad}&remesa={remesa}";
+		String requestUri = "http://localhost:8080/GenerarRemesa/dce/GenerarEntidad/status?entidad={entidad}&remesa={remesa}";
 		Map<String, String> urlParameters = new HashMap<>();
 		urlParameters.put("entidad", Integer.toString(entidad));
 		urlParameters.put("remesa", Long.toString(remesa));

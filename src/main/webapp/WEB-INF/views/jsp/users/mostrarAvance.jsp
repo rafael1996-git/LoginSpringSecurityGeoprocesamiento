@@ -59,9 +59,6 @@ p {
 			<div class="column">
 				<h2>Geoprocesamiento de la Remesa de Actualización Cartográfica</h2>
 				<form id="registro" action="#" class="form-inline">
-					Entidad: <input type="text" name="entidad" id="entidad" required>
-					Remesa: <input type="text" name="remesa" id="remesa" required> <br>
-					
 					<input type="submit" class="btn btn-primary" value="Consulta">
 				</form>
 				<div>
@@ -87,22 +84,20 @@ jQuery(document).ready(function($) {
 });
 
 function searchViaAjax() {
-	var requestData = {
-		    'entidad': $("#entidad").val(),
-		    'remesa': $("#remesa").val(),
-		};
+	var requestData= {};
 	
 	requestData[_csrf_param_name] = _csrf_token;
 
 	$.ajax({
 		type : "POST",
 		url : "estatus",
-		 data: requestData ,
+		data: requestData ,
 		timeout : 100000,
 		success : function(data) {
 			console.log("SUCCESS: ", data);
 		
 			var datos = JSON.parse(data);
+			setInterval('refreshPage()', 30000);
 			if(datos.length>0){
 				console.log("mayor a cero: ", datos.length);
 				document.getElementById("feedback").style.display = "none";
@@ -166,6 +161,10 @@ function clearcanvas() {
 		window.grafica.destroy();
 	}
 }	
+
+function refreshPage() { 
+    location.reload(); 
+}
 
 </script>
 </body>

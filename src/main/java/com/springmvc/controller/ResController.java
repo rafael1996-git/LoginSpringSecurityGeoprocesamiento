@@ -75,7 +75,7 @@ public class ResController {
 						.println("*************************************************************************[HEADER : ");
 
 				OkHttpClient client = new OkHttpClient().newBuilder().build();
-				HttpUrl.Builder urlBuilder = HttpUrl.parse("http://172.19.71.55:8080/GenerarRemesa/dce/GenerarEntidad?").newBuilder();
+				HttpUrl.Builder urlBuilder = HttpUrl.parse("http://localhost:8080/GenerarRemesa/dce/GenerarEntidad?").newBuilder();
 				urlBuilder.addQueryParameter("entidad", session.getAttribute("entidad").toString());
 				urlBuilder.addQueryParameter("remesa", opj.toString());
 				String url = urlBuilder.build().toString();
