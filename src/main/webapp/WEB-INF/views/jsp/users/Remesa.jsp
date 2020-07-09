@@ -59,7 +59,7 @@ color: black;
 			 <c:if test="${not empty mensaje2}">
 			  <div class="alert alert-info">${mensaje2}
     				<a href="${urlWelcome}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-   					 <strong>Atencion!</strong> Funcion Remesa no realizada
+   					 <strong>Atencion!</strong> No se realizo el header de la peticion ,verifica tu servidor de remesa
    				    </div>
 			  
 			 </c:if>

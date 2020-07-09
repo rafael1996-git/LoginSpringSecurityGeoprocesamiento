@@ -60,7 +60,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public List<User> list() {
 		String sql = "SELECT nombre_completo,correo,usuario,activo FROM usuariosbged.usuarios";
-		List<User> listContact = jdbcTemplateuser.query(sql, new RowMapper<User>() {
+		List<User> list = jdbcTemplateuser.query(sql, new RowMapper<User>() {
 
 			@Override
 			public User mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -75,7 +75,7 @@ public class UserDaoImpl implements UserDao {
 
 		});
 
-		return listContact;
+		return list;
 
 	}
 
@@ -89,7 +89,7 @@ public class UserDaoImpl implements UserDao {
 
 	public List<UserControl> lista() {
 		String sql = "SELECT nombre,ape_pat,ape_mat,puesto,entidad,id_tipo_usuario FROM public.usuario";
-		List<UserControl> listContact = jdbcTemplatecontrol.query(sql, new RowMapper<UserControl>() {
+		List<UserControl> list= jdbcTemplatecontrol.query(sql, new RowMapper<UserControl>() {
 
 			@Override
 			public UserControl mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -108,7 +108,7 @@ public class UserDaoImpl implements UserDao {
 
 		});
 
-		return listContact;
+		return list;
 
 	}
 

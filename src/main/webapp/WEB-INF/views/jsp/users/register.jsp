@@ -24,6 +24,7 @@
 						<h4> Fecha Actual:</h4><h4><fmt:formatDate type="both" value="${now}"/></h4>
 			</div>
 	</div>
+			
 		
 		<h2>Agregar Usuario</h2>
 
@@ -203,6 +204,18 @@
 	 
 						
      
+    </script>
+    
+    <script >
+        $(function () {
+            $("#tagsName").autocomplete({
+                source: function (request, response) {
+                    $.getJSON("${pageContext.request.contextPath}/getAnexo.web", {
+                        term: request.term
+                    }, response);
+                }
+            });
+        });
     </script>
 
 

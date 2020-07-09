@@ -165,7 +165,7 @@ function clearcanvas() {
 		window.grafica.clear();
 		window.grafica.destroy();
 	}
-}
+}	
 
 </script>
 </body>

@@ -59,13 +59,7 @@ public class ResController {
 			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!entidad : " + entidad);
 			String opj;
 			opj = userService.buscarRemesa();
-			if (opj.isEmpty() || opj == null) {
-				List<User> listaPersonas = userService.list();
-				reques.setAttribute("lista", listaPersonas);
-				System.out.println("funcion Remesa no realizada por el rango de fechas: ");
-				model.setViewName("/users/Remesa");
-				model.addObject("mensaje2", "¡");
-			} else {
+			
 
 				Remesa opjRemesa = new Remesa();
 				opjRemesa.setId_status(1);
@@ -81,7 +75,7 @@ public class ResController {
 						.println("*************************************************************************[HEADER : ");
 
 				OkHttpClient client = new OkHttpClient().newBuilder().build();
-				HttpUrl.Builder urlBuilder = HttpUrl.parse("http://localhost:8080/GenerarRemesa/dce/GenerarEntidad?").newBuilder();
+				HttpUrl.Builder urlBuilder = HttpUrl.parse("http://172.19.71.55:8080/GenerarRemesa/dce/GenerarEntidad?").newBuilder();
 				urlBuilder.addQueryParameter("entidad", session.getAttribute("entidad").toString());
 				urlBuilder.addQueryParameter("remesa", opj.toString());
 				String url = urlBuilder.build().toString();
@@ -96,6 +90,11 @@ public class ResController {
 					System.out.println("________________string-Header____________________" + stringHeader);
 				} catch (IOException e) {
 					System.err.println("Failed scraping");
+					List<User> listaPersonas = userService.list();
+					reques.setAttribute("lista", listaPersonas);
+					System.out.println("funcion Remesa no realizada : ");
+					model.addObject("mensaje2", "¡");
+					model.setViewName("/users/Remesa");
 					e.printStackTrace();
 				}
 
@@ -107,7 +106,7 @@ public class ResController {
 				reques.setAttribute("lista", listaPersonas);
 				model.setViewName("/users/Remesa");
 				model.addObject("mensaje", "¡");
-			}
+			
 		} catch (Exception ex) {
 			List<User> listaPersonas = userService.list();
 			reques.setAttribute("lista", listaPersonas);

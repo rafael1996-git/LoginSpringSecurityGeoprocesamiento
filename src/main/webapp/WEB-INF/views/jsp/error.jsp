@@ -14,15 +14,14 @@
 
 	<div class="container">
 
-		<h1>Error Page</h1>
+		<h1>Error</h1>
 		<h1></h1>
-<h3><a href="welcome">Vuelve a Intentarlo Aqui</a></h3>
+<h3><a href="javascript:formSubmit()">Vuelve a Intentarlo Aqui</a></h3>
 		<p>${exception.message}</p>
-		<!-- Exception: ${exception.message}.
-		  	<c:forEach items="${exception.stackTrace}" var="stackTrace"> 
-				${stackTrace} 
-			</c:forEach>
-	  	-->
+		<form action="${logoutUrl}" method="post" id="logoutForm">
+				<input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}" />
+			</form>
 
 	</div>
    <footer><div id="systeminfo" align="center"><p>© Derechos Reservados, Instituto Nacional Electoral, México.</div></footer>
@@ -30,4 +29,34 @@
 <%-- 	<jsp:include page="fragments/footer.jsp" /> --%>
 
 </body>
+<script>
+		function formSubmit() {
+			document.getElementById("logoutForm").submit();
+		}
+	</script>
+	<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+<footer><div  align="center" ><h4>© Derechos Reservados, Instituto Nacional Electoral, México.</h4></div></footer>
+	
 </html>

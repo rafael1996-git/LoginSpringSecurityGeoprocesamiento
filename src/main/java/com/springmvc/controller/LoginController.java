@@ -111,8 +111,8 @@ public class LoginController {
 	@RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
 	public ModelAndView loginProcess(LoginControl loginC, LoginControl loginC2, HttpServletRequest request,
 			@RequestParam String correo, Login login, @RequestParam String password, Login login2) {
-		ModelAndView mav = null;
-		List<User> listaPersonas = userService.list();
+		ModelAndView mav =null;
+		List<User> listaPersonas =userService.list();
 
 		System.out.println("en home");
 		logger.info("Mensaje de vista:******************************** ");
@@ -122,24 +122,24 @@ public class LoginController {
 			UserControl userControl = userService.validateUserControl(loginC, loginC2);
 
 			if (loginC.equals(correo) == true || loginC2.equals(password) == true || userControl != null) {
+				
 
-				System.out.println("paso por aqui en login control " + loginC);
 				HttpSession session = request.getSession();
 				session.setAttribute("firstname", userControl.getCorreo());
 				session.setAttribute("id", userControl.getId_usuario());
+				session.setAttribute("entidad", userControl.getEntidad());
 
 				request.setAttribute("lista", listaPersonas);
 				mav = new ModelAndView("/users/adminC");
-				System.out.println("USUARIO VALIDO DE LOGIN CONTROL______________________: ");
+				System.out.println("USUARIO VALIDO DE LOGIN CONTROL______________________: "+userControl.getCorreo());
 
 			} else if (login.equals(correo) == true || login2.equals(password) == true || user != null) {
 				user = userService.validateUser(login, login2);
-				System.out.println("paso por aqui en login " + login + "" + loginC);
 				HttpSession session = request.getSession();
 				session.setAttribute("firstname", user.getCorreo());
-
+				
 				mav = new ModelAndView("/users/admin");
-				System.out.println("USUARIO VALIDO DE LOGIN :::::::::::::::::::::::::::: ");
+				System.out.println("USUARIO VALIDO DE LOGIN :::::::::::::::::::::::::::: "+user.getCorreo());
 			} else {
 
 				mav = new ModelAndView("/users/login");
@@ -168,7 +168,7 @@ public class LoginController {
 
 	public String getEstatusRemesa(int entidad, int remesa) throws ParseException {
 
-		String requestUri = "http://172.19.71.161:8080/GenerarRemesa/dce/GenerarEntidad/status?entidad={entidad}&remesa={remesa}";
+		String requestUri = "http://172.19.71.55:8080/GenerarRemesa/dce/GenerarEntidad/status?entidad={entidad}&remesa={remesa}";
 		Map<String, String> urlParameters = new HashMap<>();
 		urlParameters.put("entidad", Integer.toString(entidad));
 		urlParameters.put("remesa", Long.toString(remesa));
