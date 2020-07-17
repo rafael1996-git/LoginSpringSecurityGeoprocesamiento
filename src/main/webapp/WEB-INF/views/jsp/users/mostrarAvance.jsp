@@ -37,7 +37,7 @@ p {
 }
 </style>
 <body>
-<spring:url value="estatus" var="urlEstatus" />
+	<spring:url value="estatus" var="urlEstatus" />
 	<div class="container" align="center">
 		<fieldset>
 			<legend>
@@ -56,20 +56,24 @@ p {
 					</h4>
 				</div>
 			</div>
-			<div class="column">
+			<div class="row align-items-center">
+			<div class="col align-self-center">
 				<h2>Geoprocesamiento de la Remesa de Actualización Cartográfica</h2>
 				<form id="registro" action="#" class="form-inline">
 					<input type="submit" class="btn btn-primary" value="Consulta">
 				</form>
-				<div>
+				<div class="col align-self-center">
 					<h1>Estatus:</h1>
-					<div id="feedback"></div>
+
 					<canvas id="myCanvas" width="500" height="300"></canvas>
+					<div  id="leyenda"></div>
+					<div  id="msjError"></div>
 				</div>
+			</div>
 			</div>
 		</fieldset>
 	</div>
-<script type="text/javascript" >
+	<script type="text/javascript">
 var _csrf_token = /*[[${_csrf.token}]]*/ '${_csrf.token}';
 var _csrf_param_name = /*[[${_csrf.parameterName}]]*/ '${_csrf.parameterName}';
 
@@ -92,25 +96,30 @@ function searchViaAjax() {
 		type : "POST",
 		url : "estatus",
 		data: requestData ,
-		timeout : 100000,
+		timeout : 200000,
 		success : function(data) {
 			console.log("SUCCESS: ", data);
-		
-			var datos = JSON.parse(data);
-			setInterval('refreshPage()', 30000);
-			if(datos.length>0){
-				console.log("mayor a cero: ", datos.length);
-				document.getElementById("feedback").style.display = "none";
-			   display(data);
+			var datos=0;
+			if(data === 'undefined'||data===null||data===""){
+				console.log("data no está definido o es nulo");
+				$('#msjError').html("<h1>el estatus devuelve nulo</h1> ");
 			}else{
-				console.log("menor a cero: ", datos.length);
-				$('#feedback').html("<h1>inserte las remesas o ejecute proceso</h1> ");
+				 datos = JSON.parse(data);
+				if(datos.length==0){
+					$('#msjError').html("<h1>inserte las remesas </h1> ");
+				}else{
+					console.log("mayor a cero: ", datos.length);
+					document.getElementById("msjError").style.display = "none";
+					dibujaCirculo(datos);
+					console.log("menor a cero: ", datos.length);
+				}
 			}
+	
 		},
 		error : function(e) {
 			console.log("ERROR: ", e);
-			$('#feedback').html("<h1>Web service esta fuera de servicio contacte</h1> ");
-			clearcanvas();
+			$('#msjError').html("<h1>Web service esta fuera de servicio contacte</h1> ");
+// 			clearcanvas();
 		},
 		done : function(e) {
 			console.log("DONE");
@@ -119,51 +128,66 @@ function searchViaAjax() {
 
 }
 
-function display(data) {
-	var val = JSON.parse(data);
-// 	$('#feedback').html(data);
-	var idOpe=new Array();
+
+
+function dibujaCirculo(data) {
+
+	
+	var myCanvas = document.getElementById("myCanvas");
+	
+	console.log("JSONparse valor: " + data); 
+
+    var ctx = myCanvas.getContext("2d");
+    
+	var start_angle = 0;
+	var categoria;
+
 	var indexe=new Array();
 	var colorFondo=new Array();
-    $.each(val, function(index, el) {
+	
+    $.each(data, function(index, el) {
         console.log("element at " + index + ": " + el); 
-        idOpe.push(el);
         indexe.push(index);
-        var o = Math.round, r = Math.random, s = 255;
-        colorFondo.push('rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')');
-
     });
-	var ctx = document.getElementById('myCanvas').getContext('2d');
+    
 
-	if (window.grafica) {
-		window.grafica.clear();
-		window.grafica.destroy();
+    var porcentaje = 127;
+    
+	var sum =0;
+	
+	for(categoria=0;categoria<=indexe.length;categoria++){
+	  	var slice_angle = 2 * Math.PI * categoria / porcentaje;
+	  	var incre = categoria/porcentaje;
+	  	sum = incre * 100;
+	  	
+	    drawPieSlice(ctx,500/2,
+	    		300/2,
+	    		Math.min(500/2,300/2), 
+	    		start_angle,
+	    		start_angle+slice_angle);
+	    //,'rgba(70,130,180)'
+
 	}
-// 	window.grafica = new //// var chart
-		window.grafica = new Chart(ctx, {
-	    type: 'doughnut',
-	    data:{
-		datasets: [{
-			data: idOpe,
-			backgroundColor:colorFondo,
-			label: 'Estatus de generar remesa'}],
-			labels:indexe},
-	    options: {responsive: true}
-	});
+	var entero = sum.toFixed(); 
+	$('#leyenda').html("<h1>Porcentaje: "+entero+" % </h1> ");
+
 }
 
-function clearcanvas() {
-	//elimina todo lo del canvas --->
-	var ctx = document.getElementById('myCanvas').getContext('2d');
+function drawPieSlice(ctx,centerX, centerY, radius, startAngle, endAngle){
+	//color
+	 
+    ctx.fillStyle = "#000080";
 
-	if (window.grafica) {
-		window.grafica.clear();
-		window.grafica.destroy();
-	}
-}	
+    ctx.beginPath();
+ 
+    ctx.moveTo(centerX,centerY);
+ 
+    ctx.arc(centerX, centerY, radius, startAngle, endAngle);
 
-function refreshPage() { 
-    location.reload(); 
+    ctx.closePath();
+ 
+    ctx.fill();
+ 
 }
 
 </script>

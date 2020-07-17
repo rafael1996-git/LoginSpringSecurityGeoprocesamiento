@@ -178,7 +178,7 @@ public class LoginController {
 		int entidadUsuario = (int) session.getAttribute("entidad");
 		String opj;
 		opj = userService.buscarRemesa();
-		
+		System.out.println("query service buscarRemesa: "+opj);
 
 			Remesa opjRemesa = new Remesa();
 			opjRemesa.setId_status(1);
@@ -203,12 +203,15 @@ public class LoginController {
 		ResponseEntity<String> entity = template.getForEntity(requestUri, String.class, urlParameters);
 
 		System.out.println("Estatus del servicio : " + entity.getStatusCodeValue());
+		System.out.println("Estatus del servicio body : " + entity.getBody());
+		System.out.println("Estatus del servicio toString : " + entity.toString());
 		List<Integer> grafica = new ArrayList<Integer>();
 		if (entity.getStatusCode().value() == 200) {
 			String s = entity.getBody();
 			JSONObject js = new JSONObject(entity.getBody());
-			if(js!=null&&!js.isEmpty()) {
-			for (Object o : js.getJSONArray("operationsExecuted")) {
+			System.out.println("Estatus del servicio : " + js.toString());
+			if(js!=null||!js.isEmpty()) {
+			for (Object o : js.getJSONArray("operacionesEjecutadas")) {
 				JSONObject ca = (JSONObject) o;
 				JSONObject span = (JSONObject) ca.get("operaciones");
 				int idOp = span.getInt("idOperacion");
@@ -216,6 +219,7 @@ public class LoginController {
 			}
 
 			return grafica.toString();
+				
 			}else {
 				return null;
 			}
