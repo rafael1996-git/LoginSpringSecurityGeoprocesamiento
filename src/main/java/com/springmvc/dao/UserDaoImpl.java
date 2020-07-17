@@ -42,8 +42,8 @@ public class UserDaoImpl implements UserDao {
 	// en construccion
 	public int register(UserControl user) {
 
-		String sql = "INSERT INTO public.usuario (nombre,ape_pat,ape_mat,puesto,entidad,id_tipo_usuario,correo,password) VALUES (?,?,?,?,?,?,?,?)";
-		return jdbcTemplatecontrol.update(sql, new Object[] { user.getNombre(), user.getApe_pat(), user.getApe_mat(),
+		String sql = "INSERT INTO public.usuario (id_usuario,nombre,ape_pat,ape_mat,puesto,entidad,id_tipo_usuario,correo,password) VALUES (?,?,?,?,?,?,?,?,?)";
+		return jdbcTemplatecontrol.update(sql, new Object[] {user.getId_usuario(), user.getNombre(), user.getApe_pat(), user.getApe_mat(),
 				user.getPuesto(), user.getEntidad(), user.getId_tipo_usuario(), user.getCorreo(), user.getPassword() });
 
 	}
@@ -88,12 +88,13 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public List<UserControl> lista() {
-		String sql = "SELECT nombre,ape_pat,ape_mat,puesto,entidad,id_tipo_usuario FROM public.usuario";
+		String sql = "SELECT id_usuario,nombre,ape_pat,ape_mat,puesto,entidad,id_tipo_usuario FROM public.usuario";
 		List<UserControl> list= jdbcTemplatecontrol.query(sql, new RowMapper<UserControl>() {
 
 			@Override
 			public UserControl mapRow(ResultSet rs, int rowNum) throws SQLException {
 				UserControl user = new UserControl();
+				user.setId_usuario(rs.getInt("id_usuario"));
 				user.setNombre(rs.getString("nombre"));
 				user.setApe_pat(rs.getString("ape_pat"));
 				user.setApe_mat(rs.getString("ape_mat"));

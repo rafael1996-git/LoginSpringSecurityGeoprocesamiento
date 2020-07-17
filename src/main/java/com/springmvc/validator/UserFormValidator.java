@@ -26,6 +26,7 @@ public class UserFormValidator implements Validator {
 		validateApellidosM(personaForm, errors);
 		validatePuesto(personaForm, errors);
 		validateEntidad(personaForm, errors);
+		validateId(personaForm, errors);
 		validateTipo(personaForm, errors);
 		validateCorreo(personaForm, errors);
 		validatePasword(personaForm, errors);
@@ -64,6 +65,16 @@ public class UserFormValidator implements Validator {
 		
 		if ( personaForm.getEntidad() <=0 ) {
 			errors.rejectValue("id_tipo_usuario", "field.anho.invalid", "EL *ID_TIPO_USUARIO* NO DEBE SER TIPO String ,CEROS O VACIOS****");
+		}
+			
+		
+		
+	}
+	
+private void validateId(UserControl personaForm, Errors errors){
+		
+		if ( personaForm.getId_usuario() <=0 ) {
+			errors.rejectValue("id_usuario", "field.anho.invalid", "EL *ID_USUARIO* NO DEBE SER TIPO String ,CEROS O VACIOS****");
 		}
 			
 		

@@ -31,9 +31,18 @@
 		<form:form id="regForm" name="regForm" class="form-horizontal" modelAttribute="user"
 			action="registerProcess" method="post" >
 
-<!-- 			<h1> -->
-<!-- 				Instituto Nacional Electoral<br /> -->
-<!-- 			</h1> -->
+			<spring:bind path="id_usuario">
+				<div class="form-group ${status.error ? 'has-error' : ''}">
+					<label class="col-sm-2 control-label">Id Usuario</label>
+					<div class="col-sm-10">
+						<form:input path="id_usuario" class="form-control "
+							id="id_usuario"
+							placeholder="id usuario llave foranea" />
+						<form:errors path="id_usuario" cssErrorClass="campoConError"
+							class="col-sm-10" />
+					</div>
+				</div>
+			</spring:bind>
 
 			<spring:bind path="nombre">
 				<div class="form-group ${status.error ? 'has-error' : ''}">
@@ -148,8 +157,11 @@
  <script>
  function Add() {
 	 
-	 
-	 
+	 if (document.regForm.id_usuario.value.length==0){
+	   		alert("!Debes de llenar todos los campos para su registro!")
+	   		document.regForm.id_usuario.focus()
+	   		return 0;
+		} 	 
 	 if (document.regForm.ape_pat.value.length==0){
    		alert("!Debes de llenar todos los campos para su registro!")
    		document.regForm.ape_pat.focus()
