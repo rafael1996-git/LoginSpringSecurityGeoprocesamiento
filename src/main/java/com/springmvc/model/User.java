@@ -18,7 +18,6 @@ public class User {
 
 	}
 
-	
 
 	@Override
 	public String toString() {
@@ -26,6 +25,11 @@ public class User {
 				+ correo + ", usuario=" + usuario + ", password=" + password + ", entidad=" + entidad + ", mac=" + mac
 				+ ", activo=" + activo + ", id=" + id + ", vrfejl=" + vrfejl + ", abreviatura=" + abreviatura + "]";
 	}
+
+
+
+
+
 
 
 

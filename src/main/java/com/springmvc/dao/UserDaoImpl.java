@@ -161,6 +161,7 @@ class UserMapper implements RowMapper<User> {
 		user.setAbreviatura(rs.getString("abreviatura"));
 
 
+
 		return user;
 	}
 }
