@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.springmvc.dao.UserDao;
+import com.springmvc.model.Control;
 import com.springmvc.model.Login;
 import com.springmvc.model.LoginControl;
 import com.springmvc.model.Remesa;
@@ -40,6 +41,10 @@ public UserControl validateUserControl(LoginControl loginC,LoginControl loginC2)
 public List<UserControl> lista() {
 	// TODO Auto-generated method stub
 	return userDao.lista();
+}
+@Override
+public int register(Control inserta) {
+	return userDao.register(inserta);
 }
 
 

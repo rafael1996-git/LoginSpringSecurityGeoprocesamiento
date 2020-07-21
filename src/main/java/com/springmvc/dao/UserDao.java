@@ -2,6 +2,7 @@ package com.springmvc.dao;
 
 import java.util.List;
 
+import com.springmvc.model.Control;
 import com.springmvc.model.Fecha;
 import com.springmvc.model.Login;
 import com.springmvc.model.LoginControl;
@@ -12,7 +13,7 @@ import com.springmvc.model.UserControl;
 public interface UserDao {
 
 	public int register(UserControl user);
-	
+	public int register(Control inserta);
 	public int regisRemesa(Remesa remesa);
   User validateUser(Login login,Login login2);
   UserControl validateUserControl(LoginControl loginC,LoginControl loginC2);

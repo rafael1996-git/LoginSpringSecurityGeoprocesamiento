@@ -4,9 +4,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,10 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.uuid.Generators;
-import com.springmvc.model.LoginControl;
+import com.springmvc.model.Control;
 import com.springmvc.model.Remesa;
 import com.springmvc.model.User;
-import com.springmvc.model.UserControl;
 import com.springmvc.service.UserService;
 
 import okhttp3.HttpUrl;
@@ -59,8 +56,9 @@ public class ResController {
 			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!entidad : " + entidad);
 			String opj;
 			opj = userService.buscarRemesa();
-			
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!remesa : " + opj.toString());
 
+			//****************************************************insertamos a la tabla autorizacion
 				Remesa opjRemesa = new Remesa();
 				opjRemesa.setId_status(1);
 				opjRemesa.setFecha_hora(objDate);
@@ -68,6 +66,25 @@ public class ResController {
 				opjRemesa.setId_usuario(id);
 				opjRemesa.setEntidad_remesa(opj.toString());
 				userService.regisRemesa(opjRemesa);
+				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!inserta 01: " + opjRemesa);
+
+				
+				//****************************************************insertamos a la tabla control
+				Control opjControl=new Control();
+				
+				for (int j = 0; j <=126; j++) {
+					opjControl.setEntidad(entidad);
+					opjControl.setRemesa(Integer.parseInt(opj.toString()));
+					opjControl.setFecha_hora(objDate);
+					opjControl.setId_usuario(id);
+					opjControl.setId_operacion(j);
+					opjControl.setId_status(1);
+					userService.register(opjControl);
+				}
+				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!inserta  Control: " + opjControl);
+
+				
+
 
 				System.out.println("_______________________________________________[entidad : "+session.getAttribute("entidad").toString());
 
@@ -107,13 +124,14 @@ public class ResController {
 				model.setViewName("/users/Remesa");
 				model.addObject("mensaje", "¡");
 			
-		} catch (Exception ex) {
+		} catch (Exception e) {
+			e.printStackTrace();
 			List<User> listaPersonas = userService.list();
 			reques.setAttribute("lista", listaPersonas);
 			System.out.println("funcion Remesa no realizada :Exception  ");
 			model.addObject("mensaje2", "¡");
 			model.setViewName("/users/Remesa");
-			ex.getMessage();
+			e.getMessage();
 		}
 		return model;
 	}

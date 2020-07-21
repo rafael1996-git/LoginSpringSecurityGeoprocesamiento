@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 
+import com.springmvc.model.Control;
 import com.springmvc.model.Fecha;
 import com.springmvc.model.Login;
 import com.springmvc.model.LoginControl;
@@ -120,6 +121,13 @@ public class UserDaoImpl implements UserDao {
 				remesa.getEntidad_remesa(), remesa.getFecha_hora(), remesa.getId_status() });
 
 	}
+	@Override
+	public int register(Control inserta) {
+		String sql = "INSERT INTO public.control (entidad,remesa,fecha_hora,id_usuario,id_operacion,id_status) VALUES (?,?,?,?,?,?)";
+		return jdbcTemplatecontrol.update(sql, new Object[] {inserta.getEntidad(),inserta.getRemesa(),
+				inserta.getFecha_hora(),inserta.getId_usuario(),inserta.getId_operacion(),inserta.getId_status()});
+
+	}
 
 	public String buscarRemesa() {
 		String sql = "SELECT remesa FROM public.cat_remesa WHERE now()::date between fecha_inicial and fecha_final ";
@@ -148,9 +156,10 @@ class UserMapper implements RowMapper<User> {
 		user.setEntidad(rs.getInt("entidad"));
 		user.setMac(rs.getString("mac"));
 		user.setActivo(rs.getBoolean("activo"));
-		user.setId_user(rs.getInt("id"));
+		user.setId (rs.getInt("id"));
 		user.setVrfejl(rs.getBoolean("vrfejl"));
 		user.setAbreviatura(rs.getString("abreviatura"));
+
 
 		return user;
 	}
@@ -173,6 +182,23 @@ class UserControl2 implements RowMapper<UserControl> {
 		user.setPassword(rs.getString("password"));
 
 		return user;
+	}
+}
+//********************************************************************mapper de control(base  control)
+class ControlMapper implements RowMapper<Control> {
+
+	public Control mapRow(ResultSet rs, int arg1) throws SQLException {
+		Control itera = new Control();
+		itera.setId_control(rs.getInt("id_control"));
+		itera.setEntidad(rs.getInt("entidad"));
+		itera.setRemesa(rs.getInt("remesa"));
+		itera.setFecha_hora(rs.getDate("fecha_hora"));
+		itera.setId_usuario(rs.getInt("id_usuario"));
+		itera.setId_operacion(rs.getInt("id_operacion"));
+		itera.setId_status(rs.getInt("id_status"));
+		itera.setError(rs.getString("error"));
+
+		return itera;
 	}
 }
 

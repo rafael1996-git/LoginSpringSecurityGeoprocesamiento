@@ -153,9 +153,11 @@ public class LoginController {
 			}
 
 		} catch (UsernameNotFoundException ex) {
+			ex.printStackTrace();
 			mav = new ModelAndView("/users/login");
 			mav.addObject("error", "Invalid username and password!");
 		} catch (Exception ex) {
+			ex.printStackTrace();
 			mav = new ModelAndView("/users/login");
 			mav.addObject("error", "Invalid username and password!");
 		}
