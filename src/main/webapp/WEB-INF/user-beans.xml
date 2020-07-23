@@ -25,6 +25,7 @@
 	<bean id="UserDao" class="com.springmvc.dao.UserDaoImpl">
 		<property name="jdbcTemplateuser" ref="jdbcTemplate1" />
 		<property name="jdbcTemplatecontrol" ref="jdbcTemplate2" />
+		<property name="jdbcTemplatebged17" ref="jdbcTemplate3" />
 	</bean>
 
 	<bean id="jdbcTemplate1"
@@ -38,6 +39,12 @@
 		class="org.springframework.jdbc.core.JdbcTemplate">
 		<constructor-arg>
 			<ref bean="dataSource2" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate3"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource3" />
 		</constructor-arg>
 	</bean>
 
@@ -58,6 +65,15 @@
             value="jdbc:postgresql://${jdbc.IP.urlControl}:5432/control" />
         <property name="username" value="${jdbc.usernameControl}" />
         <property name="password" value="${jdbc.passwordControl}" />
+    </bean>
+    <bean id="dataSource3"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName"
+            value="${jdbc.driverClassNamebgd}" />
+        <property name="url"
+            value="jdbc:postgresql://${jdbc.IP.urlbgd}:5432/bged17" />
+        <property name="username" value="${jdbc.usernamebgd}" />
+        <property name="password" value="${jdbc.passwordbgd}" />
     </bean>
 <!-- <mvc:resources mapping="/css/**" location="/WEB-INF/resources/css/"/> -->
 <mvc:resources mapping="/resources/**" location="/resources/"/>

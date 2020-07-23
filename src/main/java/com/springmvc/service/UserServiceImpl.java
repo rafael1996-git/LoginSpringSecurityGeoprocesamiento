@@ -11,6 +11,7 @@ import com.springmvc.model.LoginControl;
 import com.springmvc.model.Remesa;
 import com.springmvc.model.User;
 import com.springmvc.model.UserControl;
+import com.springmvc.model.info;
 
 public class UserServiceImpl implements UserService {
 
@@ -60,6 +61,11 @@ public int regisRemesa(Remesa remesa) {
 public String  buscarRemesa() {
 	// TODO Auto-generated method stub
 	return userDao.buscarRemesa();
+}
+
+@Override
+public List<info> validate(String entidad,String anio,String semana) {
+	return userDao.validate( entidad, anio, semana);
 }
 
 

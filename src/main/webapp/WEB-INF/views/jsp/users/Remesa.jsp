@@ -59,7 +59,14 @@ color: black;
 			 <c:if test="${not empty mensaje2}">
 			  <div class="alert alert-info">${mensaje2}
     				<a href="${urlWelcome}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-   					 <strong>Atencion!</strong> No se realizo el header de la peticion ,verifica tu servidor de remesa
+   					 <strong>Atencion!</strong>"La remesa no puede procesarse, ya que aun no se concluye la carga al SIIRFE."
+   				    </div>
+			  
+			 </c:if>
+			 <c:if test="${not empty mensaje1}">
+			  <div class="alert alert-info">${mensaje1}
+    				<a href="${urlWelcome}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+   					 <strong>Atencion!</strong>funcion Remesa no realizada por que faltan datos del usuario
    				    </div>
 			  
 			 </c:if>

@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
      
-
+<spring:url value="/logout" var="logoutUrl" />
 <head>
 <title>ERROR</title>
 </head>

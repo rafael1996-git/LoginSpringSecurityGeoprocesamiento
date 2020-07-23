@@ -2,7 +2,6 @@ package com.springmvc.model;
 
 public class User {
 	private String cargo;
-	private String nombre_completo;
 	private int distrito;
 	private String correo;
 	private String usuario;
@@ -13,6 +12,7 @@ public class User {
 	private int id;
 	private boolean vrfejl;
 	private String abreviatura;
+	private String nombre_completo;
 
 	public User() {
 
@@ -21,10 +21,12 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [cargo=" + cargo + ", nombre_completo=" + nombre_completo + ", distrito=" + distrito + ", correo="
-				+ correo + ", usuario=" + usuario + ", password=" + password + ", entidad=" + entidad + ", mac=" + mac
-				+ ", activo=" + activo + ", id=" + id + ", vrfejl=" + vrfejl + ", abreviatura=" + abreviatura + "]";
+		return "User [cargo=" + cargo + ", distrito=" + distrito + ", correo=" + correo + ", usuario=" + usuario
+				+ ", password=" + password + ", entidad=" + entidad + ", mac=" + mac + ", activo=" + activo + ", id="
+				+ id + ", vrfejl=" + vrfejl + ", abreviatura=" + abreviatura + ", nombre_completo=" + nombre_completo
+				+ "]";
 	}
+
 
 
 

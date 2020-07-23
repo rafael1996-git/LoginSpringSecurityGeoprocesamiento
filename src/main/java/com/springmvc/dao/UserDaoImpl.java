@@ -16,12 +16,15 @@ import com.springmvc.model.LoginControl;
 import com.springmvc.model.Remesa;
 import com.springmvc.model.User;
 import com.springmvc.model.UserControl;
+import com.springmvc.model.info;
+
 
 public class UserDaoImpl implements UserDao {
 
 	private JdbcTemplate jdbcTemplateuser;
 
 	private JdbcTemplate jdbcTemplatecontrol;
+	private JdbcTemplate jdbcTemplatebged17;
 
 	public JdbcTemplate getJdbcTemplateuser() {
 		return jdbcTemplateuser;
@@ -37,6 +40,15 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatecontrol(JdbcTemplate jdbcTemplatecontrol) {
 		this.jdbcTemplatecontrol = jdbcTemplatecontrol;
+	}
+	
+
+	public JdbcTemplate getJdbcTemplatebged17() {
+		return jdbcTemplatebged17;
+	}
+
+	public void setJdbcTemplatebged17(JdbcTemplate jdbcTemplatebged17) {
+		this.jdbcTemplatebged17 = jdbcTemplatebged17;
 	}
 
 	// **************************************************************************register
@@ -140,6 +152,12 @@ public class UserDaoImpl implements UserDao {
 
 	}
 
+	@Override
+	public List<info> validate(String entidad,String anio,String semana) {
+		String sql = "SELECT * FROM app.config WHERE genera_remesa in(1,2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+		 return jdbcTemplatebged17.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
+	}
+
 }
 
 //********************************************************************mapper de user(base de usuarios)
@@ -148,7 +166,6 @@ class UserMapper implements RowMapper<User> {
 	public User mapRow(ResultSet rs, int arg1) throws SQLException {
 		User user = new User();
 		user.setCargo(rs.getString("cargo"));
-		user.setNombre_completo(rs.getString("nombre_completo"));
 		user.setDistrito(rs.getInt("distrito"));
 		user.setCorreo(rs.getString("correo"));
 		user.setUsuario(rs.getString("usuario"));
@@ -159,6 +176,7 @@ class UserMapper implements RowMapper<User> {
 		user.setId (rs.getInt("id"));
 		user.setVrfejl(rs.getBoolean("vrfejl"));
 		user.setAbreviatura(rs.getString("abreviatura"));
+		user.setNombre_completo(rs.getString("nombre_completo"));
 
 
 
@@ -202,6 +220,21 @@ class ControlMapper implements RowMapper<Control> {
 		return itera;
 	}
 }
+//********************************************************************mapper de control(base  control)
+class bgedMapper implements RowMapper<info> {
+
+	public info mapRow(ResultSet rs, int arg1) throws SQLException {
+		info itera = new info();
+		itera.setEntidad(rs.getString("entidad"));
+		itera.setAnio(rs.getString("anio"));
+		itera.setSemana(rs.getString("semana"));
+		itera.setGenera_remesa(rs.getInt("genera_remesa"));
+		itera.setRuta(rs.getString("ruta"));
+
+		return itera;
+	}
+}
+
 
 //********************************************************************mapper de user(base de autorizacion)
 class Userautorizacion implements RowMapper<Remesa> {
