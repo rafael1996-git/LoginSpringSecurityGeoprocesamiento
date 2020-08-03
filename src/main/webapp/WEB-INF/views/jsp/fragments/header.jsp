@@ -20,8 +20,8 @@
 	type="text/css" />
 </head>
 <body>
-<spring:url value="atras" var="urlHome" />
-<spring:url value="register" var="urlAddUser" />
+<spring:url value="viewAdmin" var="urlHome" />
+<spring:url value="agregar" var="urlAddUser" />
 <spring:url value="/logout" var="logoutUrl" />
  
 <script>

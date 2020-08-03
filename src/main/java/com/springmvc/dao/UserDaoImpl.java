@@ -8,11 +8,10 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 
 import com.springmvc.model.Control;
 import com.springmvc.model.Fecha;
-import com.springmvc.model.Login;
-import com.springmvc.model.LoginControl;
 import com.springmvc.model.Remesa;
 import com.springmvc.model.User;
 import com.springmvc.model.UserControl;
@@ -61,28 +60,30 @@ public class UserDaoImpl implements UserDao {
 
 	}
 
-//********************************************************************validate login de usuarios.usuarios
-	public User validateUser(Login login, Login login2) {
-		String sql = "SELECT * FROM usuariosbged.usuarios WHERE correo = ? and password = ?";
-		List<User> users = jdbcTemplateuser.query(sql, new Object[] { login.getCorreo(), login2.getPassword() },
-				new UserMapper());
-
-		return users.size() > 0 ? users.get(0) : null;
-	}
 
 	@Override
 	public List<User> list() {
-		String sql = "SELECT nombre_completo,correo,usuario,activo FROM usuariosbged.usuarios";
+		String sql = "SELECT * FROM usuariosbged.usuarios";
 		List<User> list = jdbcTemplateuser.query(sql, new RowMapper<User>() {
 
 			@Override
 			public User mapRow(ResultSet rs, int rowNum) throws SQLException {
 				User user = new User();
-				user.setNombre_completo(rs.getString("nombre_completo"));
+				user.setCargo(rs.getString("cargo"));
+//				user.setNombre_completo(rs.getString("nombre_completo"));
+				user.setDistrito(rs.getInt("distrito"));
 				user.setCorreo(rs.getString("correo"));
 				user.setUsuario(rs.getString("usuario"));
+				user.setPassword(rs.getString("password"));
+				user.setEntidad(rs.getInt("entidad"));
+				user.setMac(rs.getString("mac"));
 				user.setActivo(rs.getBoolean("activo"));
-
+				user.setId (rs.getInt("id"));
+				user.setVrfejl(rs.getBoolean("vrfejl"));
+				user.setAbreviatura(rs.getString("abreviatura"));
+				user.setNombre(rs.getString("nombre"));
+				user.setApe_pat(rs.getString("ape_pat"));
+				user.setApe_mat(rs.getString("ape_mat"));
 				return user;
 			}
 
@@ -92,16 +93,9 @@ public class UserDaoImpl implements UserDao {
 
 	}
 
-	public UserControl validateUserControl(LoginControl loginC, LoginControl loginC2) {
-		String sql = "SELECT * FROM public.usuario WHERE correo = ? and password = ?";
-		List<UserControl> users = jdbcTemplatecontrol.query(sql,
-				new Object[] { loginC.getCorreo(), loginC2.getPassword() }, new UserControl2());
-
-		return users.size() > 0 ? users.get(0) : null;
-	}
 
 	public List<UserControl> lista() {
-		String sql = "SELECT id_usuario,nombre,ape_pat,ape_mat,puesto,entidad,id_tipo_usuario FROM public.usuario";
+		String sql = "SELECT * FROM public.usuario";
 		List<UserControl> list= jdbcTemplatecontrol.query(sql, new RowMapper<UserControl>() {
 
 			@Override
@@ -113,7 +107,7 @@ public class UserDaoImpl implements UserDao {
 				user.setApe_mat(rs.getString("ape_mat"));
 				user.setPuesto(rs.getString("puesto"));
 				user.setEntidad(rs.getInt("entidad"));
-				user.setEntidad(rs.getInt("id_tipo_usuario"));
+				user.setId_tipo_usuario(rs.getInt("id_tipo_usuario"));
 				user.setCorreo(rs.getString("correo"));
 				user.setPassword(rs.getString("password"));
 
@@ -157,7 +151,56 @@ public class UserDaoImpl implements UserDao {
 		String sql = "SELECT * FROM app.config WHERE genera_remesa in(1,2,3) AND entidad = ? AND anio= ? AND semana  = ?";
 		 return jdbcTemplatebged17.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
 	}
+	@Override
+	public List<UserControl> findByUserControlAndPassword(String correo, String password) {
+		String sql = "SELECT * FROM public.usuario WHERE correo = ? and password = ?";
+		 return jdbcTemplatecontrol.query(sql, new Object[] { correo,password }, new UserControl2());
+	}
 
+	@Override
+	public UserControl findBycorreo(String correo) {
+		String sql = "SELECT * FROM public.usuario WHERE correo = ?";
+		List<UserControl> users = jdbcTemplatecontrol.query(sql,
+				new Object[] { correo}, new UserControl2());
+
+		return users.size() > 0 ? users.get(0) : null;
+
+	}
+
+	@Override
+	public String buscarAdmin() {
+		String sql = "SELECT id_tipo_usuario FROM public.usuario WHERE id_tipo_usuario = 2 ";
+		return jdbcTemplatecontrol.query(sql, new ResultSetExtractor<String>() {
+			@Override
+			public String extractData(ResultSet rs) throws SQLException, DataAccessException {
+				return rs.next() ? rs.getString("id_tipo_usuario") : null;
+			}
+		});
+	}
+
+	@Override
+	public List<UserControl> findById_TipoUserAndPassword(String correo, String password, int id_tipo_usuario) {
+		String sql = "SELECT * FROM public.usuario WHERE correo = ? and password = ? and id_tipo_usuario=?";
+		 return jdbcTemplatecontrol.query(sql, new Object[] { correo,password,id_tipo_usuario}, new UserControl2());
+	}
+
+	@Override
+	public User findByUsercorreo(String correo) {
+		String sql = "SELECT * FROM usuariosbged.usuarios WHERE correo = ?";
+		List<User> users = jdbcTemplateuser.query(sql,
+				new Object[] { correo}, new UserMapper());
+
+		return users.size() > 0 ? users.get(0) : null;
+
+	}
+
+	@Override
+	public void delete(String correo) {
+		String sql = "DELETE FROM public.usuario WHERE CORREO= ?";
+		jdbcTemplatecontrol.update(sql,new Object[]{correo});
+
+
+}
 }
 
 //********************************************************************mapper de user(base de usuarios)
@@ -166,6 +209,7 @@ class UserMapper implements RowMapper<User> {
 	public User mapRow(ResultSet rs, int arg1) throws SQLException {
 		User user = new User();
 		user.setCargo(rs.getString("cargo"));
+//		user.setNombre_completo(rs.getString("nombre_completo"));
 		user.setDistrito(rs.getInt("distrito"));
 		user.setCorreo(rs.getString("correo"));
 		user.setUsuario(rs.getString("usuario"));
@@ -176,8 +220,9 @@ class UserMapper implements RowMapper<User> {
 		user.setId (rs.getInt("id"));
 		user.setVrfejl(rs.getBoolean("vrfejl"));
 		user.setAbreviatura(rs.getString("abreviatura"));
-		user.setNombre_completo(rs.getString("nombre_completo"));
-
+		user.setNombre(rs.getString("nombre"));
+		user.setApe_pat(rs.getString("ape_pat"));
+		user.setApe_mat(rs.getString("ape_mat"));
 
 
 		return user;

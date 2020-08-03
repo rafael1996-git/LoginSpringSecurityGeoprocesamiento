@@ -106,19 +106,7 @@ background-color: #d9edf7;
             }
         }
         
-        function Add() {
-       	 
-        	var regexp = /^[0-9a-zA-Z._.-]+\@[0-9a-zA-Z._.-]+\.[0-9a-zA-Z]+$/;
-       	 correo=document.regForm.correo.value
-       	 
-       	  if ((regexp.test(correo) == 0) || (correo.length = 0)){
-       	   		alert("!El correo no cumple con el Formato Email!")
-       	   		document.regForm.correo.focus()
-       	   		return 0;
-       		} 
-       	 
-     	document.regForm.submit();
-       	} 
+     
     </script>
 	<br>
 <br>

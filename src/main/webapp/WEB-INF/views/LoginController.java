@@ -53,7 +53,7 @@ public class LoginController {
 
 	}
 
-	@RequestMapping(value = "/viewAdmin", method = RequestMethod.GET)
+	@RequestMapping(value = "/atras", method = RequestMethod.GET)
 	public ModelAndView atrasPage(HttpServletRequest request) {
 
 		ModelAndView model = new ModelAndView();

@@ -2,6 +2,7 @@ package com.springmvc.model;
 
 public class User {
 	private String cargo;
+//	private String nombre_completo;
 	private int distrito;
 	private String correo;
 	private String usuario;
@@ -12,28 +13,37 @@ public class User {
 	private int id;
 	private boolean vrfejl;
 	private String abreviatura;
-	private String nombre_completo;
+	private String nombre;
+	private String ape_pat;
+	private String ape_mat;
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApe_pat() {
+		return ape_pat;
+	}
+
+	public void setApe_pat(String ape_pat) {
+		this.ape_pat = ape_pat;
+	}
+
+	public String getApe_mat() {
+		return ape_mat;
+	}
+
+	public void setApe_mat(String ape_mat) {
+		this.ape_mat = ape_mat;
+	}
 
 	public User() {
 
 	}
-
-
-	@Override
-	public String toString() {
-		return "User [cargo=" + cargo + ", distrito=" + distrito + ", correo=" + correo + ", usuario=" + usuario
-				+ ", password=" + password + ", entidad=" + entidad + ", mac=" + mac + ", activo=" + activo + ", id="
-				+ id + ", vrfejl=" + vrfejl + ", abreviatura=" + abreviatura + ", nombre_completo=" + nombre_completo
-				+ "]";
-	}
-
-
-
-
-
-
-
-
 
 	public String getCargo() {
 		return cargo;
@@ -123,12 +133,8 @@ public class User {
 		this.abreviatura = abreviatura;
 	}
 
-	public String getNombre_completo() {
-		return nombre_completo;
-	}
 
-	public void setNombre_completo(String nombre_completo) {
-		this.nombre_completo = nombre_completo;
-	}
+	
+	
 
 }

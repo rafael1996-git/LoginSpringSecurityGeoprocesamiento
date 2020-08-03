@@ -28,7 +28,7 @@
 		
 		<h2>Agregar Usuario</h2>
 
-		<form:form id="regForm" name="regForm" class="form-horizontal" modelAttribute="user"
+		<form:form id="regForm" name="regForm" class="form-horizontal"
 			action="registerProcess" method="post" >
 
 			<spring:bind path="id_usuario">
@@ -37,7 +37,7 @@
 					<div class="col-sm-10">
 						<form:input path="id_usuario" class="form-control "
 							id="id_usuario"
-							placeholder="id usuario llave foranea" />
+							placeholder="id usuario llave foranea"  />
 						<form:errors path="id_usuario" cssErrorClass="campoConError"
 							class="col-sm-10" />
 					</div>

@@ -201,17 +201,6 @@ function drawPieSlice(ctx,centerX, centerY, radius, startAngle, endAngle){
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <footer>
 	<div align="center">
 		<h4>© Derechos Reservados, Instituto Nacional Electoral, México.</h4>

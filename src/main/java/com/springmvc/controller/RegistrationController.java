@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -20,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,6 +50,7 @@ public class RegistrationController {
 	public UserService userService;
 	@Autowired
 	UserFormValidator userFormValidator;
+	protected static final Log logger = LogFactory.getLog(RegistrationController.class.getName());
 
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
@@ -58,27 +62,104 @@ public class RegistrationController {
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
+	@RequestMapping(value = "/agregar", method = RequestMethod.GET)
+	public ModelAndView addPage(HttpServletRequest request) {
 
+		ModelAndView model = new ModelAndView();
+		List<User> listaPersonas =userService.list();
+		request.setAttribute("lista", listaPersonas);
+		model.setViewName("/users/add");
+
+		return model;
+
+	}
+	// show update form
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
-		ModelAndView mav = new ModelAndView("/users/register");
+	public ModelAndView showUpdateUserForm( HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView model = new ModelAndView();
+		try {
+			String	correo=request.getParameter("correo");
+			User user = userService.findByUsercorreo(correo);
+			int id=user.getId();
+			String email=user.getCorreo();
+			String nombre=user.getNombre();
+			String ape_pat=user.getApe_pat();
+			String ape_mat=user.getApe_mat();
+			int entidad=user.getEntidad();
+			String puesto=user.getCargo();
+			String password=user.getPassword();
+			
+			UserControl control=userService.findBycorreo(email);
 
-		mav.addObject("user", new UserControl());
+			if (control!=null) {
+				
+				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!no se puede insertar por que el usuario ya esta registrado: ");
 
-		return mav;
-	}
+				List<User> listaPersonas =userService.list();
+				request.setAttribute("lista", listaPersonas);
+				model.addObject("msg","¡");
+				model.setViewName("/users/add");
+				
+			}else {
 
-	@RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
-	public String registration(@Valid @ModelAttribute("user") UserControl user, BindingResult result) {
+				UserControl regis=new UserControl();
+				regis.setId_usuario(id);
+				regis.setNombre(nombre);
+				regis.setApe_pat(ape_pat);
+				regis.setApe_mat(ape_mat);
+				regis.setPuesto(puesto);
+				regis.setEntidad(entidad);
+				regis.setId_tipo_usuario(1);
+				regis.setCorreo(email);
+				regis.setPassword(password);
+//				request.setAttribute("user", user);
+				userService.register(regis);
+				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!inserta 01: " + email);
+				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!inserta 01: " + id);
+				List<User> listaPersonas =userService.list();
+				request.setAttribute("lista", listaPersonas);
+				model.addObject("mensage","¡¡¡");
+				model.setViewName("/users/add");
+			}
+				
 
-		if (result.hasErrors()) {
-
-			return "/users/register";
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Exception:");
+			List<User> listaPersonas =userService.list();
+			request.setAttribute("lista", listaPersonas);
+			model.addObject("msg","¡");
+			model.setViewName("/users/add");
+			
 		}
-		userService.register(user);
+		
+			return model;
 
-		return "/users/admin";
 	}
+	// delete user
+	@RequestMapping(value="/delete",method = RequestMethod.GET)    
+		public ModelAndView deleteUser( HttpServletRequest request, HttpServletResponse response) {
+			ModelAndView model = new ModelAndView();
+			try {
+				String	correo=request.getParameter("correo");
+				System.out.println("paso por aqui en eliminar de el metodo servlet " + correo);
+						userService.delete(correo);
+					List<UserControl> listaPersonas =userService.lista();
+					request.setAttribute("lista", listaPersonas);
+					model.addObject("msg","¡");
+					model.setViewName("/users/admin");
+					return model;
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Exception:");
+				List<UserControl> listaPersonas =userService.lista();
+				request.setAttribute("lista", listaPersonas);
+				model.addObject("msg1", "¡");
+				model.setViewName("/users/admin");
+				return model;			
+				}
+		}
 
 	
 }

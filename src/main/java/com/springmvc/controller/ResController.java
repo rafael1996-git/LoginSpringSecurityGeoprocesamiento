@@ -63,10 +63,10 @@ public class ResController {
 			System.out.println(semana);
 
 			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!remesa : " + opj.toString());
-			List<info> var =userService.validate( session.getAttribute("entidad").toString(), anio, semana);
-			System.out.println("-----------antes del if"+""+""+session.getAttribute("entidad").toString()+""+ anio+""+semana);
-			
-			if (var!=null && !var.isEmpty()&&userService.validate( session.getAttribute("entidad").toString(), anio, semana)!=null) {
+//			List<info> var =userService.validate( session.getAttribute("entidad").toString(), anio, semana);
+//			System.out.println("-----------antes del if"+""+""+session.getAttribute("entidad").toString()+""+ anio+""+semana);
+//			
+//			if (var!=null && !var.isEmpty()&&userService.validate( session.getAttribute("entidad").toString(), anio, semana)!=null) {
 				System.out.println("despues del if"+""+""+session.getAttribute("entidad").toString()+""+ anio+""+semana);
 					//****************************************************insertamos a la tabla autorizacion
 					Remesa opjRemesa = new Remesa();
@@ -135,13 +135,13 @@ public class ResController {
 					model.addObject("mensaje", "¡");
 			
 				
-			}else {				
-			System.out.println("funcion Remesa no realizada :else  ");
-			List<User> listaPersonas = userService.list();
-			reques.setAttribute("lista", listaPersonas);
-			model.addObject("mensaje2", "¡");
-			model.setViewName("/users/Remesa");
-			}
+//			}else {				
+//			System.out.println("funcion Remesa no realizada :else  ");
+//			List<User> listaPersonas = userService.list();
+//			reques.setAttribute("lista", listaPersonas);
+//			model.addObject("mensaje2", "¡");
+//			model.setViewName("/users/Remesa");
+//			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			List<User> listaPersonas = userService.list();

@@ -66,18 +66,20 @@
 			<table id="myTable" class="table table-bordered table-hover responsive nowrap">
               <thead>
               <tr  class="header">
-                 <th style="width:30%;">NOMBRE</th>
+                 <th style="width:30%;">USUARIO</th>
                 <th style="width:27%;">CORREO</th>
-                 <th style="width:27%;">USUARIO</th>
+                 <th style="width:27%;">CARGO</th>
+                 <th style="width:27%;">ENTIDAD</th>
                  <th style="width:27%;">ACTIVO</th>
               </tr>
               </thead>
-              <tbody style="height: 10px !important; overflow: scroll; ">
+              <tbody style="height: 30px !important; overflow: scroll; ">
   				<c:forEach var="dato" items="${lista}">
                 <tr>
-                <td>${dato.nombre_completo}</td>
-                <td>${dato.correo}</td>
                 <td>${dato.usuario}</td>
+                <td>${dato.correo}</td>
+                <td>${dato.cargo}</td>
+                <td>${dato.entidad}</td>
                 <td>${dato.activo}</td>
                 </tr>
                 </c:forEach>
@@ -88,28 +90,31 @@
 		</div>
 <script>
 function myFunction() {
-  // Declare variables
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
+	// Declare variables
+	var input, filter, table, tr, td, i;
+	input = document.getElementById("myInput");
+	filter = input.value.toUpperCase();
+	table = document.getElementById("myTable");
+	tr = table.getElementsByTagName("tr");
 
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
+	// Loop through all table rows, and hide those who don't match the search query
+	for (i = 0; i < tr.length; i++) {
+		if (!tr[i].classList.contains('header')) {
+			td = tr[i].getElementsByTagName("td"), match = false;
+			for (j = 0; j < td.length; j++) {
+				if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+					match = true;
+					break;
+				}
+			}
+			if (!match) {
+				tr[i].style.display = "none";
+			} else {
+				tr[i].style.display = "";
+			}
+		}
+	}
 }
-
-
 </script>
 
 </body>
@@ -120,7 +125,10 @@ function myFunction() {
 <br>
 <br>
 <br>
-
+<br>
+<br>
+<br>
+<br>
 
 <footer>
 	<div align="center">

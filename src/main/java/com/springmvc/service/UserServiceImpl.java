@@ -3,11 +3,10 @@ package com.springmvc.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.springmvc.dao.UserDao;
 import com.springmvc.model.Control;
-import com.springmvc.model.Login;
-import com.springmvc.model.LoginControl;
 import com.springmvc.model.Remesa;
 import com.springmvc.model.User;
 import com.springmvc.model.UserControl;
@@ -22,9 +21,7 @@ public class UserServiceImpl implements UserService {
     return userDao.register(user);
   }
 
-  public User validateUser(Login login,Login login2) {
-    return userDao.validateUser(login,login2);
-  }
+ 
 
 @Override
 public List<User> list() {
@@ -32,11 +29,7 @@ public List<User> list() {
 	return userDao.list();
 }
 
-@Override
-public UserControl validateUserControl(LoginControl loginC,LoginControl loginC2) {
-	// TODO Auto-generated method stub
-	return userDao.validateUserControl(loginC,loginC2);
-}
+
 
 @Override
 public List<UserControl> lista() {
@@ -67,6 +60,51 @@ public String  buscarRemesa() {
 public List<info> validate(String entidad,String anio,String semana) {
 	return userDao.validate( entidad, anio, semana);
 }
+
+
+@Override
+public List<UserControl> findByUserControlAndPassword(String correo, String password) {
+	return userDao.findByUserControlAndPassword(correo, password);
+}
+
+
+
+@Override
+public UserControl findBycorreo(String correo) {
+	return userDao.findBycorreo(correo);
+}
+
+
+
+@Override
+public String buscarAdmin() {
+	return userDao.buscarAdmin();
+}
+
+
+
+@Override
+public List<UserControl> findById_TipoUserAndPassword(String correo, String password, int id_tipo_usuario) {
+	
+	return userDao.findById_TipoUserAndPassword(correo, password, id_tipo_usuario);
+}
+
+
+
+@Override
+public User findByUsercorreo(String correo) {
+	// TODO Auto-generated method stub
+	return userDao.findByUsercorreo(correo);
+}
+
+
+
+@Override
+public void delete(String correo) {
+	userDao.delete(correo);
+}
+
+
 
 
 
