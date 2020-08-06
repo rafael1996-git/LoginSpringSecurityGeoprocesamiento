@@ -79,8 +79,9 @@ public class LoginController {
 	@RequestMapping(value = "/welcome", method = RequestMethod.GET )
 	public  ModelAndView WelcomePage(HttpServletRequest request)  throws IOException {
 		ModelAndView model = new ModelAndView();
-		
-		List<User> listaPersonas =userService.list();
+		HttpSession session = request.getSession();
+		int entidadUsuario = (int) session.getAttribute("entidad");
+		List<User> listaPersonas =userService.listaFiltrada(entidadUsuario, true);
 
 		request.setAttribute("lista", listaPersonas);
 
@@ -117,7 +118,6 @@ public class LoginController {
 	@RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
 	public ModelAndView loginProcess(@RequestParam String password, @RequestParam String correo, HttpServletRequest request) {
 		ModelAndView mav =null;
-		List<User> listaPersonas =userService.list();
 		List<UserControl> listaP =userService.lista();
 
 		System.out.println("en home");
@@ -128,7 +128,6 @@ public class LoginController {
 			UserControl uControl=userService.findBycorreo(correo);
 			String Admin="admingeo@ine.mx";
 			String Password="admin";
-//			List<UserControl> ADMIN = userService.findById_TipoUserAndPassword(Admin, Password, tipoAdmin);
 			if (usuarioControl!=null&& !usuarioControl.isEmpty()) {
 				
 
@@ -136,9 +135,10 @@ public class LoginController {
 				session.setAttribute("firstname", uControl.getCorreo());
 				session.setAttribute("id", uControl.getId_usuario());
 				session.setAttribute("entidad", uControl.getEntidad());
-
+				List<User> listaPersonas =userService.listaFiltrada(uControl.getEntidad(), true);
 				request.setAttribute("lista", listaPersonas);
 				mav = new ModelAndView("/users/adminC");
+				System.out.println("USUARIO entidad______________________: "+uControl.getEntidad());
 				System.out.println("USUARIO VALIDO DE LOGIN CONTROL______________________: "+uControl.getCorreo());
 
 			} else if (correo.equals(Admin)==true&& password.equals(Password)==true) {

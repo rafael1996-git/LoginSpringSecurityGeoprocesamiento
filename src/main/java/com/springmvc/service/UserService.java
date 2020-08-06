@@ -15,6 +15,7 @@ public interface UserService {
 	public int register(Control inserta);
 	public List<info> validate(String entidad,String anio,String semana);
 	public List<User> list();
+	public List<User> listaFiltrada(int entidad,boolean activo);
 	public List<UserControl> lista();
 	public String  buscarRemesa() ;
 	public String  buscarAdmin();

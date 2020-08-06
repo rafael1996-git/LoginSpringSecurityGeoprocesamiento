@@ -63,10 +63,10 @@ public class ResController {
 			System.out.println(semana);
 
 			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!remesa : " + opj.toString());
-//			List<info> var =userService.validate( session.getAttribute("entidad").toString(), anio, semana);
-//			System.out.println("-----------antes del if"+""+""+session.getAttribute("entidad").toString()+""+ anio+""+semana);
-//			
-//			if (var!=null && !var.isEmpty()&&userService.validate( session.getAttribute("entidad").toString(), anio, semana)!=null) {
+			List<info> var =userService.validate( session.getAttribute("entidad").toString(), anio, semana);
+			System.out.println("-----------antes del if"+""+""+session.getAttribute("entidad").toString()+""+ anio+""+semana);
+			
+			if (var!=null && !var.isEmpty()&&userService.validate( session.getAttribute("entidad").toString(), anio, semana)!=null) {
 				System.out.println("despues del if"+""+""+session.getAttribute("entidad").toString()+""+ anio+""+semana);
 					//****************************************************insertamos a la tabla autorizacion
 					Remesa opjRemesa = new Remesa();
@@ -117,7 +117,8 @@ public class ResController {
 						System.out.println("________________string-Header____________________" + stringHeader);
 					} catch (IOException e) {
 						System.err.println("Failed scraping");
-						List<User> listaPersonas = userService.list();
+						
+						List<User> listaPersonas =userService.listaFiltrada(entidad, true);
 						reques.setAttribute("lista", listaPersonas);
 						System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 						model.addObject("mensaje1", "¡");
@@ -129,22 +130,24 @@ public class ResController {
 							"*************************************************************************[HEADER2 : ");
 
 					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!inserta : " + opjRemesa);
-					List<User> listaPersonas = userService.list();
+					List<User> listaPersonas =userService.listaFiltrada(entidad, true);
 					reques.setAttribute("lista", listaPersonas);
 					model.setViewName("/users/Remesa");
 					model.addObject("mensaje", "¡");
 			
 				
-//			}else {				
-//			System.out.println("funcion Remesa no realizada :else  ");
-//			List<User> listaPersonas = userService.list();
-//			reques.setAttribute("lista", listaPersonas);
-//			model.addObject("mensaje2", "¡");
-//			model.setViewName("/users/Remesa");
-//			}
+			}else {				
+			System.out.println("funcion Remesa no realizada :else  ");
+			List<User> listaPersonas =userService.listaFiltrada(entidad, true);
+			reques.setAttribute("lista", listaPersonas);
+			model.addObject("mensaje2", "¡");
+			model.setViewName("/users/Remesa");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			List<User> listaPersonas = userService.list();
+			HttpSession session = reques.getSession();
+			int entidad = (int) session.getAttribute("entidad");
+			List<User> listaPersonas =userService.listaFiltrada(entidad, true);
 			reques.setAttribute("lista", listaPersonas);
 			System.out.println("funcion Remesa no realizada :Exception  ");
 			model.addObject("mensaje1", "¡");

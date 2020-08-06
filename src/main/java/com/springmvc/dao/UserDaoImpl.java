@@ -148,7 +148,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<info> validate(String entidad,String anio,String semana) {
-		String sql = "SELECT * FROM app.config WHERE genera_remesa in(1,2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+		String sql = "SELECT * FROM app.config WHERE genera_remesa >= 3 AND entidad = ? AND anio= ? AND semana  = ?";
 		 return jdbcTemplatebged17.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
 	}
 	@Override
@@ -201,6 +201,12 @@ public class UserDaoImpl implements UserDao {
 
 
 }
+
+	@Override
+	public List<User> listaFiltrada(int entidad,boolean activo) {
+		String sql = "SELECT * FROM usuariosbged.usuarios WHERE entidad = ? and activo=?";
+		 return jdbcTemplateuser.query(sql, new Object[] { entidad,activo}, new UserMapper());
+	}
 }
 
 //********************************************************************mapper de user(base de usuarios)

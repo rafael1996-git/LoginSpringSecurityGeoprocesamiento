@@ -57,7 +57,7 @@ color: black;
 			 	<c:if test="${not empty msg}">
 			  		<div class="alert alert-info">${msg}
     					<a href="${urlWelcome}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-   					 	<strong>Atencion!</strong> El Usuario Ya se Encuentra Registrado 
+   					 	<strong>Atencion!</strong> El Usuario Ya se Encuentra Registrado o La llave (entidad) no está presente en la tabla «entidad» Por lo tanto no se completo la operacion
    					</div>
 			  
 			 	</c:if>

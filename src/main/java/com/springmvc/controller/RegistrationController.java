@@ -118,7 +118,7 @@ public class RegistrationController {
 				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!inserta 01: " + id);
 				List<User> listaPersonas =userService.list();
 				request.setAttribute("lista", listaPersonas);
-				model.addObject("mensage","¡¡¡");
+				model.addObject("mensage","¡");
 				model.setViewName("/users/add");
 			}
 				

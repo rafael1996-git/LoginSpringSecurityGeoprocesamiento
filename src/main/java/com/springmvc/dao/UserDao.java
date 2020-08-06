@@ -15,6 +15,7 @@ public interface UserDao {
 	public int regisRemesa(Remesa remesa);
 	public List<info> validate(String entidad,String anio,String semana);
 	public List<User> list();
+	public List<User> listaFiltrada(int entidad,boolean activo);
 	public List<UserControl> lista();
 	public String  buscarRemesa() ;
 	public List<UserControl> findByUserControlAndPassword(String correo, String password);
