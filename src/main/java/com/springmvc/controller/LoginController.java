@@ -98,13 +98,12 @@ public class LoginController {
 			HttpServletResponse response) {
 
 		ModelAndView model = new ModelAndView();
-		model.addObject("loginForm", new UserControl());
 		if (wrongcaptcha != null) {
 			model.addObject("error", "Invalid captcha!");
 		}
 
 		if (error != null) {
-			model.addObject("error", "Invalid username or password!");
+			model.addObject("error", "Invalid username or passwor!");
 		}
 
 		if (logout != null) {

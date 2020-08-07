@@ -39,6 +39,20 @@ color: black;
 background-color: #d9edf7;
 
 }
+.error {
+              
+                border: 1px solid transparent;
+                color: #a94442;
+                background-color: #f2dede;
+                border-color: #ebccd1;
+            }
+
+            .msg {
+                border: 1px solid transparent;
+                color: #31708f;
+                background-color: #d9edf7;
+                border-color: #bce8f1;
+            }
 
 </style>
     <body>

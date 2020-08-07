@@ -48,7 +48,7 @@
 
 				<li class="active"><a class="navbar-brand"
 					href="javascript:formSubmit()"></span><span
-						class="label label-default"> Login</span></a></li>
+						class="label label-default"> Logout</span></a></li>
 			</ul>
 			
 			<form action="${logoutUrl}" method="post" id="logoutForm">

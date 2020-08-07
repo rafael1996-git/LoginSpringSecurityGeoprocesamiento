@@ -51,7 +51,7 @@
 
 				<li class="active"><a class="navbar-brand"
 					href="javascript:formSubmit()"><span
-						class="label label-default"> Login</span></a></li>
+						class="label label-default"> Logout</span></a></li>
 						<li class="active"><a class="navbar-brand" ></a></li>
 			</ul>
 			
