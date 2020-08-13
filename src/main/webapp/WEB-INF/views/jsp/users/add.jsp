@@ -57,7 +57,14 @@ color: black;
 			 	<c:if test="${not empty msg}">
 			  		<div class="alert alert-info">${msg}
     					<a href="${urlWelcome}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-   					 	<strong>Atencion!</strong> El Usuario Ya se Encuentra Registrado o La llave (entidad) no está presente en la tabla «entidad» Por lo tanto no se completo la operacion
+   					 	<strong>Atencion!</strong> El Usuario Ya se Encuentra Registrado
+   					</div>
+			  
+			 	</c:if>
+			 	<c:if test="${not empty Exception}">
+			  		<div class="alert alert-info">${Exception}
+    					<a href="${urlWelcome}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+   					 	<strong>!</strong>
    					</div>
 			  
 			 	</c:if>
@@ -73,22 +80,20 @@ color: black;
 			<table id="myTable" class="table table-bordered table-hover responsive nowrap">
               <thead>
               <tr  class="header">
+                 <th style="width:27%;">ID_ROL</th>
                  <th style="width:30%;">USUARIO</th>
-                <th style="width:27%;">CORREO</th>
-                 <th style="width:27%;">CARGO</th>
+                 <th style="width:27%;">CORREO</th>
                  <th style="width:27%;">ENTIDAD</th>
-                 <th style="width:27%;">ACTIVO</th>
                  <th style="width:27%;">GREGAR</th>                 
               </tr>
               </thead>
               <tbody style="height: 10px !important; overflow: scroll; ">
   				<c:forEach var="dato" items="${lista}">
                 <tr>
+                <td>${dato.id_rol}</td>
                 <td>${dato.usuario}</td>
                 <td>${dato.correo}</td>
-                <td>${dato.cargo}</td>
                 <td>${dato.entidad}</td>
-                <td>${dato.activo}</td>
                 <td>
                
                 <a href="register?correo=${dato.correo}" class="btn btn-primary" Onclick="return ConfirmDelete();" type="submit" name="actiondelete" value="1">Agregar

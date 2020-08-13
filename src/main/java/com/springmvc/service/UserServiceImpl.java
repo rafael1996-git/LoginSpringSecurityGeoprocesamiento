@@ -107,9 +107,16 @@ public void delete(String correo) {
 
 
 @Override
-public List<User> listaFiltrada(int entidad,boolean activo) {
+public List<User> listaFiltrada(int entidad) {
 	
-	return userDao.listaFiltrada(entidad,activo);
+	return userDao.listaFiltrada(entidad);
+}
+
+
+
+@Override
+public void deleteAut(String token) {
+	userDao.deleteAut(token);	
 }
 
 

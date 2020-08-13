@@ -15,7 +15,7 @@ public interface UserService {
 	public int register(Control inserta);
 	public List<info> validate(String entidad,String anio,String semana);
 	public List<User> list();
-	public List<User> listaFiltrada(int entidad,boolean activo);
+	public List<User> listaFiltrada(int entidad);
 	public List<UserControl> lista();
 	public String  buscarRemesa() ;
 	public String  buscarAdmin();
@@ -24,6 +24,7 @@ public interface UserService {
 	public UserControl findBycorreo(String correo);
 	public User findByUsercorreo(String correo);
 	public void delete(String correo);
+	public void deleteAut(String token);
 
 
 }
