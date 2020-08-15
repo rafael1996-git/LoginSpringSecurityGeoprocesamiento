@@ -56,33 +56,6 @@
 	<jee:jndi-lookup id="dataSource3"
 		jndi-name="java:jboss/datasources/bged1717"></jee:jndi-lookup>
 
-<!-- 	<bean id="dataSource" -->
-<!--         class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
-<!--         <property name="driverClassName" -->
-<!--             value="${jdbc.driverClassNameUsuarios}" /> -->
-<!--         <property name="url" -->
-<!--             value="jdbc:postgresql://${jdbc.IP.urlUsuarios}:5432/usuarios17" /> -->
-<!--         <property name="username" value="${jdbc.usernameUsuarios}" /> -->
-<!--         <property name="password" value="${jdbc.passwordUsuarios}" /> -->
-<!--     </bean> -->
-<!--     <bean id="dataSource2" -->
-<!--         class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
-<!--         <property name="driverClassName" -->
-<!--             value="${jdbc.driverClassNameControl}" /> -->
-<!--         <property name="url" -->
-<!--             value="jdbc:postgresql://${jdbc.IP.urlControl}:5432/control" /> -->
-<!--         <property name="username" value="${jdbc.usernameControl}" /> -->
-<!--         <property name="password" value="${jdbc.passwordControl}" /> -->
-<!--     </bean> -->
-<!--     <bean id="dataSource3" -->
-<!--         class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
-<!--         <property name="driverClassName" -->
-<!--             value="${jdbc.driverClassNamebgd}" /> -->
-<!--         <property name="url" -->
-<!--             value="jdbc:postgresql://${jdbc.IP.urlbgd}:5432/bged17" /> -->
-<!--         <property name="username" value="${jdbc.usernamebgd}" /> -->
-<!--         <property name="password" value="${jdbc.passwordbgd}" /> -->
-<!--     </bean> -->
 <!-- <mvc:resources mapping="/css/**" location="/WEB-INF/resources/css/"/> -->
 <mvc:resources mapping="/resources/**" location="/resources/"/>
 <!--  <mvc:resources mapping="/images/**" location="/WEB-INF/resources/images/" /> -->
