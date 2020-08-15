@@ -54,7 +54,7 @@
 	<jee:jndi-lookup id="dataSource2"
 		jndi-name="java:jboss/datasources/control"></jee:jndi-lookup>
 	<jee:jndi-lookup id="dataSource3"
-		jndi-name="java:jboss/datasources/bged1717"></jee:jndi-lookup>
+		jndi-name="java:jboss/datasources/bged17"></jee:jndi-lookup>
 
 <!-- <mvc:resources mapping="/css/**" location="/WEB-INF/resources/css/"/> -->
 <mvc:resources mapping="/resources/**" location="/resources/"/>
