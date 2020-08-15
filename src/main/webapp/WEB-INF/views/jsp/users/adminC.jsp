@@ -66,21 +66,19 @@
 			<table id="myTable" class="table table-bordered table-hover responsive nowrap">
               <thead>
               <tr  class="header">
+                 <th style="width:27%;">ID_ROL</th>
                  <th style="width:30%;">USUARIO</th>
-                <th style="width:27%;">CORREO</th>
-                 <th style="width:27%;">CARGO</th>
+                 <th style="width:27%;">CORREO</th>
                  <th style="width:27%;">ENTIDAD</th>
-                 <th style="width:27%;">ACTIVO</th>
               </tr>
               </thead>
               <tbody style="height: 30px !important; overflow: scroll; ">
   				<c:forEach var="dato" items="${lista}">
                 <tr>
+                <td>${dato.id_rol}</td>
                 <td>${dato.usuario}</td>
                 <td>${dato.correo}</td>
-                <td>${dato.cargo}</td>
                 <td>${dato.entidad}</td>
-                <td>${dato.activo}</td>
                 </tr>
                 </c:forEach>
                 </tbody>

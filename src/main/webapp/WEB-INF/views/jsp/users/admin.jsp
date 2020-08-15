@@ -71,7 +71,7 @@ tr.header {
 			 	<c:if test="${not empty msg1}">
 			  		<div class="alert alert-info">${msg1}
     					<a href="${urlWelcome}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-   					 	<strong>Atencion!</strong> ERROR! El Usuario a Eliminar aun es Referido desde la tabla Autorizacion por lo tanto no se pudo eliminar....
+   					 	<strong>ERROR!</strong>
    					</div>
 			  
 			 	</c:if>
@@ -92,6 +92,7 @@ tr.header {
 						class="table table-bordered table-hover responsive nowrap">
 						<thead>
 							<tr class="header">
+								<th style="width: 27%;">ID_ROL</th>
 								<th style="width: 30%;">NOMBRE</th>
 								<th style="width: 27%;">APELLIDO PATERNO</th>
 								<th style="width: 27%;">APELLIDO MATERNO</th>
@@ -103,6 +104,7 @@ tr.header {
 						<tbody style="height: 10px !important; overflow: scroll;">
 							<c:forEach var="dato" items="${lista}">
 								<tr>
+							     	<td>${dato.id_tipo_usuario}</td>
 									<td>${dato.nombre}</td>
 									<td>${dato.ape_pat}</td>
 									<td>${dato.ape_mat}</td>

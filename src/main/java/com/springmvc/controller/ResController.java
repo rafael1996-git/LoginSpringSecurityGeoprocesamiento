@@ -117,11 +117,10 @@ public class ResController {
 						System.out.println("________________string-Header____________________" + stringHeader);
 					} catch (IOException e) {
 						System.err.println("Failed scraping");
-						
-						List<User> listaPersonas =userService.listaFiltrada(entidad, true);
+						List<User> listaPersonas =userService.listaFiltrada(entidad);
 						reques.setAttribute("lista", listaPersonas);
 						System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
-						model.addObject("mensaje1", "¡");
+						model.addObject("mensaje1", "¡"+e.getCause().toString());
 						model.setViewName("/users/Remesa");
 						e.printStackTrace();
 					}
@@ -130,7 +129,7 @@ public class ResController {
 							"*************************************************************************[HEADER2 : ");
 
 					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!inserta : " + opjRemesa);
-					List<User> listaPersonas =userService.listaFiltrada(entidad, true);
+					List<User> listaPersonas =userService.listaFiltrada(entidad);
 					reques.setAttribute("lista", listaPersonas);
 					model.setViewName("/users/Remesa");
 					model.addObject("mensaje", "¡");
@@ -138,7 +137,7 @@ public class ResController {
 				
 			}else {				
 			System.out.println("funcion Remesa no realizada :else  ");
-			List<User> listaPersonas =userService.listaFiltrada(entidad, true);
+			List<User> listaPersonas =userService.listaFiltrada(entidad);
 			reques.setAttribute("lista", listaPersonas);
 			model.addObject("mensaje2", "¡");
 			model.setViewName("/users/Remesa");
@@ -147,10 +146,10 @@ public class ResController {
 			e.printStackTrace();
 			HttpSession session = reques.getSession();
 			int entidad = (int) session.getAttribute("entidad");
-			List<User> listaPersonas =userService.listaFiltrada(entidad, true);
+			List<User> listaPersonas =userService.listaFiltrada(entidad);
 			reques.setAttribute("lista", listaPersonas);
 			System.out.println("funcion Remesa no realizada :Exception  ");
-			model.addObject("mensaje1", "¡");
+			model.addObject("mensaje1", "¡"+e.getCause().toString());
 			model.setViewName("/users/Remesa");
 			e.getMessage();
 		}

@@ -81,7 +81,7 @@ public class LoginController {
 		ModelAndView model = new ModelAndView();
 		HttpSession session = request.getSession();
 		int entidadUsuario = (int) session.getAttribute("entidad");
-		List<User> listaPersonas =userService.listaFiltrada(entidadUsuario, true);
+		List<User> listaPersonas =userService.listaFiltrada(entidadUsuario);
 
 		request.setAttribute("lista", listaPersonas);
 
@@ -134,7 +134,7 @@ public class LoginController {
 				session.setAttribute("firstname", uControl.getCorreo());
 				session.setAttribute("id", uControl.getId_usuario());
 				session.setAttribute("entidad", uControl.getEntidad());
-				List<User> listaPersonas =userService.listaFiltrada(uControl.getEntidad(), true);
+				List<User> listaPersonas =userService.listaFiltrada(uControl.getEntidad());
 				request.setAttribute("lista", listaPersonas);
 				mav = new ModelAndView("/users/adminC");
 				System.out.println("USUARIO entidad______________________: "+uControl.getEntidad());

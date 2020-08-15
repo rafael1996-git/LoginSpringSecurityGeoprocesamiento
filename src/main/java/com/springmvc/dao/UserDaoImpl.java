@@ -63,24 +63,20 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<User> list() {
-		String sql = "SELECT * FROM usuariosbged.usuarios";
+		String sql = "SELECT * FROM usuarios.usuario";
 		List<User> list = jdbcTemplateuser.query(sql, new RowMapper<User>() {
 
 			@Override
 			public User mapRow(ResultSet rs, int rowNum) throws SQLException {
 				User user = new User();
-				user.setCargo(rs.getString("cargo"));
-//				user.setNombre_completo(rs.getString("nombre_completo"));
-				user.setDistrito(rs.getInt("distrito"));
-				user.setCorreo(rs.getString("correo"));
+				user.setId(rs.getInt("id"));
 				user.setUsuario(rs.getString("usuario"));
 				user.setPassword(rs.getString("password"));
+				user.setCorreo(rs.getString("correo"));
 				user.setEntidad(rs.getInt("entidad"));
-				user.setMac(rs.getString("mac"));
-				user.setActivo(rs.getBoolean("activo"));
-				user.setId (rs.getInt("id"));
-				user.setVrfejl(rs.getBoolean("vrfejl"));
-				user.setAbreviatura(rs.getString("abreviatura"));
+				user.setDistrito(rs.getInt("distrito"));
+				user.setStatus(rs.getBoolean("status"));
+				user.setId_rol(rs.getInt("id_rol"));
 				user.setNombre(rs.getString("nombre"));
 				user.setApe_pat(rs.getString("ape_pat"));
 				user.setApe_mat(rs.getString("ape_mat"));
@@ -148,7 +144,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<info> validate(String entidad,String anio,String semana) {
-		String sql = "SELECT * FROM app.config WHERE genera_remesa >= 3 AND entidad = ? AND anio= ? AND semana  = ?";
+		String sql = "SELECT * FROM app.config WHERE genera_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
 		 return jdbcTemplatebged17.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
 	}
 	@Override
@@ -186,26 +182,33 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User findByUsercorreo(String correo) {
-		String sql = "SELECT * FROM usuariosbged.usuarios WHERE correo = ?";
+		correo = "%"+correo+"%";
+		String sql = "SELECT * FROM usuarios.usuario WHERE correo like ?";
 		List<User> users = jdbcTemplateuser.query(sql,
 				new Object[] { correo}, new UserMapper());
-
 		return users.size() > 0 ? users.get(0) : null;
-
 	}
 
 	@Override
 	public void delete(String correo) {
-		String sql = "DELETE FROM public.usuario WHERE CORREO= ?";
+		correo = "%"+correo+"%";
+		String sql = "DELETE FROM public.usuario WHERE CORREO  like ?";
 		jdbcTemplatecontrol.update(sql,new Object[]{correo});
+
+
+}
+	@Override
+	public void deleteAut(String token) {
+		String sql = "DELETE FROM public.autorizacion WHERE token= ?";
+		jdbcTemplatecontrol.update(sql,new Object[]{token});
 
 
 }
 
 	@Override
-	public List<User> listaFiltrada(int entidad,boolean activo) {
-		String sql = "SELECT * FROM usuariosbged.usuarios WHERE entidad = ? and activo=?";
-		 return jdbcTemplateuser.query(sql, new Object[] { entidad,activo}, new UserMapper());
+	public List<User> listaFiltrada(int entidad) {
+		String sql = "SELECT * FROM usuarios.usuario WHERE entidad = ?";
+		 return jdbcTemplateuser.query(sql, new Object[] { entidad}, new UserMapper());
 	}
 }
 
@@ -214,23 +217,17 @@ class UserMapper implements RowMapper<User> {
 
 	public User mapRow(ResultSet rs, int arg1) throws SQLException {
 		User user = new User();
-		user.setCargo(rs.getString("cargo"));
-//		user.setNombre_completo(rs.getString("nombre_completo"));
-		user.setDistrito(rs.getInt("distrito"));
-		user.setCorreo(rs.getString("correo"));
+		user.setId(rs.getInt("id"));
 		user.setUsuario(rs.getString("usuario"));
 		user.setPassword(rs.getString("password"));
+		user.setCorreo(rs.getString("correo"));
 		user.setEntidad(rs.getInt("entidad"));
-		user.setMac(rs.getString("mac"));
-		user.setActivo(rs.getBoolean("activo"));
-		user.setId (rs.getInt("id"));
-		user.setVrfejl(rs.getBoolean("vrfejl"));
-		user.setAbreviatura(rs.getString("abreviatura"));
+		user.setDistrito(rs.getInt("distrito"));
+		user.setStatus(rs.getBoolean("status"));
+		user.setId_rol(rs.getInt("id_rol"));
 		user.setNombre(rs.getString("nombre"));
 		user.setApe_pat(rs.getString("ape_pat"));
 		user.setApe_mat(rs.getString("ape_mat"));
-
-
 		return user;
 	}
 }

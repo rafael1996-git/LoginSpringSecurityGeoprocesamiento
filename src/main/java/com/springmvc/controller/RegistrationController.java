@@ -48,16 +48,7 @@ import okhttp3.Response;
 public class RegistrationController {
 	@Autowired
 	public UserService userService;
-	@Autowired
-	UserFormValidator userFormValidator;
-	protected static final Log logger = LogFactory.getLog(RegistrationController.class.getName());
-
-	@InitBinder
-	protected void initBinder(WebDataBinder binder) {
-		binder.setValidator(new UserFormValidator());
-	}
-
-
+	
 	@Autowired
 	public void setUserService(UserService userService) {
 		this.userService = userService;
@@ -79,14 +70,19 @@ public class RegistrationController {
 		ModelAndView model = new ModelAndView();
 		try {
 			String	correo=request.getParameter("correo");
+			System.out.println("Correo: "+correo);
+			System.out.println("userService: "+userService);
 			User user = userService.findByUsercorreo(correo);
+			System.out.println("user: "+user);
 			int id=user.getId();
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨: "+id);
 			String email=user.getCorreo();
 			String nombre=user.getNombre();
 			String ape_pat=user.getApe_pat();
 			String ape_mat=user.getApe_mat();
 			int entidad=user.getEntidad();
-			String puesto=user.getCargo();
+			String puesto="Generador de Remesa";
+			int tipo_user=user.getId_rol();
 			String password=user.getPassword();
 			
 			UserControl control=userService.findBycorreo(email);
@@ -109,10 +105,9 @@ public class RegistrationController {
 				regis.setApe_mat(ape_mat);
 				regis.setPuesto(puesto);
 				regis.setEntidad(entidad);
-				regis.setId_tipo_usuario(1);
+				regis.setId_tipo_usuario(tipo_user);
 				regis.setCorreo(email);
 				regis.setPassword(password);
-//				request.setAttribute("user", user);
 				userService.register(regis);
 				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!inserta 01: " + email);
 				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!inserta 01: " + id);
@@ -129,7 +124,7 @@ public class RegistrationController {
 			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Exception:");
 			List<User> listaPersonas =userService.list();
 			request.setAttribute("lista", listaPersonas);
-			model.addObject("msg","¡");
+			model.addObject("Exception","¡"+e.getCause().toString());
 			model.setViewName("/users/add");
 			
 		}
@@ -155,7 +150,7 @@ public class RegistrationController {
 				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Exception:");
 				List<UserControl> listaPersonas =userService.lista();
 				request.setAttribute("lista", listaPersonas);
-				model.addObject("msg1", "¡");
+				model.addObject("msg1", "¡"+e.getCause().toString());
 				model.setViewName("/users/admin");
 				return model;			
 				}
