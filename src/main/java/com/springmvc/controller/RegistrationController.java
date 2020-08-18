@@ -121,7 +121,7 @@ public class RegistrationController {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Exception:");
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Exception:"+e.getCause().toString());
 			List<User> listaPersonas =userService.list();
 			request.setAttribute("lista", listaPersonas);
 			model.addObject("Exception","¡"+e.getCause().toString());

@@ -149,13 +149,16 @@ public class UserDaoImpl implements UserDao {
 	}
 	@Override
 	public List<UserControl> findByUserControlAndPassword(String correo, String password) {
-		String sql = "SELECT * FROM public.usuario WHERE correo = ? and password = ?";
+		correo = "%"+correo+"%";
+		password = "%"+password+"%";
+		String sql = "SELECT * FROM public.usuario WHERE TRIM(correo) like ? and TRIM(password) like ?";
 		 return jdbcTemplatecontrol.query(sql, new Object[] { correo,password }, new UserControl2());
 	}
 
 	@Override
 	public UserControl findBycorreo(String correo) {
-		String sql = "SELECT * FROM public.usuario WHERE correo = ?";
+		correo = "%"+correo+"%";
+		String sql = "SELECT * FROM public.usuario WHERE correo like ?";
 		List<UserControl> users = jdbcTemplatecontrol.query(sql,
 				new Object[] { correo}, new UserControl2());
 
