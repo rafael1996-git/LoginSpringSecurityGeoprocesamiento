@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -101,7 +103,9 @@ public class ResController {
 					System.out
 							.println("*************************************************************************[HEADER : ");
 
-					OkHttpClient client = new OkHttpClient().newBuilder().build();
+					OkHttpClient client = new OkHttpClient().newBuilder().connectTimeout(120, TimeUnit.SECONDS)
+							.readTimeout(120, TimeUnit.SECONDS)
+							.writeTimeout(120, TimeUnit.SECONDS).build();
 					HttpUrl.Builder urlBuilder = HttpUrl.parse("http://localhost:8080/GenerarRemesa/dce/GenerarEntidad?").newBuilder();
 					urlBuilder.addQueryParameter("entidad", session.getAttribute("entidad").toString());
 					urlBuilder.addQueryParameter("remesa", opj.toString());
