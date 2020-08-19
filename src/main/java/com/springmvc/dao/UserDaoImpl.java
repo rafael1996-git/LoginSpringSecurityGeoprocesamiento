@@ -63,7 +63,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<User> list() {
-		String sql = "SELECT * FROM usuarios.usuario";
+		String sql = "SELECT * FROM usuarios.usuario where entidad>0 and entidad <33";
 		List<User> list = jdbcTemplateuser.query(sql, new RowMapper<User>() {
 
 			@Override
