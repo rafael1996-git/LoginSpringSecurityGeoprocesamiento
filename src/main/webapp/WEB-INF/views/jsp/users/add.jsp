@@ -80,7 +80,7 @@ color: black;
 			<table id="myTable" class="table table-bordered table-hover responsive nowrap">
               <thead>
               <tr  class="header">
-                 <th style="width:27%;">ID_ROL</th>
+                 <th style="width:27%;">ID</th>
                  <th style="width:30%;">USUARIO</th>
                  <th style="width:27%;">CORREO</th>
                  <th style="width:27%;">ENTIDAD</th>
@@ -90,7 +90,7 @@ color: black;
               <tbody style="height: 10px !important; overflow: scroll; ">
   				<c:forEach var="dato" items="${lista}">
                 <tr>
-                <td>${dato.id_rol}</td>
+                <td>${dato.id}</td>
                 <td>${dato.usuario}</td>
                 <td>${dato.correo}</td>
                 <td>${dato.entidad}</td>

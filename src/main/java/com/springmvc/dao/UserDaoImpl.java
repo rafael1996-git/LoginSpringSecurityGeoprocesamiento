@@ -91,7 +91,7 @@ public class UserDaoImpl implements UserDao {
 
 
 	public List<UserControl> lista() {
-		String sql = "SELECT * FROM public.usuario";
+		String sql = "SELECT * FROM public.usuario where entidad>0 and entidad <33 and id_tipo_usuario in (1)";
 		List<UserControl> list= jdbcTemplatecontrol.query(sql, new RowMapper<UserControl>() {
 
 			@Override
@@ -148,10 +148,10 @@ public class UserDaoImpl implements UserDao {
 		 return jdbcTemplatebged17.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
 	}
 	@Override
-	public List<UserControl> findByUserControlAndPassword(String correo, String password) {
+	public List<UserControl> findByUserControlAndPassword(String correo, String password ) {
 		correo = "%"+correo+"%";
 		password = "%"+password+"%";
-		String sql = "SELECT * FROM public.usuario WHERE TRIM(correo) like ? and TRIM(password) like ?";
+		String sql = "SELECT * FROM public.usuario WHERE TRIM(correo) like ? and TRIM(password) like ? and id_tipo_usuario in (1)";
 		 return jdbcTemplatecontrol.query(sql, new Object[] { correo,password }, new UserControl2());
 	}
 
@@ -168,7 +168,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public String buscarAdmin() {
-		String sql = "SELECT id_tipo_usuario FROM public.usuario WHERE id_tipo_usuario = 2 ";
+		String sql = "SELECT id_tipo_usuario FROM public.usuario WHERE and id_tipo_usuario in (1)";
 		return jdbcTemplatecontrol.query(sql, new ResultSetExtractor<String>() {
 			@Override
 			public String extractData(ResultSet rs) throws SQLException, DataAccessException {
@@ -195,7 +195,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public void delete(String correo) {
 		correo = "%"+correo+"%";
-		String sql = "DELETE FROM public.usuario WHERE CORREO  like ?";
+		String sql = "DELETE FROM public.usuario WHERE CORREO  like ? and id_tipo_usuario in (1)";
 		jdbcTemplatecontrol.update(sql,new Object[]{correo});
 
 

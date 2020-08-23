@@ -82,7 +82,7 @@ public class RegistrationController {
 			String ape_mat=user.getApe_mat();
 			int entidad=user.getEntidad();
 			String puesto="Generador de Remesa";
-			int tipo_user=user.getId_rol();
+			int tipo_user=1;
 			String password=user.getPassword();
 			
 			UserControl control=userService.findBycorreo(email);

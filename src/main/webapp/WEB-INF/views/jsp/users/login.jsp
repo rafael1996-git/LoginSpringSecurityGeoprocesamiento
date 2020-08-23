@@ -59,7 +59,7 @@ background-color: #d9edf7;
     
      <div class="container ${status.error ? 'has-error' : ''}">
         <form name="loginForm"  action="<c:url value="/loginProcess" />" method="POST" class="form-signin">
-        <h2 class="form-heading">Log in Control</h2>
+        <h2 class="form-heading">Ingreso</h2>
         
            
             <div class="form-group " >

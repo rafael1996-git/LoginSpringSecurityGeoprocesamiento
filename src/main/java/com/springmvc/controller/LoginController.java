@@ -125,8 +125,6 @@ public class LoginController {
 		try {
 			List<UserControl> usuarioControl = userService.findByUserControlAndPassword(correo, password);
 			UserControl uControl=userService.findBycorreo(correo);
-			String Admin="admingeo@ine.mx";
-			String Password="admin";
 			if (usuarioControl!=null&& !usuarioControl.isEmpty()) {
 				
 
@@ -134,18 +132,20 @@ public class LoginController {
 				session.setAttribute("firstname", uControl.getCorreo());
 				session.setAttribute("id", uControl.getId_usuario());
 				session.setAttribute("entidad", uControl.getEntidad());
+				session.setAttribute("tipo", uControl.getId_tipo_usuario());
 				List<User> listaPersonas =userService.listaFiltrada(uControl.getEntidad());
 				request.setAttribute("lista", listaPersonas);
 				mav = new ModelAndView("/users/adminC");
+				System.out.println("USUARIO entidad______________________: "+uControl.getId_tipo_usuario());
 				System.out.println("USUARIO entidad______________________: "+uControl.getEntidad());
 				System.out.println("USUARIO VALIDO DE LOGIN CONTROL______________________: "+uControl.getCorreo());
 
-			} else if (correo.equals(Admin)==true&& password.equals(Password)==true) {
+			} else if (uControl.getId_tipo_usuario()==2) {
 				HttpSession session = request.getSession();
-				session.setAttribute("firstname", Admin);
+				session.setAttribute("firstname", uControl.getCorreo());
 				request.setAttribute("lista", listaP);
 				mav = new ModelAndView("/users/admin");
-				System.out.println("USUARIO VALIDO DE LOGIN ADMIN:::::::::::::::::::::::::::: "+Admin);
+				System.out.println("USUARIO VALIDO DE LOGIN ADMIN:::::::::::::::::::::::::::: "+uControl.getCorreo());
 			} else {
 
 				mav = new ModelAndView("/users/login");

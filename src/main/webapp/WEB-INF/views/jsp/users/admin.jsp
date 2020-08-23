@@ -44,7 +44,7 @@ tr.header {
 				<h3>Instituto Nacional Electoral</h3>
 			</legend>
 			<div class="info" align="right" style="text-transform: capitalize;">
-				<td><h4>Administrador Usuario: ${firstname}</h4></td>
+				<td><h4>Administrador : ${firstname}</h4></td>
 
 				<div class="message">
 
@@ -75,6 +75,7 @@ tr.header {
    					</div>
 			  
 			 	</c:if>
+			 	
 				<br> 
 				<br>
 
@@ -92,7 +93,7 @@ tr.header {
 						class="table table-bordered table-hover responsive nowrap">
 						<thead>
 							<tr class="header">
-								<th style="width: 27%;">ID_ROL</th>
+								<th style="width: 27%;">ID</th>
 								<th style="width: 30%;">NOMBRE</th>
 								<th style="width: 27%;">APELLIDO PATERNO</th>
 								<th style="width: 27%;">APELLIDO MATERNO</th>
@@ -104,7 +105,7 @@ tr.header {
 						<tbody style="height: 10px !important; overflow: scroll;">
 							<c:forEach var="dato" items="${lista}">
 								<tr>
-							     	<td>${dato.id_tipo_usuario}</td>
+							     	<td>${dato.id_usuario}</td>
 									<td>${dato.nombre}</td>
 									<td>${dato.ape_pat}</td>
 									<td>${dato.ape_mat}</td>
