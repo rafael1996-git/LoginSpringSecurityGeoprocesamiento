@@ -196,7 +196,7 @@ public class LoginController {
 
 	public String getEstatusRemesa(int entidad, int remesa) throws ParseException {
 
-		String requestUri = "http://localhost:8180/GenerarRemesa/dce/GenerarEntidad/status?entidad={entidad}&remesa={remesa}";
+		String requestUri = "http://localhost:8080/GenerarRemesa/dce/GenerarEntidad/status?entidad={entidad}&remesa={remesa}";
 		Map<String, String> urlParameters = new HashMap<>();
 		urlParameters.put("entidad", Integer.toString(entidad));
 		urlParameters.put("remesa", Long.toString(remesa));
@@ -208,6 +208,8 @@ public class LoginController {
 		System.out.println("Estatus del servicio body : " + entity.getBody());
 		System.out.println("Estatus del servicio toString : " + entity.toString());
 		List<Integer> grafica = new ArrayList<Integer>();
+		
+	
 		if (entity.getStatusCode().value() == 200) {
 			String s = entity.getBody();
 			JSONObject js = new JSONObject(entity.getBody());
