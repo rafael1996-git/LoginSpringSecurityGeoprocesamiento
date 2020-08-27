@@ -36,7 +36,7 @@ p {
 	color: black;
 }
 </style>
-<body>
+<body >
 	<spring:url value="estatus" var="urlEstatus" />
 	<div class="container" align="center">
 		<fieldset>
@@ -82,6 +82,7 @@ jQuery(document).ready(function($) {
 
 	$("#registro").submit(function(event) {
 		event.preventDefault();
+		
 		searchViaAjax();
 	});
 
@@ -189,6 +190,8 @@ function drawPieSlice(ctx,centerX, centerY, radius, startAngle, endAngle){
     ctx.fill();
  
 }
+
+setInterval(searchViaAjax,60000);
 
 </script>
 </body>
