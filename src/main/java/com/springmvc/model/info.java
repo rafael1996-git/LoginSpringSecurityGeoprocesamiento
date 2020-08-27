@@ -4,9 +4,13 @@ public class info {
 	private String entidad ;
 	private String anio ;
 	private String semana ;
-	private Integer genera_remesa ;
+	private Integer estado_remesa ;
 	private String ruta ;
-	
+	@Override
+	public String toString() {
+		return "info [entidad=" + entidad + ", anio=" + anio + ", semana=" + semana + ", estado_remesa=" + estado_remesa
+				+ ", ruta=" + ruta + "]";
+	}
 	public String getEntidad() {
 		return entidad;
 	}
@@ -25,11 +29,11 @@ public class info {
 	public void setSemana(String semana) {
 		this.semana = semana;
 	}
-	public Integer getGenera_remesa() {
-		return genera_remesa;
+	public Integer getEstado_remesa() {
+		return estado_remesa;
 	}
-	public void setGenera_remesa(int genera_remesa) {
-		this.genera_remesa = genera_remesa;
+	public void setEstado_remesa(Integer estado_remesa) {
+		this.estado_remesa = estado_remesa;
 	}
 	public String getRuta() {
 		return ruta;
@@ -37,11 +41,7 @@ public class info {
 	public void setRuta(String ruta) {
 		this.ruta = ruta;
 	}
-	@Override
-	public String toString() {
-		return "info [entidad=" + entidad + ", anio=" + anio + ", semana=" + semana + ", genera_remesa=" + genera_remesa
-				+ ", ruta=" + ruta + "]";
-	}
+	
 	
 	    
 }

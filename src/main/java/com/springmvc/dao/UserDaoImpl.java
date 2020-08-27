@@ -144,7 +144,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<info> validate(String entidad,String anio,String semana) {
-		String sql = "SELECT * FROM app.config WHERE genera_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
 		 return jdbcTemplatebged17.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
 	}
 	@Override
@@ -279,7 +279,7 @@ class bgedMapper implements RowMapper<info> {
 		itera.setEntidad(rs.getString("entidad"));
 		itera.setAnio(rs.getString("anio"));
 		itera.setSemana(rs.getString("semana"));
-		itera.setGenera_remesa(rs.getInt("genera_remesa"));
+		itera.setEstado_remesa(rs.getInt("estado_remesa"));
 		itera.setRuta(rs.getString("ruta"));
 
 		return itera;
