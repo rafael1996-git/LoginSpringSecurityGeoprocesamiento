@@ -157,7 +157,10 @@ function searchViaAjax() {
 				}else{
 					console.log("mayor a cero: ", datos.length);
 					document.getElementById("msjError").style.display = "none";
+					var alejandro = datos.alejandro;
+					var error = datos.error; 
 					dibujaCirculo(datos);
+					pintarError(error);
 					console.log("menor a cero: ", datos.length);
 				}
 			}
@@ -175,7 +178,9 @@ function searchViaAjax() {
 
 }
 
-
+function pintarError(error){
+	alert(error);
+}
 
 function dibujaCirculo(data) {
 

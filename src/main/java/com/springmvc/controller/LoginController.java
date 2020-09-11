@@ -277,8 +277,9 @@ public class LoginController {
 		}
 		
 		String listaEstatus = getEstatusRemesa(entidadUsuario, Integer.parseInt(opj));
+		String errorGeoprocesamiento = "FALLO OPERACION 3 Revise";
 		
-		return listaEstatus;		}
+		return "{\"error\":\""+errorGeoprocesamiento+"\",\"alejandro\":"+listaEstatus+"}";		}
 
 	public String getEstatusRemesa(int entidad, int remesa) throws ParseException {
 
