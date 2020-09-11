@@ -2,6 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <%@page session="true"%>
 <!DOCTYPE html>
@@ -15,6 +16,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="resources/js/bootstrap.min.js"></script>
 <script src="resources/js/Chart.js"></script>
+	<spring:url value="Avance.do" var="urlAvance" />
 
 </head>
 
@@ -55,6 +57,8 @@ p {
 						<fmt:formatDate type="both" value="${now}" />
 					</h4>
 				</div>
+				 
+				
 			</div>
 			<div class="row align-items-center">
 			<div class="col align-self-center">
@@ -69,6 +73,48 @@ p {
 					<div  id="leyenda"></div>
 					<div  id="msjError"></div>
 				</div>
+				
+				
+				<div class="navbar" align="left">
+					<td><h4>Status Error</h4></td>
+					<div class="col-sm-offset-2 col-sm-10">
+										<a class="btn-lg btn-primary pull-right"
+										type="submit"
+										value="1"
+										href="statusError">StatusError </a></td>
+					</div>
+				</div>
+				
+				
+				<div class="table-wrapper-scroll-y my-custom-scrollbar">
+
+					<table id="myTable"
+						class="table table-bordered table-hover responsive nowrap">
+						<thead>
+							<tr class="header">
+								<th style="width: 15%;">entidad</th>
+								<th style="width: 15%;">remesa</th>
+								<th style="width: 15%;">fecha</th>
+								<th style="width: 70%;">error</th>
+							</tr>
+						</thead>
+						<tbody style="height: 10px !important; overflow: scroll;">
+							<c:forEach var="dato" items="${lista}">
+								<tr>
+							     	<td>${dato.entidad}</td>
+									<td>${dato.remesa}</td>
+									<td>${dato.fecha}</td>
+									<td>${dato.error}</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+				
+				
+				
+				
+				
 			</div>
 			</div>
 		</fieldset>
@@ -107,7 +153,7 @@ function searchViaAjax() {
 			}else{
 				 datos = JSON.parse(data);
 				if(datos.length==0){
-					$('#msjError').html("<h1>inserte las remesas </h1> ");
+					$('#msjError').html("<h1>Para verificar el status de avance dr click en el evento Consulta</h1> ");
 				}else{
 					console.log("mayor a cero: ", datos.length);
 					document.getElementById("msjError").style.display = "none";

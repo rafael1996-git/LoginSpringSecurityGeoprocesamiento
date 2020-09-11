@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +36,13 @@ import com.fasterxml.uuid.Generators;
 import com.springmvc.model.Remesa;
 import com.springmvc.model.User;
 import com.springmvc.model.UserControl;
+import com.springmvc.model.statusError;
 import com.springmvc.service.UserService;
+
+import okhttp3.HttpUrl;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 @RestController
 public class LoginController {
@@ -57,10 +65,10 @@ public class LoginController {
 	public ModelAndView atrasPage(HttpServletRequest request) {
 
 		ModelAndView model = new ModelAndView();
-		List<UserControl> listaPersonas =userService.lista();
+		List<UserControl> listaPersonas = userService.lista();
 
 		request.setAttribute("lista", listaPersonas);
-				model.setViewName("/users/admin");
+		model.setViewName("/users/admin");
 		return model;
 
 	}
@@ -76,12 +84,12 @@ public class LoginController {
 
 	}
 
-	@RequestMapping(value = "/welcome", method = RequestMethod.GET )
-	public  ModelAndView WelcomePage(HttpServletRequest request)  throws IOException {
+	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
+	public ModelAndView WelcomePage(HttpServletRequest request) throws IOException {
 		ModelAndView model = new ModelAndView();
 		HttpSession session = request.getSession();
 		int entidadUsuario = (int) session.getAttribute("entidad");
-		List<User> listaPersonas =userService.listaFiltrada(entidadUsuario);
+		List<User> listaPersonas = userService.listaFiltrada(entidadUsuario);
 
 		request.setAttribute("lista", listaPersonas);
 
@@ -89,7 +97,19 @@ public class LoginController {
 		return model;
 
 	}
-	
+	@RequestMapping(value = "/statusError", method = RequestMethod.GET)
+	public ModelAndView statusPage(HttpServletRequest request) throws IOException {
+		ModelAndView model = new ModelAndView();
+		HttpSession session = request.getSession();
+		int entidadUsuario = (int) session.getAttribute("entidad");
+		List<User> listaPersonas = userService.listaFiltrada(entidadUsuario);
+
+		request.setAttribute("lista", listaPersonas);
+
+		model.setViewName("/users/adminC");
+		return model;
+
+	}
 
 	@RequestMapping(value = { "/", "/users/login" }, method = RequestMethod.GET)
 	public ModelAndView login(@RequestParam(value = "error", required = false) String error,
@@ -115,37 +135,37 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
-	public ModelAndView loginProcess(@RequestParam String password, @RequestParam String correo, HttpServletRequest request) {
-		ModelAndView mav =null;
-		List<UserControl> listaP =userService.lista();
+	public ModelAndView loginProcess(@RequestParam String password, @RequestParam String correo,
+			HttpServletRequest request) {
+		ModelAndView mav = null;
+		List<UserControl> listaP = userService.lista();
 
 		System.out.println("en home");
 		logger.info("Mensaje de vista:******************************** ");
 
 		try {
 			List<UserControl> usuarioControl = userService.findByUserControlAndPassword(correo, password);
-			UserControl uControl=userService.findBycorreo(correo);
-			if (usuarioControl!=null&& !usuarioControl.isEmpty()) {
-				
+			UserControl uControl = userService.findBycorreo(correo);
+			if (usuarioControl != null && !usuarioControl.isEmpty()) {
 
 				HttpSession session = request.getSession();
 				session.setAttribute("firstname", uControl.getCorreo());
 				session.setAttribute("id", uControl.getId_usuario());
 				session.setAttribute("entidad", uControl.getEntidad());
 				session.setAttribute("tipo", uControl.getId_tipo_usuario());
-				List<User> listaPersonas =userService.listaFiltrada(uControl.getEntidad());
+				List<User> listaPersonas = userService.listaFiltrada(uControl.getEntidad());
 				request.setAttribute("lista", listaPersonas);
 				mav = new ModelAndView("/users/adminC");
-				System.out.println("USUARIO entidad______________________: "+uControl.getId_tipo_usuario());
-				System.out.println("USUARIO entidad______________________: "+uControl.getEntidad());
-				System.out.println("USUARIO VALIDO DE LOGIN CONTROL______________________: "+uControl.getCorreo());
+				System.out.println("USUARIO entidad______________________: " + uControl.getId_tipo_usuario());
+				System.out.println("USUARIO entidad______________________: " + uControl.getEntidad());
+				System.out.println("USUARIO VALIDO DE LOGIN CONTROL______________________: " + uControl.getCorreo());
 
-			} else if (uControl.getId_tipo_usuario()==2) {
+			} else if (uControl.getId_tipo_usuario() == 2) {
 				HttpSession session = request.getSession();
 				session.setAttribute("firstname", uControl.getCorreo());
 				request.setAttribute("lista", listaP);
 				mav = new ModelAndView("/users/admin");
-				System.out.println("USUARIO VALIDO DE LOGIN ADMIN:::::::::::::::::::::::::::: "+uControl.getCorreo());
+				System.out.println("USUARIO VALIDO DE LOGIN ADMIN:::::::::::::::::::::::::::: " + uControl.getCorreo());
 			} else {
 
 				mav = new ModelAndView("/users/login");
@@ -168,8 +188,9 @@ public class LoginController {
 
 	@RequestMapping(value = "/estatus", method = { RequestMethod.POST })
 	@ResponseBody
-	public String ejecutaEstatus(Model model,HttpServletRequest reques) throws NumberFormatException, ParseException {
-		UUID token = Generators.randomBasedGenerator().generate();
+	public String ejecutaEstatus(Model model,HttpServletRequest reques)
+			throws NumberFormatException, ParseException, IOException {
+		statusError opjeto = new statusError();
 		Date objDate = new Date();
 		// Mostrar la fecha y la hora usando toString ()
 		System.out.println(objDate.toString());
@@ -178,21 +199,86 @@ public class LoginController {
 		HttpSession session = reques.getSession();
 		int id = (int) session.getAttribute("id");
 		int entidadUsuario = (int) session.getAttribute("entidad");
-		String opj;
-		opj = userService.buscarRemesa();
-		System.out.println("query service buscarRemesa: "+opj);
+		String opj = userService.buscarRemesa();
+		System.out.println("query service buscarRemesa: " + opj);
 
-			Remesa opjRemesa = new Remesa();
-			opjRemesa.setId_status(1);
-			opjRemesa.setFecha_hora(objDate);
-			opjRemesa.setToken(token.toString());
-			opjRemesa.setId_usuario(id);
-			opjRemesa.setEntidad_remesa(opj.toString());
-			userService.regisRemesa(opjRemesa);
-			
+		System.out.println(
+				"**********************************************************************Estatus del servicio en el status de rafa : con okhttp");
+		try {
+			OkHttpClient client = new OkHttpClient().newBuilder().connectTimeout(200000, TimeUnit.SECONDS)
+					.readTimeout(200000, TimeUnit.SECONDS).writeTimeout(200000, TimeUnit.SECONDS).build();
+			HttpUrl.Builder urlBuilder = HttpUrl.parse("http://localhost:8180/GenerarRemesa/dce/GenerarEntidad/status?")
+					.newBuilder();
+			urlBuilder.addQueryParameter("entidad", session.getAttribute("entidad").toString());
+			urlBuilder.addQueryParameter("remesa", opj.toString());
+			String url = urlBuilder.build().toString();
+			Request request = new Request.Builder().url(url).build();
+			Response respons = client.newCall(request).execute();
+
+			String string = respons.body().string();
+			System.out.println("_________________respuesta-coneccion-code___________________" + respons);
+			System.out.println("_______________vista-previa-body_____________________" + string);
+
+			JSONObject Jobject = new JSONObject(string);
+			JSONArray Jarray = Jobject.getJSONArray("operacionesConError");
+			if (Jarray.toString() == null || Jarray.toString().isEmpty()) {
+				System.out.println("_______________en el else_____________________error esta en nulo:");
+				String listaEstatus = getEstatusRemesa(entidadUsuario, Integer.parseInt(opj));
+				
+				return listaEstatus;			
+				} else {
+
+				System.out.println(
+						"_______________vista--body-operacionesConError_____________________" + Jarray.toString());
+				// define the strings that will temporary store the data
+				String fecha, entidad, remesa;
+
+				// get the length of the json array
+				int limit = Jarray.length();
+
+				// datastore array of size limit
+				String dataStore[] = new String[limit];
+
+				for (int i = 0; i < limit; i++) {
+					JSONObject object = Jarray.getJSONObject(i);
+
+					fecha = object.getString("sFechaHora");
+					List<statusError> lista =userService.listaStatus(fecha.toString());
+					System.out.println("_______________userService.listaStatus_____________________: ");
+					model.addAttribute("status", lista);
+
+					System.out.println("_______________JSON DATA_____________________fecha: " + fecha);
+					System.out.println("_______________JSON DATA_____________________entidad: "+ session.getAttribute("entidad").toString());
+					System.out.println("_______________JSON DATA_____________________remesa: " + opj.toString());
+
+					// store the data into the array
+					dataStore[i] = " ## " + fecha + " ## " + session.getAttribute("entidad").toString() + " ## "
+							+ opj.toString() + " ## ";
+					opjeto.setEntidad(session.getAttribute("entidad").toString());
+					opjeto.setRemesa(opj.toString());
+					opjeto.setFecha(fecha.toString());
+					
+				}
+
+				// prove that the data was stored in the array
+				for (String content : dataStore) {
+					System.out.println("_______________dataStore_____________________ARRAY CONTENT:" + content);
+
+				}
+				opjeto.setError(Jarray.toString());
+				userService.register(opjeto);
+				
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println(
+					"__________________________________________________________________________________________________null error IOException e"+ e.getCause().toString());
+
+		}
+		
 		String listaEstatus = getEstatusRemesa(entidadUsuario, Integer.parseInt(opj));
-		return listaEstatus;
-	}
+		
+		return listaEstatus;		}
 
 	public String getEstatusRemesa(int entidad, int remesa) throws ParseException {
 
@@ -208,31 +294,31 @@ public class LoginController {
 		System.out.println("Estatus del servicio body : " + entity.getBody());
 		System.out.println("Estatus del servicio toString : " + entity.toString());
 		List<Integer> grafica = new ArrayList<Integer>();
-		
-	
+
 		if (entity.getStatusCode().value() == 200) {
 			String s = entity.getBody();
 			JSONObject js = new JSONObject(entity.getBody());
 			System.out.println("Estatus del servicio : " + js.toString());
-			if(js!=null||!js.isEmpty()) {
-			for (Object o : js.getJSONArray("operacionesEjecutadas")) {
-				JSONObject ca = (JSONObject) o;
-				JSONObject span = (JSONObject) ca.get("operaciones");
-				int idOp = span.getInt("idOperacion");
-				grafica.add(idOp);
-			}
+			if (js != null || !js.isEmpty()) {
+				for (Object o : js.getJSONArray("operacionesEjecutadas")) {
+					JSONObject ca = (JSONObject) o;
+					JSONObject span = (JSONObject) ca.get("operaciones");
+					int idOp = span.getInt("idOperacion");
+					System.out.println(
+							"*************************************************************************[opj " + idOp);
+					grafica.add(idOp);
+				}
 
-			return grafica.toString();
-				
-			}else {
+				return grafica.toString();
+
+			} else {
 				return null;
 			}
 		} else {
 			System.out.println("Estatus del servicio : " + entity.getStatusCode().toString());
-			return entity.getStatusCode().getReasonPhrase() ;
+			return entity.getStatusCode().getReasonPhrase();
 		}
 
 	}
-	
 
 }

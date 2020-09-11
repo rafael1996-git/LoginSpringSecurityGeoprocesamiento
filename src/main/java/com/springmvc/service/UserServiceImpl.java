@@ -11,6 +11,7 @@ import com.springmvc.model.Remesa;
 import com.springmvc.model.User;
 import com.springmvc.model.UserControl;
 import com.springmvc.model.info;
+import com.springmvc.model.statusError;
 
 public class UserServiceImpl implements UserService {
 
@@ -117,6 +118,22 @@ public List<User> listaFiltrada(int entidad) {
 @Override
 public void deleteAut(String token) {
 	userDao.deleteAut(token);	
+}
+
+
+
+@Override
+public int register(statusError status) {
+	// TODO Auto-generated method stub
+	return userDao.register(status);
+}
+
+
+
+@Override
+public List<statusError> listaStatus(String fecha) {
+	// TODO Auto-generated method stub
+	return userDao.listaStatus(fecha);
 }
 
 

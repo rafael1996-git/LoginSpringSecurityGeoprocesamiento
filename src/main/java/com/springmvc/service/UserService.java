@@ -7,15 +7,18 @@ import com.springmvc.model.Remesa;
 import com.springmvc.model.User;
 import com.springmvc.model.UserControl;
 import com.springmvc.model.info;
+import com.springmvc.model.statusError;
 
 public interface UserService {
 
 	public int register(UserControl user);
+	public int register(statusError status);
 	public int regisRemesa(Remesa remesa);
 	public int register(Control inserta);
 	public List<info> validate(String entidad,String anio,String semana);
 	public List<User> list();
 	public List<User> listaFiltrada(int entidad);
+	public List<statusError> listaStatus(String fecha);
 	public List<UserControl> lista();
 	public String  buscarRemesa() ;
 	public String  buscarAdmin();

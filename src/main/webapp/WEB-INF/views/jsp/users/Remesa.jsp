@@ -9,6 +9,7 @@
 
 <jsp:include page="../fragments/headerRemesa.jsp" />
 <spring:url value="welcome" var="urlWelcome" />
+<spring:url value="Avance.do" var="urlAvance" />
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
           <link rel="stylesheet" href="resources/css/adminremesa.css" type="text/css" />
 <style>
@@ -63,13 +64,35 @@ color: black;
    				    </div>
 			  
 			 </c:if>
-			 <c:if test="${not empty mensaje1}">
-			  <div class="alert alert-info">${mensaje1}
-    				<a href="${urlWelcome}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			 <c:if test="${not empty msg1}">
+			  		<div class="alert alert-warning">${msg1}
+    				<a href="${urlAvance}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
    					 <strong>!</strong> 
    				    </div>
 			  
-			 </c:if>
+				 </c:if>
+				  <c:if test="${not empty msg2}">
+			  		<div class="alert alert-warning">${msg2}
+    				<a href="${urlAvance}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+   					 <strong>!</strong> 
+   				    </div>
+			  
+				 </c:if>
+				  <c:if test="${not empty msg3}">
+			  		<div class="alert alert-warning">${msg3}
+    				<a href="${urlAvance}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+   					 <strong>!</strong> 
+   				    </div>
+			  
+				 </c:if>
+				  <c:if test="${not empty msg4}">
+			  		<div class="alert alert-danger">${msg4}
+    				<a href="${urlAvance}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+   					 <strong>!</strong> 
+   				    </div>
+			  
+				 </c:if>
+				
         </div>
 		</fieldset> 
 			

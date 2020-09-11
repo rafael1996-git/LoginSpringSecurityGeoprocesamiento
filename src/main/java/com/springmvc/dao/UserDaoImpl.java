@@ -8,7 +8,6 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 
 import com.springmvc.model.Control;
 import com.springmvc.model.Fecha;
@@ -16,6 +15,7 @@ import com.springmvc.model.Remesa;
 import com.springmvc.model.User;
 import com.springmvc.model.UserControl;
 import com.springmvc.model.info;
+import com.springmvc.model.statusError;
 
 
 public class UserDaoImpl implements UserDao {
@@ -115,6 +115,7 @@ public class UserDaoImpl implements UserDao {
 		return list;
 
 	}
+	
 
 	public int regisRemesa(Remesa remesa) {
 
@@ -212,6 +213,17 @@ public class UserDaoImpl implements UserDao {
 	public List<User> listaFiltrada(int entidad) {
 		String sql = "SELECT * FROM usuarios.usuario WHERE entidad = ?";
 		 return jdbcTemplateuser.query(sql, new Object[] { entidad}, new UserMapper());
+	}
+	@Override
+	public List<statusError> listaStatus(String fecha) {
+		String sql = "SELECT * FROM public.statuserror where fecha= ?";
+		 return jdbcTemplatecontrol.query(sql, new Object[] { fecha}, new ErrorMapper());
+	}
+	@Override
+	public int register(statusError status) {
+		String sql = "INSERT INTO public.statusError (entidad,remesa,fecha,error) VALUES (?,?,?,?)";
+		return jdbcTemplatecontrol.update(sql, new Object[] { status.getEntidad(),status.getRemesa(),status.getFecha(),status.getError()});
+
 	}
 }
 
@@ -317,3 +329,19 @@ class RemesaFecha implements RowMapper<Fecha> {
 		return user;
 	}
 }
+
+//********************************************************************mapper de control(base  control)
+class ErrorMapper implements RowMapper<statusError> {
+
+	public statusError mapRow(ResultSet rs, int arg1) throws SQLException {
+		statusError itera = new statusError();
+		itera.setFecha(rs.getString("entidad"));
+		itera.setError(rs.getString("remesa"));
+		itera.setFecha(rs.getString("fecha"));
+		itera.setError(rs.getString("error"));
+		
+
+		return itera;
+	}
+}
+
