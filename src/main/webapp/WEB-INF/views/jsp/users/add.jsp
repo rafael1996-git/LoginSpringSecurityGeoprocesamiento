@@ -38,7 +38,7 @@ color: black;
 			</tr>
 			<div class="message">
 					<c:set var="now" value="<%=new java.util.Date()%>" />
-					<h4> Fecha Actual:</h4><h4><fmt:formatDate type="both" value="${now}"/></h4>
+					<h4> Fecha Actual:</h4><h4><fmt:formatDate type="both" value="${now}" /></h4>
 			</div>
 	</div>
  

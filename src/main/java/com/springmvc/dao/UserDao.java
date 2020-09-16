@@ -1,5 +1,6 @@
 package com.springmvc.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import com.springmvc.model.Control;
@@ -19,11 +20,12 @@ public interface UserDao {
 	public List<User> list();
 	public List<User> listaFiltrada(int entidad);
 	public List<UserControl> lista();
-	public List<statusError> listaStatus(String fecha);
+	public List<statusError> listaStatus();
 	public String  buscarRemesa() ;
 	public List<UserControl> findByUserControlAndPassword(String correo, String password);
 	public List<UserControl> findById_TipoUserAndPassword(String correo, String password ,int id_tipo_usuario);
 	public UserControl findBycorreo(String correo);
+	public statusError findByfecha(Date correo);
 	public User findByUsercorreo(String correo);
 	public String  buscarAdmin() ;
 	public void delete(String correo);

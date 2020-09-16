@@ -1,5 +1,6 @@
 package com.springmvc.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -131,9 +132,17 @@ public int register(statusError status) {
 
 
 @Override
-public List<statusError> listaStatus(String fecha) {
+public List<statusError> listaStatus() {
 	// TODO Auto-generated method stub
-	return userDao.listaStatus(fecha);
+	return userDao.listaStatus();
+}
+
+
+
+@Override
+public statusError findByfecha(Date fecha) {
+	// TODO Auto-generated method stub
+	return userDao.findByfecha(fecha);
 }
 
 

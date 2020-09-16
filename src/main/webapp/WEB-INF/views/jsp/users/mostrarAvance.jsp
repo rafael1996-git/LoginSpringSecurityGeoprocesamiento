@@ -2,12 +2,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
 <%@page session="true"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="resources/stilosjs/css/bootstrap.min.css">
@@ -38,7 +35,7 @@ p {
 	color: black;
 }
 </style>
-<body >
+<body>
 	<spring:url value="estatus" var="urlEstatus" />
 	<div class="container" align="center">
 		<fieldset>
@@ -57,12 +54,17 @@ p {
 						<fmt:formatDate type="both" value="${now}" />
 					</h4>
 				</div>
-				 
-				
+					 <c:if test="${not empty mensaje3}">
+			  		<div class="alert alert-info">${mensaje3}
+    					<a href="${urlAvance}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+   					 	<strong>SUCCESS!</strong>proceso funcionando sin error , verifique denuevo la consulta de avance ene el geoprocesamiento de su grafica.
+   					</div>
+			  
+			 	</c:if>
 			</div>
 			<div class="row align-items-center">
 			<div class="col align-self-center">
-				<h2>Geoprocesamiento de la Remesa de Actualización Cartográfica</h2>
+				<h2>Geoprocesamiento de la Remesa de ActualizaciÃ³n CartogrÃ¡fica</h2>
 				<form id="registro" action="#" class="form-inline">
 					<input type="submit" class="btn btn-primary" value="Consulta">
 				</form>
@@ -72,16 +74,17 @@ p {
 					<canvas id="myCanvas" width="500" height="300"></canvas>
 					<div  id="leyenda"></div>
 					<div  id="msjError"></div>
+					<div  id="msjErrorrafa"></div>
 				</div>
 				
-				
+			
 				<div class="navbar" align="left">
-					<td><h4>Status Error</h4></td>
+			
 					<div class="col-sm-offset-2 col-sm-10">
 										<a class="btn-lg btn-primary pull-right"
 										type="submit"
 										value="1"
-										href="statusError">StatusError </a></td>
+										href="statusError">StatusError </a>
 					</div>
 				</div>
 				
@@ -94,8 +97,8 @@ p {
 							<tr class="header">
 								<th style="width: 15%;">entidad</th>
 								<th style="width: 15%;">remesa</th>
-								<th style="width: 15%;">fecha</th>
-								<th style="width: 70%;">error</th>
+								<th style="width: 20%;">fecha</th>
+								<th style="width: 100%;">error</th>
 							</tr>
 						</thead>
 						<tbody style="height: 10px !important; overflow: scroll;">
@@ -148,7 +151,7 @@ function searchViaAjax() {
 			console.log("SUCCESS: ", data);
 			var datos=0;
 			if(data === 'undefined'||data===null||data===""){
-				console.log("data no está definido o es nulo");
+				console.log("data no esta definido o es nulo");
 				$('#msjError').html("<h1>el estatus devuelve nulo</h1> ");
 			}else{
 				 datos = JSON.parse(data);
@@ -159,9 +162,14 @@ function searchViaAjax() {
 					document.getElementById("msjError").style.display = "none";
 					var alejandro = datos.alejandro;
 					var error = datos.error; 
-					dibujaCirculo(datos);
-					pintarError(error);
+					dibujaCirculo(alejandro);
+					
 					console.log("menor a cero: ", datos.length);
+				}if (error===null||error===""||error.length==0) {
+					$('#msjErrorrafa').html("<h1>el estatus error devuelve nulo</h1> ");
+				} else {
+					document.getElementById("msjError").style.display = "none";
+					pintarError(error);
 				}
 			}
 	
@@ -255,10 +263,10 @@ setInterval(searchViaAjax,60000);
 <br>
 <br>
 <br>
+<br>
 <footer>
 	<div align="center">
-		<h4>© Derechos Reservados, Instituto Nacional Electoral, México.</h4>
+		<h4>Â© Derechos Reservados, Instituto Nacional Electoral, MÃ©xico.</h4>
 	</div>
 </footer>
-
 </html>

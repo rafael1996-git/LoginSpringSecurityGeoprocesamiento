@@ -1,26 +1,26 @@
 package com.springmvc.model;
 
+import java.util.Date;
 
 public class statusError {
-	private String entidad ; 
-	private String remesa;
-	private String fecha ; 
+	private int entidad;
+	private int remesa;
+	private String fecha;
 	private String error;
 	@Override
 	public String toString() {
-		return "statusError [ entidad=" + entidad + ", remesa=" + remesa + ", fecha="
-				+ fecha + ", error=" + error + "]";
+		return "statusError [entidad=" + entidad + ", remesa=" + remesa + ", fecha=" + fecha + ", error=" + error + "]";
 	}
-	public String getEntidad() {
+	public int getEntidad() {
 		return entidad;
 	}
-	public void setEntidad(String entidad) {
+	public void setEntidad(int entidad) {
 		this.entidad = entidad;
 	}
-	public String getRemesa() {
+	public int getRemesa() {
 		return remesa;
 	}
-	public void setRemesa(String remesa) {
+	public void setRemesa(int remesa) {
 		this.remesa = remesa;
 	}
 	public String getFecha() {
@@ -35,6 +35,5 @@ public class statusError {
 	public void setError(String error) {
 		this.error = error;
 	}
-	
-	
+
 }

@@ -64,34 +64,14 @@ color: black;
    				    </div>
 			  
 			 </c:if>
-			 <c:if test="${not empty msg1}">
-			  		<div class="alert alert-warning">${msg1}
-    				<a href="${urlAvance}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-   					 <strong>!</strong> 
-   				    </div>
+			 <c:if test="${not empty mensaje3}">
+			  		<div class="alert alert-info">${mensaje3}
+    					<a href="${urlAvance}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+   					 	<strong>SUCCESS!</strong>proceso funcionando sin error , verifique denuevo la consulta de avance ene el geoprocesamiento de su grafica.
+   					</div>
 			  
-				 </c:if>
-				  <c:if test="${not empty msg2}">
-			  		<div class="alert alert-warning">${msg2}
-    				<a href="${urlAvance}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-   					 <strong>!</strong> 
-   				    </div>
-			  
-				 </c:if>
-				  <c:if test="${not empty msg3}">
-			  		<div class="alert alert-warning">${msg3}
-    				<a href="${urlAvance}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-   					 <strong>!</strong> 
-   				    </div>
-			  
-				 </c:if>
-				  <c:if test="${not empty msg4}">
-			  		<div class="alert alert-danger">${msg4}
-    				<a href="${urlAvance}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-   					 <strong>!</strong> 
-   				    </div>
-			  
-				 </c:if>
+			 	</c:if>
+				 
 				
         </div>
 		</fieldset> 

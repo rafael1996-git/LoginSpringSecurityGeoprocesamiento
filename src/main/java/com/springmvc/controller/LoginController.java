@@ -100,13 +100,20 @@ public class LoginController {
 	@RequestMapping(value = "/statusError", method = RequestMethod.GET)
 	public ModelAndView statusPage(HttpServletRequest request) throws IOException {
 		ModelAndView model = new ModelAndView();
+		Date objDate = new Date();
+		// Mostrar la fecha y la hora usando toString ()
+		System.out.println(objDate.toString());
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		objDate.equals(dateFormat.format(objDate));
 		HttpSession session = request.getSession();
 		int entidadUsuario = (int) session.getAttribute("entidad");
-		List<User> listaPersonas = userService.listaFiltrada(entidadUsuario);
+		List<statusError> listaPersonas = userService.listaStatus();
+		System.out.println("USUARIO entidad______________________: " +listaPersonas.toString() );
+		
 
-		request.setAttribute("lista", listaPersonas);
+		request.setAttribute("lista",listaPersonas );
 
-		model.setViewName("/users/adminC");
+		model.setViewName("/users/mostrarAvance");
 		return model;
 
 	}
@@ -188,98 +195,34 @@ public class LoginController {
 
 	@RequestMapping(value = "/estatus", method = { RequestMethod.POST })
 	@ResponseBody
-	public String ejecutaEstatus(Model model,HttpServletRequest reques)
-			throws NumberFormatException, ParseException, IOException {
-		statusError opjeto = new statusError();
-		Date objDate = new Date();
-		// Mostrar la fecha y la hora usando toString ()
-		System.out.println(objDate.toString());
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		objDate.equals(dateFormat.format(objDate));
+	public String ejecutaEstatus(HttpServletRequest reques) throws NumberFormatException, ParseException, IOException {
+		ModelAndView model = new ModelAndView();
+		 statusError opjeto=new statusError();
+		 Date objDate = new Date();
+			// Mostrar la fecha y la hora usando toString ()
+			System.out.println(objDate.toString());
+			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			objDate.equals(dateFormat.format(objDate));
 		HttpSession session = reques.getSession();
 		int id = (int) session.getAttribute("id");
 		int entidadUsuario = (int) session.getAttribute("entidad");
 		String opj = userService.buscarRemesa();
-		System.out.println("query service buscarRemesa: " + opj);
+		System.out.println("query service buscarRemesa: "+opj);
 
-		System.out.println(
-				"**********************************************************************Estatus del servicio en el status de rafa : con okhttp");
-		try {
-			OkHttpClient client = new OkHttpClient().newBuilder().connectTimeout(200000, TimeUnit.SECONDS)
-					.readTimeout(200000, TimeUnit.SECONDS).writeTimeout(200000, TimeUnit.SECONDS).build();
-			HttpUrl.Builder urlBuilder = HttpUrl.parse("http://localhost:8180/GenerarRemesa/dce/GenerarEntidad/status?")
-					.newBuilder();
-			urlBuilder.addQueryParameter("entidad", session.getAttribute("entidad").toString());
-			urlBuilder.addQueryParameter("remesa", opj.toString());
-			String url = urlBuilder.build().toString();
-			Request request = new Request.Builder().url(url).build();
-			Response respons = client.newCall(request).execute();
 
-			String string = respons.body().string();
-			System.out.println("_________________respuesta-coneccion-code___________________" + respons);
-			System.out.println("_______________vista-previa-body_____________________" + string);
-
-			JSONObject Jobject = new JSONObject(string);
-			JSONArray Jarray = Jobject.getJSONArray("operacionesConError");
-			if (Jarray.toString() == null || Jarray.toString().isEmpty()) {
-				System.out.println("_______________en el else_____________________error esta en nulo:");
-				String listaEstatus = getEstatusRemesa(entidadUsuario, Integer.parseInt(opj));
-				
-				return listaEstatus;			
-				} else {
-
-				System.out.println(
-						"_______________vista--body-operacionesConError_____________________" + Jarray.toString());
-				// define the strings that will temporary store the data
-				String fecha, entidad, remesa;
-
-				// get the length of the json array
-				int limit = Jarray.length();
-
-				// datastore array of size limit
-				String dataStore[] = new String[limit];
-
-				for (int i = 0; i < limit; i++) {
-					JSONObject object = Jarray.getJSONObject(i);
-
-					fecha = object.getString("sFechaHora");
-					List<statusError> lista =userService.listaStatus(fecha.toString());
-					System.out.println("_______________userService.listaStatus_____________________: ");
-					model.addAttribute("status", lista);
-
-					System.out.println("_______________JSON DATA_____________________fecha: " + fecha);
-					System.out.println("_______________JSON DATA_____________________entidad: "+ session.getAttribute("entidad").toString());
-					System.out.println("_______________JSON DATA_____________________remesa: " + opj.toString());
-
-					// store the data into the array
-					dataStore[i] = " ## " + fecha + " ## " + session.getAttribute("entidad").toString() + " ## "
-							+ opj.toString() + " ## ";
-					opjeto.setEntidad(session.getAttribute("entidad").toString());
-					opjeto.setRemesa(opj.toString());
-					opjeto.setFecha(fecha.toString());
-					
-				}
-
-				// prove that the data was stored in the array
-				for (String content : dataStore) {
-					System.out.println("_______________dataStore_____________________ARRAY CONTENT:" + content);
-
-				}
-				opjeto.setError(Jarray.toString());
-				userService.register(opjeto);
-				
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.out.println(
-					"__________________________________________________________________________________________________null error IOException e"+ e.getCause().toString());
-
-		}
 		
 		String listaEstatus = getEstatusRemesa(entidadUsuario, Integer.parseInt(opj));
-		String errorGeoprocesamiento = "FALLO OPERACION 3 Revise";
 		
-		return "{\"error\":\""+errorGeoprocesamiento+"\",\"alejandro\":"+listaEstatus+"}";		}
+		String listaEstatusError = getEstatusError(entidadUsuario, Integer.parseInt(opj));
+		if (listaEstatusError==null||listaEstatusError.isEmpty()||listaEstatusError==""||listaEstatusError.length()<=0) {
+			String noHayERror = "no se ha registrado ningun error";
+			
+			return "{\"error\":\""+noHayERror+"\",\"alejandro\":"+listaEstatus+"}";
+		} else {
+			return "{\"error\":\""+listaEstatusError+"\",\"alejandro\":"+listaEstatus+"}";
+		}
+		
+	}
 
 	public String getEstatusRemesa(int entidad, int remesa) throws ParseException {
 
@@ -295,31 +238,125 @@ public class LoginController {
 		System.out.println("Estatus del servicio body : " + entity.getBody());
 		System.out.println("Estatus del servicio toString : " + entity.toString());
 		List<Integer> grafica = new ArrayList<Integer>();
-
+		
+	
 		if (entity.getStatusCode().value() == 200) {
-			String s = entity.getBody();
+			
 			JSONObject js = new JSONObject(entity.getBody());
-			System.out.println("Estatus del servicio : " + js.toString());
-			if (js != null || !js.isEmpty()) {
-				for (Object o : js.getJSONArray("operacionesEjecutadas")) {
-					JSONObject ca = (JSONObject) o;
-					JSONObject span = (JSONObject) ca.get("operaciones");
-					int idOp = span.getInt("idOperacion");
-					System.out.println(
-							"*************************************************************************[opj " + idOp);
-					grafica.add(idOp);
-				}
-
-				return grafica.toString();
-
-			} else {
+			if(js!=null||!js.isEmpty()) {
+			for (Object o : js.getJSONArray("operacionesEjecutadas")) {
+				
+				JSONObject ca = (JSONObject) o;
+				JSONObject span = (JSONObject) ca.get("operaciones");
+				int idOp = span.getInt("idOperacion");
+				grafica.add(idOp);
+				System.out
+				.println("*************************************************************************[operacionid"+idOp);
+			
+			}
+			
+			
+			
+			return grafica.toString();
+				
+			}else {
 				return null;
 			}
 		} else {
+			
+			
 			System.out.println("Estatus del servicio : " + entity.getStatusCode().toString());
-			return entity.getStatusCode().getReasonPhrase();
+			return entity.getStatusCode().getReasonPhrase() ;
 		}
 
 	}
+	public String getEstatusError(int entidad, int remesa) throws ParseException {
+		Date objDate = new Date();
+		 statusError opjeto=new statusError();
+		
+			// Mostrar la fecha y la hora usando toString ()
+			System.out.println(objDate.toString());
+			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			objDate.equals(dateFormat.format(objDate));
+		String requestUri = "http://localhost:8180/GenerarRemesa/dce/GenerarEntidad/status?entidad={entidad}&remesa={remesa}";
+		Map<String, String> urlParameters = new HashMap<>();
+		urlParameters.put("entidad", Integer.toString(entidad));
+		urlParameters.put("remesa", Long.toString(remesa));
 
+		RestTemplate template = new RestTemplate();
+		ResponseEntity<String> entity = template.getForEntity(requestUri, String.class, urlParameters);
+
+
+		List<String> grafica = new ArrayList<String>();
+	
+		
+		String string = entity.getBody();
+		if (entity.getStatusCode().value() == 200) {
+			JSONObject Jobject = new JSONObject(string);
+			JSONArray Jarray = Jobject.getJSONArray("operacionesConError");
+			if(Jarray.toString()!=null||!Jarray.toString().isEmpty()) {
+				System.out.println("_______________vista--body-operacionesConError_____________________" + Jarray.toString());
+				//define the strings that will temporary store the data
+				String fecha,err;
+
+				//get the length of the json array
+				int limit = Jarray.length();
+
+				//datastore array of size limit
+				String dataStore[] = new String[limit];
+
+				for (int i = 0; i < limit; i++) {
+				    JSONObject object     = Jarray.getJSONObject(i);
+				  
+				    fecha = object.getString("sFechaHora");
+				   err= object.getString("error");
+				  int enti=object.getInt("entidad");
+				  int reme=object.getInt("remesa");
+				    System.out.println("_______________JSON DATA_____________________fecha: "+fecha);
+				    System.out.println("_______________JSON DATA_____________________entidad: "+enti);
+				    System.out.println("_______________JSON DATA_____________________remesa: "+reme);
+				    System.out.println("_______________JSON DATA_____________________error: "+err);
+
+
+				    //store the data into the array
+				    dataStore[i] =  " ## " + fecha+" ## " + enti+" ## " +reme+" ## "+err+" ## ";
+				    opjeto.setEntidad(enti);
+				    opjeto.setRemesa(reme);
+					opjeto.setFecha(fecha.toString());
+				    opjeto.setError(err);
+				    if (opjeto==null||opjeto.toString().isEmpty()) {
+				    	  System.out.println("_______________insert_____________________antes del insert error:" +opjeto.toString());
+					} else {
+						userService.register(opjeto);
+					}
+				    
+				}
+				//prove that the data was stored in the array      
+				 for (String content : dataStore ) {
+					    System.out.println("_______________dataStore_____________________ARRAY CONTENT:" +content);
+					    grafica.add(content);
+				    }
+				 
+			
+			
+			
+			return grafica.toString();
+				
+			}else {
+				String var ="geoprocesamiento funcionando sin problemas";
+				grafica.add(var);
+				return grafica.toString();
+			}
+		} else {
+			
+			String var ="geoprocesamiento funcionando sin problemas____";
+			grafica.add(var);
+			return grafica.toString();
+		}
+		
+		
+	}
 }
+	
+
+

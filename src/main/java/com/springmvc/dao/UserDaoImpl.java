@@ -2,6 +2,7 @@ package com.springmvc.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;
@@ -215,15 +216,42 @@ public class UserDaoImpl implements UserDao {
 		 return jdbcTemplateuser.query(sql, new Object[] { entidad}, new UserMapper());
 	}
 	@Override
-	public List<statusError> listaStatus(String fecha) {
-		String sql = "SELECT * FROM public.statuserror where fecha= ?";
-		 return jdbcTemplatecontrol.query(sql, new Object[] { fecha}, new ErrorMapper());
+	public List<statusError> listaStatus() {
+		String sql = "SELECT distinct*  FROM public.statuserror where fecha = (SELECT MIN(fecha) from public.statuserror)and  fecha is not null  ";
+		 List<statusError> list= jdbcTemplatecontrol.query(sql, new RowMapper<statusError>() {
+
+				@Override
+				public statusError mapRow(ResultSet rs, int rowNum) throws SQLException {
+					statusError itera = new statusError();
+					itera.setEntidad(rs.getInt("entidad"));
+					itera.setRemesa(rs.getInt("remesa"));
+					itera.setFecha(rs.getString("fecha"));
+					itera.setError(rs.getString("error"));
+					
+
+					return itera;
+				}
+
+			});
+
+			return list;
+		 
+	
 	}
 	@Override
 	public int register(statusError status) {
 		String sql = "INSERT INTO public.statusError (entidad,remesa,fecha,error) VALUES (?,?,?,?)";
 		return jdbcTemplatecontrol.update(sql, new Object[] { status.getEntidad(),status.getRemesa(),status.getFecha(),status.getError()});
 
+	}
+
+	@Override
+	public statusError findByfecha(Date fecha) {
+	
+		String sql = "SELECT distinct * FROM public.statuserror where fecha is not null and fecha=?";
+		List<statusError> users = jdbcTemplatecontrol.query(sql,
+				new Object[] { fecha}, new ErrorMapper());
+		return users.size() > 0 ? users.get(0) : null;
 	}
 }
 
@@ -329,14 +357,13 @@ class RemesaFecha implements RowMapper<Fecha> {
 		return user;
 	}
 }
-
 //********************************************************************mapper de control(base  control)
 class ErrorMapper implements RowMapper<statusError> {
 
 	public statusError mapRow(ResultSet rs, int arg1) throws SQLException {
 		statusError itera = new statusError();
-		itera.setFecha(rs.getString("entidad"));
-		itera.setError(rs.getString("remesa"));
+		itera.setEntidad(rs.getInt("entidad"));
+		itera.setRemesa(rs.getInt("remesa"));
 		itera.setFecha(rs.getString("fecha"));
 		itera.setError(rs.getString("error"));
 		
