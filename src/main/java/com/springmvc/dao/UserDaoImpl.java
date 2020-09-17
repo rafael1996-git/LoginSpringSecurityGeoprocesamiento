@@ -246,11 +246,12 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public statusError findByfecha(String fecha) {
-	
-		String sql = "SELECT distinct * FROM public.statuserror where fecha is not null and fecha=?";
+	public statusError findByfecha(String error,String fecha) {
+		error = "%"+error+"%";
+		fecha = "%"+fecha+"%";
+		String sql = "SELECT distinct * FROM public.statuserror where fecha is not null and error like ? and fecha like ?";
 		List<statusError> users = jdbcTemplatecontrol.query(sql,
-				new Object[] { fecha}, new ErrorMapper());
+				new Object[] { error,fecha}, new ErrorMapper());
 		return users.size() > 0 ? users.get(0) : null;
 	}
 }

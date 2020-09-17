@@ -119,9 +119,7 @@ public class LoginController {
 		} else {
 			model.addObject("mensajerror", "¡");
 			model.setViewName("/users/Remesa");
-		}
-		System.out.println("USUARIO entidad______________________: " +listaPersonas.toString() );
-		
+		}		
 
 		
 		return model;
@@ -173,16 +171,12 @@ public class LoginController {
 				List<User> listaPersonas = userService.listaFiltrada(uControl.getEntidad());
 				request.setAttribute("lista", listaPersonas);
 				mav = new ModelAndView("/users/adminC");
-				System.out.println("USUARIO entidad______________________: " + uControl.getId_tipo_usuario());
-				System.out.println("USUARIO entidad______________________: " + uControl.getEntidad());
-				System.out.println("USUARIO VALIDO DE LOGIN CONTROL______________________: " + uControl.getCorreo());
 
 			} else if (uControl.getId_tipo_usuario() == 2) {
 				HttpSession session = request.getSession();
 				session.setAttribute("firstname", uControl.getCorreo());
 				request.setAttribute("lista", listaP);
 				mav = new ModelAndView("/users/admin");
-				System.out.println("USUARIO VALIDO DE LOGIN ADMIN:::::::::::::::::::::::::::: " + uControl.getCorreo());
 			} else {
 
 				mav = new ModelAndView("/users/login");
@@ -246,9 +240,6 @@ public class LoginController {
 		RestTemplate template = new RestTemplate();
 		ResponseEntity<String> entity = template.getForEntity(requestUri, String.class, urlParameters);
 
-		System.out.println("Estatus del servicio : " + entity.getStatusCodeValue());
-		System.out.println("Estatus del servicio body : " + entity.getBody());
-		System.out.println("Estatus del servicio toString : " + entity.toString());
 		List<Integer> grafica = new ArrayList<Integer>();
 		
 	
@@ -325,10 +316,7 @@ public class LoginController {
 				   err= object.getString("error");
 				  int enti=object.getInt("entidad");
 				  int reme=object.getInt("remesa");
-				    System.out.println("_______________JSON DATA_____________________fecha: "+fecha);
-				    System.out.println("_______________JSON DATA_____________________entidad: "+enti);
-				    System.out.println("_______________JSON DATA_____________________remesa: "+reme);
-				    System.out.println("_______________JSON DATA_____________________error: "+err);
+				 
 
 
 				    //store the data into the array
@@ -338,7 +326,7 @@ public class LoginController {
 					opjeto.setFecha(fecha);
 				    opjeto.setError(err);
 				   
-					statusError status=userService.findByfecha(fecha);
+					statusError status=userService.findByfecha(err,fecha);
 					if (status!=null) {
 					    System.out.println("_______________dataStore_____________________insert:" );
 
