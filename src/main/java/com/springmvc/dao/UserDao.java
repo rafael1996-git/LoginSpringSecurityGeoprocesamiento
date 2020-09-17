@@ -25,7 +25,7 @@ public interface UserDao {
 	public List<UserControl> findByUserControlAndPassword(String correo, String password);
 	public List<UserControl> findById_TipoUserAndPassword(String correo, String password ,int id_tipo_usuario);
 	public UserControl findBycorreo(String correo);
-	public statusError findByfecha(Date correo);
+	public statusError findByfecha(String correo);
 	public User findByUsercorreo(String correo);
 	public String  buscarAdmin() ;
 	public void delete(String correo);

@@ -155,21 +155,25 @@ function searchViaAjax() {
 				$('#msjError').html("<h1>el estatus devuelve nulo</h1> ");
 			}else{
 				 datos = JSON.parse(data);
-				if(datos.length==0){
+				 var alejandro = datos.alejandro;
+				 var errordata = datos.errordata;
+				if(alejandro.length==0){
 					$('#msjError').html("<h1>Para verificar el status de avance dr click en el evento Consulta</h1> ");
 				}else{
-					console.log("mayor a cero: ", datos.length);
-					document.getElementById("msjError").style.display = "none";
-					var alejandro = datos.alejandro;
-					var error = datos.error; 
+					console.log("mayor a cero: ", alejandro.length);
+					document.getElementById("msjError").style.display = "none"; 
 					dibujaCirculo(alejandro);
 					
-					console.log("menor a cero: ", datos.length);
-				}if (error===null||error===""||error.length==0) {
+					console.log("menor a cero: ", alejandro.length);
+
+				}if (errordata===null||!$.trim(errordata)||errordata.length==0) {
 					$('#msjErrorrafa').html("<h1>el estatus error devuelve nulo</h1> ");
 				} else {
-					document.getElementById("msjError").style.display = "none";
-					pintarError(error);
+					document.getElementById("msjErrorrafa").style.display = "none";
+					pintarError(errordata);
+					function pintarError(errordata){
+						alert(errordata);
+					}
 				}
 			}
 	
@@ -186,9 +190,7 @@ function searchViaAjax() {
 
 }
 
-function pintarError(error){
-	alert(error);
-}
+
 
 function dibujaCirculo(data) {
 

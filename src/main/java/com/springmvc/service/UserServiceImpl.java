@@ -140,7 +140,7 @@ public List<statusError> listaStatus() {
 
 
 @Override
-public statusError findByfecha(Date fecha) {
+public statusError findByfecha(String fecha) {
 	// TODO Auto-generated method stub
 	return userDao.findByfecha(fecha);
 }

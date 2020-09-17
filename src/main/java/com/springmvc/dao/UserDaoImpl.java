@@ -217,7 +217,7 @@ public class UserDaoImpl implements UserDao {
 	}
 	@Override
 	public List<statusError> listaStatus() {
-		String sql = "SELECT distinct*  FROM public.statuserror where fecha = (SELECT MIN(fecha) from public.statuserror)and  fecha is not null  ";
+		String sql = "SELECT distinct*  FROM public.statuserror where fecha = (SELECT MAX(fecha) from public.statuserror)and  fecha is not null  ";
 		 List<statusError> list= jdbcTemplatecontrol.query(sql, new RowMapper<statusError>() {
 
 				@Override
@@ -246,7 +246,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public statusError findByfecha(Date fecha) {
+	public statusError findByfecha(String fecha) {
 	
 		String sql = "SELECT distinct * FROM public.statuserror where fecha is not null and fecha=?";
 		List<statusError> users = jdbcTemplatecontrol.query(sql,

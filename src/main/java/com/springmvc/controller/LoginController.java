@@ -103,17 +103,27 @@ public class LoginController {
 		Date objDate = new Date();
 		// Mostrar la fecha y la hora usando toString ()
 		System.out.println(objDate.toString());
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		objDate.equals(dateFormat.format(objDate));
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		objDate.equals("__________________________________________"+dateFormat.format(objDate));
+		System.out.println(dateFormat.format(objDate));
 		HttpSession session = request.getSession();
 		int entidadUsuario = (int) session.getAttribute("entidad");
+		
+
 		List<statusError> listaPersonas = userService.listaStatus();
+		
+		if (listaPersonas!=null) {
+			request.setAttribute("lista",listaPersonas );
+
+			model.setViewName("/users/mostrarAvance");
+		} else {
+			model.addObject("mensajerror", "¡");
+			model.setViewName("/users/Remesa");
+		}
 		System.out.println("USUARIO entidad______________________: " +listaPersonas.toString() );
 		
 
-		request.setAttribute("lista",listaPersonas );
-
-		model.setViewName("/users/mostrarAvance");
+		
 		return model;
 
 	}
@@ -203,6 +213,7 @@ public class LoginController {
 			System.out.println(objDate.toString());
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 			objDate.equals(dateFormat.format(objDate));
+			System.out.println(dateFormat.format(objDate));
 		HttpSession session = reques.getSession();
 		int id = (int) session.getAttribute("id");
 		int entidadUsuario = (int) session.getAttribute("entidad");
@@ -217,9 +228,10 @@ public class LoginController {
 		if (listaEstatusError==null||listaEstatusError.isEmpty()||listaEstatusError==""||listaEstatusError.length()<=0) {
 			String noHayERror = "no se ha registrado ningun error";
 			
-			return "{\"error\":\""+noHayERror+"\",\"alejandro\":"+listaEstatus+"}";
+			return "{\"errordata\":\""+noHayERror+"\",\"alejandro\":"+listaEstatus+"}";
 		} else {
-			return "{\"error\":\""+listaEstatusError+"\",\"alejandro\":"+listaEstatus+"}";
+			String hayERror = "se ha registrado un  error";
+			return "{\"errordata\":\""+listaEstatusError.toString()+"\",\"alejandro\":"+listaEstatus+"}";
 		}
 		
 	}
@@ -270,14 +282,15 @@ public class LoginController {
 		}
 
 	}
+	@SuppressWarnings("null")
 	public String getEstatusError(int entidad, int remesa) throws ParseException {
-		Date objDate = new Date();
 		 statusError opjeto=new statusError();
-		
+		 Date objDate = new Date();
 			// Mostrar la fecha y la hora usando toString ()
 			System.out.println(objDate.toString());
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 			objDate.equals(dateFormat.format(objDate));
+			System.out.println(dateFormat.format(objDate));
 		String requestUri = "http://localhost:8180/GenerarRemesa/dce/GenerarEntidad/status?entidad={entidad}&remesa={remesa}";
 		Map<String, String> urlParameters = new HashMap<>();
 		urlParameters.put("entidad", Integer.toString(entidad));
@@ -319,22 +332,28 @@ public class LoginController {
 
 
 				    //store the data into the array
-				    dataStore[i] =  " ## " + fecha+" ## " + enti+" ## " +reme+" ## "+err+" ## ";
+				    dataStore[i] =  " ## " + fecha+" ## " + enti+" ## " +reme+" ## ";
 				    opjeto.setEntidad(enti);
 				    opjeto.setRemesa(reme);
-					opjeto.setFecha(fecha.toString());
+					opjeto.setFecha(fecha);
 				    opjeto.setError(err);
-				    if (opjeto==null||opjeto.toString().isEmpty()) {
-				    	  System.out.println("_______________insert_____________________antes del insert error:" +opjeto.toString());
-					} else {
-						userService.register(opjeto);
-					}
+				   
+					statusError status=userService.findByfecha(fecha);
+					if (status!=null) {
+					    System.out.println("_______________dataStore_____________________insert:" );
+
+					} else if (opjeto!=null){
+					userService.register(opjeto);
+						
+					}		
+				    System.out.println("_______________dataStore_____________________insert-opjeto:" );
+
 				    
 				}
 				//prove that the data was stored in the array      
 				 for (String content : dataStore ) {
 					    System.out.println("_______________dataStore_____________________ARRAY CONTENT:" +content);
-					    grafica.add(content);
+					   grafica.add(content.toString());
 				    }
 				 
 			

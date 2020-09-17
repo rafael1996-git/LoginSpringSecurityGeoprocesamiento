@@ -132,7 +132,6 @@ public class ResController {
 					System.out.println(
 							"*************************************************************************[HEADER2 : ");
 
-					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!inserta : " + opjRemesa);
 					List<User> listaPersonas =userService.listaFiltrada(entidad);
 					reques.setAttribute("lista", listaPersonas);
 					model.setViewName("/users/Remesa");

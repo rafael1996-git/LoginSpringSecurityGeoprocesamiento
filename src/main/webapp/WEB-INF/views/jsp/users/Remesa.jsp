@@ -64,8 +64,8 @@ color: black;
    				    </div>
 			  
 			 </c:if>
-			 <c:if test="${not empty mensaje3}">
-			  		<div class="alert alert-info">${mensaje3}
+			 <c:if test="${not empty mensajerror}">
+			  		<div class="alert alert-info">${mensajerror}
     					<a href="${urlAvance}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
    					 	<strong>SUCCESS!</strong>proceso funcionando sin error , verifique denuevo la consulta de avance ene el geoprocesamiento de su grafica.
    					</div>
