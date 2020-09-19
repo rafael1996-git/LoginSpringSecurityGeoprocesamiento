@@ -51,12 +51,9 @@ public class ResController {
 		objDate.equals(dateFormat.format(objDate));
 		System.out.println(dateFormat.format(objDate));
 		try {
-			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!UUID : " + token);
 			HttpSession session = reques.getSession();
 			int id = (int) session.getAttribute("id");
 			int entidad = (int) session.getAttribute("entidad");
-			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!id : " + id);
-			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!entidad : " + entidad);
 			String opj;
 			opj = userService.buscarRemesa();
 			String anio = opj.substring(0,4);
@@ -64,7 +61,6 @@ public class ResController {
 			System.out.println(anio);
 			System.out.println(semana);
 
-			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!remesa : " + opj.toString());
 			List<info> var =userService.validate( session.getAttribute("entidad").toString(), anio, semana);
 			System.out.println("-----------antes del if"+""+""+session.getAttribute("entidad").toString()+""+ anio+""+semana);
 			
@@ -78,8 +74,6 @@ public class ResController {
 					opjRemesa.setId_usuario(id);
 					opjRemesa.setEntidad_remesa(opj.toString());
 					userService.regisRemesa(opjRemesa);
-					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!inserta 01: " + opjRemesa);
-
 					
 					//****************************************************insertamos a la tabla control
 					Control opjControl=new Control();
@@ -93,12 +87,6 @@ public class ResController {
 						opjControl.setId_status(1);
 						userService.register(opjControl);
 					}
-					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!inserta  Control: " + opjControl);
-
-					
-
-
-					System.out.println("_______________________________________________[entidad : "+session.getAttribute("entidad").toString());
 
 					System.out
 							.println("*************************************************************************[HEADER : ");
@@ -116,9 +104,6 @@ public class ResController {
 						Response respons = client.newCall(request).execute();
 						String stringHeader = respons.headers().toString();
 						String string = respons.body().string();
-						System.out.println("_________________respuesta-coneccion-code___________________" + respons);
-						System.out.println("_______________vista-previa-body_____________________" + string);
-						System.out.println("________________string-Header____________________" + stringHeader);
 					} catch (IOException e) {
 						System.err.println("Failed scraping");
 						List<User> listaPersonas =userService.listaFiltrada(entidad);

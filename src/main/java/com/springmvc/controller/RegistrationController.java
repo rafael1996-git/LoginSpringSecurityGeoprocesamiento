@@ -75,7 +75,6 @@ public class RegistrationController {
 			User user = userService.findByUsercorreo(correo);
 			System.out.println("user: "+user);
 			int id=user.getId();
-			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨: "+id);
 			String email=user.getCorreo();
 			String nombre=user.getNombre();
 			String ape_pat=user.getApe_pat();
@@ -89,7 +88,6 @@ public class RegistrationController {
 
 			if (control!=null) {
 				
-				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!no se puede insertar por que el usuario ya esta registrado: ");
 
 				List<User> listaPersonas =userService.list();
 				request.setAttribute("lista", listaPersonas);
@@ -109,8 +107,6 @@ public class RegistrationController {
 				regis.setCorreo(email);
 				regis.setPassword(password);
 				userService.register(regis);
-				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!inserta 01: " + email);
-				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!inserta 01: " + id);
 				List<User> listaPersonas =userService.list();
 				request.setAttribute("lista", listaPersonas);
 				model.addObject("mensage","¡");
@@ -121,7 +117,6 @@ public class RegistrationController {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Exception:"+e.getCause().toString());
 			List<User> listaPersonas =userService.list();
 			request.setAttribute("lista", listaPersonas);
 			model.addObject("Exception","¡"+e.getCause().toString());

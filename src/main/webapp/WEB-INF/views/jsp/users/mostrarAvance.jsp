@@ -77,6 +77,7 @@ p {
 					<div  id="leyenda"></div>
 					<div  id="msjError"></div>
 					<div  id="msjErrorrafa"></div>
+					<div  id="msjErrorrafa2"></div>
 				</div>
 				
 			
@@ -104,7 +105,7 @@ p {
 							</tr>
 						</thead>
 						<tbody style="height: 10px !important; overflow: scroll;">
-							<c:forEach var="dato" items="${lista}">
+							<c:forEach var="dato" items="${listado}">
 								<tr>
 							     	<td>${dato.entidad}</td>
 									<td>${dato.remesa}</td>
@@ -152,38 +153,41 @@ function searchViaAjax() {
 		success : function(data) {
 			console.log("SUCCESS: ", data);
 			var datos=0;
-			if(data === 'undefined'||data===null||data===""){
-				console.log("data no esta definido o es nulo");
-				$('#msjError').html("<h1>el estatus devuelve nulo</h1> ");
-			}else{
-				 datos = JSON.parse(data);
+			datos = JSON.parse(data);
+		
 				 var alejandro = datos.alejandro;
 				 var errordata = datos.errordata;
-				if(alejandro.length==0){
-					$('#msjError').html("<h1>Para verificar el status de avance dr click en el evento Consulta</h1> ");
-				}else{
+				if(alejandro.length>=0){
+					
+					
 					console.log("mayor a cero: ", alejandro.length);
 					document.getElementById("msjError").style.display = "none"; 
 					dibujaCirculo(alejandro);
-					
 					console.log("menor a cero: ", alejandro.length);
+					
 
-				}if (errordata===null||!$.trim(errordata)||errordata.length==0) {
-					$('#msjErrorrafa').html("<h1>el estatus error devuelve nulo</h1> ");
-				} else {
+				}else{
+					$('#msjError').html("<h1> verifica el status,  da click en el evento Consulta</h1> ");
+					dibujaCirculo(alejandro);
+
+				}if (errordata.length>=0) {
+					console.log("mayor a cero-rafa: ", errordata.length);
 					document.getElementById("msjErrorrafa").style.display = "none";
-					pintarError(errordata);
-					function pintarError(errordata){
-						alert(errordata);
-					}
+					$('#msjErrorrafa').html("<h1>SE ha encontrado un Error checkout</h1> ");
+				
+					
+				} else {
+					console.log("menor a cero-rafa: ", errordata.length);
+
+					$('#msjErrorrafa2').html("<h1>el estatus error devuelve nulo</h1> ");
+
 				}
-			}
+			
 	
 		},
 		error : function(e) {
 			console.log("ERROR: ", e);
 			$('#msjError').html("<h1>Web service esta fuera de servicio contacte</h1> ");
-// 			clearcanvas();
 		},
 		done : function(e) {
 			console.log("DONE");
@@ -191,7 +195,6 @@ function searchViaAjax() {
 	});
 
 }
-
 
 
 function dibujaCirculo(data) {

@@ -132,17 +132,17 @@ public int register(statusError status) {
 
 
 @Override
-public List<statusError> listaStatus() {
+public List<statusError> listaStatus(String fecha) {
 	// TODO Auto-generated method stub
-	return userDao.listaStatus();
+	return userDao.listaStatus(fecha);
 }
 
 
 
 @Override
-public statusError findByfecha(String error,String fecha) {
+public statusError findByfecha(String fecha,String error) {
 	// TODO Auto-generated method stub
-	return userDao.findByfecha(error,fecha);
+	return userDao.findByfecha(fecha,error);
 }
 
 

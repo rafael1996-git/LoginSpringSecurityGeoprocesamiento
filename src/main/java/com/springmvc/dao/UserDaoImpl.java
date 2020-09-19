@@ -216,27 +216,11 @@ public class UserDaoImpl implements UserDao {
 		 return jdbcTemplateuser.query(sql, new Object[] { entidad}, new UserMapper());
 	}
 	@Override
-	public List<statusError> listaStatus() {
-		String sql = "SELECT distinct*  FROM public.statuserror where fecha = (SELECT MAX(fecha) from public.statuserror)and  fecha is not null  ";
-		 List<statusError> list= jdbcTemplatecontrol.query(sql, new RowMapper<statusError>() {
-
-				@Override
-				public statusError mapRow(ResultSet rs, int rowNum) throws SQLException {
-					statusError itera = new statusError();
-					itera.setEntidad(rs.getInt("entidad"));
-					itera.setRemesa(rs.getInt("remesa"));
-					itera.setFecha(rs.getString("fecha"));
-					itera.setError(rs.getString("error"));
-					
-
-					return itera;
-				}
-
-			});
-
-			return list;
-		 
-	
+	public List<statusError> listaStatus(String fecha) {
+		fecha = "%"+fecha+"%";
+		String sql = "SELECT distinct*  FROM public.statuserror where fecha = (SELECT MAX(fecha) from public.statuserror) and fecha like ? ";
+		 return jdbcTemplatecontrol.query(sql, new Object[] { fecha}, new ErrorMapper());
+		
 	}
 	@Override
 	public int register(statusError status) {

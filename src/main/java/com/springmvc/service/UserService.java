@@ -19,14 +19,14 @@ public interface UserService {
 	public List<info> validate(String entidad,String anio,String semana);
 	public List<User> list();
 	public List<User> listaFiltrada(int entidad);
-	public List<statusError> listaStatus();
+	public List<statusError> listaStatus(String fecha);
 	public List<UserControl> lista();
 	public String  buscarRemesa() ;
 	public String  buscarAdmin();
 	public List<UserControl> findByUserControlAndPassword(String correo, String password);
 	public List<UserControl> findById_TipoUserAndPassword(String correo, String password ,int id_tipo_usuario);
 	public UserControl findBycorreo(String correo);
-	public statusError findByfecha(String error,String fecha);
+	public statusError findByfecha(String fecha,String error);
 	public User findByUsercorreo(String correo);
 	public void delete(String correo);
 	public void deleteAut(String token);
