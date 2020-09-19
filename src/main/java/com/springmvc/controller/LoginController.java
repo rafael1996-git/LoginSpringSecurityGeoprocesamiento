@@ -100,26 +100,26 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/statusError", method = RequestMethod.GET)
-	public ModelAndView statusPage(HttpServletRequest request) throws IOException {
+	public ModelAndView statusPage(HttpServletRequest request){
 		ModelAndView model = new ModelAndView();
-		
-		 LocalDate myObj = LocalDate.now();  // Create a date object
-		    System.out.println(myObj); 
-						
-						List<statusError>  listaPersonas = userService.listaStatus(myObj.toString());
+			 LocalDate myObj = LocalDate.now();  // Create a date object
+			    System.out.println(myObj); 
+				List<statusError>  listaPersonas = userService.listaStatus(myObj.toString());
 
-						if (listaPersonas!=null) {
-							request.setAttribute("listado", listaPersonas);
-							System.out.println("_______________date_____________________insertdata:"+myObj.toString());
-							model.setViewName("/users/mostrarAvance");
-						} else {
-							model.addObject("mensajerror", "¡");
-							model.setViewName("/users/Remesa");
-						}
+							statusError buscafecha=userService.buscarfecha(myObj.toString());
+							if (buscafecha!=null) {
+								
+								request.setAttribute("listado", listaPersonas);
+								System.out.println("_______________date_____________________insertdata:"+myObj.toString());
+								model.setViewName("/users/mostrarAvance");
+								
+							} else {
+								System.out.println("_______________date_____________________");
 
-		
-		
-		
+								model.addObject("mensajerror", "¡");
+								model.setViewName("/users/Remesa");
+							}
+							System.out.println("_______________data_____________________opjeto:");
 
 		return model;
 

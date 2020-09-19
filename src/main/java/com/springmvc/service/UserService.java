@@ -27,6 +27,7 @@ public interface UserService {
 	public List<UserControl> findById_TipoUserAndPassword(String correo, String password ,int id_tipo_usuario);
 	public UserControl findBycorreo(String correo);
 	public statusError findByfecha(String fecha,String error);
+	public statusError buscarfecha(String fecha);
 	public User findByUsercorreo(String correo);
 	public void delete(String correo);
 	public void deleteAut(String token);

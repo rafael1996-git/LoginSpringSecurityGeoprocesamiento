@@ -147,6 +147,14 @@ public statusError findByfecha(String fecha,String error) {
 
 
 
+@Override
+public statusError buscarfecha(String fecha) {
+	// TODO Auto-generated method stub
+	return userDao.buscarfecha(fecha);
+}
+
+
+
 
 
 }

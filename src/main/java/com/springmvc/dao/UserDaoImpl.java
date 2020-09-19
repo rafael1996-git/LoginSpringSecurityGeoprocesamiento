@@ -2,7 +2,6 @@ package com.springmvc.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;
@@ -218,7 +217,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public List<statusError> listaStatus(String fecha) {
 		fecha = "%"+fecha+"%";
-		String sql = "SELECT distinct*  FROM public.statuserror where fecha = (SELECT MAX(fecha) from public.statuserror) and fecha like ? ";
+		String sql = "SELECT distinct*  FROM public.statuserror where fecha like ? ORDER BY fecha DESC LIMIT 1";
 		 return jdbcTemplatecontrol.query(sql, new Object[] { fecha}, new ErrorMapper());
 		
 	}
@@ -236,6 +235,15 @@ public class UserDaoImpl implements UserDao {
 		String sql = "SELECT distinct * FROM public.statuserror where fecha is not null and error like ? and fecha like ?";
 		List<statusError> users = jdbcTemplatecontrol.query(sql,
 				new Object[] { error,fecha}, new ErrorMapper());
+		return users.size() > 0 ? users.get(0) : null;
+	}
+
+	@Override
+	public statusError buscarfecha(String fecha) {
+		fecha = "%"+fecha+"%";
+		String sql = "SELECT distinct * FROM public.statuserror where  fecha like ? ORDER BY fecha DESC LIMIT 1";
+		List<statusError> users = jdbcTemplatecontrol.query(sql,
+				new Object[] { fecha}, new ErrorMapper());
 		return users.size() > 0 ? users.get(0) : null;
 	}
 }
