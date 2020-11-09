@@ -3,6 +3,7 @@ package com.springmvc.model;
 import java.util.Date;
 
 public class statusError {
+	
 	private int entidad;
 	private int remesa;
 	private String fecha;

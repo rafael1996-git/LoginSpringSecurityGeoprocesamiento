@@ -26,6 +26,41 @@
 		<property name="jdbcTemplateuser" ref="jdbcTemplate1" />
 		<property name="jdbcTemplatecontrol" ref="jdbcTemplate2" />
 		<property name="jdbcTemplatebged17" ref="jdbcTemplate3" />
+		<property name="jdbcTemplatebged09" ref="jdbcTemplate4" />
+		<property name="jdbcTemplatebged14" ref="jdbcTemplate5" />
+		<property name="jdbcTemplatebged15" ref="jdbcTemplate6" />
+		<property name="jdbcTemplatebged30" ref="jdbcTemplate7" />
+		
+		<property name="jdbcTemplatebged01" ref="jdbcTemplate8"/>
+		<property name="jdbcTemplatebged02" ref="jdbcTemplate9" />
+		<property name="jdbcTemplatebged03" ref="jdbcTemplate10" />
+		<property name="jdbcTemplatebged04" ref="jdbcTemplate11" />
+		<property name="jdbcTemplatebged05" ref="jdbcTemplate12" />
+		<property name="jdbcTemplatebged06" ref="jdbcTemplate13" />
+		<property name="jdbcTemplatebged07" ref="jdbcTemplate14" />
+		
+		<property name="jdbcTemplatebged08" ref="jdbcTemplate15"/>
+		<property name="jdbcTemplatebged10" ref="jdbcTemplate16" />
+		<property name="jdbcTemplatebged11" ref="jdbcTemplate17" />
+		<property name="jdbcTemplatebged12" ref="jdbcTemplate18" />
+		<property name="jdbcTemplatebged13" ref="jdbcTemplate19" />
+		<property name="jdbcTemplatebged16" ref="jdbcTemplate20" />
+		<property name="jdbcTemplatebged18" ref="jdbcTemplate21" />
+		
+		<property name="jdbcTemplatebged19" ref="jdbcTemplate22"/>
+		<property name="jdbcTemplatebged20" ref="jdbcTemplate23" />
+		<property name="jdbcTemplatebged21" ref="jdbcTemplate24" />
+		<property name="jdbcTemplatebged22" ref="jdbcTemplate25" />
+		<property name="jdbcTemplatebged23" ref="jdbcTemplate26" />
+		<property name="jdbcTemplatebged24" ref="jdbcTemplate27" />
+		<property name="jdbcTemplatebged25" ref="jdbcTemplate28" />
+		
+		<property name="jdbcTemplatebged26" ref="jdbcTemplate29"/>
+		<property name="jdbcTemplatebged27" ref="jdbcTemplate30" />
+		<property name="jdbcTemplatebged28" ref="jdbcTemplate31" />
+		<property name="jdbcTemplatebged29" ref="jdbcTemplate32" />
+		<property name="jdbcTemplatebged31" ref="jdbcTemplate33" />
+		<property name="jdbcTemplatebged32" ref="jdbcTemplate34" />
 	</bean>
 
 	<bean id="jdbcTemplate1"
@@ -47,14 +82,266 @@
 			<ref bean="dataSource3" />
 		</constructor-arg>
 	</bean>
+	
+	<bean id="jdbcTemplate4"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource4" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate5"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource5" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate6"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource6" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate7"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource7" />
+		</constructor-arg>
+	</bean>
+	
+	<bean id="jdbcTemplate8"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource8" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate9"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource9" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate10"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource10" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate11"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource11" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate12"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource12" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate13"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource13" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate14"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource14" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate15"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource15" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate16"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource16" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate17"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource17" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate18"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource18" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate19"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource19" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate20"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource20" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate21"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource21" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate22"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource22" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate23"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource23" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate24"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource24" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate25"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource25" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate26"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource26" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate27"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource27" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate28"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource28" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate29"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource29" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate30"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource30" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate31"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource31" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate32"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource32" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate33"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource33" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplate34"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource34" />
+		</constructor-arg>
+	</bean>
 	<context:component-scan
 		base-package="com.springmvc.security.filter" />
-	<jee:jndi-lookup id="dataSource"
+		<jee:jndi-lookup id="dataSource"
 		jndi-name="java:jboss/datasources/usuarios17"></jee:jndi-lookup>
-	<jee:jndi-lookup id="dataSource2"
+		<jee:jndi-lookup id="dataSource2"
 		jndi-name="java:jboss/datasources/controldb"></jee:jndi-lookup>
-	<jee:jndi-lookup id="dataSource3"
+		<jee:jndi-lookup id="dataSource3"
 		jndi-name="java:jboss/datasources/bged17db"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource4"
+		jndi-name="java:jboss/datasources/bged09"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource5"
+		jndi-name="java:jboss/datasources/bged14"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource6"
+		jndi-name="java:jboss/datasources/bged15"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource7"
+		jndi-name="java:jboss/datasources/bged30"></jee:jndi-lookup>
+		
+		<jee:jndi-lookup id="dataSource8"
+		jndi-name="java:jboss/datasources/bged01"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource9"
+		jndi-name="java:jboss/datasources/bged02"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource10"
+		jndi-name="java:jboss/datasources/bged03"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource11"
+		jndi-name="java:jboss/datasources/bged04"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource12"
+		jndi-name="java:jboss/datasources/bged05"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource13"
+		jndi-name="java:jboss/datasources/bged06"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource14"
+		jndi-name="java:jboss/datasources/bged07"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource15"
+		jndi-name="java:jboss/datasources/bged08"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource16"
+		jndi-name="java:jboss/datasources/bged10"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource17"
+		jndi-name="java:jboss/datasources/bged11"></jee:jndi-lookup>
+			<jee:jndi-lookup id="dataSource18"
+		jndi-name="java:jboss/datasources/bged12"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource19"
+		jndi-name="java:jboss/datasources/bged13"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource20"
+		jndi-name="java:jboss/datasources/bged16"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource21"
+		jndi-name="java:jboss/datasources/bged18"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource22"
+		jndi-name="java:jboss/datasources/bged19"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource23"
+		jndi-name="java:jboss/datasources/bged20"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource24"
+		jndi-name="java:jboss/datasources/bged21"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource25"
+		jndi-name="java:jboss/datasources/bged22"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource26"
+		jndi-name="java:jboss/datasources/bged23"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource27"
+		jndi-name="java:jboss/datasources/bged24"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource28"
+		jndi-name="java:jboss/datasources/bged25"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource29"
+		jndi-name="java:jboss/datasources/bged26"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource30"
+		jndi-name="java:jboss/datasources/bged27"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource31"
+		jndi-name="java:jboss/datasources/bged28"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource32"
+		jndi-name="java:jboss/datasources/bged29"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource33"
+		jndi-name="java:jboss/datasources/bged31"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource34"
+		jndi-name="java:jboss/datasources/bged32"></jee:jndi-lookup>
+		
 
 <!-- <mvc:resources mapping="/css/**" location="/WEB-INF/resources/css/"/> -->
 <mvc:resources mapping="/resources/**" location="/resources/"/>

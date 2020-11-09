@@ -7,7 +7,6 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Instituto Nacional Electoral</title>
-
 <spring:url value="/resources/core/css/hello.css" var="coreCss" />
 <spring:url value="/resources/css/bootstrap.min.css" var="bootstrapCss" />
 
@@ -19,9 +18,8 @@
 	type="text/css" />
 </head>
 <body>
-	<spring:url value="welcome.do" var="urlWelcome" />
-	<spring:url value="remesa" var="urlAddRemesa" />
-	<spring:url value="Avance.do" var="urlAvance" />
+	<spring:url value="MultiProcesos.do" var="urlWelcome" />
+	<spring:url value="MultiAvance.do" var="urlmultiAvance" />
 	
 	<spring:url value="/logout" var="logoutUrl" />
 
@@ -42,10 +40,7 @@
 				<li class="active"><a class="navbar-brand" ></a></li>
 				<li class="active"><a class="navbar-brand" href="${urlWelcome}"><span
 						class="label label-default"> Inicio</span></a></li>
-				<li class="active"><a class="navbar-brand"
-					href="${urlAddRemesa}"><span
-						class="label label-default">Generar Remesa</span></a></li>
-				<li class="active"><a class="navbar-brand" href="${urlAvance}"><span
+				<li class="active"><a class="navbar-brand" href="${urlmultiAvance}"><span
 						class="label label-default">Mostrar Avance </span></a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
@@ -65,6 +60,7 @@
 
 
 </body>
+
 </html>
 
 

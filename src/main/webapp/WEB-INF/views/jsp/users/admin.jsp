@@ -71,7 +71,7 @@ tr.header {
 			 	<c:if test="${not empty msg1}">
 			  		<div class="alert alert-info">${msg1}
     					<a href="${urlWelcome}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-   					 	<strong>ERROR!</strong>
+   					 	<strong>ERROR!</strong>EL usuario generador de Remesa aun es referenciado por la tabla control.
    					</div>
 			  
 			 	</c:if>

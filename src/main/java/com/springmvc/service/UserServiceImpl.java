@@ -155,6 +155,262 @@ public statusError buscarfecha(String fecha) {
 
 
 
+@Override
+public List<info> validate09(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate09(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate14(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate14(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate15(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate15(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate30(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate30(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate01(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate01(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate02(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate02(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate03(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate03(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate04(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate04(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate05(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate05(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate06(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate06(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate07(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate07(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate08(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate08(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate10(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate10(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate11(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate11(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate12(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate12(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate13(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate13(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate16(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate16(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate17(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate17(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate18(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate18(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate19(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate19(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate20(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate20(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate21(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate21(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate22(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate22(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate23(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate23(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate24(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate24(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate25(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate25(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate26(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate26(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate27(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate27(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate28(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate28(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate29(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate29(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate31(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate31(entidad, anio, semana);
+}
+
+
+
+@Override
+public List<info> validate32(String entidad, String anio, String semana) {
+	// TODO Auto-generated method stub
+	return userDao.validate32(entidad, anio, semana);
+}
+
+
+
 
 
 }

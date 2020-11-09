@@ -10,8 +10,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,7 +22,6 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,17 +30,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fasterxml.uuid.Generators;
-import com.springmvc.model.Remesa;
+import com.springmvc.model.Numero;
 import com.springmvc.model.User;
 import com.springmvc.model.UserControl;
 import com.springmvc.model.statusError;
 import com.springmvc.service.UserService;
-
-import okhttp3.HttpUrl;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 @RestController
 public class LoginController {
@@ -95,6 +86,25 @@ public class LoginController {
 		request.setAttribute("lista", listaPersonas);
 
 		model.setViewName("/users/adminC");
+		return model;
+
+	}
+	@RequestMapping(value = "/MultiAvance", method = RequestMethod.GET)
+	public ModelAndView MultiAvancePage() {
+
+		ModelAndView model = new ModelAndView();
+		// To do something
+		model.setViewName("/users/MultiAvance");
+
+		return model;
+
+	}
+	@RequestMapping("/MultiProcesos")
+	public ModelAndView MultiProcesosPage(HttpServletRequest request) throws IOException {
+		ModelAndView model = new ModelAndView();
+		Numero numopj=new Numero();
+		model.addObject("valor", numopj);
+		model.setViewName("/users/multiprocesos");
 		return model;
 
 	}
@@ -176,10 +186,21 @@ public class LoginController {
 				session.setAttribute("firstname", uControl.getCorreo());
 				request.setAttribute("lista", listaP);
 				mav = new ModelAndView("/users/admin");
-			} else {
-
+			} else if (uControl.getId_tipo_usuario() == 3) {
+				Numero numopj=new Numero();
+				request.setAttribute("valor", numopj);
+				HttpSession session = request.getSession();
+				session.setAttribute("firstname", uControl.getCorreo());
+				session.setAttribute("id", uControl.getId_usuario());
+				session.setAttribute("entidad", uControl.getEntidad());
+				session.setAttribute("tipo", uControl.getId_tipo_usuario());
+				mav = new ModelAndView("/users/multiprocesos");
+				
+				
+			}else {
 				mav = new ModelAndView("/users/login");
 				mav.addObject("error", "Invalid username and password!");
+				
 			}
 
 		} catch (UsernameNotFoundException ex) {
@@ -217,10 +238,7 @@ public class LoginController {
 
 		String listaEstatusError = getEstatusError(entidadUsuario, Integer.parseInt(opj));
 
-		String hayERror = "se ha registrado un  error";
 		return "{\"errordata\":" + listaEstatusError.toString() + ",\"alejandro\":" + listaEstatus + "}";
-
-//		return "{\"errordata\":\"" + listaEstatusError.toString() + "\",\"alejandro\":" + listaEstatus + "}";
 
 	}
 
@@ -288,34 +306,39 @@ public class LoginController {
 			String fecha, err;
 			int limit = Jarray.length();
 			String dataStore[] = new String[limit];
+			
 			for (int i = 0; i < limit; i++) {
 				JSONObject object = Jarray.getJSONObject(i);
 
+				JSONObject ca = (JSONObject) object;
+				JSONObject span = (JSONObject) ca.get("operaciones");
+				int idOp = span.getInt("idOperacion");
 				fecha = object.getString("sFechaHora");
 				err = object.getString("error");
 				int enti = object.getInt("entidad");
 				int reme = object.getInt("remesa");
-				dataStore[i] = "{\"iden\":\"" + enti + "\",\" idre\" :\"" + reme + "\",\"idfec\":\""+fecha+"\",\"iderr\":\""+fecha+"\"}";
 				opjeto.setEntidad(enti);
 				opjeto.setRemesa(reme);
 				opjeto.setFecha(fecha);
 				opjeto.setError(err);
-				grafica.add(err.toString());
 				statusError status = userService.findByfecha(err.toString(), fecha.toString());
 				if (status != null) {
-					System.out.println("_______________dataStore_____________________insert:");
+					System.out.println("_______________idoperacion_____________________insert:"+idOp);
 
 				} else if (opjeto != null) {
 					userService.register(opjeto);
 			
 				}
 				System.out.println("_______________dataStore_____________________insert-opjeto:"+err.toString());
+				String var="Se ha Registrado un Error en la IdOperacion ("+idOp+") de la Entidad ( "+enti+") con la Fecha ( "+fecha+") lo cual se Recomienda Consultar la Tabla StatusError de la Base de control";
+				dataStore[i] = "{\"iden\":\"" + enti +"\",\"idre\":\""+reme+"\",\"idfe\":\""+fecha+"\",\"error\":\""+var.toString()+"\"}";
 
 			}
+
 			// prove that the data was stored in the array
 			for (String content : dataStore) {
 				System.out.println("_______________dataStore_____________________ARRAY CONTENT:" + content);
-				
+			grafica.add(content);	
 			}
 			
 			return grafica.toString();

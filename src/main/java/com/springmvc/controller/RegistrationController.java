@@ -145,7 +145,7 @@ public class RegistrationController {
 				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Exception:");
 				List<UserControl> listaPersonas =userService.lista();
 				request.setAttribute("lista", listaPersonas);
-				model.addObject("msg1", "¡"+e.getCause().toString());
+				model.addObject("msg1", "¡");
 				model.setViewName("/users/admin");
 				return model;			
 				}

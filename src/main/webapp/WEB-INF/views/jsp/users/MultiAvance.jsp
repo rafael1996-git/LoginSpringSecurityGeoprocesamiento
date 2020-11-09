@@ -4,6 +4,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@page session="true"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,15 +12,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="resources/stilosjs/css/bootstrap.min.css">
 <script src="resources/js/jquery.min.js"></script>
+
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="resources/js/bootstrap.min.js"></script>
 <script src="resources/js/Chart.js"></script>
-	<spring:url value="Avance.do" var="urlAvance" />
-
+	<spring:url value="MultiAvance.do" var="urlAvance" />
 </head>
 
-<jsp:include page="../fragments/headerRemesa.jsp" />
+<jsp:include page="../fragments/headerMultiRemesa.jsp" />
 <style>
 body {
 	background-color: rgb(255, 247, 255);
@@ -27,6 +28,7 @@ body {
 
 h1 {
 	color: black;
+	
 }
 
 td {
@@ -78,7 +80,7 @@ table {
 				</div>
 					 <c:if test="${not empty mensaje3}">
 			  		<div class="alert alert-info">${mensaje3}
-    					<a href="${urlAvance}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    					<a href="${urlmultiAvance}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
    					 	<strong>SUCCESS!</strong>proceso funcionando sin error , verifique denuevo la consulta de avance de geoprocesamiento de su grafica.
    					</div>
 			  
@@ -179,9 +181,6 @@ function searchViaAjax() {
 					        "</tr>";						     
 					    $('#Table > tbody').append(rows);
 					});
-					
-					
-
 					
 					console.log(errordata);
 					

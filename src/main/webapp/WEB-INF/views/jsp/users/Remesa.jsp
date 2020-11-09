@@ -10,6 +10,7 @@
 <jsp:include page="../fragments/headerRemesa.jsp" />
 <spring:url value="welcome" var="urlWelcome" />
 <spring:url value="Avance.do" var="urlAvance" />
+<spring:url value="MultiAvance.do" var="multiAvance" />
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
           <link rel="stylesheet" href="resources/css/adminremesa.css" type="text/css" />
 <style>
@@ -57,6 +58,13 @@ color: black;
    				</div>
 			  
 			 </c:if>
+			  <c:if test="${not empty Multimensaje}">
+			  	<div class="alert alert-success">${Multimensaje}
+    				<a href="${multiAvance}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+   				 	<strong>¡Success!</strong> Multi Procesamiento Funcionando  Correctamente
+   				</div>
+			  
+			 </c:if>
 			 <c:if test="${not empty mensaje2}">
 			  <div class="alert alert-info">${mensaje2}
     				<a href="${urlWelcome}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -64,10 +72,31 @@ color: black;
    				    </div>
 			  
 			 </c:if>
+			 <c:if test="${not empty multimensaje2}">
+			  <div class="alert alert-info">${multimensaje2}
+    				<a href="${multiAvance}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+   					 <strong>Atencion!</strong>"La remesa no puede procesarse, ya que aun no se concluye la carga al SIIRFE en alguna de las entidades seleccionadas."
+   				    </div>
+			  
+			 </c:if>
+			 <c:if test="${not empty multimsj}">
+			  <div class="alert alert-info">${multimsj}
+    				<a href="${multiAvance}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+   					 <strong>Error!</strong>
+   				    </div>
+			  
+			 </c:if>
 			 <c:if test="${not empty mensajerror}">
 			  		<div class="alert alert-info">${mensajerror}
     					<a href="${urlAvance}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
    					 	<strong>SUCCESS!</strong>proceso funcionando sin error , verifique denuevo la consulta de avance .
+   					</div>
+			  
+			 	</c:if>
+			 	 <c:if test="${not empty multimensaje1}">
+			  		<div class="alert alert-info">${multimensaje1}
+    					<a href="${multiAvance}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+   					 	<strong>Error!</strong>
    					</div>
 			  
 			 	</c:if>
