@@ -99,6 +99,16 @@ public class LoginController {
 		return model;
 
 	}
+	@RequestMapping(value = "/Multiproceso", method = RequestMethod.GET)
+	public ModelAndView MultiprocesPage() {
+
+		ModelAndView model = new ModelAndView();
+		// To do something
+		model.setViewName("/users/multiprocesos");
+
+		return model;
+
+	}
 	@RequestMapping("/MultiProcesos")
 	public ModelAndView MultiProcesosPage(HttpServletRequest request) throws IOException {
 		ModelAndView model = new ModelAndView();

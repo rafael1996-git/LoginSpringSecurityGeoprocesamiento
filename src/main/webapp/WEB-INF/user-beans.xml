@@ -277,7 +277,7 @@
 		<jee:jndi-lookup id="dataSource2"
 		jndi-name="java:jboss/datasources/controldb"></jee:jndi-lookup>
 		<jee:jndi-lookup id="dataSource3"
-		jndi-name="java:jboss/datasources/bged17db"></jee:jndi-lookup>
+		jndi-name="java:jboss/datasources/bged17"></jee:jndi-lookup>
 		<jee:jndi-lookup id="dataSource4"
 		jndi-name="java:jboss/datasources/bged09"></jee:jndi-lookup>
 		<jee:jndi-lookup id="dataSource5"
