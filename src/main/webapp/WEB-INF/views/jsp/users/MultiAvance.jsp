@@ -18,6 +18,7 @@
 <script src="resources/js/bootstrap.min.js"></script>
 <script src="resources/js/Chart.js"></script>
 	<spring:url value="MultiAvance.do" var="urlAvance" />
+	<spring:url value="MultiAvance.do" var="multiAvance" />
 </head>
 
 <jsp:include page="../fragments/headerMultiRemesa.jsp" />
@@ -78,13 +79,7 @@ table {
 						<fmt:formatDate type="both" value="${now}" />
 					</h4>
 				</div>
-					 <c:if test="${not empty mensaje3}">
-			  		<div class="alert alert-info">${mensaje3}
-    					<a href="${urlmultiAvance}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-   					 	<strong>SUCCESS!</strong>proceso funcionando sin error , verifique denuevo la consulta de avance de geoprocesamiento de su grafica.
-   					</div>
-			  
-			 	</c:if>
+			
 			</div>
 			<div class="row align-items-center">
 			<div class="col align-self-center">

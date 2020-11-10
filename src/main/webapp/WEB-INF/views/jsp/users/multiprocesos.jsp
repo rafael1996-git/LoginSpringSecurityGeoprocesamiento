@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="resources/css/adminremesa.css"
 	type="text/css" />
 		<spring:url value="MultiRemesa" var="urlAddRemesa" />
+		<spring:url value="Multiproceso" var="multiproceso" />
 <style>
 * {
     box-sizing: border-box;
@@ -72,22 +73,34 @@
 
 
 			<div class="column">
-				<c:if test="${not empty mensaje}">
-					<div class="alert alert-success">${mensaje}
-						<a href="${urlWelcome}" class="close" data-dismiss="alert"
-							aria-label="close">&times;</a> <strong>Success!</strong> Remesa
-						Insertada Correctamente
-					</div>
-
-				</c:if>
-				<c:if test="${not empty mensaje2}">
-					<div class="alert alert-info">${mensaje2}
-						<a href="${urlWelcome}" class="close" data-dismiss="alert"
-							aria-label="close">&times;</a> <strong>Atencion!</strong> Funcion
-						Remesa no realizada
-					</div>
-
-				</c:if>
+						<c:if test="${not empty multimensaje1}">
+			  		<div class="alert alert-info">${multimensaje1}
+    					<a href="${multiproceso}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+   					 	<strong>Error!</strong>
+   					</div>
+			  
+			 	</c:if>
+			 		 <c:if test="${not empty multimensaje2}">
+			  <div class="alert alert-info">${multimensaje2}
+    				<a href="${multiproceso}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+   					 <strong>Atencion!</strong>"La remesa no puede procesarse, ya que aun no se concluye la carga al SIIRFE en alguna de las entidades seleccionadas."
+   				    </div>
+			  
+			 </c:if>
+			 <c:if test="${not empty multimsj}">
+			  <div class="alert alert-info">${multimsj}
+    				<a href="${multiproceso}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+   					 <strong>Error!</strong>
+   				    </div>
+			  
+			 </c:if>
+			  <c:if test="${not empty Multimensaje}">
+			  	<div class="alert alert-success">${Multimensaje}
+    				<a href="${multiproceso}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+   				 	<strong>¡Success!</strong> Multi Procesamiento Funcionando  Correctamente
+   				</div>
+			  
+			 </c:if>
 		<div  class="wrap">
 			<div class="info">
 				<h1>Geoprocesamiento de la Remesa de Actualización Cartográfica</h1>

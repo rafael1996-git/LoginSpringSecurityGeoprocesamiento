@@ -113,7 +113,7 @@ public class ResController {
 						reques.setAttribute("lista", listaPersonas);
 						System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 						model.addObject("mensaje1", "¡"+e.getCause().toString());
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						e.printStackTrace();
 					}
 
@@ -122,7 +122,7 @@ public class ResController {
 
 					List<User> listaPersonas =userService.listaFiltrada(entidad);
 					reques.setAttribute("lista", listaPersonas);
-					model.setViewName("/users/Remesa");
+					model.setViewName("/users/multiprocesos");
 					model.addObject("mensaje", "¡");
 			
 				
@@ -131,7 +131,7 @@ public class ResController {
 			List<User> listaPersonas =userService.listaFiltrada(entidad);
 			reques.setAttribute("lista", listaPersonas);
 			model.addObject("mensaje2", "¡");
-			model.setViewName("/users/Remesa");
+			model.setViewName("/users/multiprocesos");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -141,7 +141,7 @@ public class ResController {
 			reques.setAttribute("lista", listaPersonas);
 			System.out.println("funcion Remesa no realizada :Exception  ");
 			model.addObject("mensaje1", "¡"+e.getCause().toString());
-			model.setViewName("/users/Remesa");
+			model.setViewName("/users/multiprocesos");
 			e.getMessage();
 		}
 		return model;
@@ -214,7 +214,7 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
@@ -225,7 +225,7 @@ public class ResController {
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 
 			} 
@@ -266,7 +266,7 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
@@ -278,7 +278,7 @@ public class ResController {
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum14()!=null) {
@@ -318,7 +318,7 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
@@ -370,7 +370,7 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
@@ -382,7 +382,7 @@ public class ResController {
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum30()!=null) {
@@ -422,7 +422,7 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
@@ -434,7 +434,7 @@ public class ResController {
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			
@@ -475,7 +475,7 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
@@ -487,7 +487,7 @@ public class ResController {
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum2()!=null) {
@@ -527,7 +527,7 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
@@ -539,7 +539,7 @@ public class ResController {
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum3()!=null) {
@@ -579,19 +579,19 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum4()!=null) {
@@ -631,19 +631,19 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum5()!=null) {
@@ -683,19 +683,19 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum6()!=null) {
@@ -735,19 +735,19 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum7()!=null) {
@@ -787,19 +787,19 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum8()!=null) {
@@ -839,19 +839,19 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum10()!=null) {
@@ -891,19 +891,19 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum11()!=null) {
@@ -943,19 +943,19 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum12()!=null) {
@@ -995,19 +995,19 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum13()!=null) {
@@ -1047,7 +1047,7 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
@@ -1059,7 +1059,7 @@ public class ResController {
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum16()!=null) {
@@ -1099,19 +1099,19 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum18()!=null) {
@@ -1151,19 +1151,19 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum19()!=null) {
@@ -1203,19 +1203,19 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum20()!=null) {
@@ -1255,19 +1255,19 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum21()!=null) {
@@ -1307,19 +1307,19 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum22()!=null) {
@@ -1359,19 +1359,19 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum23()!=null) {
@@ -1411,19 +1411,19 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum24()!=null) {
@@ -1463,19 +1463,19 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum25()!=null) {
@@ -1515,19 +1515,19 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum26()!=null) {
@@ -1567,19 +1567,19 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum27()!=null) {
@@ -1619,19 +1619,19 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum28()!=null) {
@@ -1671,19 +1671,19 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum29()!=null) {
@@ -1723,19 +1723,19 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum31()!=null) {
@@ -1775,19 +1775,19 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum32()!=null) {
@@ -1827,26 +1827,26 @@ public class ResController {
 							System.err.println("Failed scraping");
 							System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 							model.addObject("multimensaje1", "¡"+e.getCause().toString());
-							model.setViewName("/users/Remesa");
+							model.setViewName("/users/multiprocesos");
 							e.printStackTrace();
 						}
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("funcion Remesa no realizada :Exception  ");
 			model.addObject("multimsj", "¡"+e.getCause().toString());
-			model.setViewName("/users/Remesa");
+			model.setViewName("/users/multiprocesos");
 			e.getMessage();
 		}
 		return model;
@@ -1867,7 +1867,7 @@ public class ResController {
 		}
 
 		
-	    model.setViewName("/users/MultiAvance");
+	    model.setViewName("/users/multiprocesos");
 	return model;
 	}
 }
