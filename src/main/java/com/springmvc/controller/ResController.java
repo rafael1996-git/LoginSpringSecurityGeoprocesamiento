@@ -187,7 +187,7 @@ public class ResController {
 						userService.regisRemesa(opjRemesa);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
-						for (int j = 0; j <=126; j++) {
+						for (int j = 1; j <=126; j++) {
 							opjControl.setEntidad(Integer.parseInt(numero.getNum17()));
 							opjControl.setRemesa(Integer.parseInt(opj.toString()));
 							opjControl.setFecha_hora(objDate);
@@ -967,7 +967,7 @@ public class ResController {
 					System.out.println("despues del if----12"+""+""+numero.getNum12()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
-						for (int j = 0; j <=126; j++) {
+						for (int j = 1; j <=126; j++) {
 							opjControl.setEntidad(Integer.parseInt(numero.getNum12()));
 							opjControl.setRemesa(Integer.parseInt(opj.toString()));
 							opjControl.setFecha_hora(objDate);
