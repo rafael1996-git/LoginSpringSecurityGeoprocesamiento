@@ -113,7 +113,7 @@ public class ResController {
 						reques.setAttribute("lista", listaPersonas);
 						System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 						model.addObject("mensaje1", "¡"+e.getCause().toString());
-						model.setViewName("/users/multiprocesos");
+						model.setViewName("/users/Remesa");
 						e.printStackTrace();
 					}
 
@@ -122,7 +122,7 @@ public class ResController {
 
 					List<User> listaPersonas =userService.listaFiltrada(entidad);
 					reques.setAttribute("lista", listaPersonas);
-					model.setViewName("/users/multiprocesos");
+					model.setViewName("/users/Remesa");
 					model.addObject("mensaje", "¡");
 			
 				
@@ -131,7 +131,7 @@ public class ResController {
 			List<User> listaPersonas =userService.listaFiltrada(entidad);
 			reques.setAttribute("lista", listaPersonas);
 			model.addObject("mensaje2", "¡");
-			model.setViewName("/users/multiprocesos");
+			model.setViewName("/users/Remesa");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -141,7 +141,7 @@ public class ResController {
 			reques.setAttribute("lista", listaPersonas);
 			System.out.println("funcion Remesa no realizada :Exception  ");
 			model.addObject("mensaje1", "¡"+e.getCause().toString());
-			model.setViewName("/users/multiprocesos");
+			model.setViewName("/users/Remesa");
 			e.getMessage();
 		}
 		return model;
@@ -220,7 +220,7 @@ public class ResController {
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
@@ -272,7 +272,7 @@ public class ResController {
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
@@ -324,13 +324,13 @@ public class ResController {
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
 				System.out.println("funcion Remesa no realizada :else  ");
 				model.addObject("multimensaje2", "¡");
-				model.setViewName("/users/Remesa");
+				model.setViewName("/users/multiprocesos");
 				}
 			}
 			if (numero.getNum9()!=null) {
@@ -376,7 +376,7 @@ public class ResController {
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
@@ -428,7 +428,7 @@ public class ResController {
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
@@ -481,7 +481,7 @@ public class ResController {
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
@@ -533,7 +533,7 @@ public class ResController {
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
@@ -1053,7 +1053,7 @@ public class ResController {
 
 						System.out.println(
 								"*************************************************************************[HEADER2 : ");
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/multiprocesos");
 						model.addObject("Multimensaje", "¡");
 	
 				}else {				
