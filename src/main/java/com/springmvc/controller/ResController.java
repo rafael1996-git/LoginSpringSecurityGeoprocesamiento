@@ -1854,35 +1854,110 @@ public class ResController {
 	}
 	
 	@RequestMapping("/multiremesaExecute")
-	public ModelAndView editCustomer(@ModelAttribute("valor")Numero numero) 
+	@ResponseBody
+	public ModelAndView editCustomer(HttpServletRequest reques, HttpServletResponse response,@ModelAttribute("valor")Numero numero) 
 	{
 		ModelAndView model = new ModelAndView();
-		
-//		for (int i = 1; i <=32; i++) {
-//			
-//			List<String> grafica = new ArrayList<String>();
-//			grafica.add(numero.getNum17());
-//		}
-		if (numero.getNum17()!=null) {
-		    System.out.println("checkbox is checked  "+numero.getNum17());
+		UUID token = Generators.randomBasedGenerator().generate();
+		Date objDate = new Date();
+		// Mostrar la fecha y la hora usando toString ()
+		System.out.println(objDate.toString());
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		objDate.equals(dateFormat.format(objDate));
+		System.out.println(dateFormat.format(objDate));
+		System.out
+		.println("******************************************************************************************************************[checked :antes del try ");
+		try {
+			HttpSession session = reques.getSession();
+			int id = (int) session.getAttribute("id");
+			String opj;
+			opj = userService.buscarRemesa();
+			String anio = opj.substring(0,4);
+			String semana = opj.substring(4,6);
+			System.out.println(anio);
+			System.out.println(semana);
+			String [] itera= {numero.getNum1(),numero.getNum2(),numero.getNum3(),numero.getNum4(),numero.getNum5(),
+					          numero.getNum6(),numero.getNum7(),numero.getNum8(),numero.getNum9(),numero.getNum10(),
+					          numero.getNum11(),numero.getNum12(),numero.getNum13(),numero.getNum14(),numero.getNum15(),
+					          numero.getNum16(),numero.getNum17(),numero.getNum18(),numero.getNum19(),numero.getNum20(),
+					          numero.getNum21(),numero.getNum22(),numero.getNum23(),numero.getNum24(),numero.getNum25(),
+					          numero.getNum26(),numero.getNum27(),numero.getNum28(),numero.getNum29(),numero.getNum30(),
+					          numero.getNum31(),numero.getNum32()};
+			for (int i = 0; i <=31; i++) {
+				String valor = itera[i];
+				if (itera[i]!=null) {
+					
+					    System.out.println("checkbox is checked  "+itera[i]);
+					    List<info> var =userService.validate( itera[i], anio, semana);
+						System.out.println("---------------------------------------------------------------------------antes del if-----"+""+""+itera[i]+""+ anio+""+semana);
+						if (var!=null && !var.isEmpty()&&userService.validate( itera[i], anio, semana)!=null) {
+							System.out.println("despues del if---------------------------------------------------------"+""+""+itera[i]+""+ anio+""+semana);
+								//****************************************************insertamos a la tabla autorizacion
+								Remesa opjRemesa = new Remesa();
+								opjRemesa.setId_status(1);
+								opjRemesa.setFecha_hora(objDate);
+								opjRemesa.setToken(token.toString());
+								opjRemesa.setId_usuario(id);
+								opjRemesa.setEntidad_remesa(opj.toString());
+								userService.regisRemesa(opjRemesa);
+								//****************************************************insertamos a la tabla control
+								Control opjControl=new Control();
+								for (int j = 1; j <=126; j++) {
+									opjControl.setEntidad(Integer.parseInt(itera[i]));
+									opjControl.setRemesa(Integer.parseInt(opj.toString()));
+									opjControl.setFecha_hora(objDate);
+									opjControl.setId_usuario(id);
+									opjControl.setId_operacion(j);
+									opjControl.setId_status(1);
+									userService.register(opjControl);
+								}
+								System.out
+										.println("*******************************************************************************************************************[HEADER : ");
+								OkHttpClient client = new OkHttpClient().newBuilder().connectTimeout(120, TimeUnit.SECONDS)
+										.readTimeout(120, TimeUnit.SECONDS)
+										.writeTimeout(120, TimeUnit.SECONDS).build();
+								HttpUrl.Builder urlBuilder = HttpUrl.parse("http://localhost:8180/GenerarRemesa/dce/GenerarEntidad?").newBuilder();
+								urlBuilder.addQueryParameter("entidad", itera[i]);
+								urlBuilder.addQueryParameter("remesa", opj.toString());
+								String url = urlBuilder.build().toString();
+								Request request = new Request.Builder().url(url).header("Authorization", token.toString()).build();
+								try {
+									Response respons = client.newCall(request).execute();
+									String stringHeader = respons.headers().toString();
+									String string = respons.body().string();
+								} catch (IOException e) {
+									System.err.println("Failed scraping");
+									System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
+									model.addObject("multimensaje1", "¡"+e.getCause().toString());
+									model.setViewName("/users/multiprocesos");
+									e.printStackTrace();
+								}
 
-		} 
-		if (numero.getNum15()!=null) {
-			System.out.println("checkbox is checked2  "+numero.getNum15());
-		}
-		if (numero.getNum9()!=null) {
-		    System.out.println("checkbox is checked3  "+numero.getNum9());
+								System.out.println(
+										"**********************************************************************************************************************[HEADER2 : ");
+								model.setViewName("/users/multiprocesos");
+								model.addObject("Multimensaje", "¡");	
+						}else {				
+						System.out.println("funcion Remesa no realizada :else  ");
+						model.addObject("multimensaje2", "¡");
+						model.setViewName("/users/multiprocesos");
+						}
 
-		} 
-		if (numero.getNum14()!=null) {
-			System.out.println("checkbox is checked4  "+numero.getNum14());
-		}
-		if (numero.getNum30()!=null) {
-			System.out.println("checkbox is checked 5 "+numero.getNum30());
-		}
+					}
+				
+					System.out.println("valor encontrado  "+itera[i]);
 
-		
-	    model.setViewName("/users/multiprocesos");
-	return model;
+				} 
+				
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("funcion Remesa no realizada :Exception  ");
+			model.addObject("multimsj", "¡"+e.getCause().toString());
+			model.setViewName("/users/multiprocesos");
+			e.getMessage();
+		}
+		return model;
+
 	}
 }
