@@ -1884,7 +1884,6 @@ public class ResController {
 					          numero.getNum26(),numero.getNum27(),numero.getNum28(),numero.getNum29(),numero.getNum30(),
 					          numero.getNum31(),numero.getNum32()};
 			for (int i = 0; i <=31; i++) {
-				String valor = itera[i];
 				if (itera[i]!=null) {
 					
 					    System.out.println("checkbox is checked  "+itera[i]);
