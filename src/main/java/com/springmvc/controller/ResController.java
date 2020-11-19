@@ -3,6 +3,7 @@ package com.springmvc.controller;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -238,7 +239,7 @@ public class ResController {
 					System.out.println("despues del if----15"+""+""+numero.getNum15()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
-						for (int j = 0; j <=126; j++) {
+						for (int j = 1; j <=126; j++) {
 							opjControl.setEntidad(Integer.parseInt(numero.getNum15()));
 							opjControl.setRemesa(Integer.parseInt(opj.toString()));
 							opjControl.setFecha_hora(objDate);
@@ -290,7 +291,7 @@ public class ResController {
 					System.out.println("despues del if---14"+""+""+numero.getNum14()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
-						for (int j = 0; j <=126; j++) {
+						for (int j = 1; j <=126; j++) {
 							opjControl.setEntidad(Integer.parseInt(numero.getNum14()));
 							opjControl.setRemesa(Integer.parseInt(opj.toString()));
 							opjControl.setFecha_hora(objDate);
@@ -342,7 +343,7 @@ public class ResController {
 					System.out.println("despues del if---9"+""+""+numero.getNum9()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
-						for (int j = 0; j <=126; j++) {
+						for (int j = 1; j <=126; j++) {
 							opjControl.setEntidad(Integer.parseInt(numero.getNum9()));
 							opjControl.setRemesa(Integer.parseInt(opj.toString()));
 							opjControl.setFecha_hora(objDate);
@@ -394,7 +395,7 @@ public class ResController {
 					System.out.println("despues del if----30"+""+""+numero.getNum30()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
-						for (int j = 0; j <=126; j++) {
+						for (int j = 1; j <=126; j++) {
 							opjControl.setEntidad(Integer.parseInt(numero.getNum30()));
 							opjControl.setRemesa(Integer.parseInt(opj.toString()));
 							opjControl.setFecha_hora(objDate);
@@ -1857,13 +1858,27 @@ public class ResController {
 	{
 		ModelAndView model = new ModelAndView();
 		
-		
+//		for (int i = 1; i <=32; i++) {
+//			
+//			List<String> grafica = new ArrayList<String>();
+//			grafica.add(numero.getNum17());
+//		}
 		if (numero.getNum17()!=null) {
 		    System.out.println("checkbox is checked  "+numero.getNum17());
 
 		} 
 		if (numero.getNum15()!=null) {
 			System.out.println("checkbox is checked2  "+numero.getNum15());
+		}
+		if (numero.getNum9()!=null) {
+		    System.out.println("checkbox is checked3  "+numero.getNum9());
+
+		} 
+		if (numero.getNum14()!=null) {
+			System.out.println("checkbox is checked4  "+numero.getNum14());
+		}
+		if (numero.getNum30()!=null) {
+			System.out.println("checkbox is checked 5 "+numero.getNum30());
 		}
 
 		
