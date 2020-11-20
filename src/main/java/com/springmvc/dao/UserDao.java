@@ -17,7 +17,6 @@ public interface UserDao {
 	public int register(Control inserta);
 	public int regisRemesa(Remesa remesa);
 	public List<info> validate(String entidad,String anio,String semana);
-
 	public List<User> list();
 	public List<User> listaFiltrada(int entidad);
 	public List<UserControl> lista();

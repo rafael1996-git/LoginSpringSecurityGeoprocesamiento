@@ -102,6 +102,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged09(JdbcTemplate jdbcTemplatebged09) {
 		this.jdbcTemplatebged09 = jdbcTemplatebged09;
+		this.jdbcTemplatebgedArray[8]=jdbcTemplatebged09;
 	}
 
 
@@ -112,6 +113,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged14(JdbcTemplate jdbcTemplatebged14) {
 		this.jdbcTemplatebged14 = jdbcTemplatebged14;
+		this.jdbcTemplatebgedArray[13]=jdbcTemplatebged14;
 	}
 
 
@@ -122,6 +124,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged15(JdbcTemplate jdbcTemplatebged15) {
 		this.jdbcTemplatebged15 = jdbcTemplatebged15;
+		this.jdbcTemplatebgedArray[14]=jdbcTemplatebged15;
 	}
 
 
@@ -132,6 +135,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged30(JdbcTemplate jdbcTemplatebged30) {
 		this.jdbcTemplatebged30 = jdbcTemplatebged30;
+		this.jdbcTemplatebgedArray[29]=jdbcTemplatebged30;
 	}
 
 
@@ -142,6 +146,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged01(JdbcTemplate jdbcTemplatebged01) {
 		this.jdbcTemplatebged01 = jdbcTemplatebged01;
+		this.jdbcTemplatebgedArray[0]=jdbcTemplatebged01;
 	}
 
 
@@ -152,6 +157,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged02(JdbcTemplate jdbcTemplatebged02) {
 		this.jdbcTemplatebged02 = jdbcTemplatebged02;
+		this.jdbcTemplatebgedArray[1]=jdbcTemplatebged02;
 	}
 
 
@@ -162,6 +168,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged03(JdbcTemplate jdbcTemplatebged03) {
 		this.jdbcTemplatebged03 = jdbcTemplatebged03;
+		this.jdbcTemplatebgedArray[2]=jdbcTemplatebged03;
 	}
 
 
@@ -172,6 +179,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged04(JdbcTemplate jdbcTemplatebged04) {
 		this.jdbcTemplatebged04 = jdbcTemplatebged04;
+		this.jdbcTemplatebgedArray[3]=jdbcTemplatebged04;
 	}
 
 
@@ -182,6 +190,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged05(JdbcTemplate jdbcTemplatebged05) {
 		this.jdbcTemplatebged05 = jdbcTemplatebged05;
+		this.jdbcTemplatebgedArray[4]=jdbcTemplatebged05;
 	}
 
 
@@ -192,6 +201,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged06(JdbcTemplate jdbcTemplatebged06) {
 		this.jdbcTemplatebged06 = jdbcTemplatebged06;
+		this.jdbcTemplatebgedArray[5]=jdbcTemplatebged06;
 	}
 
 
@@ -202,6 +212,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged07(JdbcTemplate jdbcTemplatebged07) {
 		this.jdbcTemplatebged07 = jdbcTemplatebged07;
+		this.jdbcTemplatebgedArray[6]=jdbcTemplatebged07;
 	}
 
 
@@ -212,6 +223,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged08(JdbcTemplate jdbcTemplatebged08) {
 		this.jdbcTemplatebged08 = jdbcTemplatebged08;
+		this.jdbcTemplatebgedArray[7]=jdbcTemplatebged08;
 	}
 
 
@@ -222,6 +234,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged10(JdbcTemplate jdbcTemplatebged10) {
 		this.jdbcTemplatebged10 = jdbcTemplatebged10;
+		this.jdbcTemplatebgedArray[9]=jdbcTemplatebged10;
 	}
 
 
@@ -232,6 +245,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged11(JdbcTemplate jdbcTemplatebged11) {
 		this.jdbcTemplatebged11 = jdbcTemplatebged11;
+		this.jdbcTemplatebgedArray[10]=jdbcTemplatebged11;
 	}
 
 
@@ -265,6 +279,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged16(JdbcTemplate jdbcTemplatebged16) {
 		this.jdbcTemplatebged16 = jdbcTemplatebged16;
+		this.jdbcTemplatebgedArray[15]=jdbcTemplatebged16;
 	}
 
 
@@ -275,6 +290,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged18(JdbcTemplate jdbcTemplatebged18) {
 		this.jdbcTemplatebged18 = jdbcTemplatebged18;
+		this.jdbcTemplatebgedArray[17]=jdbcTemplatebged18;
 	}
 
 
@@ -285,6 +301,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged19(JdbcTemplate jdbcTemplatebged19) {
 		this.jdbcTemplatebged19 = jdbcTemplatebged19;
+		this.jdbcTemplatebgedArray[18]=jdbcTemplatebged19;
 	}
 
 
@@ -295,6 +312,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged20(JdbcTemplate jdbcTemplatebged20) {
 		this.jdbcTemplatebged20 = jdbcTemplatebged20;
+		this.jdbcTemplatebgedArray[19]=jdbcTemplatebged20;
 	}
 
 
@@ -305,6 +323,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged21(JdbcTemplate jdbcTemplatebged21) {
 		this.jdbcTemplatebged21 = jdbcTemplatebged21;
+		this.jdbcTemplatebgedArray[20]=jdbcTemplatebged21;
 	}
 
 
@@ -315,6 +334,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged22(JdbcTemplate jdbcTemplatebged22) {
 		this.jdbcTemplatebged22 = jdbcTemplatebged22;
+		this.jdbcTemplatebgedArray[21]=jdbcTemplatebged22;
 	}
 
 
@@ -325,6 +345,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged23(JdbcTemplate jdbcTemplatebged23) {
 		this.jdbcTemplatebged23 = jdbcTemplatebged23;
+		this.jdbcTemplatebgedArray[22]=jdbcTemplatebged23;
 	}
 
 
@@ -335,6 +356,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged24(JdbcTemplate jdbcTemplatebged24) {
 		this.jdbcTemplatebged24 = jdbcTemplatebged24;
+		this.jdbcTemplatebgedArray[23]=jdbcTemplatebged24;
 	}
 
 
@@ -345,6 +367,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged25(JdbcTemplate jdbcTemplatebged25) {
 		this.jdbcTemplatebged25 = jdbcTemplatebged25;
+		this.jdbcTemplatebgedArray[24]=jdbcTemplatebged25;
 	}
 
 
@@ -355,6 +378,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged26(JdbcTemplate jdbcTemplatebged26) {
 		this.jdbcTemplatebged26 = jdbcTemplatebged26;
+		this.jdbcTemplatebgedArray[25]=jdbcTemplatebged26;
 	}
 
 
@@ -365,6 +389,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged27(JdbcTemplate jdbcTemplatebged27) {
 		this.jdbcTemplatebged27 = jdbcTemplatebged27;
+		this.jdbcTemplatebgedArray[26]=jdbcTemplatebged27;
 	}
 
 
@@ -375,6 +400,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged28(JdbcTemplate jdbcTemplatebged28) {
 		this.jdbcTemplatebged28 = jdbcTemplatebged28;
+		this.jdbcTemplatebgedArray[27]=jdbcTemplatebged28;
 	}
 
 
@@ -385,6 +411,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged29(JdbcTemplate jdbcTemplatebged29) {
 		this.jdbcTemplatebged29 = jdbcTemplatebged29;
+		this.jdbcTemplatebgedArray[28]=jdbcTemplatebged29;
 	}
 
 
@@ -395,6 +422,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged31(JdbcTemplate jdbcTemplatebged31) {
 		this.jdbcTemplatebged31 = jdbcTemplatebged31;
+		this.jdbcTemplatebgedArray[30]=jdbcTemplatebged31;
 	}
 
 
@@ -405,6 +433,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged32(JdbcTemplate jdbcTemplatebged32) {
 		this.jdbcTemplatebged32 = jdbcTemplatebged32;
+		this.jdbcTemplatebgedArray[31]=jdbcTemplatebged32;
 	}
 
 
