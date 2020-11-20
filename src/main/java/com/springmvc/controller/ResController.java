@@ -232,10 +232,10 @@ public class ResController {
 			} 
 			if (numero.getNum15()!=null) {
 				System.out.println("checkbox is checked2  "+numero.getNum15());
-				List<info> var =userService.validate15( numero.getNum15(), anio, semana);
+				List<info> var =userService.validate( numero.getNum15(), anio, semana);
 				System.out.println("-----------antes del if----15"+""+""+numero.getNum15()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate15( numero.getNum15(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum15(), anio, semana)!=null) {
 					System.out.println("despues del if----15"+""+""+numero.getNum15()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -284,10 +284,10 @@ public class ResController {
 			}
 			if (numero.getNum14()!=null) {
 				System.out.println("checkbox is checked2  "+numero.getNum14());
-				List<info> var =userService.validate14( numero.getNum14(), anio, semana);
+				List<info> var =userService.validate( numero.getNum14(), anio, semana);
 				System.out.println("-----------antes del if----14"+""+""+numero.getNum14()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate14( numero.getNum14(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum14(), anio, semana)!=null) {
 					System.out.println("despues del if---14"+""+""+numero.getNum14()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -336,10 +336,10 @@ public class ResController {
 			}
 			if (numero.getNum9()!=null) {
 				System.out.println("checkbox is checked2  "+numero.getNum9());
-				List<info> var =userService.validate09( numero.getNum9(), anio, semana);
+				List<info> var =userService.validate( numero.getNum9(), anio, semana);
 				System.out.println("-----------antes del if---9"+""+""+numero.getNum9()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate09( numero.getNum9(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum9(), anio, semana)!=null) {
 					System.out.println("despues del if---9"+""+""+numero.getNum9()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -388,10 +388,10 @@ public class ResController {
 			}
 			if (numero.getNum30()!=null) {
 				System.out.println("checkbox is checked2  "+numero.getNum30());
-				List<info> var =userService.validate30( numero.getNum30(), anio, semana);
+				List<info> var =userService.validate( numero.getNum30(), anio, semana);
 				System.out.println("-----------antes del if--30"+""+""+numero.getNum30()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate30( numero.getNum30(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum30(), anio, semana)!=null) {
 					System.out.println("despues del if----30"+""+""+numero.getNum30()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -441,10 +441,10 @@ public class ResController {
 			
 			if (numero.getNum1()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum1());
-				List<info> var =userService.validate01( numero.getNum1(), anio, semana);
+				List<info> var =userService.validate( numero.getNum1(), anio, semana);
 				System.out.println("-----------antes del if--01"+""+""+numero.getNum1()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate01( numero.getNum1(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum1(), anio, semana)!=null) {
 					System.out.println("despues del if----01"+""+""+numero.getNum1()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -493,10 +493,10 @@ public class ResController {
 			}
 			if (numero.getNum2()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum2());
-				List<info> var =userService.validate02( numero.getNum2(), anio, semana);
+				List<info> var =userService.validate( numero.getNum2(), anio, semana);
 				System.out.println("-----------antes del if--02"+""+""+numero.getNum2()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate02( numero.getNum2(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum2(), anio, semana)!=null) {
 					System.out.println("despues del if----02"+""+""+numero.getNum2()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -545,10 +545,10 @@ public class ResController {
 			}
 			if (numero.getNum3()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum3());
-				List<info> var =userService.validate03( numero.getNum3(), anio, semana);
+				List<info> var =userService.validate( numero.getNum3(), anio, semana);
 				System.out.println("-----------antes del if--03"+""+""+numero.getNum3()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate03( numero.getNum3(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum3(), anio, semana)!=null) {
 					System.out.println("despues del if----03"+""+""+numero.getNum3()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -597,10 +597,10 @@ public class ResController {
 			}
 			if (numero.getNum4()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum4());
-				List<info> var =userService.validate04( numero.getNum4(), anio, semana);
+				List<info> var =userService.validate( numero.getNum4(), anio, semana);
 				System.out.println("-----------antes del if--04"+""+""+numero.getNum4()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate04( numero.getNum4(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum4(), anio, semana)!=null) {
 					System.out.println("despues del if----04"+""+""+numero.getNum4()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -649,10 +649,10 @@ public class ResController {
 			}
 			if (numero.getNum5()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum5());
-				List<info> var =userService.validate05( numero.getNum5(), anio, semana);
+				List<info> var =userService.validate( numero.getNum5(), anio, semana);
 				System.out.println("-----------antes del if--05"+""+""+numero.getNum5()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate05( numero.getNum5(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum5(), anio, semana)!=null) {
 					System.out.println("despues del if----05"+""+""+numero.getNum5()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -701,10 +701,10 @@ public class ResController {
 			}
 			if (numero.getNum6()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum6());
-				List<info> var =userService.validate06( numero.getNum6(), anio, semana);
+				List<info> var =userService.validate( numero.getNum6(), anio, semana);
 				System.out.println("-----------antes del if--06"+""+""+numero.getNum6()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate06( numero.getNum6(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum6(), anio, semana)!=null) {
 					System.out.println("despues del if----06"+""+""+numero.getNum6()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -753,10 +753,10 @@ public class ResController {
 			}
 			if (numero.getNum7()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum7());
-				List<info> var =userService.validate07( numero.getNum7(), anio, semana);
+				List<info> var =userService.validate( numero.getNum7(), anio, semana);
 				System.out.println("-----------antes del if--07"+""+""+numero.getNum7()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate07( numero.getNum7(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum7(), anio, semana)!=null) {
 					System.out.println("despues del if----07"+""+""+numero.getNum7()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -805,10 +805,10 @@ public class ResController {
 			}
 			if (numero.getNum8()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum8());
-				List<info> var =userService.validate08( numero.getNum8(), anio, semana);
+				List<info> var =userService.validate( numero.getNum8(), anio, semana);
 				System.out.println("-----------antes del if--08"+""+""+numero.getNum8()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate08( numero.getNum8(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum8(), anio, semana)!=null) {
 					System.out.println("despues del if----08"+""+""+numero.getNum8()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -857,10 +857,10 @@ public class ResController {
 			}
 			if (numero.getNum10()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum10());
-				List<info> var =userService.validate10( numero.getNum10(), anio, semana);
+				List<info> var =userService.validate( numero.getNum10(), anio, semana);
 				System.out.println("-----------antes del if--10"+""+""+numero.getNum10()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate10( numero.getNum10(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum10(), anio, semana)!=null) {
 					System.out.println("despues del if----10"+""+""+numero.getNum10()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -909,10 +909,10 @@ public class ResController {
 			}
 			if (numero.getNum11()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum11());
-				List<info> var =userService.validate11( numero.getNum11(), anio, semana);
+				List<info> var =userService.validate( numero.getNum11(), anio, semana);
 				System.out.println("-----------antes del if--11"+""+""+numero.getNum11()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate11( numero.getNum11(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum11(), anio, semana)!=null) {
 					System.out.println("despues del if----11"+""+""+numero.getNum11()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -961,10 +961,10 @@ public class ResController {
 			}
 			if (numero.getNum12()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum12());
-				List<info> var =userService.validate12( numero.getNum12(), anio, semana);
+				List<info> var =userService.validate( numero.getNum12(), anio, semana);
 				System.out.println("-----------antes del if--12"+""+""+numero.getNum12()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate12( numero.getNum12(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum12(), anio, semana)!=null) {
 					System.out.println("despues del if----12"+""+""+numero.getNum12()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -1013,10 +1013,10 @@ public class ResController {
 			}
 			if (numero.getNum13()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum13());
-				List<info> var =userService.validate13( numero.getNum13(), anio, semana);
+				List<info> var =userService.validate( numero.getNum13(), anio, semana);
 				System.out.println("-----------antes del if--13"+""+""+numero.getNum13()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate13( numero.getNum13(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum13(), anio, semana)!=null) {
 					System.out.println("despues del if----13"+""+""+numero.getNum13()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -1065,10 +1065,10 @@ public class ResController {
 			}
 			if (numero.getNum16()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum16());
-				List<info> var =userService.validate16( numero.getNum16(), anio, semana);
+				List<info> var =userService.validate( numero.getNum16(), anio, semana);
 				System.out.println("-----------antes del if--16"+""+""+numero.getNum16()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate16( numero.getNum16(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum16(), anio, semana)!=null) {
 					System.out.println("despues del if----16"+""+""+numero.getNum16()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -1117,10 +1117,10 @@ public class ResController {
 			}
 			if (numero.getNum18()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum18());
-				List<info> var =userService.validate18( numero.getNum18(), anio, semana);
+				List<info> var =userService.validate( numero.getNum18(), anio, semana);
 				System.out.println("-----------antes del if--18"+""+""+numero.getNum18()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate18( numero.getNum18(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum18(), anio, semana)!=null) {
 					System.out.println("despues del if----18"+""+""+numero.getNum18()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -1169,10 +1169,10 @@ public class ResController {
 			}
 			if (numero.getNum19()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum19());
-				List<info> var =userService.validate19( numero.getNum19(), anio, semana);
+				List<info> var =userService.validate( numero.getNum19(), anio, semana);
 				System.out.println("-----------antes del if--19"+""+""+numero.getNum19()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate19( numero.getNum19(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum19(), anio, semana)!=null) {
 					System.out.println("despues del if----19"+""+""+numero.getNum19()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -1221,10 +1221,10 @@ public class ResController {
 			}
 			if (numero.getNum20()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum20());
-				List<info> var =userService.validate20( numero.getNum20(), anio, semana);
+				List<info> var =userService.validate( numero.getNum20(), anio, semana);
 				System.out.println("-----------antes del if--20"+""+""+numero.getNum20()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate20( numero.getNum20(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum20(), anio, semana)!=null) {
 					System.out.println("despues del if----20"+""+""+numero.getNum20()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -1273,10 +1273,10 @@ public class ResController {
 			}
 			if (numero.getNum21()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum21());
-				List<info> var =userService.validate21( numero.getNum21(), anio, semana);
+				List<info> var =userService.validate( numero.getNum21(), anio, semana);
 				System.out.println("-----------antes del if--21"+""+""+numero.getNum21()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate21( numero.getNum21(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum21(), anio, semana)!=null) {
 					System.out.println("despues del if----21"+""+""+numero.getNum21()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -1325,10 +1325,10 @@ public class ResController {
 			}
 			if (numero.getNum22()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum22());
-				List<info> var =userService.validate22( numero.getNum22(), anio, semana);
+				List<info> var =userService.validate( numero.getNum22(), anio, semana);
 				System.out.println("-----------antes del if--22"+""+""+numero.getNum22()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate22( numero.getNum22(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum22(), anio, semana)!=null) {
 					System.out.println("despues del if----22"+""+""+numero.getNum22()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -1377,10 +1377,10 @@ public class ResController {
 			}
 			if (numero.getNum23()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum23());
-				List<info> var =userService.validate23( numero.getNum23(), anio, semana);
+				List<info> var =userService.validate( numero.getNum23(), anio, semana);
 				System.out.println("-----------antes del if--23"+""+""+numero.getNum23()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate23( numero.getNum23(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum23(), anio, semana)!=null) {
 					System.out.println("despues del if----23"+""+""+numero.getNum23()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -1429,10 +1429,10 @@ public class ResController {
 			}
 			if (numero.getNum24()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum24());
-				List<info> var =userService.validate24( numero.getNum24(), anio, semana);
+				List<info> var =userService.validate( numero.getNum24(), anio, semana);
 				System.out.println("-----------antes del if--24"+""+""+numero.getNum24()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate24( numero.getNum24(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum24(), anio, semana)!=null) {
 					System.out.println("despues del if----24"+""+""+numero.getNum24()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -1481,10 +1481,10 @@ public class ResController {
 			}
 			if (numero.getNum25()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum25());
-				List<info> var =userService.validate25( numero.getNum25(), anio, semana);
+				List<info> var =userService.validate( numero.getNum25(), anio, semana);
 				System.out.println("-----------antes del if--____________________25"+""+""+numero.getNum25()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate25( numero.getNum25(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum25(), anio, semana)!=null) {
 					System.out.println("despues del if----__________________25"+""+""+numero.getNum25()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -1533,10 +1533,10 @@ public class ResController {
 			}
 			if (numero.getNum26()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum26());
-				List<info> var =userService.validate26( numero.getNum26(), anio, semana);
+				List<info> var =userService.validate( numero.getNum26(), anio, semana);
 				System.out.println("-----------antes del if--____________________26"+""+""+numero.getNum26()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate26( numero.getNum26(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum26(), anio, semana)!=null) {
 					System.out.println("despues del if----__________________26"+""+""+numero.getNum26()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -1585,10 +1585,10 @@ public class ResController {
 			}
 			if (numero.getNum27()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum27());
-				List<info> var =userService.validate27( numero.getNum27(), anio, semana);
+				List<info> var =userService.validate( numero.getNum27(), anio, semana);
 				System.out.println("-----------antes del if--____________________27"+""+""+numero.getNum27()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate27( numero.getNum27(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum27(), anio, semana)!=null) {
 					System.out.println("despues del if----__________________27"+""+""+numero.getNum27()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -1637,10 +1637,10 @@ public class ResController {
 			}
 			if (numero.getNum28()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum28());
-				List<info> var =userService.validate28( numero.getNum28(), anio, semana);
+				List<info> var =userService.validate( numero.getNum28(), anio, semana);
 				System.out.println("-----------antes del if--____________________28"+""+""+numero.getNum28()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate28( numero.getNum28(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum28(), anio, semana)!=null) {
 					System.out.println("despues del if----__________________28"+""+""+numero.getNum28()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -1689,10 +1689,10 @@ public class ResController {
 			}
 			if (numero.getNum29()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum29());
-				List<info> var =userService.validate29( numero.getNum29(), anio, semana);
+				List<info> var =userService.validate( numero.getNum29(), anio, semana);
 				System.out.println("-----------antes del if--____________________29"+""+""+numero.getNum29()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate29( numero.getNum29(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum29(), anio, semana)!=null) {
 					System.out.println("despues del if----__________________29"+""+""+numero.getNum29()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -1741,10 +1741,10 @@ public class ResController {
 			}
 			if (numero.getNum31()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum31());
-				List<info> var =userService.validate31( numero.getNum31(), anio, semana);
+				List<info> var =userService.validate( numero.getNum31(), anio, semana);
 				System.out.println("-----------antes del if--___________________31"+""+""+numero.getNum31()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate31( numero.getNum31(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum31(), anio, semana)!=null) {
 					System.out.println("despues del if----__________________31"+""+""+numero.getNum31()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();
@@ -1793,10 +1793,10 @@ public class ResController {
 			}
 			if (numero.getNum32()!=null) {
 				System.out.println("checkbox is checked  "+numero.getNum32());
-				List<info> var =userService.validate32( numero.getNum32(), anio, semana);
+				List<info> var =userService.validate( numero.getNum32(), anio, semana);
 				System.out.println("-----------antes del if--___________________32"+""+""+numero.getNum32()+""+ anio+""+semana);
 				
-				if (var!=null && !var.isEmpty()&&userService.validate32( numero.getNum32(), anio, semana)!=null) {
+				if (var!=null && !var.isEmpty()&&userService.validate( numero.getNum32(), anio, semana)!=null) {
 					System.out.println("despues del if----__________________32"+""+""+numero.getNum32()+""+ anio+""+semana);
 						//****************************************************insertamos a la tabla control
 						Control opjControl=new Control();

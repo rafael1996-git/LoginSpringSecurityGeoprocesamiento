@@ -19,6 +19,8 @@ import com.springmvc.model.statusError;
 
 
 public class UserDaoImpl implements UserDao {
+	
+	private JdbcTemplate[] jdbcTemplatebgedArray=new JdbcTemplate[32];
 
 	private JdbcTemplate jdbcTemplateuser;
 
@@ -88,6 +90,8 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged17(JdbcTemplate jdbcTemplatebged17) {
 		this.jdbcTemplatebged17 = jdbcTemplatebged17;
+		this.jdbcTemplatebgedArray[16]=jdbcTemplatebged17;
+
 	}
 
 
@@ -238,6 +242,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged12(JdbcTemplate jdbcTemplatebged12) {
 		this.jdbcTemplatebged12 = jdbcTemplatebged12;
+		this.jdbcTemplatebgedArray[11]=jdbcTemplatebged12;
 	}
 
 
@@ -248,6 +253,8 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged13(JdbcTemplate jdbcTemplatebged13) {
 		this.jdbcTemplatebged13 = jdbcTemplatebged13;
+		this.jdbcTemplatebgedArray[12]=jdbcTemplatebged13;
+
 	}
 
 
@@ -497,7 +504,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public List<info> validate(String entidad,String anio,String semana) {
 		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged17.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
+		 return jdbcTemplatebgedArray[Integer.parseInt(entidad)-1].query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
 	}
 	@Override
 	public List<UserControl> findByUserControlAndPassword(String correo, String password ) {
@@ -598,227 +605,6 @@ public class UserDaoImpl implements UserDao {
 		return users.size() > 0 ? users.get(0) : null;
 	}
 
-	@Override
-	public List<info> validate09(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged09.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-	@Override
-	public List<info> validate14(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged14.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-	@Override
-	public List<info> validate15(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged15.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-	@Override
-	public List<info> validate30(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged30.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	
-	
-	@Override
-	public List<info> validate01(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged01.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate02(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged02.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate03(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged03.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate04(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged04.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate05(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged05.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate06(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged06.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate07(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged07.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate08(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged08.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate10(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged10.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate11(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged11.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate12(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged12.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate13(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged13.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate16(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged16.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate17(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged17.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate18(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged18.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate19(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged19.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate20(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged20.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate21(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged21.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate22(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged22.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate23(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged23.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate24(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged24.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate25(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged25.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate26(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged26.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate27(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged27.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate28(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged28.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate29(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged29.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate31(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged31.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate32(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged32.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
 }
 
 //********************************************************************mapper de user(base de usuarios)
