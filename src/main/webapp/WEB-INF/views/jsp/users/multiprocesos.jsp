@@ -107,7 +107,7 @@
 				<h2>Selección de Entidades a Procesar</h2>
 			</div>
 <!-- 			<div class="table-wrapper-scroll-y my-custom-scrollbar" > -->
-			<form:form  modelAttribute="valor" class="formulario" action="MultiRemesa" >
+			<form:form  modelAttribute="valor" class="formulario" action="multiremesaExecute" >
 			<div class="checkbox">
 				<br>
 				<input type="checkbox" name="num1" id="1"value="1" >

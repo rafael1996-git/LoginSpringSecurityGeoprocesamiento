@@ -19,6 +19,8 @@ import com.springmvc.model.statusError;
 
 
 public class UserDaoImpl implements UserDao {
+	
+	private JdbcTemplate[] jdbcTemplatebgedArray=new JdbcTemplate[32];
 
 	private JdbcTemplate jdbcTemplateuser;
 
@@ -88,6 +90,8 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged17(JdbcTemplate jdbcTemplatebged17) {
 		this.jdbcTemplatebged17 = jdbcTemplatebged17;
+		this.jdbcTemplatebgedArray[16]=jdbcTemplatebged17;
+
 	}
 
 
@@ -98,6 +102,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged09(JdbcTemplate jdbcTemplatebged09) {
 		this.jdbcTemplatebged09 = jdbcTemplatebged09;
+		this.jdbcTemplatebgedArray[8]=jdbcTemplatebged09;
 	}
 
 
@@ -108,6 +113,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged14(JdbcTemplate jdbcTemplatebged14) {
 		this.jdbcTemplatebged14 = jdbcTemplatebged14;
+		this.jdbcTemplatebgedArray[13]=jdbcTemplatebged14;
 	}
 
 
@@ -118,6 +124,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged15(JdbcTemplate jdbcTemplatebged15) {
 		this.jdbcTemplatebged15 = jdbcTemplatebged15;
+		this.jdbcTemplatebgedArray[14]=jdbcTemplatebged15;
 	}
 
 
@@ -128,6 +135,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged30(JdbcTemplate jdbcTemplatebged30) {
 		this.jdbcTemplatebged30 = jdbcTemplatebged30;
+		this.jdbcTemplatebgedArray[29]=jdbcTemplatebged30;
 	}
 
 
@@ -138,6 +146,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged01(JdbcTemplate jdbcTemplatebged01) {
 		this.jdbcTemplatebged01 = jdbcTemplatebged01;
+		this.jdbcTemplatebgedArray[0]=jdbcTemplatebged01;
 	}
 
 
@@ -148,6 +157,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged02(JdbcTemplate jdbcTemplatebged02) {
 		this.jdbcTemplatebged02 = jdbcTemplatebged02;
+		this.jdbcTemplatebgedArray[1]=jdbcTemplatebged02;
 	}
 
 
@@ -158,6 +168,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged03(JdbcTemplate jdbcTemplatebged03) {
 		this.jdbcTemplatebged03 = jdbcTemplatebged03;
+		this.jdbcTemplatebgedArray[2]=jdbcTemplatebged03;
 	}
 
 
@@ -168,6 +179,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged04(JdbcTemplate jdbcTemplatebged04) {
 		this.jdbcTemplatebged04 = jdbcTemplatebged04;
+		this.jdbcTemplatebgedArray[3]=jdbcTemplatebged04;
 	}
 
 
@@ -178,6 +190,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged05(JdbcTemplate jdbcTemplatebged05) {
 		this.jdbcTemplatebged05 = jdbcTemplatebged05;
+		this.jdbcTemplatebgedArray[4]=jdbcTemplatebged05;
 	}
 
 
@@ -188,6 +201,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged06(JdbcTemplate jdbcTemplatebged06) {
 		this.jdbcTemplatebged06 = jdbcTemplatebged06;
+		this.jdbcTemplatebgedArray[5]=jdbcTemplatebged06;
 	}
 
 
@@ -198,6 +212,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged07(JdbcTemplate jdbcTemplatebged07) {
 		this.jdbcTemplatebged07 = jdbcTemplatebged07;
+		this.jdbcTemplatebgedArray[6]=jdbcTemplatebged07;
 	}
 
 
@@ -208,6 +223,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged08(JdbcTemplate jdbcTemplatebged08) {
 		this.jdbcTemplatebged08 = jdbcTemplatebged08;
+		this.jdbcTemplatebgedArray[7]=jdbcTemplatebged08;
 	}
 
 
@@ -218,6 +234,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged10(JdbcTemplate jdbcTemplatebged10) {
 		this.jdbcTemplatebged10 = jdbcTemplatebged10;
+		this.jdbcTemplatebgedArray[9]=jdbcTemplatebged10;
 	}
 
 
@@ -228,6 +245,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged11(JdbcTemplate jdbcTemplatebged11) {
 		this.jdbcTemplatebged11 = jdbcTemplatebged11;
+		this.jdbcTemplatebgedArray[10]=jdbcTemplatebged11;
 	}
 
 
@@ -238,6 +256,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged12(JdbcTemplate jdbcTemplatebged12) {
 		this.jdbcTemplatebged12 = jdbcTemplatebged12;
+		this.jdbcTemplatebgedArray[11]=jdbcTemplatebged12;
 	}
 
 
@@ -248,6 +267,8 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged13(JdbcTemplate jdbcTemplatebged13) {
 		this.jdbcTemplatebged13 = jdbcTemplatebged13;
+		this.jdbcTemplatebgedArray[12]=jdbcTemplatebged13;
+
 	}
 
 
@@ -258,6 +279,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged16(JdbcTemplate jdbcTemplatebged16) {
 		this.jdbcTemplatebged16 = jdbcTemplatebged16;
+		this.jdbcTemplatebgedArray[15]=jdbcTemplatebged16;
 	}
 
 
@@ -268,6 +290,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged18(JdbcTemplate jdbcTemplatebged18) {
 		this.jdbcTemplatebged18 = jdbcTemplatebged18;
+		this.jdbcTemplatebgedArray[17]=jdbcTemplatebged18;
 	}
 
 
@@ -278,6 +301,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged19(JdbcTemplate jdbcTemplatebged19) {
 		this.jdbcTemplatebged19 = jdbcTemplatebged19;
+		this.jdbcTemplatebgedArray[18]=jdbcTemplatebged19;
 	}
 
 
@@ -288,6 +312,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged20(JdbcTemplate jdbcTemplatebged20) {
 		this.jdbcTemplatebged20 = jdbcTemplatebged20;
+		this.jdbcTemplatebgedArray[19]=jdbcTemplatebged20;
 	}
 
 
@@ -298,6 +323,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged21(JdbcTemplate jdbcTemplatebged21) {
 		this.jdbcTemplatebged21 = jdbcTemplatebged21;
+		this.jdbcTemplatebgedArray[20]=jdbcTemplatebged21;
 	}
 
 
@@ -308,6 +334,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged22(JdbcTemplate jdbcTemplatebged22) {
 		this.jdbcTemplatebged22 = jdbcTemplatebged22;
+		this.jdbcTemplatebgedArray[21]=jdbcTemplatebged22;
 	}
 
 
@@ -318,6 +345,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged23(JdbcTemplate jdbcTemplatebged23) {
 		this.jdbcTemplatebged23 = jdbcTemplatebged23;
+		this.jdbcTemplatebgedArray[22]=jdbcTemplatebged23;
 	}
 
 
@@ -328,6 +356,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged24(JdbcTemplate jdbcTemplatebged24) {
 		this.jdbcTemplatebged24 = jdbcTemplatebged24;
+		this.jdbcTemplatebgedArray[23]=jdbcTemplatebged24;
 	}
 
 
@@ -338,6 +367,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged25(JdbcTemplate jdbcTemplatebged25) {
 		this.jdbcTemplatebged25 = jdbcTemplatebged25;
+		this.jdbcTemplatebgedArray[24]=jdbcTemplatebged25;
 	}
 
 
@@ -348,6 +378,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged26(JdbcTemplate jdbcTemplatebged26) {
 		this.jdbcTemplatebged26 = jdbcTemplatebged26;
+		this.jdbcTemplatebgedArray[25]=jdbcTemplatebged26;
 	}
 
 
@@ -358,6 +389,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged27(JdbcTemplate jdbcTemplatebged27) {
 		this.jdbcTemplatebged27 = jdbcTemplatebged27;
+		this.jdbcTemplatebgedArray[26]=jdbcTemplatebged27;
 	}
 
 
@@ -368,6 +400,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged28(JdbcTemplate jdbcTemplatebged28) {
 		this.jdbcTemplatebged28 = jdbcTemplatebged28;
+		this.jdbcTemplatebgedArray[27]=jdbcTemplatebged28;
 	}
 
 
@@ -378,6 +411,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged29(JdbcTemplate jdbcTemplatebged29) {
 		this.jdbcTemplatebged29 = jdbcTemplatebged29;
+		this.jdbcTemplatebgedArray[28]=jdbcTemplatebged29;
 	}
 
 
@@ -388,6 +422,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged31(JdbcTemplate jdbcTemplatebged31) {
 		this.jdbcTemplatebged31 = jdbcTemplatebged31;
+		this.jdbcTemplatebgedArray[30]=jdbcTemplatebged31;
 	}
 
 
@@ -398,6 +433,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void setJdbcTemplatebged32(JdbcTemplate jdbcTemplatebged32) {
 		this.jdbcTemplatebged32 = jdbcTemplatebged32;
+		this.jdbcTemplatebgedArray[31]=jdbcTemplatebged32;
 	}
 
 
@@ -497,7 +533,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public List<info> validate(String entidad,String anio,String semana) {
 		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged17.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
+		 return jdbcTemplatebgedArray[Integer.parseInt(entidad)-1].query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
 	}
 	@Override
 	public List<UserControl> findByUserControlAndPassword(String correo, String password ) {
@@ -598,227 +634,6 @@ public class UserDaoImpl implements UserDao {
 		return users.size() > 0 ? users.get(0) : null;
 	}
 
-	@Override
-	public List<info> validate09(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged09.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-	@Override
-	public List<info> validate14(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged14.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-	@Override
-	public List<info> validate15(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged15.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-	@Override
-	public List<info> validate30(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged30.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	
-	
-	@Override
-	public List<info> validate01(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged01.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate02(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged02.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate03(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged03.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate04(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged04.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate05(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged05.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate06(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged06.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate07(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged07.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate08(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged08.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate10(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged10.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate11(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged11.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate12(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged12.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate13(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged13.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate16(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged16.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate17(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged17.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate18(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged18.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate19(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged19.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate20(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged20.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate21(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged21.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate22(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged22.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate23(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged23.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate24(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged24.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate25(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged25.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate26(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged26.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate27(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged27.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate28(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged28.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate29(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged29.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate31(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged31.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
-
-
-	@Override
-	public List<info> validate32(String entidad, String anio, String semana) {
-		String sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-		 return jdbcTemplatebged32.query(sql, new Object[] { entidad,anio,semana }, new bgedMapper());
-	}
 }
 
 //********************************************************************mapper de user(base de usuarios)
