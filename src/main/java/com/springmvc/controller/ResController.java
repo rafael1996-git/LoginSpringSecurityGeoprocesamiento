@@ -82,7 +82,7 @@ public class ResController {
 					//****************************************************insertamos a la tabla control
 					Control opjControl=new Control();
 					
-					for (int j = 0; j <=126; j++) {
+					for (int j = 0; j <=135; j++) {
 						opjControl.setEntidad(entidad);
 						opjControl.setRemesa(Integer.parseInt(opj.toString()));
 						opjControl.setFecha_hora(objDate);
@@ -196,7 +196,7 @@ public class ResController {
 								userService.regisRemesa(opjRemesa);
 								//****************************************************insertamos a la tabla control
 								Control opjControl=new Control();
-								for (int j = 1; j <=126; j++) {
+								for (int j = 1; j <=135; j++) {
 									opjControl.setEntidad(Integer.parseInt(itera[i]));
 									opjControl.setRemesa(Integer.parseInt(opj.toString()));
 									opjControl.setFecha_hora(objDate);
