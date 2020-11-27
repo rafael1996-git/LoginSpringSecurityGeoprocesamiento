@@ -295,7 +295,7 @@ public class LoginController {
 
 	@SuppressWarnings("null")
 	public String getEstatusError(int entidad, int remesa) throws ParseException {
-		statusError opjeto = new statusError();
+//		statusError opjeto = new statusError();
 		Date objDate = new Date();
 		// Mostrar la fecha y la hora usando toString ()
 		System.out.println(objDate.toString());
@@ -327,18 +327,18 @@ public class LoginController {
 				err = object.getString("error");
 				int enti = object.getInt("entidad");
 				int reme = object.getInt("remesa");
-				opjeto.setEntidad(enti);
-				opjeto.setRemesa(reme);
-				opjeto.setFecha(fecha);
-				opjeto.setError(err);
-				statusError status = userService.findByfecha(err.toString(), fecha.toString());
-				if (status != null) {
-					System.out.println("_______________idoperacion_____________________insert:"+idOp);
-
-				} else if (opjeto != null) {
-					userService.register(opjeto);
-			
-				}
+//				opjeto.setEntidad(enti);
+//				opjeto.setRemesa(reme);
+//				opjeto.setFecha(fecha);
+//				opjeto.setError(err);
+//				statusError status = userService.findByfecha(err.toString(), fecha.toString());
+//				if (status != null) {
+//					System.out.println("_______________idoperacion_____________________insert:"+idOp);
+//
+//				} else if (opjeto != null) {
+//					userService.register(opjeto);
+//			
+//				}
 				System.out.println("_______________dataStore_____________________insert-opjeto:"+err.toString());
 				String var="Se ha Registrado un Error en la IdOperacion ("+idOp+") de la Entidad ( "+enti+") con la Fecha ( "+fecha+") lo cual se Recomienda Consultar la Tabla StatusError de la Base de control";
 				dataStore[i] = "{\"iden\":\"" + enti +"\",\"idre\":\""+reme+"\",\"idfe\":\""+fecha+"\",\"error\":\""+var.toString()+"\"}";
