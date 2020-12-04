@@ -276,16 +276,17 @@
 		jndi-name="java:jboss/datasources/usuarios17"></jee:jndi-lookup>
 		<jee:jndi-lookup id="dataSource2"
 		jndi-name="java:jboss/datasources/controldb"></jee:jndi-lookup>
+	
 		<jee:jndi-lookup id="dataSource3"
-		jndi-name="java:jboss/datasources/bged17"></jee:jndi-lookup>
-		<jee:jndi-lookup id="dataSource4"
-		jndi-name="java:jboss/datasources/bged09"></jee:jndi-lookup>
-		<jee:jndi-lookup id="dataSource5"
-		jndi-name="java:jboss/datasources/bged14"></jee:jndi-lookup>
-		<jee:jndi-lookup id="dataSource6"
-		jndi-name="java:jboss/datasources/bged15"></jee:jndi-lookup>
-		<jee:jndi-lookup id="dataSource7"
-		jndi-name="java:jboss/datasources/bged30"></jee:jndi-lookup>
+        jndi-name="java:jboss/datasources/bged17"></jee:jndi-lookup>
+        <jee:jndi-lookup id="dataSource4"
+        jndi-name="java:jboss/datasources/bged09"></jee:jndi-lookup>
+        <jee:jndi-lookup id="dataSource5"
+        jndi-name="java:jboss/datasources/bged14"></jee:jndi-lookup>
+        <jee:jndi-lookup id="dataSource6"
+        jndi-name="java:jboss/datasources/bged15"></jee:jndi-lookup>
+        <jee:jndi-lookup id="dataSource7"
+        jndi-name="java:jboss/datasources/bged30"></jee:jndi-lookup>
 		
 		<jee:jndi-lookup id="dataSource8"
 		jndi-name="java:jboss/datasources/bged01"></jee:jndi-lookup>

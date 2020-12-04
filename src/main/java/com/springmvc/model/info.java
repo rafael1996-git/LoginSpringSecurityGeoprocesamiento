@@ -6,11 +6,17 @@ public class info {
 	private String semana ;
 	private Integer estado_remesa ;
 	private String ruta ;
-	@Override
-	public String toString() {
-		return "info [entidad=" + entidad + ", anio=" + anio + ", semana=" + semana + ", estado_remesa=" + estado_remesa
-				+ ", ruta=" + ruta + "]";
+	private String msgException;
+	
+	
+	public String getMsgException() {
+		return msgException;
 	}
+	public void setMsgException(String msgException) {
+		this.msgException = msgException;
+	}
+	
+	
 	public String getEntidad() {
 		return entidad;
 	}
@@ -40,6 +46,11 @@ public class info {
 	}
 	public void setRuta(String ruta) {
 		this.ruta = ruta;
+	}
+	@Override
+	public String toString() {
+		return "info [entidad=" + entidad + ", anio=" + anio + ", semana=" + semana + ", estado_remesa=" + estado_remesa
+				+ ", ruta=" + ruta + ", msgException=" + msgException + "]";
 	}
 	
 	

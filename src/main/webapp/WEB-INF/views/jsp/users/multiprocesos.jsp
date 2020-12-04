@@ -7,57 +7,85 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<link href='https://fonts.googleapis.com/css?family=Roboto'
+	rel='stylesheet' type='text/css'>
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta name="_csrf" content="${_csrf.token}" />
+<meta name="_csrf_header" content="${_csrf.headerName}" />
 <jsp:include page="../fragments/headerMultiRemesa.jsp" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<spring:url value="MultiAvance.do" var="urlWelcome" />
-<link rel="stylesheet" href="resources/css/estilos.css">
 <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="resources/css/estilos.css">
+
 <link rel="stylesheet" href="resources/css/adminremesa.css"
 	type="text/css" />
-		<spring:url value="MultiRemesa" var="urlAddRemesa" />
-		<spring:url value="Multiproceso" var="multiproceso" />
+	
+<script
+	src="resources/js/bootstrap.min.js"></script>
 <style>
 * {
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
- 
- 
+
 .wrap {
-    width: 90%;
-    max-width: 1000px;
-    margin: 0 20px;
-    /*margin: auto;*/
+	width: 90%;
+	max-width: 1000px;
+	margin: 0 20px;
+	/*margin: auto;*/
 }
- 
+
 .formulario h2 {
-    font-size: 16px;
-    color: #000000;
-    margin-bottom: 20px;
-    margin-left: 20px;
-}
- 
-.formulario > div {
-    padding: 20px 0;
-    border-bottom: 1px solid #ccc;
+	font-size: 16px;
+	color: #000000;
+	margin-bottom: 20px;
+	margin-left: 20px;
 }
 
+.formulario>div {
+	padding: 20px 0;
+	border-bottom: 1px solid #ccc;
+}
+
+
+canvas{ 
+        background:grey;
+        }
+        
+.modal-header{
+        background-color:pink;
+}
+.modal-content {
+       overflow:hidden;
+}
+
+.modal-body{
+  word-break: break-all !important;
+}
+
+div.round3 {
+  border: 1px solid red;
+  border-radius: 12px;
+}
+
+.modal {
+    bottom: unset !important;
+}
 </style>
-<body>
 
+<body>
 	<div class="container" align="center">
 		<fieldset>
 			<legend>
 				<h3>Instituto Nacional Electoral</h3>
 			</legend>
-
+       
 			<div align="right" style="text-transform: capitalize;">
-
 				<tr>
 					</h2>
 					<td><h4>Usuario: ${firstname}</h4></td>
@@ -73,159 +101,95 @@
 
 
 			<div class="column">
-						<c:if test="${not empty multimensaje1}">
-			  		<div class="alert alert-info">${multimensaje1}
-    					<a href="${multiproceso}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-   					 	<strong>Error!</strong>
-   					</div>
-			  
-			 	</c:if>
-			 		 <c:if test="${not empty multimensaje2}">
-			  <div class="alert alert-info">${multimensaje2}
-    				<a href="${multiproceso}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-   					 <strong>Atencion!</strong>"La remesa no puede procesarse, ya que aun no se concluye la carga al SIIRFE en alguna de las entidades seleccionadas."
-   				    </div>
-			  
-			 </c:if>
-			 <c:if test="${not empty multimsj}">
-			  <div class="alert alert-info">${multimsj}
-    				<a href="${multiproceso}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-   					 <strong>Error!</strong>
-   				    </div>
-			  
-			 </c:if>
-			  <c:if test="${not empty Multimensaje}">
-			  	<div class="alert alert-success">${Multimensaje}
-    				<a href="${multiproceso}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-   				 	<strong>¡Success!</strong> Multi Procesamiento Funcionando  Correctamente
-   				</div>
-			  
-			 </c:if>
-		<div  class="wrap">
-			<div class="info">
-				<h1>Geoprocesamiento de la Remesa de Actualización Cartográfica</h1>
-				<h2>Selección de Entidades a Procesar</h2>
+				<c:if test="${not empty multimensaje1}">
+					<div class="alert alert-info">${multimensaje1}
+						<a href="${multiproceso}" class="close" data-dismiss="alert"
+							aria-label="close">&times;</a> <strong>Error!</strong>
+					</div>
+
+				</c:if>
+				<c:if test="${not empty multimensaje2}">
+					<div class="alert alert-info">${multimensaje2}
+						<a href="${multiproceso}" class="close" data-dismiss="alert"
+							aria-label="close">&times;</a> <strong>Atencion!</strong>"La
+						remesa no puede procesarse, ya que aun no se concluye la carga al
+						SIIRFE en alguna de las entidades seleccionadas."
+					</div>
+
+				</c:if>
+				<c:if test="${not empty multimsj}">
+					<div class="alert alert-info">${multimsj}
+						<a href="${multiproceso}" class="close" data-dismiss="alert"
+							aria-label="close">&times;</a> <strong>Error!</strong>
+					</div>
+
+				</c:if>
+				<c:if test="${not empty Multimensaje}">
+					<div class="alert alert-success">${Multimensaje}
+						<a href="${multiproceso}" class="close" data-dismiss="alert"
+							aria-label="close">&times;</a> <strong>¡Success!</strong> Multi
+						Procesamiento Funcionando Correctamente
+					</div>
+
+				</c:if>
 			</div>
-<!-- 			<div class="table-wrapper-scroll-y my-custom-scrollbar" > -->
-			<form:form  modelAttribute="valor" class="formulario" action="MultiRemesa" >
-			<div class="checkbox">
-				<br>
-				<input type="checkbox" name="num1" id="1"value="1" >
-				<label for="1">1</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num2" id="2" value="2">
-				<label for="2">2</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num3" id="3" value="3">
-				<label for="3">3</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num4" id="4" value="4">
-				<label for="4">4</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num5" id="5" value="5">
-				<label for="5">5</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num6" id="6" value="6">
-				<label for="6">6</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num7" id="7" value="7">
-				<label for="7">7</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num8" id="8" value="8">
-				<label for="8">8</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num9" id="9" value="9" >
-				<label for="9">9</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num10" id="10" value="10">
-				<label for="10">10</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num11" id="11" value="11">
-				<label for="11">11</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num12" id="12" value="12" >
-				<label for="12">12</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num13" id="13" value="13">
-				<label for="13">13</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num14" id="14" value="14">
-				<label for="14">14</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num15" id="15" value="15" >
-				<label for="15">15</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num16" id="16" value="16">
-				<label for="16">16</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num17" id="17" value="17">
-				<label for="17">17</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num18" id="18" value="18">
-				<label for="18">18</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num19" id="19" value="19" >
-				<label for="19">19</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num20" id="20" value="20">
-				<label for="20">20</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num21" id="21" value="21">
-				<label for="21">21</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num22" id="22" value="22" >
-				<label for="22">22</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num23" id="23" value="23">
-				<label for="23">23</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num24" id="24" value="24">
-				<label for="24">24</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num25" id="25" value="25">
-				<label for="25">25</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num26" id="26" value="26">
-				<label for="26">26</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num27" id="27" value="27">
-				<label for="27">27</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num28" id="28" value="28">
-				<label for="28">28</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num29" id="29" value="29">
-				<label for="29">29</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num30" id="30" value="30">
-				<label for="30">30</label>
-				<input type="checkbox" name="num31" id="31" value="31">
-				<label for="31">31</label>
-<!-- 				<br> -->
-				<input type="checkbox" name="num32" id="32" value="32">
-				<label for="32">32</label>
-<!-- 				<br> -->
+				<div class="wrap">
 				
-			
+					<div class="info">
+						<h1>Geoprocesamiento de la Remesa de Actualización
+							Cartográfica</h1>
+						<h2>Selección de Entidades a Procesar</h2>
+					</div>
+					<form class="form-inline" action="#" id="formEntidad">
+					  
+                         <c:forEach items="${entidadesActivas}" var="flagEntidades" varStatus="statusEntidad">
+                          <div class="checkbox">
+                          <input type="checkbox" name="num${flagEntidades}" id="${flagEntidades}" value="${flagEntidades}"  />
+                          <label for="${flagEntidades}">${flagEntidades}</label>
+                           </div>
+                         </c:forEach>  
+                         <br>
+						 <button class="btn btn-primary" type="submit">Ejecuta MultiProcesos</button>
+					 <input type="hidden" name="${_csrf.parameterName}"
+                            value="${_csrf.token}" />
+					</form>
+                    
+				</div>
+                  
+				<div class="col align-self-center">
+		             
+					<h1>Estatus:</h1>
+					<div id="contieneCanvas">
+					</div>
+				</div>
+				 </fieldset>
 			</div>
-			<button  class="btn btn-primary"  type="submit">Ejecuta MultiProcesos</button>
-			</form:form>
-				
-<!-- 			</div> -->
+	<div class="modal fade bd-example-modal-sm" id="pleaseWaitDialog" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<p >Se esta procesando la solicitud</p>
+				</div>
+				<div class="modal-body">
+				  <div class="text-center">
+				  <img src='resources/images/ajax-loader.gif' class="rounded mx-auto d-block" alt="..."/>
+				  </div>
+				</div>
+			</div>
 		</div>
-
+	</div>
+	<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" id="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">cerrar</button>
+      </div>
+  </div>
+</div>
 </body>
-<script type="text/javascript">
-const form=document.getElementById('form');
-
-form.addEventListener('submit',(event) =>{
- const fd= new FormData(form);
-   
-  console.log(fd.getAll('check'));
-  event.preventDefault();
-});
-</script>
-
+<script src="resources/js/funcionRemesa.js" type="text/javascript"></script>
 <br>
 <br>
 <br>
@@ -236,7 +200,6 @@ form.addEventListener('submit',(event) =>{
 <br>
 <br>
 <br>
-
 <footer>
 	<div align="center">
 		<h4>© Derechos Reservados, Instituto Nacional Electoral, México.</h4>

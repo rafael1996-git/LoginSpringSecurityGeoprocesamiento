@@ -115,6 +115,8 @@ public class LoginController {
 		Numero numopj=new Numero();
 		model.addObject("valor", numopj);
 		model.setViewName("/users/multiprocesos");
+		System.out.println("multiproceso get: "+model.getViewName());
+
 		return model;
 
 	}
@@ -180,6 +182,7 @@ public class LoginController {
 		try {
 			List<UserControl> usuarioControl = userService.findByUserControlAndPassword(correo, password);
 			UserControl uControl = userService.findBycorreo(correo);
+			
 			if (usuarioControl != null && !usuarioControl.isEmpty()) {
 
 				HttpSession session = request.getSession();
@@ -197,6 +200,8 @@ public class LoginController {
 				request.setAttribute("lista", listaP);
 				mav = new ModelAndView("/users/admin");
 			} else if (uControl.getId_tipo_usuario() == 3) {
+				List<Integer> listEntidadesActivas = userService.entidadesActivas();
+				logger.info("entidades Activas "+listEntidadesActivas);
 				Numero numopj=new Numero();
 				request.setAttribute("valor", numopj);
 				HttpSession session = request.getSession();
@@ -204,6 +209,7 @@ public class LoginController {
 				session.setAttribute("id", uControl.getId_usuario());
 				session.setAttribute("entidad", uControl.getEntidad());
 				session.setAttribute("tipo", uControl.getId_tipo_usuario());
+	            session.setAttribute("entidadesActivas",listEntidadesActivas);
 				mav = new ModelAndView("/users/multiprocesos");
 				
 				
@@ -354,4 +360,7 @@ public class LoginController {
 			return grafica.toString();
 
 	}
+	
+	
+	
 }
