@@ -276,7 +276,7 @@
 		jndi-name="java:jboss/datasources/usuarios17"></jee:jndi-lookup>
 		<jee:jndi-lookup id="dataSource2"
 		jndi-name="java:jboss/datasources/controldb"></jee:jndi-lookup>
-	
+
 		<jee:jndi-lookup id="dataSource3"
         jndi-name="java:jboss/datasources/bged17"></jee:jndi-lookup>
         <jee:jndi-lookup id="dataSource4"
@@ -287,7 +287,7 @@
         jndi-name="java:jboss/datasources/bged15"></jee:jndi-lookup>
         <jee:jndi-lookup id="dataSource7"
         jndi-name="java:jboss/datasources/bged30"></jee:jndi-lookup>
-		
+
 		<jee:jndi-lookup id="dataSource8"
 		jndi-name="java:jboss/datasources/bged01"></jee:jndi-lookup>
 		<jee:jndi-lookup id="dataSource9"
@@ -304,6 +304,8 @@
 		jndi-name="java:jboss/datasources/bged07"></jee:jndi-lookup>
 		<jee:jndi-lookup id="dataSource15"
 		jndi-name="java:jboss/datasources/bged08"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource4"
+		jndi-name="java:jboss/datasources/bged09"></jee:jndi-lookup>
 		<jee:jndi-lookup id="dataSource16"
 		jndi-name="java:jboss/datasources/bged10"></jee:jndi-lookup>
 		<jee:jndi-lookup id="dataSource17"
@@ -312,8 +314,14 @@
 		jndi-name="java:jboss/datasources/bged12"></jee:jndi-lookup>
 		<jee:jndi-lookup id="dataSource19"
 		jndi-name="java:jboss/datasources/bged13"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource5"
+		jndi-name="java:jboss/datasources/bged14"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource6"
+		jndi-name="java:jboss/datasources/bged15"></jee:jndi-lookup>
 		<jee:jndi-lookup id="dataSource20"
 		jndi-name="java:jboss/datasources/bged16"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource3"
+		jndi-name="java:jboss/datasources/bged17"></jee:jndi-lookup>
 		<jee:jndi-lookup id="dataSource21"
 		jndi-name="java:jboss/datasources/bged18"></jee:jndi-lookup>
 		<jee:jndi-lookup id="dataSource22"
@@ -338,6 +346,8 @@
 		jndi-name="java:jboss/datasources/bged28"></jee:jndi-lookup>
 		<jee:jndi-lookup id="dataSource32"
 		jndi-name="java:jboss/datasources/bged29"></jee:jndi-lookup>
+		<jee:jndi-lookup id="dataSource7"
+		jndi-name="java:jboss/datasources/bged30"></jee:jndi-lookup>
 		<jee:jndi-lookup id="dataSource33"
 		jndi-name="java:jboss/datasources/bged31"></jee:jndi-lookup>
 		<jee:jndi-lookup id="dataSource34"

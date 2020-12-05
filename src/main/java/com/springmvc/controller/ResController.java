@@ -86,6 +86,7 @@ public class ResController {
 			System.out.println(anio);
 			System.out.println(semana);
 
+
 			List<info> var = userService.validate(session.getAttribute("entidad").toString(), anio, semana);
 			System.out.println("-----------antes del if" + "" + "" + session.getAttribute("entidad").toString() + ""
 					+ anio + "" + semana);
@@ -143,22 +144,8 @@ public class ResController {
 					model.setViewName("/users/Remesa");
 					e.printStackTrace();
 				}
-
-				System.out.println(
-						"*************************************************************************[HEADER2 : ");
-
-				List<User> listaPersonas = userService.listaFiltrada(entidad);
-				reques.setAttribute("lista", listaPersonas);
-				model.setViewName("/users/Remesa");
-				model.addObject("mensaje", "¡");
-
-			} else {
-				System.out.println("funcion Remesa no realizada :else  ");
-				List<User> listaPersonas = userService.listaFiltrada(entidad);
-				reques.setAttribute("lista", listaPersonas);
-				model.addObject("mensaje2", "¡");
-				model.setViewName("/users/Remesa");
 			}
+	
 		} catch (Exception e) {
 			e.printStackTrace();
 			HttpSession session = reques.getSession();
@@ -392,6 +379,6 @@ public class ResController {
 		}
 		logger.info("response lista multiestatus " + listGraficas);
 		return listGraficas;
-
+		
 	}
 }

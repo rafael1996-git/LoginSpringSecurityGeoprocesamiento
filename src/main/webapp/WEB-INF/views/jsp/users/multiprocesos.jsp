@@ -133,8 +133,6 @@ div.round3 {
 
 				</c:if>
 			</div>
-				<div class="wrap">
-				
 					<div class="info">
 						<h1>Geoprocesamiento de la Remesa de Actualización
 							Cartográfica</h1>

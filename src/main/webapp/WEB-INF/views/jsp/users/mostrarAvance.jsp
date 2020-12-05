@@ -178,10 +178,10 @@ function searchViaAjax() {
 					        "<td name='mitextarea' id='error' cols='40' rows='5' style='resize: both;'>" + item.error+ "</td>" +
 					        "</tr>";						     
 					    $('#Table > tbody').append(rows);
+					    console.log("datosError: ", item.error);
 					});
 					
 					
-
 					
 					console.log(errordata);
 					

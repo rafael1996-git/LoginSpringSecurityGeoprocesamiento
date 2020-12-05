@@ -435,188 +435,188 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public List<info> validate(String entidad, String anio, String semana){
+	public List<info> validate(String entidad, String anio, String semana) {
 
 		EntidadesEnum enumEntidades = null;
 
 		String sql = "";
 		String peticion = "peticion entidad: " + entidad + " anio: " + anio + " semana: " + semana;
 		logger.info("metodo validate DAO: " + peticion);
-		List<info> lisInfoException=new ArrayList<info>();
+		List<info> lisInfoException = new ArrayList<info>();
 		try {
-		
-		if (entidad.equals(enumEntidades.ENTIDAD01.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD01.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged01.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
 
-		if (entidad.equals(enumEntidades.ENTIDAD02.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD02.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged02.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
+			if (entidad.equals(enumEntidades.ENTIDAD01.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD01.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged01.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
 
-		if (entidad.equals(enumEntidades.ENTIDAD03.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD03.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged03.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
+			if (entidad.equals(enumEntidades.ENTIDAD02.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD02.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged02.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
 
-		if (entidad.equals(enumEntidades.ENTIDAD04.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD04.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged04.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
+			if (entidad.equals(enumEntidades.ENTIDAD03.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD03.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged03.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
 
-		if (entidad.equals(enumEntidades.ENTIDAD05.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD05.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged05.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
+			if (entidad.equals(enumEntidades.ENTIDAD04.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD04.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged04.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
 
-		if (entidad.equals(enumEntidades.ENTIDAD06.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD06.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged06.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
+			if (entidad.equals(enumEntidades.ENTIDAD05.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD05.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged05.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
 
-		if (entidad.equals(enumEntidades.ENTIDAD07.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD07.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged07.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
-		if (entidad.equals(enumEntidades.ENTIDAD08.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD08.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged08.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
+			if (entidad.equals(enumEntidades.ENTIDAD06.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD06.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged06.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
 
-		if (entidad.equals(enumEntidades.ENTIDAD09.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD09.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged09.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
-		if (entidad.equals(enumEntidades.ENTIDAD10.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD10.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged10.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
-		if (entidad.equals(enumEntidades.ENTIDAD11.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD11.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged11.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
-		if (entidad.equals(enumEntidades.ENTIDAD12.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD12.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged12.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
-		if (entidad.equals(enumEntidades.ENTIDAD13.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD13.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged13.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
+			if (entidad.equals(enumEntidades.ENTIDAD07.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD07.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged07.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
+			if (entidad.equals(enumEntidades.ENTIDAD08.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD08.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged08.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
 
-		if (entidad.equals(enumEntidades.ENTIDAD14.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD14.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged14.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
-		if (entidad.equals(enumEntidades.ENTIDAD15.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD15.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged15.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
-		if (entidad.equals(enumEntidades.ENTIDAD16.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD16.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged16.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
-		if (entidad.equals(enumEntidades.ENTIDAD17.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD17.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged17.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
-		if (entidad.equals(enumEntidades.ENTIDAD18.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD18.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged18.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
-		if (entidad.equals(enumEntidades.ENTIDAD19.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD19.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged19.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
-		if (entidad.equals(enumEntidades.ENTIDAD20.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD20.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged20.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
-		if (entidad.equals(enumEntidades.ENTIDAD21.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD21.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged21.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
-		if (entidad.equals(enumEntidades.ENTIDAD22.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD22.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged22.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
-		if (entidad.equals(enumEntidades.ENTIDAD23.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD23.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged23.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
-		if (entidad.equals(enumEntidades.ENTIDAD24.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD24.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged24.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
-		if (entidad.equals(enumEntidades.ENTIDAD25.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD25.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged25.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
-		if (entidad.equals(enumEntidades.ENTIDAD26.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD26.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged26.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
-		if (entidad.equals(enumEntidades.ENTIDAD27.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD27.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged27.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
-		if (entidad.equals(enumEntidades.ENTIDAD28.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD28.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged28.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
-		if (entidad.equals(enumEntidades.ENTIDAD29.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD29.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged29.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
-		if (entidad.equals(enumEntidades.ENTIDAD30.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD30.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged30.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
-		if (entidad.equals(enumEntidades.ENTIDAD31.getEntidadId())) {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD31.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged31.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		} else {
-			System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD32.getEntidadId());
-			sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
-			return jdbcTemplatebged32.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
-		}
-		
-		}catch(DataAccessException e){
-			info exCeption=new info();
-			logger.error("DataAccessException: "+e);
-		
+			if (entidad.equals(enumEntidades.ENTIDAD09.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD09.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged09.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
+			if (entidad.equals(enumEntidades.ENTIDAD10.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD10.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged10.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
+			if (entidad.equals(enumEntidades.ENTIDAD11.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD11.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged11.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
+			if (entidad.equals(enumEntidades.ENTIDAD12.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD12.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged12.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
+			if (entidad.equals(enumEntidades.ENTIDAD13.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD13.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged13.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
+
+			if (entidad.equals(enumEntidades.ENTIDAD14.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD14.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged14.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
+			if (entidad.equals(enumEntidades.ENTIDAD15.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD15.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged15.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
+			if (entidad.equals(enumEntidades.ENTIDAD16.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD16.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged16.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
+			if (entidad.equals(enumEntidades.ENTIDAD17.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD17.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged17.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
+			if (entidad.equals(enumEntidades.ENTIDAD18.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD18.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged18.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
+			if (entidad.equals(enumEntidades.ENTIDAD19.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD19.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged19.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
+			if (entidad.equals(enumEntidades.ENTIDAD20.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD20.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged20.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
+			if (entidad.equals(enumEntidades.ENTIDAD21.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD21.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged21.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
+			if (entidad.equals(enumEntidades.ENTIDAD22.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD22.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged22.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
+			if (entidad.equals(enumEntidades.ENTIDAD23.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD23.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged23.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
+			if (entidad.equals(enumEntidades.ENTIDAD24.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD24.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged24.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
+			if (entidad.equals(enumEntidades.ENTIDAD25.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD25.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged25.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
+			if (entidad.equals(enumEntidades.ENTIDAD26.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD26.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged26.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
+			if (entidad.equals(enumEntidades.ENTIDAD27.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD27.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged27.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
+			if (entidad.equals(enumEntidades.ENTIDAD28.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD28.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged28.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
+			if (entidad.equals(enumEntidades.ENTIDAD29.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD29.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged29.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
+			if (entidad.equals(enumEntidades.ENTIDAD30.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD30.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged30.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
+			if (entidad.equals(enumEntidades.ENTIDAD31.getEntidadId())) {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD31.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged31.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			} else {
+				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD32.getEntidadId());
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				return jdbcTemplatebged32.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
+			}
+
+		} catch (DataAccessException e) {
+			info exCeption = new info();
+			logger.error("DataAccessException: " + e);
+
 			exCeption.setMsgException(e.getMessage());
 			lisInfoException.add(exCeption);
 			return lisInfoException;
@@ -725,13 +725,12 @@ public class UserDaoImpl implements UserDao {
 	public List<Integer> entidadesActivas() {
 		String sql = "select entidad from public.entidad where activa in (0)";
 
-		List<Integer> data = jdbcTemplatecontrol.query(sql, new RowMapper<Integer>(){
-            public Integer mapRow(ResultSet rs, int rowNum) 
-                                         throws SQLException {
-                    return rs.getInt(1);
-            }
-       });
-		 return data;
+		List<Integer> data = jdbcTemplatecontrol.query(sql, new RowMapper<Integer>() {
+			public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
+				return rs.getInt(1);
+			}
+		});
+		return data;
 	}
- 
+
 }

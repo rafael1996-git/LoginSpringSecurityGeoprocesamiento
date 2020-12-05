@@ -19,6 +19,7 @@ public interface UserService {
 
 	public int register(Control inserta);
 
+
 	public List<info> validate(String entidad, String anio, String semana);
 
 	public List<User> list();
