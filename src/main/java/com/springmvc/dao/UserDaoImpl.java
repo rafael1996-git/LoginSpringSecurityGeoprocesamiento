@@ -3,7 +3,9 @@ package com.springmvc.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -442,6 +444,7 @@ public class UserDaoImpl implements UserDao {
 		String sql = "";
 		String peticion = "peticion entidad: " + entidad + " anio: " + anio + " semana: " + semana;
 		logger.info("metodo validate DAO: " + peticion);
+
 		List<info> lisInfoException = new ArrayList<info>();
 		try {
 
@@ -722,15 +725,21 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public List<Integer> entidadesActivas() {
-		String sql = "select entidad from public.entidad where activa in (0)";
-
-		List<Integer> data = jdbcTemplatecontrol.query(sql, new RowMapper<Integer>() {
-			public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
-				return rs.getInt(1);
+	public Map<Integer, String> entidadesActivas() {
+		String sql = "select entidad,nombre from public.entidad where activa in (0) ";
+		Map entiades = new HashMap();
+		entiades = jdbcTemplatecontrol.query(sql, new ResultSetExtractor<Map>() {
+			@Override
+			public Map extractData(ResultSet rs) throws SQLException, DataAccessException {
+				HashMap<Integer, String> mapRet = new HashMap<Integer, String>();
+				while (rs.next()) {
+					mapRet.put(rs.getInt("entidad"), rs.getString("nombre"));
+				}
+				return mapRet;
 			}
 		});
-		return data;
+
+		return entiades;
 	}
 
 }

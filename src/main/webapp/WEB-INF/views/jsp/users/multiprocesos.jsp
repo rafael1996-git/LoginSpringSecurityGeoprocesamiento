@@ -21,9 +21,8 @@
 
 <link rel="stylesheet" href="resources/css/adminremesa.css"
 	type="text/css" />
-	
-<script
-	src="resources/js/bootstrap.min.js"></script>
+
+<script src="resources/js/bootstrap.min.js"></script>
 <style>
 * {
 	box-sizing: border-box;
@@ -52,39 +51,49 @@
 	border-bottom: 1px solid #ccc;
 }
 
-
-canvas{ 
-        background:grey;
-        }
-        
-.modal-header{
-        background-color:pink;
+canvas {
+	background: grey;
 }
+
+.modal-header {
+	background-color: pink;
+}
+
 .modal-content {
-       overflow:hidden;
+	overflow: hidden;
 }
 
-.modal-body{
-  word-break: break-all !important;
+.modal-body {
+	word-break: break-all !important;
 }
 
 div.round3 {
-  border: 1px solid red;
-  border-radius: 12px;
+	border: 1px solid red;
+	border-radius: 12px;
 }
 
 .modal {
-    bottom: unset !important;
+	bottom: unset !important;
 }
+
+.my-custom-scrollbar {
+position: relative;
+height: 200px;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
+}
+
 </style>
 
 <body>
-	<div class="container" align="center">
+	<div class="container">
 		<fieldset>
 			<legend>
 				<h3>Instituto Nacional Electoral</h3>
 			</legend>
-       
+
 			<div align="right" style="text-transform: capitalize;">
 				<tr>
 					</h2>
@@ -133,59 +142,66 @@ div.round3 {
 
 				</c:if>
 			</div>
-					<div class="info">
-						<h1>Geoprocesamiento de la Remesa de Actualización
-							Cartográfica</h1>
-						<h2>Selección de Entidades a Procesar</h2>
-					</div>
-					<form class="form-inline" action="#" id="formEntidad">
-					  
-                         <c:forEach items="${entidadesActivas}" var="flagEntidades" varStatus="statusEntidad">
-                          <div class="checkbox">
-                          <input type="checkbox" name="num${flagEntidades}" id="${flagEntidades}" value="${flagEntidades}"  />
-                          <label for="${flagEntidades}">${flagEntidades}</label>
-                           </div>
-                         </c:forEach>  
-                         <br>
-						 <button class="btn btn-primary" type="submit">Ejecuta MultiProcesos</button>
-					 <input type="hidden" name="${_csrf.parameterName}"
-                            value="${_csrf.token}" />
-					</form>
-                    
-				</div>
-                  
-				<div class="col align-self-center">
-		             
-					<h1>Estatus:</h1>
-					<div id="contieneCanvas">
-					</div>
-				</div>
-				 </fieldset>
+			<div class="info">
+				<h1>Geoprocesamiento de la Remesa de Actualización Cartográfica</h1>
+				<h2>Selección de Entidades a Procesar</h2>
 			</div>
-	<div class="modal fade bd-example-modal-sm" id="pleaseWaitDialog" tabindex="-1"
-		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div  align="center">
+			
+			<form class="form-inline" action="#" id="formEntidad">
+			<div class="table-wrapper-scroll-y my-custom-scrollbar" align="center">
+				<table class="table table-hover table-bordered" >
+					<c:forEach items="${entidadesActivas}" var="flagEntidades"
+					varStatus="statusEntidad">
+						 <tr> 
+							<td><input type="checkbox" name="num${flagEntidades.key}"
+							id="${flagEntidades.key}" value="${flagEntidades.key}" /><label
+							for="${flagEntidades.value}">${flagEntidades.value}</label></td>
+						 </tr> 
+					</c:forEach>
+				</table>
+			 </div>
+				<br>
+				<button class="btn btn-primary" type="submit">Ejecuta
+					MultiProcesos</button>
+				<input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}" />
+			</form>
+			</div>
+	</div>
+
+	<div class="col align-self-center" align="center">
+		<h1>Estatus:</h1>
+		<div id="contieneCanvas"></div>
+	</div>
+	</fieldset>
+	</div>
+	<div class="modal fade bd-example-modal-sm" id="pleaseWaitDialog"
+		tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+		aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<p >Se esta procesando la solicitud</p>
+					<p>Se esta procesando la solicitud</p>
 				</div>
 				<div class="modal-body">
-				  <div class="text-center">
-				  <img src='resources/images/ajax-loader.gif' class="rounded mx-auto d-block" alt="..."/>
-				  </div>
+					<div class="text-center">
+						<img src='resources/images/ajax-loader.gif'
+							class="rounded mx-auto d-block" alt="..." />
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" id="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">cerrar</button>
-      </div>
-  </div>
-</div>
+	<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog"
+		id="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content"></div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">cerrar</button>
+			</div>
+		</div>
+	</div>
 </body>
 <script src="resources/js/funcionRemesa.js" type="text/javascript"></script>
 <br>

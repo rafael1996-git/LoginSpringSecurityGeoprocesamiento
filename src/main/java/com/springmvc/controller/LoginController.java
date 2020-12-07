@@ -200,8 +200,8 @@ public class LoginController {
 				request.setAttribute("lista", listaP);
 				mav = new ModelAndView("/users/admin");
 			} else if (uControl.getId_tipo_usuario() == 3) {
-				List<Integer> listEntidadesActivas = userService.entidadesActivas();
-				logger.info("entidades Activas "+listEntidadesActivas);
+				Map<Integer,String> listEntidadesActivas = userService.entidadesActivas();
+				
 				Numero numopj=new Numero();
 				request.setAttribute("valor", numopj);
 				HttpSession session = request.getSession();

@@ -1,6 +1,7 @@
 package com.springmvc.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.springmvc.model.Control;
 import com.springmvc.model.Remesa;
@@ -49,6 +50,6 @@ public interface UserDao {
 
 	public void deleteAut(String token);
 
-	public List<Integer> entidadesActivas();
+	public Map<Integer, String> entidadesActivas();
 
 }

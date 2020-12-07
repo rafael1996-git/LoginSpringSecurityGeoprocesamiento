@@ -1,6 +1,7 @@
 package com.springmvc.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.springmvc.model.Control;
 import com.springmvc.model.Remesa;
@@ -18,7 +19,6 @@ public interface UserService {
 	public int regisRemesa(Remesa remesa);
 
 	public int register(Control inserta);
-
 
 	public List<info> validate(String entidad, String anio, String semana);
 
@@ -49,7 +49,7 @@ public interface UserService {
 	public void delete(String correo);
 
 	public void deleteAut(String token);
-	
-	public List<Integer> entidadesActivas();
+
+	public Map<Integer, String> entidadesActivas();
 
 }

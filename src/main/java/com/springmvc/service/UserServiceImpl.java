@@ -1,6 +1,7 @@
 package com.springmvc.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -123,7 +124,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<Integer> entidadesActivas() {
+	public Map<Integer,String> entidadesActivas() {
 		return userDao.entidadesActivas();
 	}
 

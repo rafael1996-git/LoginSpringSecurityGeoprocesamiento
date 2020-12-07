@@ -26,7 +26,9 @@ function funcionRemesa() {
     	      }
     });
     if (lista.length === 0) {
-        alert("Seleccione una Entidad");
+        var modalDialog = getModalDialog();
+                        getModalDialog().querySelector('.modal-content').innerHTML = "Seleccione alguna Entidad";
+                        jQuery(modalDialog).modal('show');
         }else{
 			$.ajax({
 				type : "GET",
@@ -50,7 +52,7 @@ function funcionRemesa() {
 						try{
 							
 						registros = JSON.parse(respuesta);
-							    var msgException=new Array();
+					    var msgException=new Array();
 					for (x of registros) {
   							
 					       if(x.msgExceptionDao!=null){
@@ -287,13 +289,16 @@ function dibujaCirculoDinamico(data) {
          ctx.beginPath();
          ctx.fillStyle = "white";
          ctx.font = "bold 14px Arial";
-
+         if(msjError!==null){
+	       ctx.fillText(" procesados "+entero+"%", 250,280);
+           }else{
          ctx.fillText(" procesando "+entero+"%", 250,280);
+           }
          ctx.closePath(); 
          ctx.fill();
  
 	if(msjError!==null){
-	   //console.log("elemento listaEntidadError "+listaEntidadError);
+		
 	   var remueveEntidad = data.idEntidad;
        listaEntidadError.push(remueveEntidad);
     
@@ -310,7 +315,7 @@ function dibujaCirculoDinamico(data) {
 
   		// Inicializa el modal durante la ejecucion
  		 if (!modalReady) {
-      			 modalReady = initExampleModal(); 
+      			 modalReady = initModal(); 
    				}
      
       var html =
@@ -430,7 +435,7 @@ function getModalDialog() {
   return document.getElementById('dialog');
 }
 
-function initExampleModal() {
+function initModal() {
 
   var modal = document.createElement('div');
   modal.classList.add('modal', 'fade');
