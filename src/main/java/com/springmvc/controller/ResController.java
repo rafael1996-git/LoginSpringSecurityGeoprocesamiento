@@ -206,8 +206,14 @@ public class ResController {
 
 					String informacio = anio.concat(semana).concat(entidad);
 					logger.info("datos de remesa: " + informacio);
-
-					List<info> var = userService.validate(entidad, anio, semana);
+					List<info> var;
+					//esta validacion se mantiene ya que  en las otras bases las app.config se maneja de 1-9 con 0
+					if(Integer.parseInt(entidad)<10) {
+						var = userService.validate("0"+entidad, anio, semana);
+					}else {
+						var = userService.validate(entidad, anio, semana);
+					}
+					
 					for (info res : var) {
 						if (res.getMsgException() != null) {
 							controlEn.setMsgExceptionDao(res.getMsgException());
