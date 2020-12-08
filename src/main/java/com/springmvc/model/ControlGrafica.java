@@ -31,6 +31,11 @@ public class ControlGrafica {
 	public void setMsgExceptionDao(String msgExceptionDao) {
 		this.msgExceptionDao = msgExceptionDao;
 	}
+	@Override
+	public String toString() {
+		return "ControlGrafica [entidadID=" + entidadID + ", estatusServicio=" + estatusServicio + ", mensajeSalida="
+				+ mensajeSalida + ", msgExceptionDao=" + msgExceptionDao + "]";
+	}
 	
 	
 

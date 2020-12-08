@@ -5,6 +5,7 @@ import java.util.List;
 public class MultiGrafica {
 	
 	private Integer idEntidad;
+	private String nombreEntidad;
 	private List<Integer> idOperaciones;
 	private String messaje;
 	private String msgException;
@@ -15,6 +16,14 @@ public class MultiGrafica {
 	}
 	public void setIdEntidad(Integer idEntidad) {
 		this.idEntidad = idEntidad;
+	}
+	
+	
+	public String getNombreEntidad() {
+		return nombreEntidad;
+	}
+	public void setNombreEntidad(String nombreEntidad) {
+		this.nombreEntidad = nombreEntidad;
 	}
 	public List<Integer> getIdOperaciones() {
 		return idOperaciones;
@@ -36,12 +45,9 @@ public class MultiGrafica {
 	}
 	@Override
 	public String toString() {
-		return "MultiGrafica [idEntidad=" + idEntidad + ", idOperaciones=" + idOperaciones + ", messaje=" + messaje
-				+ ", msgException=" + msgException + "]";
+		return "MultiGrafica [idEntidad=" + idEntidad + ", nombreEntidad=" + nombreEntidad + ", idOperaciones="
+				+ idOperaciones + ", messaje=" + messaje + ", msgException=" + msgException + "]";
 	}
-	
-	
-    
-	
+
 
 }

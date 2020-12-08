@@ -278,7 +278,7 @@ public class ResController {
 
 			}
 		}
-
+        logger.info(control.toString());
 		return control;
 	}
 
@@ -310,7 +310,9 @@ public class ResController {
 
 				MultiGrafica multi = new MultiGrafica();
 				multi.setIdEntidad(Integer.parseInt(idEntidad));
-
+				String nombreEntidad = userService.obtieneNombreEntidad(idEntidad);
+                multi.setNombreEntidad(nombreEntidad);
+                
 				urlParameters.put("entidad", idEntidad);
 				urlParameters.put("remesa", Long.toString(remesa));
 

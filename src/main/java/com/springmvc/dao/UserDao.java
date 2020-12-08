@@ -52,4 +52,6 @@ public interface UserDao {
 
 	public Map<Integer, String> entidadesActivas();
 
+	public String obtieneNombreEntidad(String idEntidad);
+
 }

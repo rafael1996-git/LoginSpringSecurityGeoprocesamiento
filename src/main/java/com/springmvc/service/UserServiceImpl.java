@@ -128,5 +128,10 @@ public class UserServiceImpl implements UserService {
 		return userDao.entidadesActivas();
 	}
 
+	@Override
+	public String obtieneNombreEntidad(String idEntidad) {
+		return userDao.obtieneNombreEntidad(idEntidad);
+	}
+
 
 }

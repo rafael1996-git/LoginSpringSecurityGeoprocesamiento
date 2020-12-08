@@ -51,5 +51,7 @@ public interface UserService {
 	public void deleteAut(String token);
 
 	public Map<Integer, String> entidadesActivas();
+	
+	public  String obtieneNombreEntidad(String idEntidad);
 
 }

@@ -13,6 +13,9 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
 import com.springmvc.dao.Mapper.ErrorMapper;
 import com.springmvc.dao.Mapper.UserControl2;
@@ -740,6 +743,27 @@ public class UserDaoImpl implements UserDao {
 		});
 
 		return entiades;
+	}
+
+	@Override
+	public String obtieneNombreEntidad(String idEntidad) {
+		String sql = "select nombre from public.entidad where entidad=:entidad";
+		Integer claveEntida = Integer.parseInt(idEntidad);
+		SqlParameterSource param = new MapSqlParameterSource("entidad", claveEntida);
+
+		NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplatecontrol);
+		String nombreEntidad = template.query(sql, param, new ResultSetExtractor<String>() {
+
+			@Override
+			public String extractData(ResultSet rs) throws SQLException, DataAccessException {
+				String nombre = "";
+				while (rs.next()) {
+					nombre = rs.getString("nombre");
+				}
+				return nombre;
+			}
+		});
+		return nombreEntidad;
 	}
 
 }

@@ -18,14 +18,18 @@ jQuery(document).ready(function($) {
 
 
 function funcionRemesa() {
-	var lista=new Array();
-	
+	var listaIdEntidad=new Array();
+	//inicializando las variables se vuelve a ejecutar las entidades si es el caso de que existe,
+	// de lo contrario, si ya no queren volver a ejecutar quitar estas 2 instancias listaEntidadError y 
+	// listaEntidadOk
+	listaEntidadError=new Array();
+	listaEntidadOk=new Array();
     $('input[type=checkbox]:checked').each(function(){
     	 if (this.checked) {
-    	        lista.push($(this).val());
+    	        listaIdEntidad.push($(this).val());
     	      }
     });
-    if (lista.length === 0) {
+    if (listaIdEntidad.length === 0) {
         var modalDialog = getModalDialog();
                         getModalDialog().querySelector('.modal-content').innerHTML = "Seleccione alguna Entidad";
                         jQuery(modalDialog).modal('show');
@@ -34,7 +38,7 @@ function funcionRemesa() {
 				type : "GET",
 				async:true,
 				url : "funcionRemesas",
-				data:'id='+lista,
+				data:'id='+listaIdEntidad,
 				dataType: "text",
 				timeout : 200000,
 				beforeSend: function(xhr) {
@@ -87,9 +91,9 @@ function funcionRemesa() {
 					}
 					flagEncontrado=true;
 				    bandera(flagEncontrado);
-
+                    console.log("funcion remesa exito: "+listaEntidadOk.length);
 						}catch(e){
-							console.log("la cadena no se puede parsear: "+e);
+							console.log("la cadena no se puede parsear funcionRemesas: "+e);
 						}
 					}
 				},
@@ -132,7 +136,7 @@ function funcionRemesa() {
 
 function consultaEstatusMultiple() {
 
-  var arrayDiferentes = [];
+  var idEntidadesDiferentes = [];
   
   for (var i = 0; i < listaEntidadOk.length; i++) {
     var igual=false;
@@ -140,14 +144,16 @@ function consultaEstatusMultiple() {
          if(listaEntidadOk[i] == listaEntidadError[j])
                  igual=true;
      }
-    if(!igual)arrayDiferentes.push(listaEntidadOk[i]);
+    if(!igual)idEntidadesDiferentes.push(listaEntidadOk[i]);
     }
 
   
-  if(arrayDiferentes.length===0){
+  if(idEntidadesDiferentes.length===0){
+	console.log("stop ejecucion de multigrafica");
       stopMultiStatus();
     }else{
-      solicitudAjax(arrayDiferentes);
+	console.log("inicio ejecucion de multigrafica");
+      solicitudAjax(idEntidadesDiferentes);
           }
 
  }   
@@ -155,11 +161,11 @@ function consultaEstatusMultiple() {
 
 
 
-function solicitudAjax(arrayDiferentes){
+function solicitudAjax(idEntidadesDiferentes){
 	$.ajax({
 		type : "POST",
 		url : "estatusMulti",
-		data:'entidad='+arrayDiferentes,
+		data:'entidad='+idEntidadesDiferentes,
 		dataType: "text",
 		timeout : 200000,
 		beforeSend: function(xhr) {
@@ -188,7 +194,7 @@ function solicitudAjax(arrayDiferentes){
 						  dibujaCirculoDinamico(x);
 						}
 						}catch(e){
-							console.log("la cadena no se puede parsear: "+e);
+							console.log("la cadena no se puede parsear funcionMultigrafica: "+e);
 						}
 					}
 			
@@ -283,7 +289,7 @@ function dibujaCirculoDinamico(data) {
          ctx.fillStyle = "white";
          ctx.font = "bold 20px Arial";
 
-         ctx.fillText("En la Entidad "+data.idEntidad,10,30);
+         ctx.fillText("En la Entidad "+data.nombreEntidad,10,30);
          ctx.closePath(); 
          ctx.fill();
          ctx.beginPath();
@@ -386,11 +392,11 @@ function drawPieSlice(labelText,totalIdOperaciones,msjError,ctx,centerX,centerY,
     }else{
 	     var oprecaionesFaltantes = totalIdOperaciones-127;
          var restoPorcentaje = 2 * Math.PI * oprecaionesFaltantes /127;
-         ctx.fillStyle = "#C6EA00";//red
+         ctx.fillStyle = "#C6EA00";
     	 ctx.beginPath();
     	 ctx.arc(centerX, centerY, radius, startAngle,0+restoPorcentaje,true);
          ctx.lineWidth = 3;
-         ctx.strokeStyle = "#C6EA00";//red
+         ctx.strokeStyle = "#C6EA00";
          ctx.fill();
          ctx.stroke();
          ctx.closePath(); 
