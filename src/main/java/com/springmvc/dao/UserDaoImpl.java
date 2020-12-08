@@ -447,13 +447,13 @@ public class UserDaoImpl implements UserDao {
 		String sql = "";
 		String peticion = "peticion entidad: " + entidad + " anio: " + anio + " semana: " + semana;
 		logger.info("metodo validate DAO: " + peticion);
-
+        
 		List<info> lisInfoException = new ArrayList<info>();
 		try {
 
 			if (entidad.equals(enumEntidades.ENTIDAD01.getEntidadId())) {
 				System.out.println("Enum  Value is: " + enumEntidades.ENTIDAD01.getEntidadId());
-				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ? AND anio= ? AND semana  = ?";
+				sql = "SELECT * FROM app.config WHERE estado_remesa in(2,3) AND entidad = ?  AND anio= ? AND semana  = ?";
 				return jdbcTemplatebged01.query(sql, new Object[] { entidad, anio, semana }, new bgedMapper());
 			}
 

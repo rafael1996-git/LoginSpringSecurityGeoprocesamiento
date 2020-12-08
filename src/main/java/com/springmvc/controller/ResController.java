@@ -66,7 +66,7 @@ public class ResController {
 
 	@RequestMapping(value = "/remesa", method = RequestMethod.GET)
 	@ResponseBody
-	public ModelAndView RemesaPage(HttpServletRequest reques, HttpServletResponse response) {
+	public ModelAndView RemesaPage(HttpServletRequest reques, HttpServletResponse response)  {
 		ModelAndView model = new ModelAndView();
 		UUID token = Generators.randomBasedGenerator().generate();
 		Date objDate = new Date();
@@ -81,100 +81,102 @@ public class ResController {
 			int entidad = (int) session.getAttribute("entidad");
 			String opj;
 			opj = userService.buscarRemesa();
-			String anio = opj.substring(0, 4);
-			String semana = opj.substring(4, 6);
+			String anio = opj.substring(0,4);
+			String semana = opj.substring(4,6);
 			System.out.println(anio);
 			System.out.println(semana);
-
-
-			List<info> var = userService.validate(session.getAttribute("entidad").toString(), anio, semana);
-			System.out.println("-----------antes del if" + "" + "" + session.getAttribute("entidad").toString() + ""
-					+ anio + "" + semana);
-
-			if (var != null && !var.isEmpty()
-					&& userService.validate(session.getAttribute("entidad").toString(), anio, semana) != null) {
-				System.out.println("despues del if" + "" + "" + session.getAttribute("entidad").toString() + "" + anio
-						+ "" + semana);
-				// ****************************************************insertamos a la tabla
-				// autorizacion
-				Remesa opjRemesa = new Remesa();
-				opjRemesa.setId_status(1);
-				opjRemesa.setFecha_hora(objDate);
-				opjRemesa.setToken(token.toString());
-				opjRemesa.setId_usuario(id);
-				opjRemesa.setEntidad_remesa(opj.toString());
-				userService.regisRemesa(opjRemesa);
-
-				// ****************************************************insertamos a la tabla
-				// control
-				Control opjControl = new Control();
-
-				for (int j = 0; j <= 126; j++) {
-					opjControl.setEntidad(entidad);
-					opjControl.setRemesa(Integer.parseInt(opj.toString()));
-					opjControl.setFecha_hora(objDate);
-					opjControl.setId_usuario(id);
-					opjControl.setId_operacion(j);
-					opjControl.setId_status(1);
-					userService.register(opjControl);
-				}
-
-				System.out
-						.println("*************************************************************************[HEADER : ");
-
-				OkHttpClient client = new OkHttpClient().newBuilder().connectTimeout(120, TimeUnit.SECONDS)
-						.readTimeout(120, TimeUnit.SECONDS).writeTimeout(120, TimeUnit.SECONDS).build();
-				HttpUrl.Builder urlBuilder = HttpUrl.parse("http://localhost:8180/GenerarRemesa/dce/GenerarEntidad?")
-						.newBuilder();
-				urlBuilder.addQueryParameter("entidad", session.getAttribute("entidad").toString());
-				urlBuilder.addQueryParameter("remesa", opj.toString());
-				String url = urlBuilder.build().toString();
-				Request request = new Request.Builder().url(url).header("Authorization", token.toString()).build();
-
-				try {
-					Response respons = client.newCall(request).execute();
-					String stringHeader = respons.headers().toString();
-					String string = respons.body().string();
-				} catch (IOException e) {
-					System.err.println("Failed scraping");
-					List<User> listaPersonas = userService.listaFiltrada(entidad);
-					reques.setAttribute("lista", listaPersonas);
-					System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
-					model.addObject("mensaje1", "¡" + e.getCause().toString());
-					model.setViewName("/users/Remesa");
-					e.printStackTrace();
-				}
+			String valor=session.getAttribute("entidad").toString();
+			System.out.println(""+Integer.parseInt(valor));
+			List<info> var ;
+			if(Integer.parseInt(session.getAttribute("entidad").toString())<10) {
+				var =userService.validate( "0"+session.getAttribute("entidad").toString(), anio, semana);
+			}else {
+				var =userService.validate( session.getAttribute("entidad").toString(), anio, semana);
 			}
-	
+			
+			System.out.println("-----------antes del if"+""+""+session.getAttribute("entidad").toString()+""+ anio+""+semana);
+			
+			if (var!=null && !var.isEmpty()&&userService.validate( session.getAttribute("entidad").toString(), anio, semana)!=null) {
+				System.out.println("despues del if"+""+""+session.getAttribute("entidad").toString()+""+ anio+""+semana);
+					//****************************************************insertamos a la tabla autorizacion
+					Remesa opjRemesa = new Remesa();
+					opjRemesa.setId_status(1);
+					opjRemesa.setFecha_hora(objDate);
+					opjRemesa.setToken(token.toString());
+					opjRemesa.setId_usuario(id);
+					opjRemesa.setEntidad_remesa(opj.toString());
+					userService.regisRemesa(opjRemesa);
+					
+					//****************************************************insertamos a la tabla control
+					Control opjControl=new Control();
+					
+					for (int j = 1; j <=135; j++) {
+						opjControl.setEntidad(entidad);
+						opjControl.setRemesa(Integer.parseInt(opj.toString()));
+						opjControl.setFecha_hora(objDate);
+						opjControl.setId_usuario(id);
+						opjControl.setId_operacion(j);
+						opjControl.setId_status(1);
+						userService.register(opjControl);
+					}
+
+					System.out
+							.println("*************************************************************************[HEADER : ");
+
+					OkHttpClient client = new OkHttpClient().newBuilder().connectTimeout(120, TimeUnit.SECONDS)
+							.readTimeout(120, TimeUnit.SECONDS)
+							.writeTimeout(120, TimeUnit.SECONDS).build();
+					HttpUrl.Builder urlBuilder = HttpUrl.parse("http://localhost:8180/GenerarRemesa/dce/GenerarEntidad?").newBuilder();
+					urlBuilder.addQueryParameter("entidad", session.getAttribute("entidad").toString());
+					urlBuilder.addQueryParameter("remesa", opj.toString());
+					String url = urlBuilder.build().toString();
+					Request request = new Request.Builder().url(url).header("Authorization", token.toString()).build();
+
+					try {
+						Response respons = client.newCall(request).execute();
+						String stringHeader = respons.headers().toString();
+						String string = respons.body().string();
+					} catch (IOException e) {
+						System.err.println("Failed scraping");
+						List<User> listaPersonas =userService.listaFiltrada(entidad);
+						reques.setAttribute("lista", listaPersonas);
+						System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
+						model.addObject("mensaje1", "¡"+e.getCause().toString());
+						model.setViewName("/users/Remesa");
+						e.printStackTrace();
+					}
+
+					System.out.println(
+							"*************************************************************************[HEADER2 : ");
+
+					List<User> listaPersonas =userService.listaFiltrada(entidad);
+					reques.setAttribute("lista", listaPersonas);
+					model.setViewName("/users/Remesa");
+					model.addObject("mensaje", "¡");
+			
+				
+			}else {				
+			System.out.println("funcion Remesa no realizada :else  ");
+			List<User> listaPersonas =userService.listaFiltrada(entidad);
+			reques.setAttribute("lista", listaPersonas);
+			model.addObject("mensaje2", "¡");
+			model.setViewName("/users/Remesa");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			HttpSession session = reques.getSession();
 			int entidad = (int) session.getAttribute("entidad");
-			List<User> listaPersonas = userService.listaFiltrada(entidad);
+			List<User> listaPersonas =userService.listaFiltrada(entidad);
 			reques.setAttribute("lista", listaPersonas);
 			System.out.println("funcion Remesa no realizada :Exception  ");
-			model.addObject("mensaje1", "¡" + e.getCause().toString());
+			model.addObject("mensaje1", "¡"+e.getCause().toString());
 			model.setViewName("/users/Remesa");
 			e.getMessage();
 		}
 		return model;
 	}
 
-	@RequestMapping("/multiremesaExecute")
-	public ModelAndView editCustomer(@ModelAttribute("valor") Numero numero) {
-		ModelAndView model = new ModelAndView();
 
-		if (numero.getNum17() != null) {
-			System.out.println("checkbox is checked  " + numero.getNum17());
-
-		}
-		if (numero.getNum15() != null) {
-			System.out.println("checkbox is checked2  " + numero.getNum15());
-		}
-
-		model.setViewName("/users/multiprocesos");
-		return model;
-	}
 
 	@RequestMapping(value = "/funcionRemesas", method = { RequestMethod.GET })
 	@ResponseBody
