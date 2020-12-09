@@ -22,7 +22,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,7 +34,6 @@ import com.fasterxml.uuid.Generators;
 import com.springmvc.model.Control;
 import com.springmvc.model.ControlGrafica;
 import com.springmvc.model.MultiGrafica;
-import com.springmvc.model.Numero;
 import com.springmvc.model.Remesa;
 import com.springmvc.model.User;
 import com.springmvc.model.info;
@@ -110,7 +108,7 @@ public class ResController {
 					//****************************************************insertamos a la tabla control
 					Control opjControl=new Control();
 					
-					for (int j = 1; j <=135; j++) {
+					for (int j = 0; j <=135; j++) {
 						opjControl.setEntidad(entidad);
 						opjControl.setRemesa(Integer.parseInt(opj.toString()));
 						opjControl.setFecha_hora(objDate);
@@ -237,7 +235,7 @@ public class ResController {
 						// control
 						Control opjControl = new Control();
 
-						for (int j = 1; j <= 126; j++) {
+						for (int j = 0; j <= 135; j++) {
 							opjControl.setEntidad(Integer.parseInt(entidad));
 							opjControl.setRemesa(Integer.parseInt(opj.toString()));
 							opjControl.setFecha_hora(objDate);
