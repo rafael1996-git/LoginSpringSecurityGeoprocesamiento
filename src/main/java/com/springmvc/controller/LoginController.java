@@ -30,7 +30,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.springmvc.model.Numero;
 import com.springmvc.model.User;
 import com.springmvc.model.UserControl;
 import com.springmvc.model.statusError;
@@ -89,31 +88,11 @@ public class LoginController {
 		return model;
 
 	}
-	@RequestMapping(value = "/MultiAvance", method = RequestMethod.GET)
-	public ModelAndView MultiAvancePage() {
-
-		ModelAndView model = new ModelAndView();
-		// To do something
-		model.setViewName("/users/MultiAvance");
-
-		return model;
-
-	}
-	@RequestMapping(value = "/Multiproceso", method = RequestMethod.GET)
-	public ModelAndView MultiprocesPage() {
-
-		ModelAndView model = new ModelAndView();
-		// To do something
-		model.setViewName("/users/multiprocesos");
-
-		return model;
-
-	}
+	
 	@RequestMapping("/MultiProcesos")
 	public ModelAndView MultiProcesosPage(HttpServletRequest request) throws IOException {
 		ModelAndView model = new ModelAndView();
-		Numero numopj=new Numero();
-		model.addObject("valor", numopj);
+
 		model.setViewName("/users/multiprocesos");
 		System.out.println("multiproceso get: "+model.getViewName());
 
@@ -202,8 +181,6 @@ public class LoginController {
 			} else if (uControl.getId_tipo_usuario() == 3) {
 				Map<Integer,String> listEntidadesActivas = userService.entidadesActivas();
 				
-				Numero numopj=new Numero();
-				request.setAttribute("valor", numopj);
 				HttpSession session = request.getSession();
 				session.setAttribute("firstname", uControl.getCorreo());
 				session.setAttribute("id", uControl.getId_usuario());

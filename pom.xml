@@ -221,7 +221,7 @@
 
 
 	<build>
-		<finalName>springmvc</finalName>
+		<finalName>AdministracionDelGeoprocesamiento</finalName>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<plugins>
 			<plugin>

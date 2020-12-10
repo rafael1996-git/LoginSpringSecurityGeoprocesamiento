@@ -19,7 +19,6 @@
 </head>
 <body>
 	<spring:url value="MultiProcesos.do" var="urlWelcome" />
-	<spring:url value="MultiAvance.do" var="urlmultiAvance" />
 	
 	<spring:url value="/logout" var="logoutUrl" />
 
@@ -40,8 +39,6 @@
 				<li class="active"><a class="navbar-brand" ></a></li>
 				<li class="active"><a class="navbar-brand" href="${urlWelcome}"><span
 						class="label label-default"> Inicio</span></a></li>
-				<li class="active"><a class="navbar-brand" href="${urlmultiAvance}"><span
-						class="label label-default">Mostrar Avance </span></a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 

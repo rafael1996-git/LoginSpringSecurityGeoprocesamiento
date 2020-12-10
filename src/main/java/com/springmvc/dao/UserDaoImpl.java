@@ -36,11 +36,6 @@ public class UserDaoImpl implements UserDao {
 	private JdbcTemplate jdbcTemplateuser;
 
 	private JdbcTemplate jdbcTemplatecontrol;
-	private JdbcTemplate jdbcTemplatebged17;
-	private JdbcTemplate jdbcTemplatebged09;
-	private JdbcTemplate jdbcTemplatebged14;
-	private JdbcTemplate jdbcTemplatebged15;
-	private JdbcTemplate jdbcTemplatebged30;
 
 	private JdbcTemplate jdbcTemplatebged01;
 	private JdbcTemplate jdbcTemplatebged02;
@@ -51,12 +46,15 @@ public class UserDaoImpl implements UserDao {
 
 	private JdbcTemplate jdbcTemplatebged07;
 	private JdbcTemplate jdbcTemplatebged08;
+	private JdbcTemplate jdbcTemplatebged09;
 	private JdbcTemplate jdbcTemplatebged10;
 	private JdbcTemplate jdbcTemplatebged11;
 	private JdbcTemplate jdbcTemplatebged12;
 	private JdbcTemplate jdbcTemplatebged13;
-
+	private JdbcTemplate jdbcTemplatebged14;
+	private JdbcTemplate jdbcTemplatebged15;
 	private JdbcTemplate jdbcTemplatebged16;
+	private JdbcTemplate jdbcTemplatebged17;
 	private JdbcTemplate jdbcTemplatebged18;
 	private JdbcTemplate jdbcTemplatebged19;
 	private JdbcTemplate jdbcTemplatebged20;
@@ -71,6 +69,7 @@ public class UserDaoImpl implements UserDao {
 	private JdbcTemplate jdbcTemplatebged28;
 
 	private JdbcTemplate jdbcTemplatebged29;
+	private JdbcTemplate jdbcTemplatebged30;
 	private JdbcTemplate jdbcTemplatebged31;
 	private JdbcTemplate jdbcTemplatebged32;
 
