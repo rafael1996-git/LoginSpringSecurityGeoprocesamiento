@@ -100,29 +100,27 @@ public class LoginController {
 
 	}
 
-	@RequestMapping(value = "/statusError", method = RequestMethod.GET)
-	public ModelAndView statusPage(HttpServletRequest request){
+	@RequestMapping( "/statusError")
+	public @ResponseBody List<statusError> statusPage(HttpServletRequest request,@RequestParam("datoE") String dato){
 		ModelAndView model = new ModelAndView();
 			 LocalDate myObj = LocalDate.now();  // Create a date object
 			    System.out.println(myObj); 
-				List<statusError>  listaPersonas = userService.listaStatus(myObj.toString());
+				List<statusError>  lista = userService.listaStatus(myObj.toString());
 
 							statusError buscafecha=userService.buscarfecha(myObj.toString());
-							if (buscafecha!=null) {
-								
-								request.setAttribute("listado", listaPersonas);
-								System.out.println("_______________date_____________________insertdata:"+myObj.toString());
-								model.setViewName("/users/mostrarAvance");
-								
-							} else {
-								System.out.println("_______________date_____________________");
+							if (buscafecha!=null && dato!=null) {
+								System.out.println("_______________si hay lista_____________________");
 
-								model.addObject("mensajerror", "¡");
-								model.setViewName("/users/Remesa");
+								return lista;								
+								
+							} else {	
+								System.out.println("_______________null_____________________de statusError");
+
+								return null;
+							
 							}
-							System.out.println("_______________data_____________________opjeto:");
 
-		return model;
+		
 
 	}
 
@@ -230,7 +228,6 @@ public class LoginController {
 		String listaEstatus = getEstatusRemesa(entidadUsuario, Integer.parseInt(opj));
 
 		String listaEstatusError = getEstatusError(entidadUsuario, Integer.parseInt(opj));
-
 		return "{\"errordata\":" + listaEstatusError.toString() + ",\"alejandro\":" + listaEstatus + "}";
 
 	}
@@ -310,21 +307,22 @@ public class LoginController {
 				err = object.getString("error");
 				int enti = object.getInt("entidad");
 				int reme = object.getInt("remesa");
-//				opjeto.setEntidad(enti);
-//				opjeto.setRemesa(reme);
-//				opjeto.setFecha(fecha);
-//				opjeto.setError(err);
-//				statusError status = userService.findByfecha(err.toString(), fecha.toString());
-//				if (status != null) {
-//					System.out.println("_______________idoperacion_____________________insert:"+idOp);
-//
-//				} else if (opjeto != null) {
-//					userService.register(opjeto);
-//			
-//				}
+				statusError opjeto= new statusError();
+				opjeto.setEntidad(enti);
+				opjeto.setRemesa(reme);
+				opjeto.setFecha(fecha);
+				opjeto.setError(err);
+				statusError status = userService.findByfecha(err.toString(), fecha.toString());
+				if (status != null) {
+					System.out.println("_______________idoperacion_____________________insert:"+idOp);
+
+				} else if (opjeto != null) {
+					userService.register(opjeto);
+			
+				}
+				String var="=";
 				System.out.println("_______________dataStore_____________________insert-opjeto:"+err.toString());
-				String var="Se ha Registrado un Error en la IdOperacion ("+idOp+") de la Entidad ( "+enti+") con la Fecha ( "+fecha+") lo cual se Recomienda Consultar la Tabla StatusError de la Base de control";
-				dataStore[i] = "{\"iden\":\"" + enti +"\",\"idre\":\""+reme+"\",\"idfe\":\""+fecha+"\",\"error\":\""+var.toString()+"\"}";
+				dataStore[i] = "{\"iden\":\"" + enti +"\",\"idre\":\""+null+"\",\"idfe\":\""+null+"\",\"error\":\"Se ha Encontrado un Error Checkout"+var+"\"}";
 
 			}
 

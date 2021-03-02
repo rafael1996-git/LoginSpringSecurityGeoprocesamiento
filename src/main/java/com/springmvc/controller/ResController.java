@@ -363,7 +363,7 @@ public class ResController {
 									JSONObject span = (JSONObject) ca.get("operaciones");
 									int idOp = span.getInt("idOperacion");
 
-									String varMensaje = "Fallo en la operacion: " + idOp + " Causa: " + errrores;
+									String varMensaje = "Fallo en la operacion:------ " + idOp + " Causa: " + errrores;
 									multi.setMessaje(varMensaje);
 								}
 							} else {

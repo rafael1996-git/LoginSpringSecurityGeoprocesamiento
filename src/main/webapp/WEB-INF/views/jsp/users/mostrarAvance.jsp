@@ -13,6 +13,9 @@
 <script src="resources/js/jquery.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="resources/js/bootstrap.min.js"></script>
 <script src="resources/js/Chart.js"></script>
 	<spring:url value="Avance.do" var="urlAvance" />
@@ -56,6 +59,17 @@ th, td {
 table {
   border-spacing: 5px;
 }
+
+
+textarea{  
+  overflow:hidden;
+  display:block;
+  height:auto;
+}
+    width: 100%; /* en css el 100% lo es de todo su padre, no de lo que reste si hay otros elementos en su misma línea*/
+float: right; /* esto hará que su padre no crezca a la par que este div*/
+margin:auto; /*si mide el 100% de ancho, no tiene sentido esta propiedad */
+height:100%;/* el 100% ¿de qué?* ¿su padre tiene definido un valor?/
 </style>
 <body>
 	<spring:url value="estatus" var="urlEstatus" />
@@ -88,7 +102,7 @@ table {
 			<div class="col align-self-center">
 				<h2>Geoprocesamiento de la Remesa de Actualización Cartográfica</h2>
 				<form id="registro" action="#" class="form-inline">
-					<input type="submit" class="btn btn-primary" value="Consulta">
+					<input type="submit" class="btn btn-primary openBtn" value="Consulta">
 				</form>
 				<div class="col align-self-center">
 					<h1>Estatus:</h1>
@@ -112,8 +126,26 @@ table {
 						
 						</tbody>
 					</table>
+				</div>	
+				<!-- Modal -->
+				<div class="modal fade bd-example-modal-lg" tabindex="-1" id="myModal" 
+				role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+				    <div class="modal-dialog modal-lg" role="document">
+				        Modal content
+				        <div class="modal-content">
+				            <div class="modal-header">
+				                <h4 class="modal-title">Descripcion</h4>
+				            </div>
+				            <div class="modal-body" >
+							<div id="pocos"></div>
+							<div id="text" ></div>
+				            </div>
+				            <div class="modal-footer">
+				               <button type="button" class="btn btn-secondary" data-dismiss="modal">Detalle</button>
+				            </div>
+				        </div>
+				    </div>
 				</div>
-				
 		</fieldset>
 	</div>
 	<script type="text/javascript">
@@ -140,6 +172,7 @@ function searchViaAjax() {
 		type : "POST",
 		url : "estatus",
 		data: requestData ,
+		dataType: "text",
 		timeout : 200000,
 		success : function(data) {
 			console.log("SUCCESS: ", data);
@@ -160,31 +193,57 @@ function searchViaAjax() {
 				}if (errordata.length>=0) {
 					console.log("mayor a cero-rafa: ", errordata.length);
 					document.getElementById("msjErrorrafa").style.display = "none";
-					$('#msjErrorrafa').html("<h1>SE ha encontrado un Error checkout</h1> ");
-					
+					var newheight = 0;
+					$('.autoheight').each(function(){ 
+					   var h = $(this).height();
+					   var s = $(this).prop('scrollHeight');
+					   console.log(h + "-" + s);
+					   if ( (h+s) > newheight )  {
+					      newheight = h + s;      
+					   }
+					});
+					$('.autoheight').height(newheight);
 					$('#Table > tbody').empty();
 					$.each(errordata, function (i, item) {
-					    var rows = "<thead>"+
-					    "<tr class='header'>"+
-						"<th style='width: 6%;'>Entidad</th>"+
-						"<th style='width: 7%;' >Remesa</th>"+
-						"<th style='width: 10%;'>Fecha</th>"+
-						"<th>Descripción</th>"+
+						var rows="";
+// 					    var rows = "<thead>"+
+// 					    "<tr class='header'>"+
+// 						"<th style='width: 6%;'>Entidad</th>"+
+// 						"<th style='width: 7%;' >Remesa</th>"+
+// 						"<th style='width: 10%;'>Fecha</th>"+
+// 						"<th>Descripción</th>"+
 						
-					"</tr></thead><tr>" +
-					        "<td id='entidad' >" + item.iden + "</td>" +
-					        "<td id='remesa' >" + item.idre + "</td>" +
-					        "<td id='fecha'  >" + item.idfe + "</td>" +
-					        "<td name='mitextarea' id='error' cols='40' rows='5' style='resize: both;'>" + item.error+ "</td>" +
-					        "</tr>";						     
+// 					"</tr></thead><tr>" +
+// 					        "<td><textarea class='autoheight' name='entidad[]' >"+ item.iden + "</textarea></td>" +
+// 					        "<td><textarea class='autoheight' name='remesa[]' >"+ item.idre + "</textarea></td>" +
+// 					        "<td><textarea class='autoheight' name='fecha[]' >"+ item.idfe + "</textarea></td>" +
+// 					        "<td><textarea class='autoheight' name='Descripción[]'>"+item.error+"</textarea></td>" +
+// 					        "</tr>";	
+									$('#msjErrorrafa2').html("<h1 style='color:red;'> Se ah Encontrado un ERROR para mas Detalle da Click en CONSULTA</h1> ")
+					        $('#myModal').blur(
+					                function() {
+					                    $('#text').load('statusError', 
+					                                       "datoE="+$('#myModal').val())
+					                }   
+					            )
+					        $('.openBtn').on('click',function(){
+							    $('.modal-body').load('content.html',function(){
+							    	 $('#pocos').html('<h1 style="color:red;">Error</h1>')
+							    	 console.log('Tabla: '+rows);
+							    	 $('#text').text(item.error);
+							        $('#myModal').modal({show:true});
+							    });
+							    $('#myModal').on('show.bs.modal', function (event) {
+									  var button = $(event.relatedTarget)
+									  var recipient = button.data('whatever')
+									  var modal = $(this)
+									  modal.find('.modal-title').text(recipient)
+									  
+
+									});
+							});
 					    $('#Table > tbody').append(rows);
-					    console.log("datosError: ", item.error);
 					});
-					
-					
-					
-					console.log(errordata);
-					
 					
 				} else {
 					console.log("menor a cero-rafa: ", errordata.length);
@@ -205,7 +264,6 @@ function searchViaAjax() {
 	});
 
 }
-
 
 function dibujaCirculo(data) {
 

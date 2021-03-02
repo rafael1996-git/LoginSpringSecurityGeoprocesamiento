@@ -62,7 +62,7 @@ function funcionRemesa() {
 					       if(x.msgExceptionDao!=null){
 						       document.getElementById(x.entidadID).checked = false;
 						       
-                               msgException.push("En la entidad "+x.entidadID+" ocurrio: "+x.msgExceptionDao+"<br>");
+                               msgException.push("En la entidad ,,,,,"+x.entidadID+" ocurrio: "+x.msgExceptionDao+"<br>");
 						       var modalDialog = getModalDialog();
                                getModalDialog().querySelector('.modal-content').innerHTML =msgException;
                                jQuery(modalDialog).modal('show');
@@ -186,7 +186,7 @@ function solicitudAjax(idEntidadesDiferentes){
 				            if(x.msgException!=null){
 						       document.getElementById(x.idEntidad).checked = false;
 						       listaEntidadError.push(x.idEntidad);
-                               var msj = "En la entidad "+x.idEntidad+" ocurrio: "+x.msgException;
+                               var msj = "En la entidad ...."+x.idEntidad+" ocurrio: "+x.msgException;
 						       var modalDialog = getModalDialog();
                                getModalDialog().querySelector('.modal-content').innerHTML =msj;
                                jQuery(modalDialog).modal('show');
