@@ -66,10 +66,7 @@ textarea{
   display:block;
   height:auto;
 }
-    width: 100%; /* en css el 100% lo es de todo su padre, no de lo que reste si hay otros elementos en su misma línea*/
-float: right; /* esto hará que su padre no crezca a la par que este div*/
-margin:auto; /*si mide el 100% de ancho, no tiene sentido esta propiedad */
-height:100%;/* el 100% ¿de qué?* ¿su padre tiene definido un valor?/
+
 </style>
 <body>
 	<spring:url value="estatus" var="urlEstatus" />
@@ -111,7 +108,8 @@ height:100%;/* el 100% ¿de qué?* ¿su padre tiene definido un valor?/
 					<div  id="leyenda"></div>
 					<div  id="msjError"></div>
 					<div  id="msjErrorrafa"></div>
-					<div  id="msjErrorrafa2"></div>
+					<div  id="msjErrorrafa2" >
+					</div>
 				</div>
 			
 			</div>
@@ -131,7 +129,7 @@ height:100%;/* el 100% ¿de qué?* ¿su padre tiene definido un valor?/
 				<div class="modal fade bd-example-modal-lg" tabindex="-1" id="myModal" 
 				role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 				    <div class="modal-dialog modal-lg" role="document">
-				        Modal content
+				  
 				        <div class="modal-content">
 				            <div class="modal-header">
 				                <h4 class="modal-title">Descripcion</h4>
@@ -219,7 +217,7 @@ function searchViaAjax() {
 // 					        "<td><textarea class='autoheight' name='fecha[]' >"+ item.idfe + "</textarea></td>" +
 // 					        "<td><textarea class='autoheight' name='Descripción[]'>"+item.error+"</textarea></td>" +
 // 					        "</tr>";	
-									$('#msjErrorrafa2').html("<h1 style='color:red;'> Se ah Encontrado un ERROR para mas Detalle da Click en CONSULTA</h1> ")
+									$('#msjErrorrafa2').html("<h1 style='color:red;'> Se ah encontrado un ERROR para mas detalle da click en CONSULTA</h1> ")
 					        $('#myModal').blur(
 					                function() {
 					                    $('#text').load('statusError', 

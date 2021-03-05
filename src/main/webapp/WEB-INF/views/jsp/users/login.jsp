@@ -13,6 +13,9 @@
     <meta name="author" content="">
       <link rel="stylesheet" href="resources/css/stylesheet.css" type="text/css" />
     <link href="resources/core/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="resources/css/common.css" rel="stylesheet">
         <title>Instituto Nacional Electoral:</title>
 
@@ -39,21 +42,6 @@ color: black;
 background-color: #d9edf7;
 
 }
-.error {
-              
-                border: 1px solid transparent;
-                color: #a94442;
-                background-color: #f2dede;
-                border-color: #ebccd1;
-            }
-
-            .msg {
-                border: 1px solid transparent;
-                color: #31708f;
-                background-color: #d9edf7;
-                border-color: #bce8f1;
-            }
-
 </style>
     <body>
     
@@ -68,7 +56,7 @@ background-color: #d9edf7;
             <input name="password" type="password"class="form-control" placeholder="Password" required/>
          
           
-                <label for="captchaCode" class="prompt">Retype the characters from the picture:</label>
+                <label for="captchaCode" class="prompt">Ingresa los caracteres de la imagen.:</label>
 
                 <botDetect:captcha id="securityCaptchaExample" userInputID="captchaCode" />
                 
@@ -85,14 +73,18 @@ background-color: #d9edf7;
 
 			</div>
 				<c:if test="${not empty error}">
-					<div class="form-control">
-						<form:errors path="*" />
-						<div class="error">${error}</div>
-					</div>
+				 <div class="alert alert-danger alert-dismissible">
+    				<button type="button" class="close" data-dismiss="alert" style="align-content: center;">&times;</button>
+    				<form:errors path="*" />
+   					 <strong>Error!</strong> 
+   					 ${error}
+  				</div>
 				</c:if>
 				<c:if test="${not empty message}">
-					<div class="form-control">
-						<div class="message">${message}</div>
+					<div class="alert alert-success alert-dismissible">
+					<button type="button" class="close" data-dismiss="alert" style="align-content: center;">&times;</button>
+					<strong>Info!</strong>
+					 ${message}
 					</div>
 				</c:if>
 			

@@ -132,7 +132,7 @@ public class LoginController {
 
 		ModelAndView model = new ModelAndView();
 		if (wrongcaptcha != null) {
-			model.addObject("error", "Invalid captcha!");
+			model.addObject("error", "Invalid captcha Ingresa los caracteres de la imagen!");
 		}
 
 		if (error != null) {
@@ -140,7 +140,7 @@ public class LoginController {
 		}
 
 		if (logout != null) {
-			model.addObject("message", "You've been logged out successfully.");
+			model.addObject("message", " Sección  terminada Satisfactoriamente!");
 		}
 		model.setViewName("/users/login");
 
