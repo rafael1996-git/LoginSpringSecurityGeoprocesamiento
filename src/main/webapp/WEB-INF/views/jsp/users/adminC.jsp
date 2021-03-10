@@ -9,8 +9,10 @@
 <html lang="en">
 
 <jsp:include page="../fragments/headerRemesa.jsp" />
-<spring:url value="welcome" var="urlWelcome" />
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
           <link rel="stylesheet" href="resources/css/adminremesa.css" type="text/css" />
    
 <body>
@@ -34,18 +36,28 @@
 	
 	
 		<div class="column">
-		 	<c:if test="${not empty mensaje}">
-			  	<div class="alert alert-success">${mensaje}
-    				<a href="${urlWelcome}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-   				 	<strong>Success!</strong> Remesa Insertada Correctamente
-   				</div>
+		 <c:if test="${not empty mensajerror}">
+   					<div class="alert alert-success alert-dismissible">
+    				<button type="button" class="close" data-dismiss="alert" >&times;</button>
+   					 <strong>SUCCESS!</strong> proceso funcionando sin error , verifique denuevo la consulta de avance .
+   					 ${mensajerror}
+  				</div>
 			  
+			 	</c:if>
+			 <c:if test="${not empty mensaje}">
+       			 <div class="alert alert-success alert-dismissible">
+    				<button type="button" class="close" data-dismiss="alert" >&times;</button>
+   					 <strong>¡Success!</strong> Remesa Realizada Correctamente
+   					 ${mensaje}
+  				</div>
 			 </c:if>
+
 			 <c:if test="${not empty mensaje2}">
-			  <div class="alert alert-info">${mensaje2}
-    				<a href="${urlWelcome}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-   					 <strong>Atencion!</strong> Funcion Remesa no realizada
-   				    </div>
+   				    <div class="alert alert-info alert-dismissible">
+    				<button type="button" class="close" data-dismiss="alert" >&times;</button>
+   					 <strong>¡Atencion!</strong> "La remesa no puede procesarse, ya que aun no se concluye la carga al SIIRFE."
+   					 ${mensaje2}
+  				</div>
 			  
 			 </c:if>
 		

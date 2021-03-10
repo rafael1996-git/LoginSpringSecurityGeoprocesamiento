@@ -140,7 +140,7 @@ public class ResController {
 						reques.setAttribute("lista", listaPersonas);
 						System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 						model.addObject("mensaje1", "¡"+e.getCause().toString());
-						model.setViewName("/users/Remesa");
+						model.setViewName("/users/adminC");
 						e.printStackTrace();
 					}
 
@@ -149,7 +149,7 @@ public class ResController {
 
 					List<User> listaPersonas =userService.listaFiltrada(entidad);
 					reques.setAttribute("lista", listaPersonas);
-					model.setViewName("/users/Remesa");
+					model.setViewName("/users/adminC");
 					model.addObject("mensaje", "¡");
 			
 				
@@ -158,7 +158,7 @@ public class ResController {
 			List<User> listaPersonas =userService.listaFiltrada(entidad);
 			reques.setAttribute("lista", listaPersonas);
 			model.addObject("mensaje2", "¡");
-			model.setViewName("/users/Remesa");
+			model.setViewName("/users/adminC");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -168,7 +168,7 @@ public class ResController {
 			reques.setAttribute("lista", listaPersonas);
 			System.out.println("funcion Remesa no realizada :Exception  ");
 			model.addObject("mensaje1", "¡"+e.getCause().toString());
-			model.setViewName("/users/Remesa");
+			model.setViewName("/users/adminC");
 			e.getMessage();
 		}
 		return model;

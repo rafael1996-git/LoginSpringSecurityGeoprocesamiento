@@ -9,8 +9,10 @@
 <html xmlns="https://www.thymeleaf.org">
 <meta charset="ISO-8859-1">
 
-<spring:url value="viewAdmin" var="urlWelcome" />
 <jsp:include page="../fragments/header.jsp" />
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
 body {
 	background-color: rgb(255, 247, 255);
@@ -62,17 +64,20 @@ tr.header {
 
 				<h2>Geoprocesamiento de la Remesa de Actualización Cartográfica</h2>
 				<c:if test="${not empty msg}">
-			  		<div class="alert alert-success">${msg}
-    					<a href="${urlWelcome}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-   					 	<strong>Success!</strong> Usuario Eliminado Correctamente
-   					</div>
+   				<div class="alert alert-success alert-dismissible">
+    				<button type="button" class="close" data-dismiss="alert" >&times;</button>
+   					 <strong>Success!</strong> Usuario Eliminado Correctamente
+   					 ${msg}
+  				</div>
 			  
 			 	</c:if>
 			 	<c:if test="${not empty msg1}">
-			  		<div class="alert alert-info">${msg1}
-    					<a href="${urlWelcome}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-   					 	<strong>ERROR!</strong>EL usuario generador de Remesa aun es referenciado por la tabla control.
-   					</div>
+			  	
+   					<div class="alert alert-info alert-dismissible">
+    					 <button type="button" class="close" data-dismiss="alert" >&times;</button>
+   						 <strong>ERROR!</strong> EL usuario generador de Remesa aun es referenciado por la tabla control.
+   					 ${msg1}
+  					</div>
 			  
 			 	</c:if>
 			 	
