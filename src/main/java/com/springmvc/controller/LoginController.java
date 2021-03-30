@@ -158,6 +158,7 @@ public class LoginController {
 
 		try {
 			List<UserControl> usuarioControl = userService.findByUserControlAndPassword(correo, password);
+			List<UserControl> userControl = userService.findByUserAndPassword(correo, password);
 			UserControl uControl = userService.findBycorreo(correo);
 			
 			if (usuarioControl != null && !usuarioControl.isEmpty()) {
@@ -171,12 +172,12 @@ public class LoginController {
 				request.setAttribute("lista", listaPersonas);
 				mav = new ModelAndView("/users/adminC");
 
-			} else if (uControl.getId_tipo_usuario() == 2) {
+			} else if (uControl.getId_tipo_usuario() == 2 && userControl != null &&  uControl != null && !userControl.isEmpty() ) {
 				HttpSession session = request.getSession();
 				session.setAttribute("firstname", uControl.getCorreo());
 				request.setAttribute("lista", listaP);
 				mav = new ModelAndView("/users/admin");
-			} else if (uControl.getId_tipo_usuario() == 3) {
+			} else if (uControl.getId_tipo_usuario() == 3 && userControl != null && uControl != null && !userControl.isEmpty() ) {
 				Map<Integer,String> listEntidadesActivas = userService.entidadesActivas();
 				
 				HttpSession session = request.getSession();

@@ -87,7 +87,6 @@ public class RegistrationController {
 			e.printStackTrace();
 			List<User> listaPersonas =userService.list();
 			request.setAttribute("lista", listaPersonas);
-			model.addObject("Exception","¡"+e.getCause().toString());
 			model.setViewName("/users/add");
 			
 		}

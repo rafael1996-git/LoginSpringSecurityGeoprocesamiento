@@ -34,7 +34,7 @@ public interface UserDao {
 
 	public List<UserControl> findByUserControlAndPassword(String correo, String password);
 
-	public List<UserControl> findById_TipoUserAndPassword(String correo, String password, int id_tipo_usuario);
+	public List<UserControl> findByUserAndPassword(String correo, String password);
 
 	public UserControl findBycorreo(String correo);
 

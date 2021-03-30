@@ -83,7 +83,7 @@ background-color: #d9edf7;
 				<c:if test="${not empty message}">
 					<div class="alert alert-success alert-dismissible">
 					<button type="button" class="close" data-dismiss="alert" style="align-content: center;">&times;</button>
-					<strong>Info!</strong>
+					<strong>success!</strong>
 					 ${message}
 					</div>
 				</c:if>

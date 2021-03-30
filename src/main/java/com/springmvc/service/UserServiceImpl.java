@@ -72,9 +72,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<UserControl> findById_TipoUserAndPassword(String correo, String password, int id_tipo_usuario) {
+	public List<UserControl> findByUserAndPassword(String correo, String password) {
 
-		return userDao.findById_TipoUserAndPassword(correo, password, id_tipo_usuario);
+		return userDao.findByUserAndPassword(correo, password);
 	}
 
 	@Override

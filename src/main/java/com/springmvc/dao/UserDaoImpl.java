@@ -634,7 +634,9 @@ public class UserDaoImpl implements UserDao {
 		correo = "%" + correo + "%";
 		password = "%" + password + "%";
 		String sql = "SELECT * FROM public.usuario WHERE TRIM(correo) like ? and TRIM(password) like ? and id_tipo_usuario in (1)";
+		System.out.println("sql"+sql);
 		return jdbcTemplatecontrol.query(sql, new Object[] { correo, password }, new UserControl2());
+		
 	}
 
 	@Override
@@ -659,9 +661,12 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public List<UserControl> findById_TipoUserAndPassword(String correo, String password, int id_tipo_usuario) {
-		String sql = "SELECT * FROM public.usuario WHERE correo = ? and password = ? and id_tipo_usuario=?";
-		return jdbcTemplatecontrol.query(sql, new Object[] { correo, password, id_tipo_usuario }, new UserControl2());
+	public List<UserControl> findByUserAndPassword(String correo, String password) {
+		correo = "%" + correo + "%";
+		password = "%" + password + "%";
+		String sql = "SELECT * FROM public.usuario WHERE TRIM(correo) like ? and TRIM(password) like ?  ";
+		System.out.println("sql2"+sql);
+		return jdbcTemplatecontrol.query(sql, new Object[] { correo, password }, new UserControl2());
 	}
 
 	@Override

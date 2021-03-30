@@ -67,15 +67,7 @@ color: black;
   					</div>
 			  
 			 	</c:if>
-			 	<c:if test="${not empty Exception}">
-			  		
-   					<div class="alert alert-info alert-dismissible">
-    					 <button type="button" class="close" data-dismiss="alert" >&times;</button>
-   						 <strong>!</strong> 
-   					 ${Exception}
-  					</div>
-			  
-			 	</c:if>
+			
        			 
 			<div class="navbar" align="left">
 					<td><h4>Buscar Usuarios Activos</h4></td>
