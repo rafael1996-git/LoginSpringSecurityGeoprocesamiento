@@ -124,7 +124,7 @@ public class ResController {
 					OkHttpClient client = new OkHttpClient().newBuilder().connectTimeout(120, TimeUnit.SECONDS)
 							.readTimeout(120, TimeUnit.SECONDS)
 							.writeTimeout(120, TimeUnit.SECONDS).build();
-					HttpUrl.Builder urlBuilder = HttpUrl.parse("http://localhost:8180/GenerarRemesa/dce/GenerarEntidad?").newBuilder();
+					HttpUrl.Builder urlBuilder = HttpUrl.parse("http://localhost:8080/GenerarRemesa/dce/GenerarEntidad?").newBuilder();
 					urlBuilder.addQueryParameter("entidad", session.getAttribute("entidad").toString());
 					urlBuilder.addQueryParameter("remesa", opj.toString());
 					String url = urlBuilder.build().toString();
@@ -248,7 +248,7 @@ public class ResController {
 						OkHttpClient client = new OkHttpClient().newBuilder().connectTimeout(120, TimeUnit.SECONDS)
 								.readTimeout(220, TimeUnit.SECONDS).writeTimeout(220, TimeUnit.SECONDS).build();
 						HttpUrl.Builder urlBuilder = HttpUrl
-								.parse("http://localhost:8180/GenerarRemesa/dce/GenerarEntidad?").newBuilder();
+								.parse("http://localhost:8080/GenerarRemesa/dce/GenerarEntidad?").newBuilder();
 
 						urlBuilder.addQueryParameter("entidad", entidad);
 						urlBuilder.addQueryParameter("remesa", opj.toString());
@@ -311,7 +311,7 @@ public class ResController {
 		if (!entidad.isEmpty()) {
 			for (String idEntidad : entidad) {
 
-				String requestUri = "http://localhost:8180/GenerarRemesa/dce/GenerarEntidad/multistatus?entidad={entidad}&remesa={remesa}";
+				String requestUri = "http://localhost:8080/GenerarRemesa/dce/GenerarEntidad/multistatus?entidad={entidad}&remesa={remesa}";
 				Map<String, String> urlParameters = new HashMap<>();
 
 				MultiGrafica multi = new MultiGrafica();

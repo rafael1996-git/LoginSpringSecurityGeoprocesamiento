@@ -235,7 +235,7 @@ public class LoginController {
 
 	public String getEstatusRemesa(int entidad, int remesa) throws ParseException {
 
-		String requestUri = "http://localhost:8180/GenerarRemesa/dce/GenerarEntidad/status?entidad={entidad}&remesa={remesa}";
+		String requestUri = "http://localhost:8080/GenerarRemesa/dce/GenerarEntidad/status?entidad={entidad}&remesa={remesa}";
 		Map<String, String> urlParameters = new HashMap<>();
 		urlParameters.put("entidad", Integer.toString(entidad));
 		urlParameters.put("remesa", Long.toString(remesa));
@@ -283,7 +283,7 @@ public class LoginController {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		objDate.equals(dateFormat.format(objDate));
 		System.out.println(dateFormat.format(objDate));
-		String requestUri = "http://localhost:8180/GenerarRemesa/dce/GenerarEntidad/status?entidad={entidad}&remesa={remesa}";
+		String requestUri = "http://localhost:8080/GenerarRemesa/dce/GenerarEntidad/status?entidad={entidad}&remesa={remesa}";
 		Map<String, String> urlParameters = new HashMap<>();
 		urlParameters.put("entidad", Integer.toString(entidad));
 		urlParameters.put("remesa", Long.toString(remesa));
