@@ -1,5 +1,7 @@
 package com.springmvc.model;
 
+import java.util.Date;
+
 public class User {
 	private int id;
 	private String usuario;
@@ -7,16 +9,54 @@ public class User {
 	private String correo;
 	private int entidad;
 	private int distrito;
-	private boolean status;
 	private int id_rol;
 	private String nombre;
 	private String ape_pat;
 	private String ape_mat;
+	private int autorizado;
+	private int status_portal;
+	private int status_bged;
+	private Date fecha_inicio;
+	private Date fecha_terminacion;
+	
+	
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", usuario=" + usuario + ", password=" + password + ", correo=" + correo
-				+ ", entidad=" + entidad + ", distrito=" + distrito + ", status=" + status + ", id_rol=" + id_rol
-				+ ", nombre=" + nombre + ", ape_pat=" + ape_pat + ", ape_mat=" + ape_mat + "]";
+				+ ", entidad=" + entidad + ", distrito=" + distrito +  ", id_rol=" + id_rol
+				+ ", nombre=" + nombre + ", ape_pat=" + ape_pat + ", ape_mat=" + ape_mat + ", autorizado=" + autorizado
+				+ ", status_portal=" + status_portal + ", status_bged=" + status_bged + ", fecha_inicio=" + fecha_inicio
+				+ ", fecha_terminacion=" + fecha_terminacion + "]";
+	}
+	public int getAutorizado() {
+		return autorizado;
+	}
+	public void setAutorizado(int autorizado) {
+		this.autorizado = autorizado;
+	}
+	public int getStatus_portal() {
+		return status_portal;
+	}
+	public void setStatus_portal(int status_portal) {
+		this.status_portal = status_portal;
+	}
+	public int getStatus_bged() {
+		return status_bged;
+	}
+	public void setStatus_bged(int status_bged) {
+		this.status_bged = status_bged;
+	}
+	public Date getFecha_inicio() {
+		return fecha_inicio;
+	}
+	public void setFecha_inicio(Date fecha_inicio) {
+		this.fecha_inicio = fecha_inicio;
+	}
+	public Date getFecha_terminacion() {
+		return fecha_terminacion;
+	}
+	public void setFecha_terminacion(Date fecha_terminacion) {
+		this.fecha_terminacion = fecha_terminacion;
 	}
 	public int getId() {
 		return id;
@@ -55,12 +95,6 @@ public class User {
 		this.distrito = distrito;
 	}
 	
-	public boolean isStatus() {
-		return status;
-	}
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
 	public int getId_rol() {
 		return id_rol;
 	}

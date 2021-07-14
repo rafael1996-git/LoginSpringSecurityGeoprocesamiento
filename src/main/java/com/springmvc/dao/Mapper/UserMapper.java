@@ -21,12 +21,15 @@ public class UserMapper implements RowMapper<User> {
 		user.setCorreo(rs.getString("correo"));
 		user.setEntidad(rs.getInt("entidad"));
 		user.setDistrito(rs.getInt("distrito"));
-		user.setStatus(rs.getBoolean("status"));
 		user.setId_rol(rs.getInt("id_rol"));
 		user.setNombre(rs.getString("nombre"));
 		user.setApe_pat(rs.getString("ape_pat"));
 		user.setApe_mat(rs.getString("ape_mat"));
-		logger.info("UserMapper: "+user.toString());
+		user.setAutorizado(rs.getInt("autorizado"));
+		user.setStatus_portal(rs.getInt("status_portal"));
+		user.setStatus_bged(rs.getInt("status_bged"));
+		user.setFecha_inicio(rs.getDate("fecha_inicio"));
+		user.setFecha_terminacion(rs.getDate("fecha_terminacion"));
 		return user;
 	}
 

@@ -1,5 +1,7 @@
 package com.springmvc.model;
 
+import java.util.List;
+
 
 public class UserControl {
 	private Integer id_usuario;
@@ -15,13 +17,23 @@ public class UserControl {
 	private String correo ;
 	
 	private String password ;
-	
+//	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	@JoinColumn(name = "user_id_tipo")
+	private List<Role> roles;
 	public Integer getId_usuario() {
 		return id_usuario;
 	}
 
 
+	public List<Role> getRoles() {
+		
+		
+		return roles;
+	}
 
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
 
 
 

@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+
+
 import com.springmvc.dao.UserDao;
 import com.springmvc.model.Control;
 import com.springmvc.model.Remesa;
@@ -132,6 +134,14 @@ public class UserServiceImpl implements UserService {
 	public String obtieneNombreEntidad(String idEntidad) {
 		return userDao.obtieneNombreEntidad(idEntidad);
 	}
+
+	@Override
+	public UserControl findByAuthority(String correo) {
+		// TODO Auto-generated method stub
+		return userDao.findByAuthority(correo);
+	}
+
+	
 
 
 }

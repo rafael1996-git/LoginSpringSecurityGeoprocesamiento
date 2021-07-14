@@ -58,6 +58,7 @@
 
 
 
-<footer><div  align="center" ><h4>© Derechos Reservados, Instituto Nacional Electoral, México.</h4></div></footer>
-	
+<div class="container-xl mt-3 border  p-3 my-3 bg-dark text-white" align="center">
+	<jsp:include page="fragments/footer.jsp" />
+</div>
 </html>

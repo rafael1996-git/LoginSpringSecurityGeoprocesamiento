@@ -186,7 +186,7 @@ function solicitudAjax(idEntidadesDiferentes){
 				            if(x.msgException!=null){
 						       document.getElementById(x.idEntidad).checked = false;
 						       listaEntidadError.push(x.idEntidad);
-                               var msj = "En la entidad ...."+x.idEntidad+" ocurrio: "+x.msgException;
+                               var msj = "En la entidad ....--"+x.idEntidad+" ocurrio: "+x.msgException;
 						       var modalDialog = getModalDialog();
                                getModalDialog().querySelector('.modal-content').innerHTML =msj;
                                jQuery(modalDialog).modal('show');

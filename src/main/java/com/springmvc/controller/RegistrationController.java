@@ -4,6 +4,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,20 +23,22 @@ public class RegistrationController {
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-	@RequestMapping(value = "/agregar", method = RequestMethod.GET)
-	public ModelAndView addPage(HttpServletRequest request) {
+	@Secured({"ROLE_ADMIN"})
+	@RequestMapping(value = "/agregar**", method = RequestMethod.GET)
+	public ModelAndView addPage(Authentication authentication,HttpServletRequest request) {
 
 		ModelAndView model = new ModelAndView();
 		List<User> listaPersonas =userService.list();
+		request.setAttribute("firstname",authentication.getName());
 		request.setAttribute("lista", listaPersonas);
-		model.setViewName("/users/add");
+		model.setViewName("add");
 
 		return model;
 
 	}
-	// show update form
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public ModelAndView showUpdateUserForm( HttpServletRequest request, HttpServletResponse response) {
+	
+	@RequestMapping(value = "/register**", method = RequestMethod.GET)
+	public ModelAndView showUpdateUserForm( Authentication authentication,HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView model = new ModelAndView();
 		try {
 			String	correo=request.getParameter("correo");
@@ -59,8 +63,9 @@ public class RegistrationController {
 
 				List<User> listaPersonas =userService.list();
 				request.setAttribute("lista", listaPersonas);
+				request.setAttribute("firstname",authentication.getName());
 				model.addObject("msg","¡");
-				model.setViewName("/users/add");
+				model.setViewName("add");
 				
 			}else {
 
@@ -77,8 +82,9 @@ public class RegistrationController {
 				userService.register(regis);
 				List<User> listaPersonas =userService.list();
 				request.setAttribute("lista", listaPersonas);
+				request.setAttribute("firstname",authentication.getName());
 				model.addObject("mensage","¡");
-				model.setViewName("/users/add");
+				model.setViewName("add");
 			}
 				
 
@@ -87,16 +93,17 @@ public class RegistrationController {
 			e.printStackTrace();
 			List<User> listaPersonas =userService.list();
 			request.setAttribute("lista", listaPersonas);
-			model.setViewName("/users/add");
+			request.setAttribute("firstname",authentication.getName());
+			model.setViewName("add");
 			
 		}
 		
 			return model;
 
 	}
-	// delete user
-	@RequestMapping(value="/delete",method = RequestMethod.GET)    
-		public ModelAndView deleteUser( HttpServletRequest request, HttpServletResponse response) {
+	@Secured({"ROLE_ADMIN"})
+	@RequestMapping(value="/delete**",method = RequestMethod.GET)    
+		public ModelAndView deleteUser( Authentication authentication,HttpServletRequest request, HttpServletResponse response) {
 			ModelAndView model = new ModelAndView();
 			try {
 				String	correo=request.getParameter("correo");
@@ -104,16 +111,18 @@ public class RegistrationController {
 						userService.delete(correo);
 					List<UserControl> listaPersonas =userService.lista();
 					request.setAttribute("lista", listaPersonas);
+					request.setAttribute("firstname",authentication.getName());
 					model.addObject("msg","¡");
-					model.setViewName("/users/admin");
+					model.setViewName("admin");
 					return model;
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Exception:");
 				List<UserControl> listaPersonas =userService.lista();
 				request.setAttribute("lista", listaPersonas);
+				request.setAttribute("firstname",authentication.getName());
 				model.addObject("msg1", "¡");
-				model.setViewName("/users/admin");
+				model.setViewName("admin");
 				return model;			
 				}
 		}

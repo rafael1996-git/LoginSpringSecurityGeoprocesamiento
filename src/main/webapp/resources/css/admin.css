@@ -1,0 +1,54 @@
+@charset "ISO-8859-1";
+#contenido{
+	margin: 0 auto;
+}
+#informacion{
+	width: 300px;
+	float: left;
+	margin: auto auto;
+	list-style: none;
+	padding-top: 35px;
+	margin-bottom: 25px;
+}
+aside{
+	    float: right;
+	width: 700px;
+	margin-top: 125px;
+	    margin-left: 60px;
+	    margin-bottom: 90px;
+}
+aside article h2{
+	text-align: center;
+	border-bottom: 2px solid #918873;
+	color: #918873;
+	line-height: 42px;
+	margin-top: 10px;
+	
+}
+#CardEntidades{
+	width: 100%;
+	margin: auto auto;
+	list-style: none;
+	padding-top: 400px;
+	margin-bottom: 25px;
+}
+
+#CardEntidadesRemesa {
+    width: 100%;
+    margin: auto auto;
+    list-style: none;
+    padding-top: 420px;
+
+}
+#status{
+	width: 100%;
+	 margin: auto auto;
+    list-style: none;
+    padding-top: 420px;
+}
+#status{
+	width: 100%;
+	 margin: auto auto;
+    list-style: none;
+    padding-top: 420px;
+}

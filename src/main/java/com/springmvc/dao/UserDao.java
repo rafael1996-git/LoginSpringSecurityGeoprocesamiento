@@ -3,6 +3,8 @@ package com.springmvc.dao;
 import java.util.List;
 import java.util.Map;
 
+
+
 import com.springmvc.model.Control;
 import com.springmvc.model.Remesa;
 import com.springmvc.model.User;
@@ -37,7 +39,7 @@ public interface UserDao {
 	public List<UserControl> findByUserAndPassword(String correo, String password);
 
 	public UserControl findBycorreo(String correo);
-
+	public UserControl findByAuthority(String correo);
 	public statusError findByfecha(String fecha, String error);
 
 	public statusError buscarfecha(String fecha);
@@ -53,5 +55,7 @@ public interface UserDao {
 	public Map<Integer, String> entidadesActivas();
 
 	public String obtieneNombreEntidad(String idEntidad);
+
+	
 
 }

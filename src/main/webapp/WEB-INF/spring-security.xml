@@ -10,26 +10,39 @@
         
         <custom-filter ref="captchaFilter" before="FORM_LOGIN_FILTER"/>
 
-        <intercept-url pattern="/admin**" access="ROLE_USER" />
-		
+        <intercept-url pattern="/admin**" access="ROLE_USER,ROLE_ADMIN,ROLE_MULTI" />
+        <intercept-url pattern="/agregar**" access="ROLE_ADMIN" />
+        <intercept-url pattern="/delete**" access="ROLE_ADMIN" />
+        <intercept-url pattern="/viewAdmin**" access="ROLE_USER,ROLE_ADMIN,ROLE_MULTI" />
+        <intercept-url pattern="/Avance**" access="ROLE_USER,ROLE_ADMIN" />
+        <intercept-url pattern="/MultiProcesos**" access="ROLE_MULTI,ROLE_ADMIN" />
+        <intercept-url pattern="/register**" access="ROLE_ADMIN" />
+        <intercept-url pattern="/welcome**" access="ROLE_USER,ROLE_ADMIN" />		
         <form-login
         
-            login-page="/users/login" 
-            default-target-url="/user/admin" 
+            login-page="/login" 
+            
+            default-target-url="/admin" 
+            
             authentication-failure-url="/login?error" 
+            
             /> 
                 <logout logout-success-url="/?logout" />
                 
  
         <csrf/>
+        <access-denied-handler error-page="/Error"  />
+        <anonymous/>
     </http>
 
     <authentication-manager>
-        <authentication-provider>
-            <user-service>
-                <user name="loginForm" password="loginForm" authorities="ROLE_USER" />
-            </user-service>
+        <authentication-provider user-service-ref="customUserDetailsService">
+           
         </authentication-provider>
     </authentication-manager>
+    <beans:bean id="accessDeniedHandler" class="com.springmvc.security.filter.CustomAccessDeniedHandler">
+    <beans:property name="accessDeniedUrl" value="/AdministracionDelGeoprocesamiento/admin" />
+</beans:bean>
     <beans:bean id="captchaFilter" class="com.springmvc.security.filter.CaptchaFilter"/>
+    <beans:bean id="customUserDetailsService" class="com.springmvc.security.filter.CustomUserDetailsService"/>
 </beans:beans>

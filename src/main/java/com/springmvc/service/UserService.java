@@ -3,6 +3,8 @@ package com.springmvc.service;
 import java.util.List;
 import java.util.Map;
 
+
+
 import com.springmvc.model.Control;
 import com.springmvc.model.Remesa;
 import com.springmvc.model.User;
@@ -29,7 +31,7 @@ public interface UserService {
 	public List<statusError> listaStatus(String fecha);
 
 	public List<UserControl> lista();
-
+	
 	public String buscarRemesa();
 
 	public String buscarAdmin();
@@ -39,6 +41,8 @@ public interface UserService {
 	public List<UserControl> findByUserAndPassword(String correo, String password);
 
 	public UserControl findBycorreo(String correo);
+	
+	public UserControl findByAuthority(String correo);
 
 	public statusError findByfecha(String fecha, String error);
 

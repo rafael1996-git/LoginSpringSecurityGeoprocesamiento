@@ -371,11 +371,15 @@ public class UserDaoImpl implements UserDao {
 				user.setCorreo(rs.getString("correo"));
 				user.setEntidad(rs.getInt("entidad"));
 				user.setDistrito(rs.getInt("distrito"));
-				user.setStatus(rs.getBoolean("status"));
 				user.setId_rol(rs.getInt("id_rol"));
 				user.setNombre(rs.getString("nombre"));
 				user.setApe_pat(rs.getString("ape_pat"));
 				user.setApe_mat(rs.getString("ape_mat"));
+				user.setAutorizado(rs.getInt("autorizado"));
+				user.setStatus_portal(rs.getInt("status_portal"));
+				user.setStatus_bged(rs.getInt("status_bged"));
+				user.setFecha_inicio(rs.getDate("fecha_inicio"));
+				user.setFecha_terminacion(rs.getDate("fecha_terminacion"));
 				return user;
 			}
 
@@ -770,4 +774,18 @@ public class UserDaoImpl implements UserDao {
 		return nombreEntidad;
 	}
 
+	@Override
+	public UserControl findByAuthority(String correo) {
+		correo = "%" + correo + "%";
+		String sql = "SELECT u.correo, aut.authority FROM authorities aut inner join usuario u on (aut.user_id_tipo=u.id_usuario) WHERE TRIM(u.correo) like ?";
+		List<UserControl> users = jdbcTemplatecontrol.query(sql, new Object[] { correo }, new UserControl2());
+
+		return users.size() > 0 ? users.get(0) : null;
+
+	}
+
+	
+
+	
+	
 }
