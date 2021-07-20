@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@page import="com.captcha.botdetect.web.servlet.Captcha"%>
+
+<%@page import="com.captcha.botdetect.web.servlet.Captcha"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -9,263 +8,276 @@
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="resources/stilosjs/css/bootstrap.min.css">
-<script src="resources/js/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="resources/js/bootstrap.min.js"></script>
 <script src="resources/js/Chart.js"></script>
-	<spring:url value="Avance.do" var="urlAvance" />
-
+<script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js "> </script> 
 </head>
-
-<jsp:include page="../fragments/headerRemesa.jsp" />
+<jsp:include page="fragments/HeaderAdmin.jsp" />
 <style>
 body {
 	background-color: rgb(255, 247, 255);
 }
 
-h1 {
-	color: black;
+.my-custom-scrollbar {
+position: relative;
+height: 200px;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
 }
 
-td {
-	color: black;
-}
-
-p {
-	color: black;
-}
-tr.header {
-	background-color: rgb(0, 0, 0);
-}
-table, th, td {
-  border: 1px solid black;
-    border-collapse: collapse;
-  
-}
 td.error {
- width: 100px;
-   height:100px;
-       word-wrap: break-word;
-   
-}
-th, td {
-  padding: 15px;
-}
-table {
-  border-spacing: 5px;
+	width: 100px;
+	height: 100px;
+	word-wrap: break-word;
 }
 
-
-textarea{  
-  overflow:hidden;
-  display:block;
-  height:auto;
+.modalDialog {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
 }
-
+.modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+.modalDialog > div {
+	width: 1600px;
+	position: relative;
+	margin: 3% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: #fff;
+	background: -moz-linear-gradient(#fff, #999);
+	background: -webkit-linear-gradient(#fff, #999);
+	background: -o-linear-gradient(#fff, #999);
+  -webkit-transition: opacity 400ms ease-in;
+-moz-transition: opacity 400ms ease-in;
+transition: opacity 400ms ease-in;
+}
+.close {
+	background: #ffc62b;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+}
+.close:hover { background: #ff0000; }
 </style>
-<body>
+<spring:url value="/resources/css/admin.css" var="adminCss" />
+<link href="${adminCss}" rel="stylesheet" />
+<body >
 	<spring:url value="estatus" var="urlEstatus" />
-	<div class="container" align="center">
-		<fieldset>
-			<legend>
-				<h3>Instituto Nacional Electoral</h3>
-			</legend>
-			<div align="right" style="text-transform: capitalize;">
-				<tr>
-					</h2>
-					<td><h4>Usuario: ${firstname}</h4>
-				</tr>
-				<div class="message">
-					<c:set var="now" value="<%=new java.util.Date()%>" />
-					<h4>Fecha Actual:</h4>
-					<h4>
-						<fmt:formatDate type="both" value="${now}" />
-					</h4>
-				</div>
-					 <c:if test="${not empty mensaje3}">
-			  		<div class="alert alert-info">${mensaje3}
-    					<a href="${urlAvance}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-   					 	<strong>SUCCESS!</strong>proceso funcionando sin error , verifique denuevo la consulta de avance de geoprocesamiento de su grafica.
-   					</div>
-			  
-			 	</c:if>
+	<div class="container py-4">
+	<c:if test="${not empty mensaje3}">
+			<div class="alert alert-info">${mensaje3}
+				<a href="${urlAvance}" class="close" data-dismiss="alert"
+					aria-label="close">&times;</a> <strong>SUCCESS!</strong>proceso
+				funcionando sin error , verifique denuevo la consulta de avance de
+				geoprocesamiento de su grafica.
 			</div>
-			<div class="row align-items-center">
-			<div class="col align-self-center">
-				<h2>Geoprocesamiento de la Remesa de Actualización Cartográfica</h2>
-				<form id="registro" action="#" class="form-inline">
-					<input type="submit" class="btn btn-primary openBtn" value="Consulta">
-				</form>
-				<div class="col align-self-center">
-					<h1>Estatus:</h1>
 
-					<canvas id="myCanvas" width="500" height="300"></canvas>
-					<div  id="leyenda"></div>
-					<div  id="msjError"></div>
-					<div  id="msjErrorrafa"></div>
-					<div  id="msjErrorrafa2" >
+		</c:if>
+		<section id="contenido">
+
+			<div id="informacion">
+				<div
+					class="card  col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 .img-fluid"
+					style="min-width: 300px;">
+					<img src="<c:url value="/resources/images/avatar.jpg"/>"
+						class="card-img-top" alt="Card image" />
+
+					<div class="card-block">
+						<h6 class="card-title">Nombre del Usuario Generador de la
+							Remesa: ${firstname}</h6>
+						<p>
+							<c:set var="now" value="<%=new java.util.Date()%>" />
+							Fecha Actual:
+							<fmt:formatDate type="both" value="${now}" />
+						</p>
 					</div>
 				</div>
-			
 			</div>
-			</div>
-			<div class="table-wrapper-scroll-y my-custom-scrollbar" >
 
-					<table id="Table"
-						class="table table-bordered table-condensed table-hover responsive nowrap" style="width:100%">
-						<thead> 
-						</thead>
-						<tbody style="height: 10px !important; overflow: scroll;">
-						
-						</tbody>
-					</table>
-				</div>	
-				<!-- Modal -->
-				<div class="modal fade bd-example-modal-lg" tabindex="-1" id="myModal" 
-				role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-				    <div class="modal-dialog modal-lg" role="document">
-				  
-				        <div class="modal-content">
-				            <div class="modal-header">
-				                <h4 class="modal-title">Descripcion</h4>
-				            </div>
-				            <div class="modal-body" >
-							<div id="pocos"></div>
-							<div id="text" ></div>
-				            </div>
-				            <div class="modal-footer">
-				               <button type="button" class="btn btn-secondary" data-dismiss="modal">Detalle</button>
-				            </div>
-				        </div>
-				    </div>
+		</section>
+		<div id="info2" align="center">
+			<aside>
+				<article>
+					<h2 align="center">Geoprocesamiento de la Remesa de
+						Actualizacion Cartografica</h2>
+					<p>Este Usuario tiene Permisos para Administrar y Procesar la
+						generacion de Remesa.</p>
+				</article>
+			</aside>
+		</div>
+		
+	<div id="status" align="center">
+	
+	<div class="card ">
+				<div class="card-header">
+					<h4 class="card-title" align="center">Estatus:</h4>
 				</div>
-		</fieldset>
+				<div class="card-body">
+					<canvas id="myCanvas" width="500" height="300"></canvas>
+				<div id="leyenda"></div>
+				<div id="msjError"></div>
+				<div id="msjErrorrafa"></div>
+				<div id="msjErrorrafa2"></div>
+				</div>
+				<div id="card" class="card-footer">
+				<form id="registro" action="#" class="form-inline" style="float: left;">
+				<input type="submit" class="btn btn-primary openBtn"
+					value="Consulta">
+				</form>
+				<a id="detalle" href="#openModal" class="btn btn-primary" style="float: right ;" >Detalle Error</a>
+				</div>
+
+			</div>
+
+	
 	</div>
+	
+	<div class="table-wrapper-scroll-y my-custom-scrollbar">
+
+		<table id="Table"
+			class="table table-bordered table-condensed table-hover responsive nowrap"
+			style="width: 100%">
+			<thead>
+			</thead>
+			<tbody style="height: 10px !important; overflow: scroll;">
+
+			</tbody>
+		</table>
+	</div>
+		<div id="openModal" class="modalDialog">
+			<div>
+				<a href="#close" title="Close" class="close" >X</a>
+				<h2>Error</h2>
+				<div id="datosError" align="center"></div>
+			</div>
+		</div>
+
+	</div>
+	
 	<script type="text/javascript">
-var _csrf_token = /*[[${_csrf.token}]]*/ '${_csrf.token}';
-var _csrf_param_name = /*[[${_csrf.parameterName}]]*/ '${_csrf.parameterName}';
+	var _csrf_token = /*[[${_csrf.token}]]*/ '${_csrf.token}';
+	var _csrf_param_name = /*[[${_csrf.parameterName}]]*/ '${_csrf.parameterName}';
 
 
-jQuery(document).ready(function($) {
+	jQuery(document).ready(function($) {
 
-	$("#registro").submit(function(event) {
-		event.preventDefault();
-		
-		searchViaAjax();
+		$("#registro").submit(function(event) {
+			event.preventDefault();
+			searchViaAjax();
+		});
+
 	});
-
-});
-
-function searchViaAjax() {
-	var requestData= {};
 	
-	requestData[_csrf_param_name] = _csrf_token;
 
-	$.ajax({
-		type : "POST",
-		url : "estatus",
-		data: requestData ,
-		dataType: "text",
-		timeout : 200000,
-		success : function(data) {
-			console.log("SUCCESS: ", data);
-			var datos=0;
-			datos = JSON.parse(data);
+	function searchViaAjax() {
+		var requestData= {};
 		
-				 var alejandro = datos.alejandro;
-				 var errordata = datos.errordata;
-				if(alejandro.length>=0){
-					console.log("mayor a cero: ", alejandro.length);
-					document.getElementById("msjError").style.display = "none"; 
-					dibujaCirculo(alejandro);
-					console.log("menor a cero: ", alejandro.length);
+		requestData[_csrf_param_name] = _csrf_token;
+		try
+	      {
+		$.ajax({
+			type : "POST",
+			url : "estatus",
+			data: requestData ,
+			timeout : 200000,
+			success : function(data) {
+				console.log("SUCCESS: ", data);
+				var datos=0;
+				datos = JSON.parse(data);
+				var alejandro = datos.alejandro;
+				if(alejandro.length === 'undefined'||alejandro.length===null||alejandro.length===""){
+					console.log("el estado no esta definido o es nulo");
+					$('#msjError').html("<h2>el estatus devuelve nulo</h2> ");
 				}else{
-					$('#msjError').html("<h1> verifica el status,  da click en el evento Consulta</h1> ");
-					dibujaCirculo(alejandro);
-
-				}if (errordata.length>=0) {
-					console.log("mayor a cero-rafa: ", errordata.length);
-					document.getElementById("msjErrorrafa").style.display = "none";
-					var newheight = 0;
-					$('.autoheight').each(function(){ 
-					   var h = $(this).height();
-					   var s = $(this).prop('scrollHeight');
-					   console.log(h + "-" + s);
-					   if ( (h+s) > newheight )  {
-					      newheight = h + s;      
-					   }
-					});
-					$('.autoheight').height(newheight);
-					$('#Table > tbody').empty();
-					$.each(errordata, function (i, item) {
-						var rows="";
-// 					    var rows = "<thead>"+
-// 					    "<tr class='header'>"+
-// 						"<th style='width: 6%;'>Entidad</th>"+
-// 						"<th style='width: 7%;' >Remesa</th>"+
-// 						"<th style='width: 10%;'>Fecha</th>"+
-// 						"<th>Descripción</th>"+
+					if(alejandro.length<=0){
+						document.getElementById("msjError").style.display = "none";
+						dibujaCirculo(alejandro);
+						console.log("menor a cero: ", alejandro.length);
+					}else{
+						console.log("mayor a cero: ", alejandro.length);
+						document.getElementById("msjError").style.display = "none";
+						dibujaCirculo(alejandro);
 						
-// 					"</tr></thead><tr>" +
-// 					        "<td><textarea class='autoheight' name='entidad[]' >"+ item.iden + "</textarea></td>" +
-// 					        "<td><textarea class='autoheight' name='remesa[]' >"+ item.idre + "</textarea></td>" +
-// 					        "<td><textarea class='autoheight' name='fecha[]' >"+ item.idfe + "</textarea></td>" +
-// 					        "<td><textarea class='autoheight' name='Descripción[]'>"+item.error+"</textarea></td>" +
-// 					        "</tr>";	
-									$('#msjErrorrafa2').html("<h1 style='color:red;'> Se ah encontrado un ERROR para mas detalle da click en CONSULTA</h1> ")
-					        $('#myModal').blur(
-					                function() {
-					                    $('#text').load('statusError', 
-					                                       "datoE="+$('#myModal').val())
-					                }   
-					            )
-					        $('.openBtn').on('click',function(){
-							    $('.modal-body').load('content.html',function(){
-							    	 $('#pocos').html('<h1 style="color:red;">Error</h1>')
-							    	 console.log('Tabla: '+rows);
-							    	 $('#text').text(item.error);
-							        $('#myModal').modal({show:true});
-							    });
-							    $('#myModal').on('show.bs.modal', function (event) {
-									  var button = $(event.relatedTarget)
-									  var recipient = button.data('whatever')
-									  var modal = $(this)
-									  modal.find('.modal-title').text(recipient)
-									  
-
-									});
-							});
-					    $('#Table > tbody').append(rows);
-					});
-					
-				} else {
-					console.log("menor a cero-rafa: ", errordata.length);
-
-					$('#msjErrorrafa2').html("<h1>el estatus error devuelve nulo</h1> ");
-
+					}
 				}
-			
-	
-		},
-		error : function(e) {
-			console.log("ERROR: ", e);
-			$('#msjError').html("<h1>Web service esta fuera de servicio contacte</h1> ");
-		},
-		done : function(e) {
-			console.log("DONE");
-		}
-	});
+		
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
 
-}
+                if (jqXHR.status === 0) {
+                	swal("Oops!", "...Verify Network!" ,  "error");
+//                     alert('Not connect: Verify Network.=(');
+
+                } else if (jqXHR.status == 404) {
+                	swal(" Oops!", "...Requested page not found [404]!" ,  "error");
+//                     alert('Requested page not found [404].');
+
+                } else if (jqXHR.status == 500) {
+                	swal(" Oops!", "...Error Interno del Servidor [500]!" ,  "error");
+//                     alert('Error Interno del Servidor [500].');
+
+                } else if (textStatus === 'parsererror') {
+                	swal(" Oops!", "...Error Requested JSON parse failed!" ,  "error");
+//                     alert('Requested JSON parse failed.');
+
+                } else if (textStatus === 'timeout') {
+                	swal(" Oops!", "...Error Time out error!" ,  "error");
+//                     alert('Time out error.');
+
+                } else if (textStatus === 'abort') {
+                	swal("Oops" , "...Ajax request aborted!" ,  "error");
+//                     alert('Ajax request aborted.');
+
+                } else {
+    
+                	swal(" Oops",+ jqXHR.responseText+" ocurrio un error" ,  "error" );
+//                     alert('Uncaught Error: ' + jqXHR.responseText);
+
+                }
+
+            },
+			done : function(e) {
+				console.log("DONE");
+				
+			}
+		});
+	      } 
+	      catch (err) 
+	      {
+	        alert(err);
+	      }
+
+	}
 
 function dibujaCirculo(data) {
 
-	
+	getError();
 	var myCanvas = document.getElementById("myCanvas");
 	
 	console.log("JSONparse valor: " + data); 
@@ -284,7 +296,7 @@ function dibujaCirculo(data) {
     });
     
 
-    var porcentaje = 127;
+    var porcentaje = 135;
     
 	var sum =0;
 	
@@ -326,6 +338,7 @@ function drawPieSlice(ctx,centerX, centerY, radius, startAngle, endAngle){
 setInterval(searchViaAjax,60000);
 
 </script>
+<script src="resources/js/FuncionRemesaError.js" type="text/javascript"></script>
 
 </body>
 <br>
@@ -338,9 +351,10 @@ setInterval(searchViaAjax,60000);
 <br>
 <br>
 <br>
-<footer>
-	<div align="center">
-		<h4>© Derechos Reservados, Instituto Nacional Electoral, México.</h4>
-	</div>
-</footer>
+
+<div class="container-xl mt-3 border  p-3 my-3 bg-dark text-white"
+	align="center">
+	<jsp:include page="fragments/footer.jsp" />
+</div>
+
 </html>

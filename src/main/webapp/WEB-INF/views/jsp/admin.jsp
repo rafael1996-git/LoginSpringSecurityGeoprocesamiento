@@ -8,7 +8,6 @@
 
 <html lang="en"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<meta charset="utf-8">
 
 <jsp:include page="fragments/HeaderAdmin.jsp" />
 

@@ -6,9 +6,9 @@
 <%@page session="true"%>
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org"
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<meta charset="utf-8">
 
 <jsp:include page="fragments/HeaderAdmin.jsp" />
 

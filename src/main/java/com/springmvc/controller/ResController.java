@@ -22,6 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -64,7 +65,7 @@ public class ResController {
 
 	@RequestMapping(value = "/remesa", method = RequestMethod.GET)
 	@ResponseBody
-	public ModelAndView RemesaPage(HttpServletRequest reques, HttpServletResponse response)  {
+	public ModelAndView RemesaPage(Authentication authentication,HttpServletRequest reques, HttpServletResponse response)  {
 		ModelAndView model = new ModelAndView();
 		UUID token = Generators.randomBasedGenerator().generate();
 		Date objDate = new Date();
@@ -74,7 +75,9 @@ public class ResController {
 		objDate.equals(dateFormat.format(objDate));
 		System.out.println(dateFormat.format(objDate));
 		try {
+			
 			HttpSession session = reques.getSession();
+			
 			int id = (int) session.getAttribute("id");
 			int entidad = (int) session.getAttribute("entidad");
 			String opj;
@@ -132,15 +135,13 @@ public class ResController {
 
 					try {
 						Response respons = client.newCall(request).execute();
-						String stringHeader = respons.headers().toString();
-						String string = respons.body().string();
 					} catch (IOException e) {
 						System.err.println("Failed scraping");
 						List<User> listaPersonas =userService.listaFiltrada(entidad);
 						reques.setAttribute("lista", listaPersonas);
 						System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 						model.addObject("mensaje1", "¡"+e.getCause().toString());
-						model.setViewName("/users/adminC");
+						model.setViewName("adminC");
 						e.printStackTrace();
 					}
 
@@ -149,7 +150,7 @@ public class ResController {
 
 					List<User> listaPersonas =userService.listaFiltrada(entidad);
 					reques.setAttribute("lista", listaPersonas);
-					model.setViewName("/users/adminC");
+					model.setViewName("adminC");
 					model.addObject("mensaje", "¡");
 			
 				
@@ -158,7 +159,7 @@ public class ResController {
 			List<User> listaPersonas =userService.listaFiltrada(entidad);
 			reques.setAttribute("lista", listaPersonas);
 			model.addObject("mensaje2", "¡");
-			model.setViewName("/users/adminC");
+			model.setViewName("adminC");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -168,12 +169,11 @@ public class ResController {
 			reques.setAttribute("lista", listaPersonas);
 			System.out.println("funcion Remesa no realizada :Exception  ");
 			model.addObject("mensaje1", "¡"+e.getCause().toString());
-			model.setViewName("/users/adminC");
+			model.setViewName("adminC");
 			e.getMessage();
 		}
 		return model;
 	}
-
 
 
 	@RequestMapping(value = "/funcionRemesas", method = { RequestMethod.GET })
@@ -266,16 +266,17 @@ public class ResController {
 						controlEn.setEstatusServicio("200");
 						controlEn.setMensajeSalida(bodyString);
 						control.add(controlEn);
-
+					
 					} else {
 						controlEn.setEntidadID(entidad);
 						controlEn.setEstatusServicio("601");
 						controlEn.setMensajeSalida("no esta configurado app.config");
+						logger.info("no esta configurado app.config ;" + controlEn.getMensajeSalida());
 						control.add(controlEn);
 					}
 
 				} catch (IOException e) {
-					logger.error(DEFAULT_ERROR_SERVICE + e.getCause().toString());
+					logger.error(DEFAULT_ERROR_SERVICE +"-------------------------------------"+ e.getCause().toString());
 					controlEn.setEntidadID(entidad);
 					controlEn.setEstatusServicio(e.getLocalizedMessage());
 					controlEn.setMsgExceptionDao(e.getCause().toString());
@@ -304,6 +305,8 @@ public class ResController {
 		return listaEstatus;
 
 	}
+	
+	
 
 	public List<MultiGrafica> servicioEstatus(List<String> entidad, int remesa) throws ParseException {
 
@@ -378,6 +381,7 @@ public class ResController {
 					}
 				} catch (Exception e) {
 					multi.setMsgException(e.getMessage());
+					logger.info("multi.setMsgException(e.getMessage()); "+multi.getMsgException());
 				}
 
 				listGraficas.add(multi);
