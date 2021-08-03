@@ -33,6 +33,7 @@ public interface UserDao {
 	public List<statusError> listaStatus(String fecha);
 
 	public String buscarRemesa();
+	public String buscarEntidad();
 
 	public List<UserControl> findByUserControlAndPassword(String correo, String password);
 

@@ -89,9 +89,11 @@ public class LoginController {
 		List<UserControl> listaPersonas = userService.lista();
 		HttpSession session = request.getSession();
 		UserControl uControl = userService.findBycorreo(authentication.getName());
+		Map<Integer,String> listEntidadesActivas = userService.entidadesActivas();
 		session.setAttribute("id", uControl.getId_usuario());
 		session.setAttribute("entidad", uControl.getEntidad());
 		session.setAttribute("tipo", uControl.getId_tipo_usuario());
+		request.setAttribute("entidadesActivas",listEntidadesActivas);
 		request.setAttribute("firstname",authentication.getName());
 		request.setAttribute("lista", listaPersonas);
 		model.setViewName("admin");
@@ -101,10 +103,14 @@ public class LoginController {
 	@Secured({ "ROLE_USER", "ROLE_ADMIN"})
 	@RequestMapping(value = "/Avance**", method = RequestMethod.GET)
 	public ModelAndView AvancePage(Authentication authentication,HttpServletRequest request) {
-		UserControl uControl = userService.findBycorreo(authentication.getName());		
+		UserControl uControl = userService.findBycorreo(authentication.getName());	
+		Map<Integer,String> listEntidadesActivas = userService.entidadesActivas();
+
 		HttpSession session = request.getSession();
 		session.setAttribute("id", uControl.getId_usuario());
+		session.setAttribute("tipo", uControl.getId_tipo_usuario());
 		session.setAttribute("entidad", uControl.getEntidad());
+		request.setAttribute("entidadesActivas",listEntidadesActivas);
 		request.setAttribute("firstname",authentication.getName());
 		ModelAndView model = new ModelAndView();
 		// To do something
@@ -123,11 +129,13 @@ public class LoginController {
 		}
 		UserControl uControl = userService.findBycorreo(authentication.getName());
 		List<User> listaPersonas = userService.listaFiltrada(uControl.getEntidad());
-		
+		Map<Integer,String> listEntidadesActivas = userService.entidadesActivas();
 		HttpSession session = request.getSession();
 		session.setAttribute("id", uControl.getId_usuario());
 		session.setAttribute("entidad", uControl.getEntidad());
+		session.setAttribute("tipo", uControl.getId_tipo_usuario());
 		request.setAttribute("lista", listaPersonas);
+		request.setAttribute("entidadesActivas",listEntidadesActivas);
 		request.setAttribute("firstname",authentication.getName());	
 		model.setViewName("adminC");
 		return model;
@@ -312,11 +320,12 @@ public class LoginController {
 	public String ejecutaEstatus(HttpServletRequest reques) throws NumberFormatException, ParseException, IOException {
 		HttpSession session = reques.getSession();
 		int id = (int) session.getAttribute("id");
+		String listEntidadesActivas = userService.buscarEntidad();
 		int entidadUsuario = (int) session.getAttribute("entidad");
 		String opj = userService.buscarRemesa();
 		System.out.println("query service buscarRemesa: " + opj);
 
-		String listaEstatus = getEstatusRemesa(entidadUsuario, Integer.parseInt(opj));
+		String listaEstatus = getEstatusRemesa(Integer.parseInt(listEntidadesActivas), Integer.parseInt(opj));
 
 //		List<MultiGrafica> listaEstatusError = getEstatusError(entidadUsuario, Integer.parseInt(opj));
 		 return "{\"alejandro\":" + listaEstatus + "}";
@@ -329,11 +338,12 @@ public class LoginController {
 			throws NumberFormatException, ParseException, IOException {
 		HttpSession session = reques.getSession();
 		int id = (int) session.getAttribute("id");
+		String listEntidadesActivas = userService.buscarEntidad();
 		int entidadUsuario = (int) session.getAttribute("entidad");
 		String opj = userService.buscarRemesa();
 		System.out.println(" service statusERROR: " + opj);
 
-		List<MultiGrafica> listaEstatusError = getEstatusError(entidadUsuario, Integer.parseInt(opj));
+		List<MultiGrafica> listaEstatusError = getEstatusError(Integer.parseInt(listEntidadesActivas), Integer.parseInt(opj));
 		return listaEstatusError;
 
 	}
@@ -416,12 +426,7 @@ public class LoginController {
     				err = object.getString("error");
     				int enti = object.getInt("entidad");
     				int reme = object.getInt("remesa");
-//    				statusError opjeto= new statusError();
-//    				opjeto.setEntidad(enti);
-//    				opjeto.setRemesa(reme);
-//    				opjeto.setFecha(fecha);
-//    				opjeto.setError(err);
-//    				idOperaciones.add(idOp);
+
     				System.out.println("_______________idOperacion_____________________:" + span.getInt("idOperacion"));
     				System.out.println("_______________fecha_____________________:" + object.getString("sFechaHora"));
     				System.out.println("_______________entidad_____________________:" + object.getInt("entidad"));
@@ -431,14 +436,6 @@ public class LoginController {
     				multi.setMessaje(varMensaje);
     				multi.setIdOperaciones(idOperaciones);
     				System.out.println("_______________error multi.getMessaje()_____________________:" + multi.getMessaje());
-//    				statusError status = userService.findByfecha(err.toString(), fecha.toString());
-//    				if (status != null) {
-//    					System.out.println("_______________idoperacion_____________________insert:"+idOp);
-//
-//    				} else if (opjeto != null) {
-//    					userService.register(opjeto);
-//    			
-//    				}
     				String var="=";
     				dataStore[i] = "{\"iden\":\"" + enti +"\",\"idre\":\""+null+"\",\"idfe\":\""+null+"\",\"error\":\"Se ha Encontrado un Error Checkout"+var+"\"}";
 

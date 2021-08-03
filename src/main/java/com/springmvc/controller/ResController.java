@@ -77,7 +77,7 @@ public class ResController {
 		try {
 			
 			HttpSession session = reques.getSession();
-			
+			String listEntidadesActivas = userService.buscarEntidad();
 			int id = (int) session.getAttribute("id");
 			int entidad = (int) session.getAttribute("entidad");
 			String opj;
@@ -88,17 +88,18 @@ public class ResController {
 			System.out.println(semana);
 			String valor=session.getAttribute("entidad").toString();
 			System.out.println(""+Integer.parseInt(valor));
+			System.out.println("buscarEntidad"+listEntidadesActivas);
 			List<info> var ;
-			if(Integer.parseInt(session.getAttribute("entidad").toString())<10) {
-				var =userService.validate( "0"+session.getAttribute("entidad").toString(), anio, semana);
+			if(Integer.parseInt(listEntidadesActivas)<10) {
+				var =userService.validate( "0"+listEntidadesActivas, anio, semana);
 			}else {
-				var =userService.validate( session.getAttribute("entidad").toString(), anio, semana);
+				var =userService.validate( listEntidadesActivas, anio, semana);
 			}
 			
 			System.out.println("-----------antes del if"+""+""+session.getAttribute("entidad").toString()+""+ anio+""+semana);
 			
-			if (var!=null && !var.isEmpty()&&userService.validate( session.getAttribute("entidad").toString(), anio, semana)!=null) {
-				System.out.println("despues del if"+""+""+session.getAttribute("entidad").toString()+""+ anio+""+semana);
+			if (var!=null && !var.isEmpty()&&userService.validate( listEntidadesActivas, anio, semana)!=null) {
+				System.out.println("despues del if"+""+""+listEntidadesActivas+""+ anio+""+semana);
 					//****************************************************insertamos a la tabla autorizacion
 					Remesa opjRemesa = new Remesa();
 					opjRemesa.setId_status(1);
@@ -112,7 +113,7 @@ public class ResController {
 					Control opjControl=new Control();
 					
 					for (int j = 0; j <=135; j++) {
-						opjControl.setEntidad(entidad);
+						opjControl.setEntidad(Integer.parseInt(listEntidadesActivas));
 						opjControl.setRemesa(Integer.parseInt(opj.toString()));
 						opjControl.setFecha_hora(objDate);
 						opjControl.setId_usuario(id);
@@ -128,7 +129,7 @@ public class ResController {
 							.readTimeout(120, TimeUnit.SECONDS)
 							.writeTimeout(120, TimeUnit.SECONDS).build();
 					HttpUrl.Builder urlBuilder = HttpUrl.parse("http://localhost:8080/GenerarRemesa/dce/GenerarEntidad?").newBuilder();
-					urlBuilder.addQueryParameter("entidad", session.getAttribute("entidad").toString());
+					urlBuilder.addQueryParameter("entidad", listEntidadesActivas);
 					urlBuilder.addQueryParameter("remesa", opj.toString());
 					String url = urlBuilder.build().toString();
 					Request request = new Request.Builder().url(url).header("Authorization", token.toString()).build();
@@ -137,7 +138,7 @@ public class ResController {
 						Response respons = client.newCall(request).execute();
 					} catch (IOException e) {
 						System.err.println("Failed scraping");
-						List<User> listaPersonas =userService.listaFiltrada(entidad);
+						List<User> listaPersonas =userService.listaFiltrada(Integer.parseInt(listEntidadesActivas));
 						reques.setAttribute("lista", listaPersonas);
 						System.out.println("funcion Remesa no realizada por que no esta levantado el servicio : ");
 						model.addObject("mensaje1", "¡"+e.getCause().toString());
@@ -148,7 +149,7 @@ public class ResController {
 					System.out.println(
 							"*************************************************************************[HEADER2 : ");
 
-					List<User> listaPersonas =userService.listaFiltrada(entidad);
+					List<User> listaPersonas =userService.listaFiltrada(Integer.parseInt(listEntidadesActivas));
 					reques.setAttribute("lista", listaPersonas);
 					model.setViewName("adminC");
 					model.addObject("mensaje", "¡");
@@ -156,7 +157,7 @@ public class ResController {
 				
 			}else {				
 			System.out.println("funcion Remesa no realizada :else  ");
-			List<User> listaPersonas =userService.listaFiltrada(entidad);
+			List<User> listaPersonas =userService.listaFiltrada(Integer.parseInt(listEntidadesActivas));
 			reques.setAttribute("lista", listaPersonas);
 			model.addObject("mensaje2", "¡");
 			model.setViewName("adminC");

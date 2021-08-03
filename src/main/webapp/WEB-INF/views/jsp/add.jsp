@@ -28,7 +28,7 @@
 <link href="${adminCss}" rel="stylesheet" />
 <body>
 
-	<div class="container py-4">
+	<div class="container">
 	<c:if test="${not empty mensage}">
 			  	
    					<div class="alert alert-success alert-dismissible" align="center">
@@ -47,7 +47,12 @@
   					</div>
 			  
 			 	</c:if>
-		<section id="contenido" >
+			 	
+			 	<div class="row-fluid">
+			 	<div class="col-sm-12">
+			 	<div class="row">
+				    <div class="col-sm-4">
+				    		<section id="contenido" >
 	
 		<div id="informacion">
 			<div
@@ -68,17 +73,14 @@
 		</div>
 	
 	</section>
-	<div id="info2" align="center">
-		<aside >
-		<article >
-		<h2 align="center">Geoprocesamiento de la Remesa de
+				    </div>
+				    <div class="col-sm-8" align="center">
+				    <h2 align="center" style="margin-top: 130px;">Geoprocesamiento de la Remesa de
 							Actualizacion Cartografica</h2>
 							<p>Agregar Usuarios para el Geoprocesamiento de la Remesa de  Actualizacion Cartografica<br /> © Intituto Nacional Electoral 2021.</p>
-		</article>
-		</aside>
-	</div>
-		
-		<div class="input-group md-form form-sm form-1 pl-0">
+				    </div>
+					</div>
+					<div class="input-group md-form form-sm form-1 pl-0">
 			<div class="input-group-prepend">
 				<span class="input-group-text cyan lighten-2"><i
 					class="fas fa-search text-white" aria-hidden="true"></i></span>
@@ -128,6 +130,12 @@
 
 
 		</div>
+					
+			 	</div>
+			 	</div>
+			
+		
+		
 	</div>
 <script>
     function ConfirmDelete() {

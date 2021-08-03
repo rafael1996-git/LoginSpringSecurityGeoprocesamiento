@@ -7,8 +7,8 @@
 	float: left;
 	margin: auto auto;
 	list-style: none;
-	padding-top: 35px;
-	margin-bottom: 25px;
+	padding-top: 25px;
+	margin-bottom: 10px;
 }
 aside{
 	    float: right;
@@ -29,7 +29,6 @@ aside article h2{
 	width: 100%;
 	margin: auto auto;
 	list-style: none;
-	padding-top: 400px;
 	margin-bottom: 25px;
 	align-content: center;
 }
@@ -45,11 +44,12 @@ aside article h2{
 	width: 100%;
 	 margin: auto auto;
     list-style: none;
-    padding-top: 420px;
 }
 #status{
 	width: 100%;
 	 margin: auto auto;
     list-style: none;
-    padding-top: 420px;
+}
+info2{
+	margin-top: 200px;
 }

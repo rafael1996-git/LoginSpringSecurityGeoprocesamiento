@@ -441,6 +441,16 @@ public class UserDaoImpl implements UserDao {
 		});
 
 	}
+	public String buscarEntidad() {
+		String sql = "SELECT entidad FROM public.entidad WHERE activa=0 ";
+		return jdbcTemplatecontrol.query(sql, new ResultSetExtractor<String>() {
+			@Override
+			public String extractData(ResultSet rs) throws SQLException, DataAccessException {
+				return rs.next() ? rs.getString("entidad") : null;
+			}
+		});
+
+	}
 
 	@Override
 	public List<info> validate(String entidad, String anio, String semana) {

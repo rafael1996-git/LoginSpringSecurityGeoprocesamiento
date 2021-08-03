@@ -141,6 +141,12 @@ public class UserServiceImpl implements UserService {
 		return userDao.findByAuthority(correo);
 	}
 
+	@Override
+	public String buscarEntidad() {
+		// TODO Auto-generated method stub
+		return userDao.buscarEntidad();
+	}
+
 	
 
 

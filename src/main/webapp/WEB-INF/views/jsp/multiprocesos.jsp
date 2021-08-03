@@ -93,8 +93,8 @@ div.round3 {
 <link href="${adminCss}" rel="stylesheet" />
 <body>
 
-	<div class="container py-4">
-		<c:if test="${not empty multimensaje1}">
+	<div class="container">
+	<c:if test="${not empty multimensaje1}">
 			<div class="alert alert-info" align="center">${multimensaje1}
 				<a href="${multiproceso}" class="close" data-dismiss="alert"
 					aria-label="close">&times;</a> <strong>Error!</strong>
@@ -120,12 +120,17 @@ div.round3 {
 		<c:if test="${not empty Multimensaje}">
 			<div class="alert alert-success" align="center">${Multimensaje}
 				<a href="${multiproceso}" class="close" data-dismiss="alert"
-					aria-label="close">&times;</a> <strong>¡Success!</strong> Multi
+					aria-label="close">&times;</a> <strong>ï¿½Success!</strong> Multi
 				Procesamiento Funcionando Correctamente
 			</div>
 
 		</c:if>
-		<section id="contenido">
+	<div class="row-fluid">
+	<div class="col-sm-12">
+	
+		<div class="row">
+			<div class="col-sm-4">
+					<section id="contenido">
 
 			<div id="informacion">
 				<div
@@ -147,23 +152,20 @@ div.round3 {
 			</div>
 
 		</section>
-		<div id="contenedor" align="center">
-			<aside>
-				<article>
-					<h2 align="center">Geoprocesamiento de la Remesa de
+			</div>
+			<div class="col-sm-8" align="center">
+			<h2 align="center" style="margin-top: 130px;">Geoprocesamiento de la Remesa de
 						Actualizacion Cartografica</h2>
 					<p>Este Usuario tiene Permisos para Administrar y Procesar la
 						generacion de Remesa.</p>
-				</article>
-			</aside>
+			</div>
 		</div>
-
 
 		<br>
 		<div id="CardEntidades">
 			<div class="card " style="min-width: 300px;">
 				<div class="card-header">
-					<h4 class="card-title" align="center">Selección de Entidades a
+					<h4 class="card-title" align="center">Seleccion de Entidades a
 						Procesar</h4>
 				</div>
 				<div class="card-body">
@@ -228,6 +230,9 @@ div.round3 {
 							</div>
 					</div>
 				</div>
+	</div>
+	</div>
+
 	</div>
 </body>
 <script src="resources/js/funcionRemesa.js" type="text/javascript"></script>

@@ -9,7 +9,7 @@
 <html lang="en" 
      xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <jsp:include page="fragments/HeaderAdmin.jsp" />
  
 <style>
@@ -29,8 +29,10 @@
 <body>
 <spring:url value="Avance" var="urlavance" />
 <spring:url value="remesa" var="urlAddRemesa" />
-	<div class="container py-4">
-		<c:if test="${not empty mensajerror}">
+	<div class="container">
+	<div class="row-fluid">
+	<div class="col-sm-12">
+	<c:if test="${not empty mensajerror}">
 			<div class="alert alert-success alert-dismissible" align="center">
 				<button type="button" class="close" data-dismiss="alert">&times;</button>
 				<strong>SUCCESS!</strong> proceso funcionando sin error , verifique
@@ -53,7 +55,9 @@
 			</div>
 
 		</c:if>
-		<section id="contenido">
+		<div class="row">
+		<div class="col-sm-4">
+			<section id="contenido">
 
 			<div id="informacion">
 				<div
@@ -75,18 +79,19 @@
 			</div>
 
 		</section>
-		<div id="info2" align="center">
-			<aside>
-				<article>
-					<h2 align="center">Geoprocesamiento de la Remesa de
-						Actualizacion Cartografica</h2>
-					
-				</article>
-			</aside>
 		</div>
-		<div id="CardEntidadesRemesa">
-
-			<div class="card">
+		<div class="col-sm-8" align="center">
+					<h2 align="center" style="margin-top: 130px;">Geoprocesamiento de la Remesa de
+						Actualizacion Cartografica</h2>
+		</div>
+		</div>
+		
+	
+		
+		
+		<div class="row">
+		<div class="col-sm-12">
+		<div class="card">
 				<div class="card-body">
 					<h4 class="card-title">Generacion de Remesa</h4>
 					<p class="card-text">Este Usuario tiene Permisos para Administrar y Procesar la
@@ -96,7 +101,7 @@
 				</div>
 			</div>
 		</div>
-
+		</div>
 
 		<br>
 
@@ -143,6 +148,8 @@
 
 
 		</div>
+	</div>
+	</div>
 	</div>
 
 	<script>

@@ -9,7 +9,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="resources/js/Chart.js"></script>
-<script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js "> </script> 
+<script src=" https://unpkg.com/sweetalert/dist/sweetalert.min.js "> </script>
 </head>
 <jsp:include page="fragments/HeaderAdmin.jsp" />
 <style>
@@ -18,12 +18,13 @@ body {
 }
 
 .my-custom-scrollbar {
-position: relative;
-height: 200px;
-overflow: auto;
+	position: relative;
+	height: 200px;
+	overflow: auto;
 }
+
 .table-wrapper-scroll-y {
-display: block;
+	display: block;
 }
 
 td.error {
@@ -39,19 +40,21 @@ td.error {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background: rgba(0,0,0,0.8);
+	background: rgba(0, 0, 0, 0.8);
 	z-index: 99999;
-	opacity:0;
+	opacity: 0;
 	-webkit-transition: opacity 400ms ease-in;
 	-moz-transition: opacity 400ms ease-in;
 	transition: opacity 400ms ease-in;
 	pointer-events: none;
 }
+
 .modalDialog:target {
-	opacity:1;
+	opacity: 1;
 	pointer-events: auto;
 }
-.modalDialog > div {
+
+.modalDialog>div {
 	width: 1600px;
 	position: relative;
 	margin: 3% auto;
@@ -61,10 +64,11 @@ td.error {
 	background: -moz-linear-gradient(#fff, #999);
 	background: -webkit-linear-gradient(#fff, #999);
 	background: -o-linear-gradient(#fff, #999);
-  -webkit-transition: opacity 400ms ease-in;
--moz-transition: opacity 400ms ease-in;
-transition: opacity 400ms ease-in;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
 }
+
 .close {
 	background: #ffc62b;
 	color: #FFFFFF;
@@ -83,14 +87,17 @@ transition: opacity 400ms ease-in;
 	-webkit-box-shadow: 1px 1px 3px #000;
 	box-shadow: 1px 1px 3px #000;
 }
-.close:hover { background: #ff0000; }
+
+.close:hover {
+	background: #ff0000;
+}
 </style>
 <spring:url value="/resources/css/admin.css" var="adminCss" />
 <link href="${adminCss}" rel="stylesheet" />
-<body >
+<body>
 	<spring:url value="estatus" var="urlEstatus" />
-	<div class="container py-4">
-	<c:if test="${not empty mensaje3}">
+	<div class="container">
+		<c:if test="${not empty mensaje3}">
 			<div class="alert alert-info">${mensaje3}
 				<a href="${urlAvance}" class="close" data-dismiss="alert"
 					aria-label="close">&times;</a> <strong>SUCCESS!</strong>proceso
@@ -99,87 +106,81 @@ transition: opacity 400ms ease-in;
 			</div>
 
 		</c:if>
-		<section id="contenido">
+		<div class="row-fluid">
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-sm-4">
+						<section id="contenido">
 
-			<div id="informacion">
-				<div
-					class="card  col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 .img-fluid"
-					style="min-width: 300px;">
-					<img src="<c:url value="/resources/images/avatar.jpg"/>"
-						class="card-img-top" alt="Card image" />
+							<div id="informacion">
+								<div
+									class="card  col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 .img-fluid"
+									style="min-width: 300px;">
+									<img src="<c:url value="/resources/images/avatar.jpg"/>"
+										class="card-img-top" alt="Card image" />
 
-					<div class="card-block">
-						<h6 class="card-title">Nombre del Usuario Generador de la
-							Remesa: ${firstname}</h6>
-						<p>
-							<c:set var="now" value="<%=new java.util.Date()%>" />
-							Fecha Actual:
-							<fmt:formatDate type="both" value="${now}" />
-						</p>
+									<div class="card-block">
+										<h6 class="card-title">Nombre del Usuario Generador de la
+											Remesa: ${firstname}</h6>
+										<p>
+											<c:set var="now" value="<%=new java.util.Date()%>" />
+											Fecha Actual:
+											<fmt:formatDate type="both" value="${now}" />
+										</p>
+									</div>
+								</div>
+							</div>
+
+						</section>
+					</div>
+					<div class="col-sm-8" align="center">
+						
+							<h2 align="center" style="margin-top: 130px;">Geoprocesamiento de la Remesa de
+								Actualizacion Cartografica</h2>
+							<p>Este Usuario tiene Permisos para Administrar y Procesar la
+								generacion de Remesa.</p>
+					</div>
+				</div>
+				<div id="status" align="center">
+
+					<div class="card ">
+						<div class="card-header">
+							<h4 class="card-title" align="center">Estatus:</h4>
+						</div>
+						<div class="card-body">
+							<canvas id="myCanvas" width="500" height="300"></canvas>
+							<div id="leyenda"></div>
+							<div id="msjError"></div>
+							<div id="msjErrorrafa"></div>
+							<div id="msjErrorrafa2"></div>
+						</div>
+						<div id="card" class="card-footer">
+							<form id="registro" action="#" class="form-inline"
+								style="float: left;">
+								<input type="submit" class="btn btn-primary openBtn"
+									value="Consulta">
+							</form>
+							<a id="detalle" href="#openModal" class="btn btn-primary"
+								style="float: right;">Detalle Error</a>
+						</div>
+
+					</div>
+
+
+				</div>
+				<div id="openModal" class="modalDialog">
+					<div>
+						<a href="#close" title="Close" class="close">X</a>
+						<h2>Error</h2>
+						<div id="datosError" align="center"></div>
 					</div>
 				</div>
 			</div>
 
-		</section>
-		<div id="info2" align="center">
-			<aside>
-				<article>
-					<h2 align="center">Geoprocesamiento de la Remesa de
-						Actualizacion Cartografica</h2>
-					<p>Este Usuario tiene Permisos para Administrar y Procesar la
-						generacion de Remesa.</p>
-				</article>
-			</aside>
 		</div>
-		
-	<div id="status" align="center">
-	
-	<div class="card ">
-				<div class="card-header">
-					<h4 class="card-title" align="center">Estatus:</h4>
-				</div>
-				<div class="card-body">
-					<canvas id="myCanvas" width="500" height="300"></canvas>
-				<div id="leyenda"></div>
-				<div id="msjError"></div>
-				<div id="msjErrorrafa"></div>
-				<div id="msjErrorrafa2"></div>
-				</div>
-				<div id="card" class="card-footer">
-				<form id="registro" action="#" class="form-inline" style="float: left;">
-				<input type="submit" class="btn btn-primary openBtn"
-					value="Consulta">
-				</form>
-				<a id="detalle" href="#openModal" class="btn btn-primary" style="float: right ;" >Detalle Error</a>
-				</div>
-
-			</div>
-
-	
 	</div>
-	
-	<div class="table-wrapper-scroll-y my-custom-scrollbar">
 
-		<table id="Table"
-			class="table table-bordered table-condensed table-hover responsive nowrap"
-			style="width: 100%">
-			<thead>
-			</thead>
-			<tbody style="height: 10px !important; overflow: scroll;">
 
-			</tbody>
-		</table>
-	</div>
-		<div id="openModal" class="modalDialog">
-			<div>
-				<a href="#close" title="Close" class="close" >X</a>
-				<h2>Error</h2>
-				<div id="datosError" align="center"></div>
-			</div>
-		</div>
-
-	</div>
-	
 	<script type="text/javascript">
 	var _csrf_token = /*[[${_csrf.token}]]*/ '${_csrf.token}';
 	var _csrf_param_name = /*[[${_csrf.parameterName}]]*/ '${_csrf.parameterName}';
@@ -338,7 +339,7 @@ function drawPieSlice(ctx,centerX, centerY, radius, startAngle, endAngle){
 setInterval(searchViaAjax,60000);
 
 </script>
-<script src="resources/js/FuncionRemesaError.js" type="text/javascript"></script>
+	<script src="resources/js/FuncionRemesaError.js" type="text/javascript"></script>
 
 </body>
 <br>

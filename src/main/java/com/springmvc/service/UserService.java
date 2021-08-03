@@ -33,7 +33,7 @@ public interface UserService {
 	public List<UserControl> lista();
 	
 	public String buscarRemesa();
-
+	public String buscarEntidad();
 	public String buscarAdmin();
 
 	public List<UserControl> findByUserControlAndPassword(String correo, String password);

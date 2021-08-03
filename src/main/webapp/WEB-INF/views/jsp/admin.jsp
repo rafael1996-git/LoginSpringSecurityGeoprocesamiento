@@ -8,7 +8,7 @@
 
 <html lang="en"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <jsp:include page="fragments/HeaderAdmin.jsp" />
 
 <style>
@@ -27,9 +27,9 @@
 <link href="${adminCss}" rel="stylesheet" />
 <body>
 
-
-
-	<div class="container py-4">
+<div class="container">
+<div class="row-fluid">
+	<div class="col-sm-12">
 	<c:if test="${not empty msg}">
 			<div class="alert alert-success alert-dismissible" align="center">
 				<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -54,37 +54,41 @@
 			</div>
 
 		</c:if>
-	<section id="contenido" >
-	
-		<div id="informacion">
-			<div
-				class="card  col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 .img-fluid" style="min-width: 300px;">
-				<img src="<c:url value="/resources/images/avatar.jpg"/>"
-					class="card-img-top" alt="Card image" />
-
-				<div class="card-block">
-					<h6 class="card-title">Nombre del Usuario Generador de la
-						Remesa: ${firstname}</h6>
-					<p>
-						<c:set var="now" value="<%=new java.util.Date()%>" />
-						Fecha Actual:
-						<fmt:formatDate type="both" value="${now}" />
-					</p>
+		<div class="row">
+		<div class="col-sm-4">
+			<section id="contenido" >
+		
+				<div id="informacion">
+					<div
+						class="card  col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 .img-fluid" style="min-width: 300px;">
+						<img src="<c:url value="/resources/images/avatar.jpg"/>"
+							class="img-circle" alt="Card image" />
+		
+						<div class="card-block">
+							<h6 class="card-title">Nombre del Usuario Generador de la
+								Remesa: ${firstname}</h6>
+							<p>
+								<c:set var="now" value="<%=new java.util.Date()%>" />
+								Fecha Actual:
+								<fmt:formatDate type="both" value="${now}" />
+							</p>
+						</div>
+					</div>
 				</div>
-			</div>
+		
+			</section>
 		</div>
+
 	
-	</section>
-	<div id="info2" align="center">
-		<aside >
-		<article >
-		<h2 align="center">Geoprocesamiento de la Remesa de
+		<div  class="col-sm-8" align="center">
+		
+		<h2 align="center" style="margin-top: 130px;">Geoprocesamiento de la Remesa de
 							Actualizacion Cartografica</h2>
 							<p>Este Usuario tiene Permisos para Administrar y Procesar la generacion de Remesa.</p>
-		</article>
-		</aside>
-	</div>
-		
+
+	
+		</div>
+		</div>
 
 		<br>
 		<div class="input-group md-form form-sm form-1 pl-0">
@@ -149,8 +153,13 @@
 
 
 		</div>
+	
+	</div>
+	
 	</div>
 
+</div>
+	
 
 
 	<script>
